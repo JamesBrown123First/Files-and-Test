@@ -247,7 +247,7 @@ kbd{font:500 12px Manrope,sans-serif;padding:2px 7px;border-radius:6px;box-shado
 <script>
 // Each direction has its own public link (no Design studio, no list of directions).
 (function(){
-  var base = location.origin + '/';
+  var base = /workers\.dev$|kingdom/.test(location.hostname) ? location.origin + '/' : 'https://kingdom-silver.jacob43906.workers.dev/';
   document.querySelectorAll('a.h-card').forEach(function(a){
     var id = a.getAttribute('href').replace('.html','');
     var url = base + id;
