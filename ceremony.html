@@ -40,6 +40,8 @@
 .cr-intro__side{display:grid;gap:20px;justify-items:end;text-align:right;max-width:340px}
 .cr-intro__side .k-lead{font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.7vw,26px);line-height:1.3;color:var(--ink)}
 [data-fade]{opacity:0;transform:translateY(18px)}
+.cr-eyebrow,.cr-scroll{transition:visibility 0s,filter .6s}
+.cr-moved .cr-eyebrow,.cr-moved .cr-scroll{visibility:hidden}
 .cr-eyebrow{position:absolute;z-index:4;left:50%;top:clamp(108px,14vh,140px);transform:translateX(-50%);white-space:nowrap}
 
 .cr-meet{position:absolute;z-index:4;left:0;right:0;top:clamp(120px,15vh,160px);text-align:center;font-family:var(--font-text);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-2);opacity:0}

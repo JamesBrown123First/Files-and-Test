@@ -71,7 +71,7 @@ function Basin({ physics }) {
     <group ref={g} position={[0, C.basinY, BASIN_REST.z]} rotation={[C.basinRx, 0, C.basinRz]}>
       <mesh>
         <planeGeometry args={[R * 2, R * 2]} />
-        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.45, 0.45]} metalness={0.6} roughness={0.42} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.05} />
+        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.5, 0.5]} metalness={0.12} roughness={0.5} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.25} />
       </mesh>
       {/* polished centre: a true planar mirror that reflects the ewer standing in front of it */}
       <primitive object={mirror} position={[0, 0, 0.004]} />
@@ -170,7 +170,6 @@ function buildScroll() {
   tl.to({}, { duration: 0.06 }, 0);
   // 0.06–0.46: the descent and the rise
   tl.to('.cr-intro', { opacity: 0, y: -40, filter: 'blur(6px)', duration: 0.12, ease: 'power1.in' }, 0.06);
-  tl.to('.cr-scroll, .cr-eyebrow', { opacity: 0, duration: 0.05 }, 0.05);
   tl.fromTo('.cr-horizon', { opacity: 0 }, { opacity: 0.7, duration: 0.12 }, 0.3);
   tl.to(C, { ewerY: FLOOR - 0.02, duration: 0.38, ease: 'power2.inOut' }, 0.08);       // aims just below the floor: it lands, not floats
   tl.to(C, { ewerRot: 0.1, duration: 0.4, ease: 'power3.inOut' }, 0.06);
@@ -195,6 +194,7 @@ function buildScroll() {
     onUpdate: (st) => {
       const p = st.progress;
       meterFill.style.transform = `scaleX(${p})`;
+      document.documentElement.classList.toggle('cr-moved', p > 0.035);
       meterNum.textContent = String(Math.round(p * 100)).padStart(2, '0');
       rig.target.idle = p < 0.06 ? 1 : 0.45;
     }
