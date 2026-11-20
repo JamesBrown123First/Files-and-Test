@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Filled with silver. Given with pride.">
+<meta name="theme-color" content="#f9ebe0">
+<link rel="icon" href="assets/img/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/img/ewer-1400.webp" as="image">
+<link rel="preload" href="assets/fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/core.css">
+<script src="kingdom.config.js"></script>
+<style>
+/* ===== HALLMARK ===== */
+html{background:#f9ebe0}
+.hm-head{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;height:88px;padding:0 var(--pad)}
+.hm-head__logo{width:clamp(118px,9vw,140px);color:var(--accent)}
+.hm-head__right{display:flex;align-items:center;gap:clamp(18px,2.4vw,36px);font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.hm-head__right a{min-height:44px;display:inline-flex;align-items:center}
+.hm-head .k-burger{padding:0 18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line-2);transition:box-shadow .4s}
+.hm-head .k-burger:hover{box-shadow:inset 0 0 0 1px var(--accent)}
+
+.hm-hero{position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:5fr 7fr;align-items:center;padding:110px var(--pad) 40px;overflow:hidden}
+.hm-hero__copy{position:relative;z-index:3;display:grid;gap:clamp(18px,2.6vh,30px);align-content:center}
+.hm-h1{font-size:calc(clamp(60px,8.2vw,150px) * var(--display-scale));line-height:.9;margin-left:-.03em}
+.hm-h1 span{display:block}
+.hm-h1 em{color:var(--accent)}
+.hm-h1 .hm-h1__in{padding-left:1.1em}
+.hm-hero__intro{display:grid;gap:22px}
+.hm-hero__intro > *{opacity:0;transform:translateY(16px)}
+.hm-hero__intro .k-lead{font-family:var(--font-italic);font-style:italic;color:var(--ink);font-size:clamp(20px,1.6vw,26px);line-height:1.35;max-width:24ch}
+.hm-hint{display:flex;align-items:center;gap:12px;font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.hm-hint svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1}
+.hm-stage{position:relative;height:calc(100vh - 150px);height:calc(100svh - 150px);display:grid;place-items:center}
+.hm-seal{position:absolute;width:min(78vh,52vw);aspect-ratio:1;left:50%;top:50%;margin:calc(min(78vh,52vw) / -2) 0 0 calc(min(78vh,52vw) / -2);color:var(--accent)}
+.hm-seal svg{width:100%;height:100%;overflow:visible}
+.hm-seal__ring text{font-family:var(--font-text);font-size:3.1px;letter-spacing:1.25px;fill:currentColor;opacity:.75}
+.hm-seal circle{fill:none;stroke:currentColor;stroke-width:.12;opacity:.45}
+.hm-seal__disc{fill:rgba(255,255,255,.35)!important;stroke:none!important;opacity:1!important}
+[data-mode="dark"] .hm-seal__disc{fill:rgba(255,255,255,.035)!important}
+.hm-ewer{position:relative;height:min(calc(100vh - 170px),900px);height:min(calc(100svh - 170px),900px);width:auto;aspect-ratio:1113/2400;z-index:2;touch-action:none}
+.hm-ewer img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 34px 34px rgba(70,40,26,.22));user-select:none;-webkit-user-drag:none}
+[data-mode="dark"] .hm-ewer img{filter:drop-shadow(0 34px 44px rgba(0,0,0,.5))}
+.hm-ewer::after{content:"";position:absolute;left:8%;right:8%;bottom:-2.6%;height:5%;border-radius:50%;background:radial-gradient(closest-side,rgba(70,40,26,.32),transparent);z-index:-1}
+.hm-sweep{position:absolute;inset:0;pointer-events:none;-webkit-mask:url(assets/img/ewer-1400.webp) center/contain no-repeat;mask:url(assets/img/ewer-1400.webp) center/contain no-repeat;--p:-40%;--sweep:.6;mix-blend-mode:soft-light;background:linear-gradient(110deg,transparent calc(var(--p) - 14%),rgba(255,255,255,var(--sweep)) var(--p),transparent calc(var(--p) + 14%))}
+.hm-sweep--follow{background:radial-gradient(circle at var(--mx,50%) var(--my,40%),rgba(255,255,255,calc(var(--sweep) * .9)),transparent 22%);mix-blend-mode:overlay;opacity:0;transition:opacity .6s}
+.hm-ewer:hover .hm-sweep--follow[data-follow="1"]{opacity:1}
+
+.hm-loupe{position:fixed;left:0;top:0;z-index:70;width:clamp(170px,15vw,240px);aspect-ratio:1;border-radius:50%;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .35s,scale .5s var(--ease);background:#f6f4f2;box-shadow:0 0 0 1px rgba(255,255,255,.9),0 0 0 6px rgba(200,200,205,.55),0 0 0 7px rgba(24,38,59,.25),0 24px 60px rgba(30,20,10,.35),inset 0 0 30px rgba(0,0,0,.25);will-change:transform}
+.hm-loupe img{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0}
+.hm-loupe::before{content:"";position:absolute;inset:0;z-index:2;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.35),transparent 40%),linear-gradient(transparent 49.7%,rgba(24,38,59,.18) 50%,transparent 50.3%),linear-gradient(90deg,transparent 49.7%,rgba(24,38,59,.18) 50%,transparent 50.3%)}
+.hm-loupe span{position:absolute;z-index:3;left:50%;bottom:12px;transform:translateX(-50%);font-size:9px;letter-spacing:.24em;color:#18263b;background:rgba(255,255,255,.75);padding:3px 8px;border-radius:999px}
+.hm-inspecting .k-cursor{opacity:0}
+
+/* details: horizontal */
+.hm-details{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--c1)}
+.hm-details__head{position:absolute;left:var(--pad);top:clamp(96px,13vh,130px);z-index:2;display:grid;gap:10px}
+.hm-details__head h2{font-size:calc(clamp(40px,4.4vw,80px) * var(--display-scale))}
+.hm-track{display:flex;height:100%;padding-left:38vw;will-change:transform}
+.hm-panel{flex:0 0 auto;width:min(980px,78vw);height:100%;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(24px,4vw,72px);padding-right:8vw}
+.hm-lens{position:relative;width:min(62vh,520px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#f3f1ee;box-shadow:0 0 0 1px var(--line-2),0 40px 90px rgba(60,30,20,.18)}
+[data-mode="dark"] .hm-lens{background:#1d2738}
+.hm-lens img{position:absolute;left:0;top:0;max-width:none;transform-origin:center}
+.hm-lens::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 10px rgba(255,255,255,.35),inset 0 0 40px rgba(0,0,0,.12)}
+.hm-panel__text{display:grid;gap:16px;max-width:30ch}
+.hm-panel__text b{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(36px,3.6vw,64px) * var(--display-scale));line-height:1}
+.hm-panel__text p{color:var(--ink-2)}
+.hm-progress{position:absolute;left:var(--pad);right:var(--pad);bottom:36px;height:1px;background:var(--line)}
+.hm-progress i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+
+/* story */
+.hm-story{position:relative;display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);padding:clamp(100px,12vw,180px) var(--pad);background:var(--c1)}
+.hm-story__aside{position:sticky;top:110px;height:calc(100vh - 160px);display:grid;place-items:center;align-self:start}
+.hm-story__ewer{height:100%;max-height:640px;width:auto;filter:drop-shadow(0 30px 40px rgba(70,40,26,.2))}
+.hm-story__text{display:grid;gap:clamp(36px,4vw,64px);padding:8vh 0}
+.hm-story__big{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(34px,3.8vw,68px) * var(--display-scale));line-height:1.1;letter-spacing:var(--display-track)}
+.hm-story__big em{color:var(--accent)}
+.hm-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.hm-list li{display:grid;grid-template-columns:60px 1fr auto;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);transition:padding .6s var(--ease)}
+.hm-list li:hover{padding-left:12px}
+.hm-list b{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(26px,2.4vw,40px) * var(--display-scale));line-height:1.1}
+.hm-list span:last-child{font-size:var(--t-s);color:var(--ink-3)}
+
+/* basin */
+.hm-basin{position:relative;height:120vh;overflow:hidden;display:grid;justify-items:center;align-content:start;text-align:center;padding:clamp(100px,14vh,160px) var(--pad) 0;gap:18px}
+.hm-basin h2{font-size:calc(clamp(48px,7vw,130px) * var(--display-scale));position:relative;z-index:2}
+.hm-basin p{max-width:44ch;color:var(--ink-2);position:relative;z-index:2}
+.hm-basin__wrap{position:absolute;left:50%;bottom:-58vh;width:min(120vh,130vw);aspect-ratio:1;margin-left:calc(min(120vh,130vw) / -2)}
+.hm-basin__img{width:100%;height:100%;filter:drop-shadow(0 -20px 60px rgba(70,40,26,.2))}
+
+/* gifting */
+.hm-gift{position:relative;z-index:2;background:var(--c1);padding:clamp(90px,11vw,170px) var(--pad) 40px;display:grid;justify-items:center;text-align:center;gap:26px}
+.hm-gift h2{font-size:calc(clamp(56px,10vw,190px) * var(--display-scale))}
+.hm-gift h2 em{color:var(--accent)}
+.hm-foot{background:var(--c1)}
+
+@media (max-width:900px){
+  .hm-head{height:72px}
+  .hm-head__right > a{display:none}
+  .hm-hero{grid-template-columns:1fr;padding-top:92px;gap:12px;align-content:start}
+  .hm-h1{font-size:calc(min(16vw,84px) * var(--display-scale))}
+  .hm-stage{height:62vh;order:2}
+  .hm-ewer{height:58vh}
+  .hm-seal{width:92vw;margin:-46vw 0 0 -46vw}
+  .hm-hint{display:none}
+  .hm-details{height:auto;padding:110px 0 60px}
+  .hm-details__head{position:static;padding:0 var(--pad) 32px}
+  .hm-track{display:grid;padding:0 var(--pad);gap:56px;transform:none!important}
+  .hm-panel{width:auto;grid-template-columns:1fr;padding:0;justify-items:center;text-align:center}
+  .hm-panel__text{justify-items:center}
+  .hm-lens{width:min(82vw,420px)}
+  .hm-progress{display:none}
+  .hm-story{grid-template-columns:1fr}
+  .hm-story__aside{position:relative;top:0;height:52vh}
+  .hm-basin__wrap{bottom:-36vh;width:140vw;margin-left:-70vw}
+}
+</style>
+</head>
+<body>
+<div class="k-loader" role="status" aria-label="Loading">
+  <div class="k-loader__in">
+    <span class="k-mark k-mark--icon k-loader__mark"></span>
+    <div class="k-loader__bar"><i></i></div>
+    <div class="k-loader__row"><span>Hallmark</span><span class="k-loader__num">000</span></div>
+  </div>
+</div>
+
+<header class="hm-head k-autohide">
+  <a class="hm-head__logo" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-mark k-mark--word"></span></a>
+  <div class="hm-head__right"><a href="#details">Details</a><a href="#story">Our Story</a><button class="k-burger" type="button" data-menu aria-label="Menu"><i></i><span class="k-burger__open">Menu</span><span class="k-burger__close">Close</span></button></div>
+</header>
+
+<main id="top">
+  <section class="hm-hero">
+    <div class="hm-hero__copy">
+      <h1 class="hm-h1 k-display"><span data-split data-manual>The Art of</span><span class="hm-h1__in" data-split data-manual><em>Silver</em></span><span data-split data-manual>Gifting.</span></h1>
+      <div class="hm-hero__intro">
+        <p class="k-lead">Filled with silver. Given with pride.</p>
+        <a class="k-cta" href="#details" data-magnetic="0.2"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>Look closer</a>
+        <p class="hm-hint"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="M15 15l6 6"/></svg>Move over the ewer to inspect it</p>
+      </div>
+    </div>
+    <div class="hm-stage">
+      <div class="hm-seal" aria-hidden="true">
+        <svg viewBox="0 0 100 100" class="hm-seal__svg">
+          <circle class="hm-seal__disc" cx="50" cy="50" r="40"/>
+          <circle cx="50" cy="50" r="49.5"/><circle cx="50" cy="50" r="40"/>
+          <g class="hm-seal__ring"><defs><path id="hm-c" d="M50 50 m-45 0 a45 45 0 1 1 90 0 a45 45 0 1 1 -90 0"/></defs>
+            <text><textPath href="#hm-c">KINGDOM · SILVER COLLECTION · FILLED WITH SILVER · GIVEN WITH PRIDE · A ROYAL TOUCH ·</textPath></text></g>
+        </svg>
+      </div>
+      <div class="hm-ewer" data-cursor="none">
+        <img src="assets/img/ewer-1400.webp" alt="The silver ewer: egg-shaped stopper, wide polished spout, scrolled handle and acanthus ornament on the body" width="649" height="1400" draggable="false">
+        <span class="hm-sweep" aria-hidden="true"></span>
+        <span class="hm-sweep hm-sweep--follow" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+  <div class="hm-loupe" aria-hidden="true"><img src="assets/img/ewer-2400.webp" alt=""><span>×2.6</span></div>
+
+  <section class="hm-details" id="details">
+    <div class="hm-details__head"><p class="k-eyebrow">In detail</p><h2 class="k-display" data-split>Look closer</h2></div>
+    <div class="hm-track">
+      <article class="hm-panel" data-x="0.47" data-y="0.08" data-z="2.6"><div class="hm-lens"><img src="assets/img/ewer-2400.webp" alt="Close-up of the egg-shaped stopper" loading="lazy"></div><div class="hm-panel__text"><span class="k-num">01 / 04</span><b>The finial</b><p>An egg-shaped stopper, fluted at its base and engraved all around.</p></div></article>
+      <article class="hm-panel" data-x="0.2" data-y="0.21" data-z="3.0"><div class="hm-lens"><img src="assets/img/ewer-2400.webp" alt="Close-up of the polished spout" loading="lazy"></div><div class="hm-panel__text"><span class="k-num">02 / 04</span><b>The spout</b><p>A wide lip polished to a mirror, so it holds the light of the room.</p></div></article>
+      <article class="hm-panel" data-x="0.82" data-y="0.3" data-z="2.8"><div class="hm-lens"><img src="assets/img/ewer-2400.webp" alt="Close-up of the scrolled handle" loading="lazy"></div><div class="hm-panel__text"><span class="k-num">03 / 04</span><b>The handle</b><p>One scrolled line, beaded along its length, ending in a small curl.</p></div></article>
+      <article class="hm-panel" data-x="0.42" data-y="0.62" data-z="2.2"><div class="hm-lens"><img src="assets/img/ewer-2400.webp" alt="Close-up of the acanthus ornament on the body" loading="lazy"></div><div class="hm-panel__text"><span class="k-num">04 / 04</span><b>The body</b><p>Acanthus scrolls in high relief over a softly matte ground.</p></div></article>
+    </div>
+    <div class="hm-progress" aria-hidden="true"><i></i></div>
+  </section>
+
+  <section class="hm-story" id="story">
+    <div class="hm-story__aside"><img class="hm-story__ewer" src="assets/img/ewer-800.webp" alt="" width="371" height="800" loading="lazy"></div>
+    <div class="hm-story__text">
+      <p class="k-eyebrow" data-reveal>Our Story</p>
+      <p class="hm-story__big" data-scrub-words>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+      <p class="k-lead" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+      <ul class="hm-list" id="gifting">
+        <li data-reveal><span class="k-num">01</span><b>Filled with silver.</b><span>The piece</span></li>
+        <li data-reveal><span class="k-num">02</span><b>Beautifully gifted.</b><span>The presentation</span></li>
+        <li data-reveal><span class="k-num">03</span><b>Priced within reach.</b><span>The promise</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="hm-basin" id="collection">
+    <p class="k-eyebrow" data-reveal>N° 02 · The Basin</p>
+    <h2 class="k-display" data-split>The perfect <em>answer</em></h2>
+    <p data-reveal>A border of acanthus around a mirror-polished centre, made to stand behind the ewer.</p>
+    <div class="hm-basin__wrap"><img class="hm-basin__img" src="assets/img/basin-1200.webp" alt="The round silver basin" width="1200" height="1200" loading="lazy"></div>
+  </section>
+
+  <section class="hm-gift">
+    <span class="k-mark k-mark--icon" style="width:44px;color:var(--accent)" data-reveal></span>
+    <h2 class="k-display" data-split>A Royal <em>Touch.</em></h2>
+    <a class="k-btn" href="#visit" data-magnetic="0.25" data-reveal>Visit the shop</a>
+  </section>
+</main>
+
+<footer class="k-foot hm-foot" id="visit">
+  <div class="k-foot__grid">
+    <div><span class="k-mark k-mark--full" style="width:110px;color:var(--accent)"></span></div>
+    <div><h4>Shop</h4><ul><li><a href="#collection">The Collection</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#story">Our Story</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>By appointment</li><li><a href="#visit">Contact us</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#visit">Instagram</a></li><li><a href="#visit">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="k-foot__base"><span>© <span data-year></span> Kingdom Silver Collection</span><span>Filled with silver. Given with pride.</span></div>
+</footer>
+<script type="module" src="dist/hallmark.js"></script>
+</body>
+</html>

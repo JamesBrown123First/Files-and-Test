@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Silver-filled pieces, thoughtfully packaged, priced within reach.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/img/ewer.webp" as="image">
+<link rel="stylesheet" href="css/kingdom.css">
+<script src="site.config.js"></script>
+
+</head>
+
+<body class="p-descent">
+<style>
+/* ======================= THE DESCENT ======================= */
+.d-hero{position:relative;height:340vh}
+.d-hero__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.d-hero__copy{position:absolute;left:var(--pad);bottom:clamp(72px,13vh,140px);max-width:min(640px,48vw);display:grid;gap:var(--space-5);z-index:3}
+.d-hero__title{font-size:clamp(56px,7.4vw,124px);line-height:.98}
+.d-hero__title em{display:inline-block}
+.d-hero__ctas{display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap;margin-top:var(--space-2)}
+.d-hero__rail{position:absolute;right:calc(var(--pad) * .5);top:50%;height:min(240px,30vh);transform:translateY(-50%);z-index:3;width:1px;background:var(--line)}
+.d-hero__rail::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--accent);transform-origin:top;transform:scaleY(var(--p,0))}
+.d-hero__rail ol{margin:0;padding:0;position:absolute;inset:0}
+.d-hero__rail li{list-style:none;position:absolute;right:12px;transform:translateY(-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);opacity:0;transition:opacity .5s,color .5s;white-space:nowrap}
+.d-hero__rail li:nth-child(1){top:0}.d-hero__rail li:nth-child(2){top:50%}.d-hero__rail li:nth-child(3){top:100%}
+.d-hero__rail li::after{content:"";position:absolute;right:-15px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--ink-3)}
+.d-hero__rail li.is-on{opacity:1;color:var(--ink)}
+.d-hero__rail li.is-on::after{background:var(--accent)}
+.d-hero__rail li span{display:none}
+.d-hero__cue{position:absolute;left:var(--pad);bottom:var(--space-5);display:flex;align-items:center;gap:var(--space-3);font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);z-index:3;transition:opacity .6s}
+.d-hero__cue i{display:block;width:40px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.d-hero__cue i::after{content:"";position:absolute;top:0;left:-40%;height:1px;width:40%;background:var(--accent);animation:d-drip 2.2s var(--ease-io) infinite}
+@keyframes d-drip{to{left:110%}}
+.d-anno{position:absolute;z-index:3;display:flex;align-items:center;gap:var(--space-3);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);opacity:0;transform:translateY(8px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);pointer-events:none;white-space:nowrap}
+.d-anno b{font-weight:500;color:var(--ink)}
+.d-anno::before{content:"";width:48px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease-out) .2s}
+.d-anno.is-on{opacity:1;transform:none}
+.d-anno.is-on::before{transform:scaleX(1)}
+.d-anno--left{flex-direction:row-reverse}
+.d-anno--left::before{transform-origin:right}
+.d-scrim{position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 70%,transparent));z-index:2;pointer-events:none;opacity:0}
+@media (max-width:900px){
+  .d-hero{height:300vh}
+  .d-hero__copy{left:var(--pad);right:var(--pad);max-width:none;bottom:var(--space-7);gap:var(--space-4)}
+  .d-hero__title{font-size:clamp(46px,13vw,72px)}
+  .d-hero__rail,.d-hero__cue,.d-anno{display:none}
+  .d-scrim{opacity:1}
+}
+
+.d-story{padding:clamp(96px,18vh,200px) var(--pad);display:grid;gap:var(--space-8);max-width:1440px;margin:0 auto}
+.d-story__lead{font-size:clamp(34px,4.6vw,76px);line-height:1.08;max-width:22ch}
+.d-story__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:end}
+.d-triad{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.d-triad li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);padding:var(--space-5) 0;border-bottom:1px solid var(--line);font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(26px,2.6vw,40px);line-height:1.1}
+.d-triad li small{font-family:var(--font-text);font-size:var(--t-xs);letter-spacing:.2em;color:var(--ink-3)}
+@media (max-width:900px){.d-story__grid{grid-template-columns:1fr}}
+
+.d-col{position:relative}
+.d-col__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr;padding-top:clamp(96px,14vh,140px)}
+.d-col__head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-5);padding:0 var(--pad) var(--space-6)}
+.d-col__head h2{font-size:clamp(44px,6vw,96px)}
+.d-col__count{font-size:var(--t-s);color:var(--ink-3)}
+.d-col__count b{color:var(--ink);font-weight:500}
+.d-col__track{display:flex;gap:clamp(24px,4vw,64px);padding:0 var(--pad) var(--space-7);will-change:transform;align-items:stretch;min-height:0;height:100%}
+.d-card{flex:0 0 auto;width:clamp(300px,32vw,500px);display:grid;grid-template-rows:minmax(0,1fr) auto;gap:var(--space-4);text-decoration:none;color:inherit;min-height:0;height:100%}
+.d-card__media{position:relative;border-radius:var(--r-4);overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 9%,transparent),color-mix(in srgb,var(--ink) 2%,transparent));box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;min-height:0}
+.d-card__media img{width:auto;height:84%;max-width:84%;object-fit:contain;transition:transform 1.4s var(--ease-out);filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.d-card:hover .d-card__media img{transform:scale(1.045) translateY(-6px)}
+.d-card__media--photo img{width:100%;height:100%;max-width:none;object-fit:cover;filter:none}
+.d-card__spin{animation:d-spin 60s linear infinite}
+@keyframes d-spin{to{transform:rotate(360deg)}}
+.d-card:hover .d-card__spin{animation-duration:20s}
+.d-card__meta{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4)}
+.d-card__meta h3{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(28px,2.6vw,40px);margin:0;line-height:1.1}
+.d-card__meta p{margin:0;font-size:var(--t-s);color:var(--ink-3)}
+.d-card__idx{font-size:var(--t-xs);letter-spacing:.2em;color:var(--ink-3)}
+.d-gift{width:62%;aspect-ratio:1;position:relative;transform:rotate(-8deg);transition:transform 1.2s var(--ease-out)}
+.d-card:hover .d-gift{transform:rotate(-4deg) translateY(-8px)}
+.d-gift__box{position:absolute;inset:14% 0 0 0;border-radius:6px;background:linear-gradient(150deg,#14395c,#18263b 55%,#131c2b);box-shadow:0 40px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08)}
+.d-gift__lid{position:absolute;inset:0 -3% 72% -3%;border-radius:6px;background:linear-gradient(120deg,#f3c09b,#dba58c 50%,#a35234);box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.d-gift__ribbon{position:absolute;left:46%;width:8%;top:0;bottom:0;background:linear-gradient(90deg,#cc917b,#f2d4be,#cc917b);opacity:.9}
+.d-gift__mark{position:absolute;left:50%;top:58%;width:30%;transform:translate(-50%,-50%);color:#f3c09b}
+.d-gift__shine{position:absolute;inset:0;border-radius:6px;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;transition:background-position 1.4s var(--ease-out);pointer-events:none}
+.d-card:hover .d-gift__shine{background-position:-20% 0}
+@media (max-width:900px){
+  .d-col{height:auto!important}
+  .d-col__pin{position:relative;height:auto;padding-top:var(--space-9)}
+  .d-col__track{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .d-col__track::-webkit-scrollbar{display:none}
+  .d-card{width:78vw;scroll-snap-align:center}
+  .d-card__media{aspect-ratio:4/5}
+}
+
+.d-promise{padding:clamp(96px,16vh,180px) var(--pad);max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-8)}
+.d-promise h2{font-size:clamp(40px,4.6vw,72px);position:sticky;top:120px;align-self:start}
+.d-rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.d-row{border-bottom:1px solid var(--line)}
+.d-row button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:56px 1fr 32px;align-items:center;gap:var(--space-4);padding:var(--space-6) 0;cursor:pointer}
+.d-row button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.d-row__n{font-size:var(--t-xs);letter-spacing:.2em;color:var(--ink-3)}
+.d-row__t{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(28px,3vw,48px);line-height:1.1;transition:transform .6s var(--ease-out),color .4s}
+.d-row button:hover .d-row__t{transform:translateX(10px)}
+.d-row__i{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;transition:transform .6s var(--ease-spring),background .4s}
+.d-row__i::before,.d-row__i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1px;background:var(--ink);transform:translate(-50%,-50%)}
+.d-row__i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .5s var(--ease-out)}
+.d-row.is-open .d-row__i{background:var(--accent);transform:rotate(180deg)}
+.d-row.is-open .d-row__i::before,.d-row.is-open .d-row__i::after{background:var(--on-accent)}
+.d-row.is-open .d-row__i::after{transform:translate(-50%,-50%) rotate(0)}
+.d-row__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease-out)}
+.d-row.is-open .d-row__body{grid-template-rows:1fr}
+.d-row__body>div{overflow:hidden}
+.d-row__body p{margin:0 0 var(--space-6) 72px;max-width:46ch;color:var(--ink-2)}
+@media (max-width:900px){.d-promise{grid-template-columns:1fr}.d-promise h2{position:static}.d-row__body p{margin-left:0}}
+
+.d-cta{position:relative;min-height:90vh;display:grid;place-items:center;text-align:center;padding:var(--space-10) var(--pad);overflow:hidden}
+.d-cta__inner{display:grid;gap:var(--space-6);justify-items:center;position:relative;z-index:1}
+.d-cta h2{font-size:clamp(64px,11vw,200px);line-height:.92}
+.d-cta__ring{position:absolute;left:50%;top:50%;width:min(80vw,820px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+.d-cta__ring::before{content:"";position:absolute;inset:12%;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+.d-cta__ring i{position:absolute;left:50%;top:0;width:7px;height:7px;margin:-3.5px;border-radius:50%;background:var(--accent);transform-origin:3.5px calc(min(40vw,410px) + 3.5px);animation:d-spin 18s linear infinite}
+</style>
+
+<div class="k-loader" aria-hidden="true"><div class="k-loader__panel"></div><div class="k-loader__mark"><span class="k-logo-icon"></span><span class="k-loader__bar"></span></div></div>
+<header class="k-nav">
+  <a class="k-nav__brand" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-logo-icon"></span><span class="k-logo-word"></span></a>
+  <ul class="k-nav__links"><li><a href="#collection">Collection</a></li><li><a href="#story">Our story</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a class="k-btn k-nav__cta" href="#collection" data-magnetic="0.25"><span class="k-btn__label">Shop the collection</span></a>
+  <button class="k-nav__menu" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+<nav class="k-menu" aria-label="Mobile"><a href="#collection">Collection</a><a href="#story">Our story</a><a href="#gifting">Gifting</a><a href="#contact">Contact</a></nav>
+
+<main id="top">
+  <section class="d-hero" aria-label="Introduction">
+    <div class="d-hero__pin">
+      <canvas class="k-stage" aria-label="A silver ewer descends to meet its matching basin. Drag to turn the ewer." role="img"></canvas>
+      <div class="d-scrim"></div>
+      <div class="d-hero__copy">
+        <p class="k-eyebrow" data-reveal style="--d:300">Kingdom · Silver Collection</p>
+        <h1 class="k-display d-hero__title" data-split style="--d:400">The Art of <em>Silver</em> Gifting.</h1>
+        <p class="k-lead" data-reveal style="--d:900">Filled with silver. Given with pride.</p>
+        <div class="d-hero__ctas" data-reveal style="--d:1100">
+          <a class="k-btn" href="#collection" data-magnetic="0.3"><span class="k-btn__label">Explore the collection <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a>
+          <a class="k-link" href="#story">Our story</a>
+        </div>
+      </div>
+      <nav class="d-hero__rail" aria-label="Scene progress">
+        <ol>
+          <li data-ch="0"><span></span>Descent</li>
+          <li data-ch="1"><span></span>Meeting</li>
+          <li data-ch="2"><span></span>Reflection</li>
+        </ol>
+      </nav>
+      <div class="d-hero__cue" aria-hidden="true"><i></i>Scroll to unveil</div>
+      <div class="d-anno" data-anno="ewer"><b>The Ewer</b></div>
+      <div class="d-anno d-anno--left" data-anno="basin"><b>The Basin</b></div>
+    </div>
+  </section>
+
+  <section class="d-story" id="story">
+    <p class="k-eyebrow" data-reveal>Our story</p>
+    <p class="k-display d-story__lead" data-scrub>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+    <div class="d-story__grid">
+      <p class="k-lead" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+      <ul class="d-triad">
+        <li data-reveal style="--d:0">Filled with silver.<small>01</small></li>
+        <li data-reveal style="--d:120">Beautifully gifted.<small>02</small></li>
+        <li data-reveal style="--d:240">Priced within reach.<small>03</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="d-col" id="collection" aria-label="The collection">
+    <div class="d-col__pin">
+      <div class="d-col__head">
+        <h2 class="k-display" data-split>The Collection</h2>
+        <p class="d-col__count k-num" aria-hidden="true"><b data-count>01</b> / 04</p>
+      </div>
+      <div class="d-col__track">
+        <a class="d-card" href="#contact" data-cursor="View">
+          <div class="d-card__media" data-tilt="6"><img src="assets/img/ewer.webp" alt="Silver ewer with filigree body, slender neck and scrolled handle" loading="lazy"></div>
+          <div class="d-card__meta"><div><h3>The Ewer</h3><p>Slender neck, scrolled handle, rich filigree.</p></div><span class="d-card__idx">01</span></div>
+        </a>
+        <a class="d-card" href="#contact" data-cursor="View">
+          <div class="d-card__media" data-tilt="6"><img class="d-card__spin" src="assets/img/basin.webp" alt="Round silver basin with acanthus border and mirror-polished centre" loading="lazy"></div>
+          <div class="d-card__meta"><div><h3>The Basin</h3><p>Acanthus border, mirror-polished centre.</p></div><span class="d-card__idx">02</span></div>
+        </a>
+        <a class="d-card" href="#contact" data-cursor="View">
+          <div class="d-card__media d-card__media--photo" data-tilt="6"><img src="assets/img/pair.webp" alt="The ewer standing in front of its matching basin" loading="lazy"></div>
+          <div class="d-card__meta"><div><h3>The Set</h3><p>Ewer and basin, made to be given together.</p></div><span class="d-card__idx">03</span></div>
+        </a>
+        <a class="d-card" href="#gifting" data-cursor="View">
+          <div class="d-card__media" data-tilt="6">
+            <div class="d-gift" aria-hidden="true"><div class="d-gift__box"><span class="k-logo d-gift__mark"></span></div><div class="d-gift__lid"></div><div class="d-gift__ribbon"></div><div class="d-gift__shine"></div></div>
+          </div>
+          <div class="d-card__meta"><div><h3>The Gift</h3><p>Presented in Kingdom packaging, ready to give.</p></div><span class="d-card__idx">04</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-promise" id="gifting">
+    <h2 class="k-display" data-split>Every detail, <em>elevated.</em></h2>
+    <ul class="d-rows">
+      <li class="d-row is-open"><button type="button" aria-expanded="true"><span class="d-row__n">01</span><span class="d-row__t">Filled with silver</span><span class="d-row__i" aria-hidden="true"></span></button>
+        <div class="d-row__body"><div><p>Carefully selected silver-filled pieces with the presence and brilliance of silver — made to be displayed, used and treasured.</p></div></div></li>
+      <li class="d-row"><button type="button" aria-expanded="false"><span class="d-row__n">02</span><span class="d-row__t">Thoughtful packaging</span><span class="d-row__i" aria-hidden="true"></span></button>
+        <div class="d-row__body"><div><p>Every piece arrives ready to give, so the moment of opening feels like an occasion of its own.</p></div></div></li>
+      <li class="d-row"><button type="button" aria-expanded="false"><span class="d-row__n">03</span><span class="d-row__t">Priced within reach</span><span class="d-row__i" aria-hidden="true"></span></button>
+        <div class="d-row__body"><div><p>The beauty and elegance of silver, at a price that makes generous giving possible.</p></div></div></li>
+    </ul>
+  </section>
+
+  <section class="d-cta">
+    <div class="d-cta__ring" aria-hidden="true"><i></i></div>
+    <div class="d-cta__inner">
+      <p class="k-eyebrow" data-reveal>Kingdom</p>
+      <h2 class="k-display" data-split>A Royal <em>Touch.</em></h2>
+      <a class="k-btn" href="#collection" data-magnetic="0.35" data-reveal style="--d:400"><span class="k-btn__label">Find the perfect gift <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="k-foot" id="contact">
+  <div class="k-foot__top">
+    <div>
+      <span class="k-logo k-foot__mark" role="img" aria-label="Kingdom Silver Collection"></span>
+    </div>
+    <div style="display:grid;gap:24px">
+      <p class="k-eyebrow">New pieces, first</p>
+      <form class="k-form" data-k-form novalidate>
+        <label class="sr-only" for="nl-descent">Email address</label>
+        <input id="nl-descent" type="email" placeholder="Your email address" autocomplete="email">
+        <button class="k-btn" type="submit" data-magnetic="0.2"><span class="k-btn__label">Subscribe</span></button>
+        <p class="k-form__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <div class="k-foot__cols">
+    <div><h4>Shop</h4><a href="#collection">The collection</a><a href="#gifting">Gift packaging</a></div>
+    <div><h4>Kingdom</h4><a href="#story">Our story</a><a href="#contact">Contact</a></div>
+    <div><h4>Follow</h4><a href="#contact">Instagram</a><a href="#contact">WhatsApp</a></div>
+  </div>
+  <div class="k-foot__base"><span>© 2026 Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/silver.js"></script>
+<script src="js/kingdom.js"></script>
+<script>
+(function(){
+  const K = Kingdom.init({ page: 'descent', preset: 'royal-midnight' });
+  const canvas = document.querySelector('.d-hero .k-stage');
+  const stage = new SilverStage(canvas);
+  const ready = stage.load().catch(e => { console.warn(e); });
+  K.loader([ready]);
+
+  // ---- look follows the theme
+  const syncLook = (s) => {
+    const C = s.bg.colors.map(K.hex);
+    Object.assign(stage.look, {
+      envA: C[3], envB: C[1], envAmt: s.silver.tint, spec: s.silver.shine,
+      roomA: C[1], roomB: C[0], shadowCol: s.mode === 'dark' ? '#03060c' : K.mixHex(C[0], '#2b3a4a', 0.55)
+    });
+  };
+  syncLook(K.state); K.on(syncLook);
+
+  // ---- scroll progress + choreography
+  const hero = document.querySelector('.d-hero');
+  const rail = [...document.querySelectorAll('.d-hero__rail li')], railEl = document.querySelector('.d-hero__rail');
+  const cue = document.querySelector('.d-hero__cue');
+  const annos = { ewer: document.querySelector('[data-anno="ewer"]'), basin: document.querySelector('[data-anno="basin"]') };
+  const S = KSpring;
+  const sp = {
+    ey: new S(3, 70, 12), ex: new S(0, 60, 14), th: new S(-0.3, 40, 9), erz: new S(0.08, 50, 10),
+    by: new S(-3, 55, 11), bx: new S(0, 55, 12), brx: new S(1.25, 60, 7.5), brz: new S(-0.9, 40, 9), bry: new S(0, 40, 10)
+  };
+  let introT = 0, mouse = [0, 0], drag = 0, dragV = 0, dragging = false, lastX = 0, landed = false, t = 0;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const eOut = (x) => 1 - Math.pow(1 - x, 3);
+  const lerp = (a, b, x) => a + (b - a) * x;
+
+  window.addEventListener('pointermove', e => { mouse = [e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight * 2 - 1)]; }, { passive: true });
+  canvas.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.clientX - lastX; lastX = e.clientX; dragV = dx * 0.0035; drag += dragV; });
+  const endDrag = () => { dragging = false; };
+  canvas.addEventListener('pointerup', endDrag); canvas.addEventListener('pointercancel', endDrag);
+
+  function layout() {
+    const a = innerWidth / innerHeight, mobile = innerWidth <= 900;
+    return mobile ? { mobile, gx: 0.02, gy: 0.3, s: Math.min(0.9, a * 1.3) } : { mobile, gx: Math.min(a * 0.5, 1.05), gy: 0.02, s: 0.94 };
+  }
+
+  K.tick((dt) => {
+    if (!stage.ready) return;
+    t += dt;
+    const motion = K.state.motion.level;
+    // intro: the pieces peek in once the curtain lifts
+    if (document.documentElement.classList.contains('is-loaded')) introT += dt;
+    const io = motion === 'off' ? 0 : 1 - eOut(clamp((introT - 0.2) / 2.6));   // 1 = fully off-stage
+    const r = hero.getBoundingClientRect();
+    const scrollP = clamp(-r.top / (r.height - innerHeight));
+    const p = motion === 'off' ? 1 : scrollP;
+    const L = layout();
+    const e = ease(clamp(p / 0.78));
+    const eb = ease(clamp((p - 0.02) / 0.74));
+    const rest = {
+      ex: L.gx + 0.3 * L.s, ey: L.gy - 0.07 * L.s, bx: L.gx - 0.27 * L.s, by: L.gy - 0.15 * L.s   // basin sits lower so it frames, not crowns, the ewer
+    };
+    const settled = e >= 0.999;
+    // targets
+    sp.ey.t = lerp(rest.ey + (L.mobile ? 0.95 : 1.0), rest.ey, e) + io * 1.3;
+    sp.ex.t = lerp(rest.ex + 0.1, rest.ex, e);
+    sp.erz.t = lerp(0.09, 0, e);
+    const turnAmt = K.state.silver.turn;
+    const idleTurn = settled && motion !== 'off' ? (mouse[0] * 0.13 * turnAmt + Math.sin(t * 0.35) * 0.04 * (motion === 'calm' ? 0.5 : 1)) : 0;
+    sp.th.t = lerp(-0.3, 0, e) + Math.sin(e * Math.PI) * 0.06 + idleTurn + drag;
+    if (L.mobile) {   // on phones the basin swings in from the side, clear of the headline
+      sp.by.t = lerp(rest.by - 0.1, rest.by, eb);
+      sp.bx.t = lerp(rest.bx - 1.25, rest.bx, eb) - io * 0.8;
+    } else {
+      sp.by.t = lerp(rest.by - 1.02, rest.by, eb) - io * 1.2;
+      sp.bx.t = lerp(rest.bx + 0.12, rest.bx, eb);
+    }
+    sp.brx.t = lerp(1.25, 0, eb) + (settled ? mouse[1] * 0.05 * turnAmt : 0);
+    sp.brz.t = lerp(-0.9, 0, eOut(clamp((p - 0.02) / 0.74)));
+    sp.bry.t = settled ? -mouse[0] * 0.06 * turnAmt : 0;
+    // drag inertia with rubber band
+    if (!dragging) { drag += dragV; dragV *= Math.pow(0.04, dt); drag *= Math.pow(0.12, dt); }
+    drag = clamp(drag, -0.24, 0.24);
+    // step springs
+    for (const k in sp) sp[k].step(dt);
+    // floor contact for the ewer: delicate impact, small recoil, settle
+    if (sp.ey.v < rest.ey) {
+      const vin = -sp.ey.vel;
+      sp.ey.v = rest.ey;
+      if (sp.ey.vel < 0) {
+        sp.ey.vel = vin * 0.2;
+        if (vin > 0.35 && !landed) {
+          landed = true;
+          impact = 1;
+          sp.brx.vel -= 0.35;  // the basin behind shivers
+          const R = stage.screenRect('ewer');
+          if (R) K.bg.hit((R.x + R.w / 2) / innerWidth, 1 - (R.y + R.h) / innerHeight);
+        }
+      }
+    }
+    if (e < 0.9) landed = false;
+    impact = Math.max(0, impact - dt * 1.4);
+
+    const P = stage.poses;
+    Object.assign(P.ewer, { x: sp.ex.v, y: sp.ey.v, z: 0.12, h: 1.38 * L.s, theta: clamp(sp.th.v, -0.32, 0.32), rz: sp.erz.v });
+    Object.assign(P.basin, { x: sp.bx.v, y: sp.by.v, z: -0.38, h: 1.34 * L.s, rx: sp.brx.v, ry: sp.bry.v, rz: sp.brz.v });
+    const ground = rest.ey - 0.69 * L.s;
+    const height = sp.ey.v - rest.ey;
+    Object.assign(P.shadow, { visible: true, x: sp.ex.v, y: ground + 0.012, z: 0.12, w: 0.62 * L.s, h: 0.1 * L.s, amt: 0.75 * clamp(1 - height / 0.9) * (K.state.mode === 'dark' ? 1 : 0.6) });
+    // light
+    const lk = stage.look;
+    const auto = [Math.sin(t * 0.4) * 0.55, 0.45 + Math.cos(t * 0.3) * 0.15];
+    const lx = K.state.silver.follow && Kingdom.fine ? mouse[0] * 0.95 : auto[0];
+    const ly = K.state.silver.follow && Kingdom.fine ? mouse[1] * 0.7 + 0.25 : auto[1];
+    lk.light[0] += (lx - lk.light[0]) * Math.min(1, dt * 4);
+    lk.light[1] += (ly - lk.light[1]) * Math.min(1, dt * 4);
+    lk.light[2] = 0.8;
+    lk.glint = impact; lk.glintPos = 1 - impact * 1.1;
+    lk.reflect = 0.85;
+    stage.render(dt);
+
+    // cursor label only when hovering the silver itself
+    if (Kingdom.fine && !dragging) {
+      const re = stage.screenRect('ewer'), mx = (mouse[0] + 1) / 2 * innerWidth, my = (1 - mouse[1]) / 2 * innerHeight;
+      const over = mx > re.x + re.w * 0.1 && mx < re.x + re.w * 0.9 && my > re.y && my < re.y + re.h;
+      if (over) canvas.setAttribute('data-cursor', 'Drag'); else canvas.removeAttribute('data-cursor');
+    }
+    // UI
+    const ch = p < 0.45 ? 0 : p < 0.82 ? 1 : 2;
+    rail.forEach((li, i) => li.classList.toggle('is-on', i === ch));
+    railEl.style.setProperty('--p', Math.min(1, p / 0.82).toFixed(3));
+    cue.style.opacity = scrollP > 0.04 ? 0 : 1;
+    const showAnno = scrollP > 0.82 && innerWidth > 900;
+    if (showAnno) {
+      const re = stage.screenRect('ewer'), rb = stage.screenRect('basin');
+      const ex = Math.min(re.x + re.w * 0.92, innerWidth - 190);
+      annos.ewer.style.left = ex + 'px'; annos.ewer.style.top = (re.y + re.h * 0.12) + 'px';
+      annos.basin.style.left = (rb.x + rb.w * 0.02 - 150) + 'px'; annos.basin.style.top = (rb.y - 8) + 'px';
+    }
+    annos.ewer.classList.toggle('is-on', showAnno);
+    annos.basin.classList.toggle('is-on', showAnno);
+  });
+  let impact = 0;
+
+  // ---- collection: vertical scroll drives a horizontal track
+  const col = document.querySelector('.d-col'), track = col.querySelector('.d-col__track'), count = col.querySelector('[data-count]');
+  const sizeCol = () => { if (innerWidth > 900) col.style.height = (innerHeight + Math.max(0, track.scrollWidth - innerWidth)) + 'px'; else col.style.height = ''; };
+  sizeCol(); window.addEventListener('resize', sizeCol); window.addEventListener('load', sizeCol);
+  K.tick(() => {
+    if (innerWidth <= 900) return;
+    const r = col.getBoundingClientRect();
+    const p = clamp(-r.top / Math.max(1, r.height - innerHeight));
+    const max = Math.max(0, track.scrollWidth - innerWidth);
+    track.style.transform = `translate3d(${-p * max}px,0,0)`;
+    count.textContent = String(Math.min(4, 1 + Math.floor(p * 3.999))).padStart(2, '0');
+  });
+
+  // ---- expanding rows
+  document.querySelectorAll('.d-row button').forEach(b => b.addEventListener('click', () => {
+    const li = b.parentElement, open = !li.classList.contains('is-open');
+    document.querySelectorAll('.d-row').forEach(x => { x.classList.remove('is-open'); x.querySelector('button').setAttribute('aria-expanded', 'false'); });
+    if (open) { li.classList.add('is-open'); b.setAttribute('aria-expanded', 'true'); }
+  }));
+})();
+</script>
+</body>
+</html>

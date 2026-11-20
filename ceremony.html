@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Filled with silver. Given with pride.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/img/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/model/ewer-2k.glb" as="fetch" crossorigin>
+<link rel="preload" href="assets/fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/core.css">
+<script src="kingdom.config.js"></script>
+<style>
+/* ===== CEREMONY ===== */
+.cr-head{position:fixed;inset:0 0 auto;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:96px;padding:0 var(--pad)}
+.cr-head__logo{width:clamp(44px,3.6vw,58px);color:var(--accent);display:block}
+.cr-head__logo .k-mark{width:100%}
+.cr-head nav{display:flex;gap:clamp(20px,2.6vw,44px);font-size:var(--t-xs);letter-spacing:.26em;text-transform:uppercase;font-weight:500}
+.cr-head nav a{min-height:44px;display:inline-flex;align-items:center;position:relative}
+.cr-head nav a::after{content:"";position:absolute;left:0;right:100%;bottom:12px;height:1px;background:var(--accent);transition:right .6s var(--ease)}
+.cr-head nav a:hover::after{right:0}
+.cr-head__r{justify-self:end;display:flex;gap:clamp(18px,2vw,32px);align-items:center}
+.cr-head__r .k-btn{min-height:44px}
+
+.cr-hero{position:relative;height:620vh}
+.cr-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.cr-stage{position:absolute;inset:0;z-index:3;touch-action:pan-y}
+.cr-stage__in{position:absolute;inset:0}
+.cr-stage__in.is-dragging{cursor:grabbing}
+/* a quiet pool of light under the meeting point */
+.cr-pool{position:absolute;z-index:1;left:50%;top:62%;width:min(120vh,110vw);aspect-ratio:2.4;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(var(--ink-rgb),.11),transparent 70%);pointer-events:none}
+.cr-horizon{opacity:0;position:absolute;z-index:1;left:var(--pad);right:var(--pad);top:calc(50% + 21vh);height:1px;background:linear-gradient(90deg,transparent,var(--line-2) 30%,var(--line-2) 70%,transparent);opacity:.7}
+
+.cr-intro{position:absolute;z-index:4;left:var(--pad);right:var(--pad);bottom:clamp(30px,6.5vh,72px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;pointer-events:none}
+.cr-intro > *{pointer-events:auto}
+.cr-h1{font-size:calc(clamp(52px,7.4vw,140px) * var(--display-scale));line-height:.9}
+.cr-h1 em{color:var(--accent)}
+.cr-h1__l{display:block}
+.cr-intro__side{display:grid;gap:20px;justify-items:end;text-align:right;max-width:340px}
+.cr-intro__side .k-lead{font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.7vw,26px);line-height:1.3;color:var(--ink)}
+[data-fade]{opacity:0;transform:translateY(18px)}
+.cr-eyebrow{position:absolute;z-index:4;left:50%;top:clamp(108px,14vh,140px);transform:translateX(-50%);white-space:nowrap}
+
+.cr-meet{position:absolute;z-index:4;left:0;right:0;top:clamp(120px,15vh,160px);text-align:center;font-family:var(--font-text);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-2);opacity:0}
+.cr-meet span{color:var(--accent)}
+
+.cr-chap{position:absolute;z-index:4;opacity:0;pointer-events:none;display:grid;gap:22px}
+.cr-chap--1{left:var(--pad);top:50%;margin-top:-120px;width:min(460px,36vw)}
+.cr-chap--2{left:50%;top:clamp(104px,12vh,140px);width:min(1100px,92vw);margin-left:calc(min(1100px,92vw) / -2);text-align:center;justify-items:center}
+.cr-chap h2{font-size:calc(clamp(40px,4.4vw,78px) * var(--display-scale))}
+.cr-chap--2 h2{font-size:calc(clamp(30px,3.3vw,56px) * var(--display-scale));line-height:1.06}
+.cr-chap p{color:var(--ink-2);max-width:38ch}
+.cr-chap .k-rule{width:56px;height:1px;background:var(--accent)}
+
+.cr-meter{position:absolute;z-index:4;left:50%;bottom:clamp(22px,3.4vh,36px);transform:translateX(-50%);display:flex;align-items:center;gap:14px;opacity:0;font-size:10px;letter-spacing:.28em;color:var(--ink-3)}
+.cr-meter span{width:120px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.cr-meter i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+.cr-meter b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.cr-scroll{position:absolute;z-index:4;right:var(--pad);top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right center;opacity:0;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:14px;align-items:center}
+.cr-scroll i{width:48px;height:1px;background:linear-gradient(90deg,var(--ink-3),transparent);animation:cr-run 2.4s var(--ease) infinite;transform-origin:left}
+@keyframes cr-run{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+
+/* ---------- story ---------- */
+.cr-story{position:relative;padding:clamp(140px,18vw,280px) var(--pad) clamp(120px,14vw,220px);display:grid;justify-items:center;text-align:center;gap:clamp(32px,4vw,56px);overflow:hidden}
+.cr-ring{position:absolute;z-index:-1;left:50%;top:50%;width:min(1100px,130vw);aspect-ratio:1;transform:translate(-50%,-50%);opacity:.13;pointer-events:none;-webkit-mask:radial-gradient(closest-side,#000 55%,transparent 100%);mask:radial-gradient(closest-side,#000 55%,transparent 100%)}
+[data-mode="light"] .cr-ring{opacity:.2}
+.cr-ring img{width:100%;height:100%;filter:grayscale(1)}
+.cr-story__big{max-width:24ch;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(32px,4vw,68px) * var(--display-scale));line-height:1.12;letter-spacing:var(--display-track)}
+.cr-story .k-lead{max-width:46ch}
+.cr-trio{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(12px,2vw,28px);margin-top:clamp(16px,3vw,40px)}
+.cr-trio span{font-family:var(--font-italic);font-style:italic;font-weight:300;font-size:clamp(20px,1.8vw,28px);color:var(--ink);padding:0 clamp(12px,2vw,28px);position:relative}
+.cr-trio span + span::before{content:"";position:absolute;left:calc(clamp(12px,2vw,28px) * -1);top:50%;width:5px;height:5px;margin-left:-2px;border-radius:50%;background:var(--accent);transform:translateY(-50%)}
+
+/* ---------- the set ---------- */
+.cr-set{padding:clamp(40px,6vw,80px) 0 clamp(100px,12vw,180px)}
+.cr-set__head{display:flex;justify-content:space-between;align-items:end;gap:32px;padding:0 var(--pad);margin-bottom:clamp(32px,4vw,56px)}
+.cr-set__head h2{font-size:calc(clamp(48px,6.4vw,112px) * var(--display-scale))}
+.cr-set__head p{color:var(--ink-2);max-width:36ch}
+.cr-strip{display:flex;gap:clamp(14px,1.6vw,24px);overflow-x:auto;padding:0 var(--pad) 8px;scroll-snap-type:x proximity;scroll-padding-left:var(--pad);scrollbar-width:none;cursor:grab}
+.cr-strip::-webkit-scrollbar{display:none}
+.cr-strip.is-drag{cursor:grabbing;scroll-snap-type:none}
+.cr-piece{flex:0 0 clamp(270px,27vw,430px);scroll-snap-align:start;display:grid;gap:16px;user-select:none}
+.cr-piece__media{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:999px 999px 2px 2px;background:radial-gradient(110% 80% at 50% 100%,rgba(var(--ink-rgb),.1),transparent 70%),linear-gradient(180deg,var(--c0),var(--c1));box-shadow:inset 0 0 0 1px var(--line)}
+.cr-piece__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transition:transform 1.6s var(--ease)}
+.cr-piece:hover .cr-piece__media img{transform:scale(1.05)}
+.cr-piece__media--ewer img{padding:16% 20% 8%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.4))}
+.cr-piece__media--basin img{padding:16% 8% 10%}
+.cr-piece__media--pair img{object-fit:cover}
+.cr-piece__meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cr-piece__meta h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(24px,2vw,32px) * var(--display-scale))}
+.cr-piece__meta p{font-size:var(--t-s);color:var(--ink-3)}
+
+.cr-crown{position:relative;padding:clamp(80px,10vw,160px) var(--pad);display:grid;justify-items:center;text-align:center;gap:28px;border-top:1px solid var(--line)}
+.cr-crown .k-mark--icon{width:clamp(40px,3.6vw,56px);color:var(--accent)}
+.cr-crown h2{font-size:calc(clamp(60px,11vw,200px) * var(--display-scale))}
+.cr-crown p{color:var(--ink-2);max-width:46ch}
+
+@media (max-width:900px){
+  .cr-head{height:74px}
+  .cr-head nav{display:none}
+  .cr-head__r .k-btn{display:none}
+  .cr-hero{height:560vh}
+  .cr-eyebrow{top:86px}
+  .cr-intro{grid-template-columns:1fr;justify-items:center;text-align:center;bottom:calc(64px + env(safe-area-inset-bottom));gap:18px}
+  .cr-h1{font-size:calc(min(14.5vw,84px) * var(--display-scale))}
+  .cr-intro__side{justify-items:center;text-align:center}
+  .cr-scroll{display:none}
+  .cr-horizon{top:calc(50% + 14vh)}
+  .cr-chap{left:var(--pad)!important;right:var(--pad);width:auto!important;margin:0!important;top:auto!important;bottom:calc(70px + env(safe-area-inset-bottom));text-align:center;justify-items:center;gap:14px;padding:22px 20px;border-radius:4px;background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  .cr-chap--2{top:96px!important;bottom:auto;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0}
+  .cr-chap h2,.cr-chap--2 h2{font-size:calc(32px * var(--display-scale))}
+  .cr-chap p{font-size:14px}
+  .cr-meet{top:96px}
+  .cr-set__head{display:grid}
+  .cr-piece{flex-basis:76vw}
+}
+</style>
+</head>
+<body>
+<div class="k-loader" role="status" aria-label="Loading">
+  <div class="k-loader__in">
+    <span class="k-mark k-mark--icon k-loader__mark"></span>
+    <div class="k-loader__bar"><i></i></div>
+    <div class="k-loader__row"><span>Kingdom</span><span class="k-loader__num">000</span></div>
+  </div>
+</div>
+
+<header class="cr-head k-autohide">
+  <nav aria-label="Main"><a href="#set">Collection</a><a href="#story">Our Story</a></nav>
+  <a class="cr-head__logo" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-mark k-mark--icon"></span></a>
+  <div class="cr-head__r">
+    <a class="k-btn k-btn--ghost" href="#visit" data-magnetic="0.2">Visit</a>
+    <button class="k-burger" type="button" data-menu aria-label="Menu"><i></i><span class="k-burger__open">Menu</span><span class="k-burger__close">Close</span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="cr-hero" aria-label="The Ewer and the Basin">
+    <div class="cr-pin">
+      <div class="cr-pool" aria-hidden="true"></div>
+      <div class="cr-horizon" aria-hidden="true"></div>
+      <div id="stage" class="cr-stage" data-cursor="Drag" role="img" aria-label="A silver ewer descends to meet its basin, shown in 3D. Drag to turn the ewer."></div>
+
+      <p class="k-eyebrow cr-eyebrow" data-fade>Kingdom · Silver Collection</p>
+      <div class="cr-intro">
+        <h1 class="k-display cr-h1"><span class="cr-h1__l" data-split data-manual>The Art of</span><span class="cr-h1__l" data-split data-manual><em>Silver</em> Gifting.</span></h1>
+        <div class="cr-intro__side">
+          <p class="k-lead" data-fade>Filled with silver. Given with pride.</p>
+          <a class="k-cta" href="#set" data-fade data-magnetic="0.2"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>Discover the collection</a>
+        </div>
+      </div>
+
+      <p class="cr-meet" aria-hidden="true">The Ewer <span>·</span> The Basin <span>·</span> A Royal Touch.</p>
+      <div class="cr-chap cr-chap--1" aria-hidden="true">
+        <p class="k-eyebrow">Mirror &amp; matte</p>
+        <h2 class="k-display">Bright where it’s polished, <em>soft where it’s worked</em></h2>
+        <span class="k-rule"></span>
+        <p>The spout and handle shine like a mirror. The engraved ground stays soft, so every leaf of the ornament stands out.</p>
+      </div>
+      <div class="cr-chap cr-chap--2" aria-hidden="true">
+        <p class="k-eyebrow">Made to be given together</p>
+        <h2 class="k-display">Filled with silver. <em>Beautifully gifted.</em> Priced within reach.</h2>
+      </div>
+
+      <div class="cr-meter" aria-hidden="true"><b>00</b><span><i></i></span>The meeting</div>
+      <div class="cr-scroll" aria-hidden="true"><i></i>Scroll</div>
+    </div>
+  </section>
+
+  <section class="cr-story" id="story">
+    <div class="cr-ring" aria-hidden="true"><img src="assets/img/basin-1200.webp" alt="" width="1200" height="1200" loading="lazy"></div>
+    <p class="k-eyebrow" data-reveal>Our Story</p>
+    <p class="cr-story__big" data-scrub-words>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+    <p class="k-lead" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+    <div class="cr-trio" data-reveal><span>Filled with silver.</span><span>Beautifully gifted.</span><span>Priced within reach.</span></div>
+  </section>
+
+  <section class="cr-set" id="set">
+    <div class="cr-set__head">
+      <h2 class="k-display" data-split>The Set</h2>
+      <p data-reveal>An ewer and its basin, made to be given together, and wrapped so the moment it is opened feels considered.</p>
+    </div>
+    <div class="cr-strip" data-cursor="Drag" data-lenis-prevent-horizontal>
+      <article class="cr-piece" data-reveal>
+        <div class="cr-piece__media cr-piece__media--ewer" data-tilt="5"><img src="assets/img/ewer-1400.webp" alt="The silver ewer with acanthus ornament and egg-shaped stopper" loading="lazy" width="649" height="1400"></div>
+        <div class="cr-piece__meta"><h3>The Ewer</h3><p>01</p></div>
+      </article>
+      <article class="cr-piece" data-reveal data-delay="0.08">
+        <div class="cr-piece__media cr-piece__media--basin" data-tilt="5"><img src="assets/img/basin-1200.webp" alt="The round silver basin with acanthus border and mirror centre" loading="lazy" width="1200" height="1200"></div>
+        <div class="cr-piece__meta"><h3>The Basin</h3><p>02</p></div>
+      </article>
+      <article class="cr-piece" data-reveal data-delay="0.16">
+        <div class="cr-piece__media cr-piece__media--pair" data-tilt="5"><img src="assets/img/pair.webp" alt="The ewer standing in front of its matching basin" loading="lazy"></div>
+        <div class="cr-piece__meta"><h3>Ewer &amp; Basin</h3><p>03</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cr-crown" id="gifting">
+    <span class="k-mark k-mark--icon" data-reveal></span>
+    <h2 class="k-display" data-split>A Royal Touch.</h2>
+    <p data-reveal>Every piece arrives ready to give.</p>
+    <a class="k-btn" href="#visit" data-magnetic="0.25" data-reveal>Visit the shop</a>
+  </section>
+</main>
+
+<footer class="k-foot" id="visit">
+  <div class="k-foot__grid">
+    <div><p class="k-lead" style="max-width:30ch;font-family:var(--font-italic);font-style:italic;font-size:clamp(22px,2vw,30px);line-height:1.25;color:var(--ink)">Filled with silver. Beautifully gifted. Priced within reach.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#set">The Set</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#story">Our Story</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>By appointment</li><li><a href="#visit">Contact us</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#visit">Instagram</a></li><li><a href="#visit">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="k-foot__base"><span>© <span data-year></span> Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script type="module" src="dist/ceremony.js"></script>
+</body>
+</html>

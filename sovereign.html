@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Filled with silver. Given with pride.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/img/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/model/ewer-2k.glb" as="fetch" crossorigin>
+<link rel="preload" href="assets/fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/core.css">
+<script src="kingdom.config.js"></script>
+<style>
+/* ===== SOVEREIGN ===== */
+.sv-head{position:fixed;inset:0 0 auto;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px;padding:0 var(--pad);transition:background .6s var(--ease),height .6s var(--ease)}
+.sv-head::after{content:"";position:absolute;left:var(--pad);right:var(--pad);bottom:0;height:1px;background:var(--line);transform:scaleX(0);transition:transform 1.2s var(--ease)}
+
+.sv-head__logo{width:clamp(108px,10vw,148px);color:var(--accent)}
+.sv-head__right{justify-self:end;display:flex;gap:clamp(18px,2.4vw,40px);font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.sv-head__right a{min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.sv-head__right sup{font-size:9px;color:var(--accent);letter-spacing:0}
+.sv-head .k-burger{justify-self:start}
+
+.sv-hero{position:relative;height:560vh}
+.sv-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.sv-stage{position:absolute;inset:0;z-index:3;touch-action:pan-y}
+.sv-stage__in{position:absolute;inset:0}
+.sv-stage__in.is-dragging{cursor:grabbing}
+
+.sv-title{position:absolute;inset:0;z-index:1;pointer-events:none}
+.sv-h1{display:block}
+.sv-h1__a,.sv-h1__b{position:absolute;display:block;white-space:nowrap}
+.sv-h1__a{left:var(--pad);top:clamp(120px,19vh,220px);font-size:calc(clamp(40px,5.4vw,96px) * var(--display-scale));color:var(--ink-2)}
+.sv-h1__b{left:0;right:0;text-align:center;top:50%;transform:translateY(-38%);font-size:calc(clamp(64px,11.6vw,232px) * var(--display-scale));line-height:.9;letter-spacing:calc(var(--display-track) - .01em);color:var(--ink);-webkit-mask:linear-gradient(180deg,#000 35%,rgba(0,0,0,.42) 100%);mask:linear-gradient(180deg,#000 35%,rgba(0,0,0,.42) 100%)}
+.sv-halo{position:absolute;z-index:2;left:50%;bottom:-60vh;width:min(96vh,92vw);aspect-ratio:1;margin-left:calc(min(96vh,92vw) / -2);opacity:0;pointer-events:none;-webkit-mask:radial-gradient(closest-side,#000 62%,transparent 100%);mask:radial-gradient(closest-side,#000 62%,transparent 100%)}
+.sv-halo img{width:100%;height:100%;filter:brightness(.82) contrast(1.06) drop-shadow(0 40px 80px rgba(0,0,0,.4))}
+[data-mode="light"] .sv-halo img{filter:brightness(.98) drop-shadow(0 40px 80px rgba(80,40,20,.18))}
+
+.sv-intro{position:absolute;z-index:4;left:var(--pad);bottom:clamp(28px,6vh,64px);display:grid;gap:18px;max-width:380px}
+.sv-intro [data-reveal]{opacity:0}
+.sv-intro .k-lead{color:var(--ink);font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.7vw,26px);font-weight:300;line-height:1.3}
+.sv-rail{position:absolute;z-index:4;right:var(--pad);bottom:clamp(28px,6vh,64px);display:flex;gap:18px;align-items:flex-end;opacity:0;transform:translateY(20px)}
+.sv-rail ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;text-align:right}
+.sv-rail li{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);cursor:pointer;transition:color .5s;min-height:20px}
+.sv-rail li b{font-weight:500;margin-right:10px;font-variant-numeric:tabular-nums}
+.sv-rail li.is-on{color:var(--ink)}
+.sv-rail__track{width:1px;height:120px;background:var(--line);position:relative;overflow:hidden}
+.sv-rail__fill{position:absolute;inset:0;background:var(--accent);transform-origin:top;transform:scaleY(0)}
+.sv-scroll{position:absolute;z-index:4;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;opacity:0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
+.sv-scroll i{width:1px;height:44px;background:linear-gradient(var(--ink-3),transparent);animation:sv-drop 2.4s var(--ease) infinite;transform-origin:top}
+@keyframes sv-drop{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+.sv-chap{position:absolute;z-index:4;top:50%;transform:translateY(-50%);width:min(440px,34vw);display:grid;gap:22px;opacity:0;pointer-events:none}
+.sv-chap--1{left:var(--pad)}
+.sv-chap--2{right:var(--pad);text-align:right;justify-items:end}
+.sv-chap--3{left:50%;top:clamp(110px,15vh,170px);transform:translateX(-50%);width:min(900px,90vw);text-align:center;justify-items:center}
+.sv-chap h2{font-size:calc(clamp(40px,4.4vw,76px) * var(--display-scale))}
+.sv-chap--3 h2{font-size:calc(clamp(34px,4vw,68px) * var(--display-scale));line-height:1.05}
+.sv-chap p{color:var(--ink-2);max-width:36ch}
+.sv-chap .k-rule{width:56px;height:1px;background:var(--accent)}
+
+/* story */
+.sv-story{position:relative;padding:clamp(120px,16vw,240px) var(--pad) clamp(80px,10vw,160px);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(32px,5vw,96px)}
+.sv-story__label{position:sticky;top:140px;align-self:start;display:grid;gap:24px}
+.sv-story__numeral{font-family:var(--font-display);font-size:clamp(80px,9vw,160px);line-height:.8;color:var(--accent);opacity:.9}
+.sv-story__big{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(30px,3.5vw,60px) * var(--display-scale));line-height:1.14;letter-spacing:var(--display-track)}
+.sv-story__body{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end}
+.sv-story__body .k-lead{max-width:44ch}
+.sv-pillars{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);margin-top:clamp(72px,9vw,140px)}
+.sv-pillar{display:grid;gap:18px;padding-top:22px;position:relative}
+.sv-pillar::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--line-2);transform-origin:left}
+.sv-pillar h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(28px,2.7vw,46px) * var(--display-scale));line-height:1.05}
+
+/* collection */
+.sv-coll{padding:clamp(60px,8vw,120px) 0 clamp(80px,10vw,160px)}
+.sv-coll__head{text-align:center;display:grid;gap:18px;justify-items:center;padding:0 var(--pad);margin-bottom:clamp(48px,6vw,88px)}
+.sv-coll__head h2{font-size:calc(clamp(56px,9vw,160px) * var(--display-scale))}
+.sv-coll__head p{color:var(--ink-2);max-width:46ch}
+.sv-strip{scroll-padding-left:var(--pad);display:flex;gap:clamp(14px,1.6vw,24px);overflow-x:auto;padding:0 var(--pad) 8px;scroll-snap-type:x proximity;scrollbar-width:none;cursor:grab}
+.sv-strip::-webkit-scrollbar{display:none}
+.sv-strip.is-drag{cursor:grabbing;scroll-snap-type:none}
+.sv-card{flex:0 0 clamp(260px,25vw,400px);scroll-snap-align:start;display:grid;gap:16px;user-select:none}
+.sv-card__media{position:relative;aspect-ratio:3/4.2;overflow:hidden;border-radius:2px;background:linear-gradient(170deg,var(--c2),var(--c0) 70%)}
+.sv-card__media > *{transition:transform 1.4s var(--ease)}
+.sv-card:hover .sv-card__media > *{transform:scale(1.04)}
+.sv-card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.sv-card__media--ewer img{padding:12% 18% 10%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.sv-card__media--basin{background:radial-gradient(120% 90% at 50% 100%,var(--c2),var(--c0) 75%)}
+.sv-card__media--basin .sv-card__spin{max-width:none;position:absolute;left:-18%;right:-18%;bottom:-38%;width:136%;height:auto;aspect-ratio:1;inset:auto -18% -38% -18%}
+.sv-card__media--photo img{object-fit:cover}
+.sv-card__media--gift{display:grid;place-items:center;background:linear-gradient(160deg,#18263b,#131c2b 60%,#14395c)}
+.sv-gift-box{display:grid;justify-items:center;gap:22px;color:#f3c09b}
+.sv-gift-box .k-mark{width:84px;background:linear-gradient(135deg,#f3c09b,#cc917b 45%,#f2d4be 60%,#a35234);}
+.sv-gift-box span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,192,155,.8)}
+.sv-card__meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sv-card__meta h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(24px,2vw,32px) * var(--display-scale))}
+.sv-card__meta p{font-size:var(--t-s);color:var(--ink-3)}
+
+/* gifting */
+.sv-crown{position:relative;padding:clamp(80px,10vw,160px) var(--pad);display:grid;justify-items:center;text-align:center;gap:30px;overflow:hidden}
+.sv-crown .k-mark--icon{width:clamp(44px,4vw,64px);color:var(--accent)}
+.sv-crown h2{font-size:calc(clamp(64px,12vw,220px) * var(--display-scale))}
+.sv-crown p{color:var(--ink-2);max-width:48ch}
+.sv-foot-word{color:var(--accent);opacity:.9}
+.sv-foot-word .k-mark{width:100%}
+
+@media (max-width:900px){
+  .sv-head{height:72px}
+  .sv-head__right a:first-child{display:none}
+  .sv-h1__a{top:94px;left:0;right:0;text-align:center;font-size:calc(30px * var(--display-scale))}
+  .sv-h1__b{top:136px;transform:none;white-space:normal;font-size:calc(min(17vw,96px) * var(--display-scale));line-height:.9;padding:0 12px}
+  .sv-intro{left:var(--pad);right:var(--pad);bottom:84px;max-width:none;justify-items:center;text-align:center}
+  .sv-rail{display:none}
+  .sv-scroll{bottom:14px}
+  .sv-chap{top:auto;bottom:calc(64px + env(safe-area-inset-bottom));transform:none;width:auto;left:var(--pad)!important;right:var(--pad)!important;text-align:center;justify-items:center;gap:14px;padding:22px 20px;border-radius:4px;background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  .sv-chap--3{top:96px;bottom:auto;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .sv-chap h2{font-size:calc(34px * var(--display-scale))}
+  .sv-chap p{font-size:14px}
+  .sv-halo{bottom:-30vh;width:120vw;margin-left:-60vw}
+  .sv-story{grid-template-columns:1fr}
+  .sv-story__label{position:static;grid-auto-flow:column;justify-content:start;align-items:end}
+  .sv-story__numeral{font-size:72px}
+  .sv-story__body{grid-template-columns:1fr}
+  .sv-pillars{grid-template-columns:1fr;gap:28px}
+  .sv-card{flex-basis:76vw}
+}
+</style>
+</head>
+<body>
+<div class="k-loader" role="status" aria-label="Loading">
+  <div class="k-loader__in">
+    <span class="k-mark k-mark--icon k-loader__mark"></span>
+    <div class="k-loader__bar"><i></i></div>
+    <div class="k-loader__row"><span>Kingdom</span><span class="k-loader__num">000</span></div>
+  </div>
+</div>
+
+<header class="sv-head k-autohide">
+  <button class="k-burger" type="button" data-menu aria-label="Menu"><i></i><span class="k-burger__open">Menu</span><span class="k-burger__close">Close</span></button>
+  <a class="sv-head__logo" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-mark k-mark--word"></span></a>
+  <nav class="sv-head__right" aria-label="Shop"><a href="#visit">Visit</a><a href="#collection">Bag <sup>0</sup></a></nav>
+</header>
+
+<main id="top">
+  <section class="sv-hero" aria-label="The Ewer">
+    <div class="sv-pin">
+      <div class="sv-title">
+        <h1 class="sv-h1 k-display"><span class="sv-h1__a" data-split data-manual>The Art of</span> <span class="sv-h1__b" data-split data-manual>Silver Gifting.</span></h1>
+      </div>
+      <div class="sv-halo" aria-hidden="true"><img src="assets/img/basin-1200.webp" alt="" width="1200" height="1200"></div>
+      <div id="stage" class="sv-stage" data-cursor="Drag" role="img" aria-label="A silver ewer, shown in 3D. Drag to turn it."></div>
+
+      <div class="sv-intro">
+        <p class="k-lead" data-reveal>Filled with silver. Given with pride.</p>
+        <a class="k-cta" href="#collection" data-reveal data-magnetic="0.2"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>Discover the collection</a>
+      </div>
+
+      <div class="sv-chap sv-chap--1" aria-hidden="true">
+        <p class="k-eyebrow">I — Ornament</p>
+        <h2 class="k-display">Acanthus, in <em>high relief</em></h2>
+        <span class="k-rule"></span>
+        <p>Scrolling leaves rise from a softly matte ground, so every curve catches the light on its own.</p>
+      </div>
+      <div class="sv-chap sv-chap--2" aria-hidden="true">
+        <p class="k-eyebrow">II — Line</p>
+        <h2 class="k-display">A handle drawn in <em>one gesture</em></h2>
+        <span class="k-rule"></span>
+        <p>From the beaded scroll to the mirror-bright spout, the silhouette is kept slender and calm.</p>
+      </div>
+      <div class="sv-chap sv-chap--3" aria-hidden="true">
+        <p class="k-eyebrow">III — The Gift</p>
+        <h2 class="k-display">Filled with silver. <em>Beautifully gifted.</em> Priced within reach.</h2>
+      </div>
+
+      <div class="sv-rail" aria-hidden="true">
+        <ol><li class="is-on"><b>01</b>Presence</li><li><b>02</b>Ornament</li><li><b>03</b>Line</li><li><b>04</b>The Gift</li></ol>
+        <span class="sv-rail__track"><span class="sv-rail__fill"></span></span>
+      </div>
+      <div class="sv-scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
+    </div>
+  </section>
+
+  <section class="sv-story" id="story">
+    <div class="sv-story__label">
+      <span class="sv-story__numeral" aria-hidden="true">K</span>
+      <p class="k-eyebrow">Our Story</p>
+    </div>
+    <div>
+      <p class="sv-story__big" data-scrub-words>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+      <div class="sv-story__body">
+        <p class="k-lead" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+        <a class="k-cta" href="#collection" data-reveal data-delay="0.1"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>See the pieces</a>
+      </div>
+      <div class="sv-pillars">
+        <div class="sv-pillar" data-reveal><span class="k-num">01</span><h3>Filled with silver.</h3></div>
+        <div class="sv-pillar" data-reveal data-delay="0.1"><span class="k-num">02</span><h3>Beautifully gifted.</h3></div>
+        <div class="sv-pillar" data-reveal data-delay="0.2"><span class="k-num">03</span><h3>Priced within reach.</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-coll" id="collection">
+    <div class="sv-coll__head">
+      <p class="k-eyebrow">The Collection</p>
+      <h2 class="k-display" data-split>Made to be given</h2>
+      <p data-reveal>Silver-filled pieces with the weight and presence of an heirloom, chosen for the table and the occasion.</p>
+    </div>
+    <div class="sv-strip" data-cursor="Drag" data-lenis-prevent-horizontal>
+      <article class="sv-card">
+        <div class="sv-card__media sv-card__media--ewer" data-tilt="5"><img src="assets/img/ewer-1400.webp" alt="The silver ewer with acanthus ornament and egg-shaped stopper" loading="lazy" width="649" height="1400"></div>
+        <div class="sv-card__meta"><h3>The Ewer</h3><p>01</p></div>
+      </article>
+      <article class="sv-card">
+        <div class="sv-card__media sv-card__media--basin" data-tilt="5"><img class="sv-card__spin" src="assets/img/basin-1200.webp" alt="The round silver basin with acanthus border" loading="lazy" width="1200" height="1200"></div>
+        <div class="sv-card__meta"><h3>The Basin</h3><p>02</p></div>
+      </article>
+      <article class="sv-card">
+        <div class="sv-card__media sv-card__media--photo" data-tilt="5"><img src="assets/img/pair.webp" alt="The ewer standing in front of its matching basin" loading="lazy"></div>
+        <div class="sv-card__meta"><h3>The Set</h3><p>03</p></div>
+      </article>
+      <article class="sv-card">
+        <div class="sv-card__media sv-card__media--gift" data-tilt="5"><div class="sv-gift-box"><span class="k-mark k-mark--icon"></span><span>Wrapped to be given</span></div></div>
+        <div class="sv-card__meta"><h3>The Presentation</h3><p>04</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sv-crown" id="gifting">
+    <span class="k-mark k-mark--icon" data-reveal></span>
+    <h2 class="k-display" data-split>A Royal Touch.</h2>
+    <p data-reveal>Every piece arrives ready to give, so the moment it is opened feels as considered as the silver inside.</p>
+    <a class="k-btn" href="#visit" data-magnetic="0.25" data-reveal>Visit the shop</a>
+  </section>
+</main>
+
+<footer class="k-foot" id="visit">
+  <div class="k-foot__grid">
+    <div><p class="k-lead" style="max-width:30ch;font-family:var(--font-italic);font-style:italic;font-size:clamp(22px,2vw,30px);line-height:1.25;color:var(--ink)">Filled with silver. Beautifully gifted. Priced within reach.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#collection">The Collection</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#story">Our Story</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>By appointment</li><li><a href="#visit">Contact us</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#visit">Instagram</a></li><li><a href="#visit">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="sv-foot-word" data-reveal="mask"><span class="k-mark k-mark--word"></span></div>
+  <div class="k-foot__base"><span>© <span data-year></span> Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script type="module" src="dist/sovereign.js"></script>
+</body>
+</html>

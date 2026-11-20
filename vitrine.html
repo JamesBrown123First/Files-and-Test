@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Filled with silver. Given with pride.">
+<meta name="theme-color" content="#fbf8f4">
+<link rel="icon" href="assets/img/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/model/ewer-2k.glb" as="fetch" crossorigin>
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/core.css">
+<script src="kingdom.config.js"></script>
+<style>
+/* ===== VITRINE ===== */
+html{background:#f4eee7}
+.vt-head{position:fixed;inset:0 0 auto;z-index:50;padding:0 var(--pad);transition:transform .8s var(--ease)}
+.vt-head__top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px}
+.vt-head__logo{width:clamp(112px,9vw,140px);color:var(--accent)}
+.vt-head__right{justify-self:end;display:flex;gap:32px;font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.vt-head__right a{min-height:44px;display:inline-flex;align-items:center}
+.vt-head__nav{display:flex;gap:clamp(20px,2.6vw,44px);height:42px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:var(--t-s);color:var(--ink-2);transition:opacity .6s,height .6s var(--ease)}
+.vt-head__nav a{position:relative}
+.vt-head__nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.vt-head__nav a:hover{color:var(--ink)}
+.vt-head__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.vt-head__nav span{margin-left:auto;font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.is-scrolled .vt-head__nav{opacity:0;height:0;pointer-events:none;border-bottom-color:transparent}
+
+.vt-scene{position:relative;height:560vh}
+.vt-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.vt-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);padding:0 var(--pad);pointer-events:none}
+.vt-grid i{border-left:1px solid var(--line);opacity:.6}
+.vt-grid i:last-child{border-right:1px solid var(--line)}
+.vt-frame{--t:150px;--r:var(--pad);--b:48px;--l:58%;position:absolute;top:var(--t);right:var(--r);bottom:var(--b);left:var(--l);z-index:1;background:radial-gradient(70% 60% at 50% 62%,rgba(255,255,255,.85),rgba(255,255,255,0) 70%);box-shadow:inset 0 0 0 1px var(--line-2)}
+[data-mode="dark"] .vt-frame{background:radial-gradient(70% 60% at 50% 62%,rgba(var(--accent-rgb),.12),transparent 70%)}
+.vt-stage{position:absolute;inset:0;z-index:2;touch-action:pan-y}
+.vt-stage__in{position:absolute;inset:0}
+.vt-hero{position:absolute;inset:0;z-index:3;pointer-events:none;padding:150px var(--pad) 48px;display:grid;grid-template-columns:58% 1fr;grid-template-rows:1fr auto}
+.vt-hero a{pointer-events:auto}
+.vt-hero__copy{display:grid;align-content:start;gap:clamp(18px,2.4vh,30px);padding-top:clamp(12px,4vh,48px);padding-right:40px}
+.vt-hero .k-eyebrow{opacity:0;transform:translateY(16px)}
+.vt-h1{font-size:calc(clamp(56px,8.6vw,164px) * var(--display-scale));line-height:.88;margin-left:-.04em}
+.vt-h1 span{display:block}
+.vt-h1 em{color:var(--accent)}
+.vt-hero__foot{grid-column:1;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding-right:40px}
+.vt-hero__foot > *{opacity:0;transform:translateY(16px)}
+.vt-hero__foot .k-lead{max-width:30ch;color:var(--ink);font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.6vw,26px);line-height:1.3}
+.vt-caption{position:absolute;right:calc(var(--pad) + 20px);bottom:68px;z-index:4;text-align:right;opacity:0;transform:translateY(16px)}
+.vt-caption b{display:block;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(26px * var(--display-scale));line-height:1.1}
+
+.vt-study{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0}
+.vt-index{position:absolute;left:var(--pad);bottom:200px;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.vt-index li{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);transition:color .5s}
+.vt-index li.is-on{color:var(--ink)}
+.vt-index li b{display:inline-block;width:46px;font-weight:500}
+.vt-deg{position:absolute;left:var(--pad);bottom:48px;display:grid;gap:4px}
+.vt-deg b{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(64px,7vw,120px);line-height:.85;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.vt-deg b::after{content:"°";color:var(--accent)}
+.vt-drag{position:absolute;right:var(--pad);bottom:56px;font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:12px}
+.vt-drag i{width:40px;height:1px;background:currentColor;position:relative}
+.vt-drag i::before,.vt-drag i::after{content:"";position:absolute;top:-3px;width:6px;height:6px;border-top:1px solid currentColor}
+.vt-drag i::before{left:0;border-left:1px solid currentColor;transform:rotate(-45deg)}
+.vt-drag i::after{right:0;border-right:1px solid currentColor;transform:rotate(45deg)}
+
+/* notes pinned to the model */
+.vt-note{position:absolute;inset:0;pointer-events:none;--x:50vw;--y:50vh}
+.vt-note__dot{position:absolute;left:0;top:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),.18);transform:translate(var(--x),var(--y)) scale(0);transition:transform .6s var(--ease)}
+.vt-note__line{position:absolute;top:var(--y);height:1px;background:var(--line-2);transform:scaleX(0);transition:transform .9s var(--ease)}
+.vt-note[data-side="l"] .vt-note__line{left:calc(var(--pad) + 290px);width:max(0px,calc(var(--x) - var(--pad) - 300px));transform-origin:right}
+.vt-note[data-side="r"] .vt-note__line{left:calc(var(--x) + 10px);right:calc(var(--pad) + 290px);transform-origin:left}
+.vt-note__label{position:absolute;top:var(--y);width:270px;transform:translateY(-50%);display:grid;gap:6px;opacity:0;transition:opacity .6s,transform .9s var(--ease)}
+.vt-note[data-side="l"] .vt-note__label{left:var(--pad)}
+.vt-note[data-side="r"] .vt-note__label{right:var(--pad);text-align:right}
+.vt-note__label b{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(26px,2.2vw,36px) * var(--display-scale));line-height:1.05}
+.vt-note__label span{font-size:var(--t-s);color:var(--ink-2);line-height:1.5}
+.vt-note.is-on .vt-note__dot{transform:translate(var(--x),var(--y)) scale(1)}
+.vt-note.is-on .vt-note__line{transform:scaleX(1)}
+.vt-note.is-on .vt-note__label{opacity:1}
+
+/* story */
+.vt-story{position:relative;padding:clamp(120px,15vw,220px) var(--pad);display:grid;grid-template-columns:repeat(12,1fr);gap:24px;background:var(--c1)}
+.vt-story__meta{grid-column:1/4;display:grid;align-content:start;gap:14px;border-top:1px solid var(--line-2);padding-top:18px}
+.vt-story__text{grid-column:4/13}
+.vt-story__big{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(34px,4.2vw,76px) * var(--display-scale));line-height:1.06;letter-spacing:var(--display-track)}
+.vt-story__big .vt-mute{color:var(--ink-3)}
+.vt-story__cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,96px);border-top:1px solid var(--line);padding-top:28px}
+
+/* collection */
+.vt-coll{padding:clamp(96px,12vw,180px) var(--pad);background:var(--c1)}
+.vt-coll__head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.vt-coll__head h2{font-size:calc(clamp(52px,7vw,128px) * var(--display-scale))}
+.vt-cells{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-2);border-left:1px solid var(--line)}
+.vt-cell{position:relative;aspect-ratio:3/3.9;border-right:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;display:block;background:rgba(var(--ink-rgb),.025);transition:background .8s var(--ease)}
+.vt-cell:hover{background:rgba(255,255,255,.55)}
+[data-mode="dark"] .vt-cell:hover{background:rgba(255,255,255,.04)}
+.vt-cell__top{position:absolute;left:20px;top:18px;right:20px;display:flex;justify-content:space-between;font-size:var(--t-s);z-index:2}
+.vt-cell__top span{color:var(--ink-3)}
+.vt-cell__img{position:absolute;inset:14% 16% 12%;display:grid;place-items:center;transition:transform 1.4s var(--ease)}
+.vt-cell:hover .vt-cell__img{transform:scale(1.05)}
+.vt-cell__img img{max-height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(60,40,30,.22))}
+.vt-cell--basin .vt-cell__img{inset:auto -20% -42%;aspect-ratio:1}
+.vt-cell--basin .vt-cell__img img{width:100%;height:100%}
+.vt-cell--photo .vt-cell__img{inset:0}
+.vt-cell--photo .vt-cell__img img{width:100%;height:100%;object-fit:cover;filter:none}
+.vt-cell__more{position:absolute;right:20px;bottom:16px;z-index:2;font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .7s var(--ease)}
+.vt-cell:hover .vt-cell__more{opacity:1;transform:none}
+
+/* gifting */
+.vt-gift{padding:clamp(96px,12vw,180px) var(--pad);background:var(--c1);border-top:1px solid var(--line)}
+.vt-gift__in{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--line)}
+.vt-gift__item{padding:0 clamp(18px,2.4vw,40px) 12px;border-right:1px solid var(--line);display:grid;gap:28px;align-content:space-between;min-height:clamp(220px,26vw,360px)}
+.vt-gift__item h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(34px,3.6vw,64px) * var(--display-scale));line-height:1}
+.vt-gift__item p{color:var(--ink-2);max-width:30ch}
+.vt-gift__tag{text-align:center;margin-top:clamp(72px,9vw,140px);display:grid;justify-items:center;gap:22px}
+.vt-gift__tag .k-mark{width:46px;color:var(--accent)}
+.vt-gift__tag h2{font-size:calc(clamp(56px,9vw,170px) * var(--display-scale))}
+.vt-gift__tag h2 em{color:var(--accent)}
+.vt-foot{background:var(--c1)}
+
+@media (max-width:900px){
+  .vt-head__nav{display:none}
+  .vt-head__top{height:68px}
+  .vt-head__right a:first-child{display:none}
+  .vt-grid{grid-template-columns:repeat(3,1fr)}
+  .vt-frame{--t:47%;--l:var(--pad);--b:20px}
+  .vt-hero{display:flex;flex-direction:column;gap:18px;padding-top:92px;padding-bottom:24px}
+  .vt-hero__copy{padding:0;gap:12px}
+  .vt-h1{font-size:calc(min(15vw,92px) * var(--display-scale))}
+  .vt-hero__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;padding-right:0}
+  .vt-hero__foot .k-lead{font-size:19px}
+  .vt-caption{display:none}
+  .vt-index{display:none}
+  .vt-deg{bottom:auto;top:84px;left:auto;right:var(--pad);text-align:right}
+  .vt-deg b{font-size:44px}
+  .vt-drag{bottom:30px}
+  .vt-note__line{display:none}
+  .vt-note__label{left:var(--pad)!important;right:var(--pad)!important;width:auto;top:auto;bottom:110px;transform:none;text-align:left!important;padding:16px 18px;background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  .vt-story{grid-template-columns:1fr}
+  .vt-story__meta,.vt-story__text{grid-column:1}
+  .vt-story__cols{grid-template-columns:1fr}
+  .vt-cells{grid-template-columns:1fr}
+  .vt-cell{aspect-ratio:4/4.4}
+  .vt-gift__in{grid-template-columns:1fr;border-left:0}
+  .vt-gift__item{border-right:0;border-top:1px solid var(--line);padding:22px 0;min-height:0}
+  .vt-coll__head{flex-direction:column;align-items:start}
+}
+</style>
+</head>
+<body>
+<div class="k-loader" role="status" aria-label="Loading">
+  <div class="k-loader__in">
+    <span class="k-mark k-mark--icon k-loader__mark"></span>
+    <div class="k-loader__bar"><i></i></div>
+    <div class="k-loader__row"><span>The Vitrine</span><span class="k-loader__num">000</span></div>
+  </div>
+</div>
+
+<header class="vt-head k-autohide">
+  <div class="vt-head__top">
+    <button class="k-burger" type="button" data-menu aria-label="Menu"><i></i><span class="k-burger__open">Menu</span><span class="k-burger__close">Close</span></button>
+    <a class="vt-head__logo" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-mark k-mark--word"></span></a>
+    <nav class="vt-head__right" aria-label="Shop"><a href="#visit">Contact</a><a href="#collection">Bag (0)</a></nav>
+  </div>
+  <nav class="vt-head__nav" aria-label="Sections"><a href="#collection">Collection</a><a href="#story">Our Story</a><a href="#gifting">Gifting</a><a href="#visit">Visit</a><span>Silver Collection</span></nav>
+</header>
+
+<main id="top">
+  <section class="vt-scene" aria-label="The Ewer">
+    <div class="vt-pin">
+      <div class="vt-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="vt-frame" aria-hidden="true"></div>
+      <div id="stage" class="vt-stage" data-cursor="Drag" role="img" aria-label="A silver ewer in 3D. Drag to turn it."></div>
+
+      <div class="vt-hero">
+        <div class="vt-hero__copy">
+          <p class="k-eyebrow">N° 01 &nbsp;—&nbsp; The Ewer</p>
+          <h1 class="vt-h1 k-display"><span data-split data-manual>The Art of</span><span data-split data-manual><em>Silver</em> Gifting.</span></h1>
+        </div>
+        <div class="vt-hero__foot">
+          <p class="k-lead">Filled with silver. Given with pride.</p>
+          <a class="k-cta" href="#collection" data-magnetic="0.2"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>The collection</a>
+        </div>
+      </div>
+      <div class="vt-caption" aria-hidden="true"><span class="k-eyebrow">Kingdom · Silver Collection</span><b>The Ewer</b></div>
+
+      <div class="vt-study" aria-hidden="true">
+        <ol class="vt-index"><li><b>01</b>Finial</li><li><b>02</b>Spout</li><li><b>03</b>Foot</li><li><b>04</b>Handle</li><li><b>05</b>Body</li></ol>
+        <div class="vt-deg"><span class="k-eyebrow">Turn</span><b>000</b></div>
+        <div class="vt-drag"><i></i>Drag to turn</div>
+        <div class="vt-note" data-note="finial" data-side="l"><span class="vt-note__line"></span><span class="vt-note__dot"></span><div class="vt-note__label"><span class="k-num">01</span><b>The finial</b><span>An egg-shaped stopper, fluted at its base and engraved all around.</span></div></div>
+        <div class="vt-note" data-note="spout" data-side="l"><span class="vt-note__line"></span><span class="vt-note__dot"></span><div class="vt-note__label"><span class="k-num">02</span><b>The spout</b><span>A wide, mirror-polished lip that pours cleanly and holds the light.</span></div></div>
+        <div class="vt-note" data-note="foot" data-side="r"><span class="vt-note__line"></span><span class="vt-note__dot"></span><div class="vt-note__label"><span class="k-num">03</span><b>The foot</b><span>Pierced scrollwork lifts the body on four small feet.</span></div></div>
+        <div class="vt-note" data-note="handle" data-side="r"><span class="vt-note__line"></span><span class="vt-note__dot"></span><div class="vt-note__label"><span class="k-num">04</span><b>The handle</b><span>One scrolled line, beaded along its length, ending in a small curl.</span></div></div>
+        <div class="vt-note" data-note="body" data-side="l"><span class="vt-note__line"></span><span class="vt-note__dot"></span><div class="vt-note__label"><span class="k-num">05</span><b>The body</b><span>Acanthus scrolls in high relief over a softly matte ground.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vt-story" id="story">
+    <div class="vt-story__meta"><p class="k-eyebrow">Our Story</p><span class="k-num">00.2</span></div>
+    <div class="vt-story__text">
+      <p class="vt-story__big" data-reveal>Kingdom was created to redefine silver gifting, <span class="vt-mute" data-scrub-words>bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</span></p>
+      <div class="vt-story__cols">
+        <p class="k-lead" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+        <p class="k-lead" data-reveal data-delay="0.1" style="font-family:var(--font-italic);font-style:italic;color:var(--ink);font-size:clamp(22px,1.8vw,28px);line-height:1.3">Filled with silver. Beautifully gifted. Priced within reach.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vt-coll" id="collection">
+    <div class="vt-coll__head">
+      <h2 class="k-display" data-split>The Collection</h2>
+      <p class="k-small" data-reveal>Three pieces · Silver-filled · Gift presented</p>
+    </div>
+    <div class="vt-cells">
+      <a class="vt-cell" href="#top" data-cursor="View"><div class="vt-cell__top"><b>The Ewer</b><span>01</span></div><div class="vt-cell__img"><img src="assets/img/ewer-1400.webp" alt="The silver ewer" loading="lazy" width="649" height="1400"></div><span class="vt-cell__more">View piece</span></a>
+      <a class="vt-cell vt-cell--basin" href="#top" data-cursor="View"><div class="vt-cell__top"><b>The Basin</b><span>02</span></div><div class="vt-cell__img"><img class="vt-spin" src="assets/img/basin-1200.webp" alt="The round silver basin" loading="lazy" width="1200" height="1200"></div><span class="vt-cell__more">View piece</span></a>
+      <a class="vt-cell vt-cell--photo" href="#top" data-cursor="View"><div class="vt-cell__top" style="color:#18263b"><b>The Set</b><span style="color:rgba(24,38,59,.6)">03</span></div><div class="vt-cell__img"><img src="assets/img/pair.webp" alt="The ewer with its matching basin" loading="lazy"></div><span class="vt-cell__more" style="color:#18263b">View set</span></a>
+    </div>
+  </section>
+
+  <section class="vt-gift" id="gifting">
+    <div class="vt-gift__in">
+      <div class="vt-gift__item" data-reveal><span class="k-num">I</span><div><h3>Filled with silver.</h3></div><p>The presence and polish of silver, in pieces made for the table.</p></div>
+      <div class="vt-gift__item" data-reveal data-delay="0.08"><span class="k-num">II</span><div><h3>Beautifully gifted.</h3></div><p>Thoughtful packaging, so the moment it is opened feels considered.</p></div>
+      <div class="vt-gift__item" data-reveal data-delay="0.16"><span class="k-num">III</span><div><h3>Priced within reach.</h3></div><p>Generous giving, made possible.</p></div>
+    </div>
+    <div class="vt-gift__tag"><span class="k-mark k-mark--icon" data-reveal></span><h2 class="k-display" data-split>A Royal <em>Touch.</em></h2><a class="k-cta" href="#visit"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>Visit the shop</a></div>
+  </section>
+</main>
+
+<footer class="k-foot vt-foot" id="visit">
+  <div class="k-foot__grid">
+    <div><span class="k-mark k-mark--full" style="width:110px;color:var(--accent)"></span></div>
+    <div><h4>Shop</h4><ul><li><a href="#collection">The Collection</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#story">Our Story</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>By appointment</li><li><a href="#visit">Contact us</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#visit">Instagram</a></li><li><a href="#visit">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="k-foot__base"><span>© <span data-year></span> Kingdom Silver Collection</span><span>Filled with silver. Given with pride.</span></div>
+</footer>
+<script type="module" src="dist/vitrine.js"></script>
+</body>
+</html>

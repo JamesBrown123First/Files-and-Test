@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom — Website Directions</title>
+<meta name="description" content="Landing page directions for Kingdom Silver Collection.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/kingdom.css">
+<script src="site.config.js"></script>
+<style>
+.h-wrap{max-width:1360px;margin:0 auto;padding:clamp(32px,6vh,64px) var(--pad) var(--space-9);display:grid;gap:clamp(48px,8vh,96px)}
+.h-top{display:flex;justify-content:space-between;align-items:center;gap:var(--space-5)}
+.h-top .k-logo{width:88px;color:var(--accent)}
+.h-intro{display:grid;gap:var(--space-5);max-width:900px}
+.h-intro h1{font-size:clamp(48px,7vw,112px)}
+.h-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px)}
+.h-grid--3{grid-template-columns:repeat(3,1fr)}
+.h-group{display:grid;gap:clamp(24px,3vw,40px)}
+.h-group__head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;border-top:1px solid var(--line);padding-top:var(--space-5)}
+.h-group__note{margin:0;color:var(--ink-3);font-size:var(--t-s);max-width:56ch;text-align:right}
+@media (max-width:1100px){.h-grid--3{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.h-group__head{display:grid}.h-group__note{text-align:left}}
+.h-card{display:grid;gap:var(--space-4);text-decoration:none;color:inherit}
+.h-card__img{border-radius:var(--r-3);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.3),inset 0 0 0 1px var(--line);aspect-ratio:16/10}
+.h-card__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease-out)}
+.h-card:hover .h-card__img img{transform:scale(1.035)}
+.h-card__row{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4)}
+.h-card h2{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(30px,3vw,44px);margin:0;line-height:1.05}
+.h-card__n{font-size:var(--t-xs);letter-spacing:.2em;color:var(--ink-3)}
+.h-card p{margin:0;color:var(--ink-2);max-width:52ch}
+.h-card p.h-fit{color:var(--ink-3);font-size:var(--t-s)}
+.h-card .k-link{justify-self:start;padding:0;min-height:32px}
+.h-how{display:grid;grid-template-columns:1fr 2fr;gap:var(--space-8);border-top:1px solid var(--line);padding-top:var(--space-8)}
+.h-how h2{font-size:clamp(34px,3.4vw,52px)}
+.h-how ol{margin:0;padding:0;list-style:none;display:grid;gap:var(--space-6)}
+.h-how li{display:grid;grid-template-columns:48px 1fr;gap:var(--space-4)}
+.h-how li b{display:block;font-weight:500;color:var(--ink);margin-bottom:var(--space-1)}
+.h-how li span:first-child{font-size:var(--t-xs);letter-spacing:.2em;color:var(--accent);padding-top:4px}
+.h-how li p{margin:0;color:var(--ink-2)}
+kbd{font:500 12px Manrope,sans-serif;padding:2px 7px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}
+@media (max-width:860px){.h-grid,.h-how{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="h-wrap">
+  <div class="h-top">
+    <span class="k-logo" role="img" aria-label="Kingdom Silver Collection"></span>
+    <p class="k-eyebrow">Website directions</p>
+  </div>
+  <section class="h-intro">
+    <h1 class="k-display" data-split>Ways to <em>unveil</em> Kingdom.</h1>
+    <p class="k-lead" style="max-width:56ch" data-reveal>Each direction is built from scratch. The newest ones are made for the real 3D ewer, or for the photograph alone. Open one, then press <b>Design</b> (or <b>Style</b> on the first four) to mix presets, colours, backgrounds, type and lighting.</p>
+  </section>
+
+  <section class="h-group" aria-label="Built around the 3D model">
+    <div class="h-group__head"><p class="k-eyebrow">New · Built around the 3D ewer</p><p class="h-group__note">Real-time 3D: the ewer model with studio lighting, moved by your scroll. Drag it to turn it.</p></div>
+    <div class="h-grid h-grid--3">
+      <a class="h-card" href="ceremony.html" data-reveal>
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/ceremony.webp" alt="Ceremony: the 3D ewer standing before its basin, whose mirror centre reflects the studio light"></div>
+        <div class="h-card__row"><h2>Ceremony</h2><span class="h-card__n">05</span></div>
+        <p>Your original idea, now in true 3D. As you scroll, the ewer descends and turns while the basin rises steeply and straightens. They meet with a real landing: a slight recoil, then it settles. The basin’s centre is a live mirror.</p>
+        <p class="h-fit">Cinematic · Royal Blue look · scroll + drag</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="sovereign.html" data-reveal style="--d:100">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/sovereign.webp" alt="Sovereign: the 3D ewer standing in front of a large headline on royal blue"></div>
+        <div class="h-card__row"><h2>Sovereign</h2><span class="h-card__n">06</span></div>
+        <p>A throne-room hero. The ewer lands in front of the headline, then the camera orbits through four chapters: presence, ornament, line, and the gift, where the basin rises behind it.</p>
+        <p class="h-fit">Majestic · Royal Night look · scroll chapters</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="vitrine.html" data-reveal style="--d:200">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/vitrine.webp" alt="Vitrine: the 3D ewer in a gallery-white display case"></div>
+        <div class="h-card__row"><h2>Vitrine</h2><span class="h-card__n">07</span></div>
+        <p>A gallery study in ivory. The display case opens and the ewer turns a full circle as you scroll, with fine notes that pin themselves to the finial, spout, foot and handle.</p>
+        <p class="h-fit">Clean · Ivory Gallery look · scroll turn</p>
+        <span class="k-link">Open direction</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="h-group" aria-label="Built around the photograph">
+    <div class="h-group__head"><p class="k-eyebrow">New · Built around the photograph</p><p class="h-group__note">The flat PNG, kept as a photograph, and given movement with light, depth and reflection.</p></div>
+    <div class="h-grid">
+      <a class="h-card" href="nocturne.html" data-reveal>
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/nocturne.webp" alt="Nocturne: the ewer photograph standing on a dark mirror floor between two lines of headline"></div>
+        <div class="h-card__row"><h2>Nocturne</h2><span class="h-card__n">08</span></div>
+        <p>Evening, on a dark mirror. The photograph stands between the two halves of the headline, reflected in a glossy floor that ripples when you touch it.</p>
+        <p class="h-fit">Dramatic · Midnight look · mirror floor</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="hallmark.html" data-reveal style="--d:120">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/hallmark.webp" alt="Hallmark: the ewer photograph inside a turning ring of type on peach"></div>
+        <div class="h-card__row"><h2>Hallmark</h2><span class="h-card__n">09</span></div>
+        <p>A warm, editorial page in peach and copper. A ring of words turns around the ewer like a hallmark stamp, and a loupe lets you look closer at the engraving.</p>
+        <p class="h-fit">Refined · Peach Copper look · loupe</p>
+        <span class="k-link">Open direction</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="h-group" aria-label="First directions">
+    <div class="h-group__head"><p class="k-eyebrow">First round</p><p class="h-group__note">The first four directions, kept as they were (the basins now sit lower).</p></div>
+  <section class="h-grid" aria-label="Directions">
+    <a class="h-card" href="descent.html" data-reveal>
+      <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/descent.webp" alt="The Descent: the ewer meets the basin, with its reflection in the polished centre"></div>
+      <div class="h-card__row"><h2>The Descent</h2><span class="h-card__n">01</span></div>
+      <p>Your original idea, made real: as you scroll, the ewer descends while the basin rises and straightens. They meet with a soft landing, and the ewer appears in the basin’s mirror.</p>
+      <p class="h-fit">Cinematic · Royal Midnight look · scroll + drag</p>
+      <span class="k-link">Open direction</span>
+    </a>
+    <a class="h-card" href="atelier.html" data-reveal style="--d:120">
+      <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/atelier.webp" alt="Atelier: the ewer standing between two lines of large headline type on a rosé background"></div>
+      <div class="h-card__row"><h2>Atelier</h2><span class="h-card__n">02</span></div>
+      <p>A light, editorial gallery. The ewer stands between the two lines of the headline. Drag to turn it, and watch the light follow your cursor.</p>
+      <p class="h-fit">Refined · Rosé Atelier look · drag to turn</p>
+      <span class="k-link">Open direction</span>
+    </a>
+    <a class="h-card" href="arch.html" data-reveal>
+      <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/arch.webp" alt="Royal Arch: the basin as a halo behind the ewer, framed by the logo’s arch"></div>
+      <div class="h-card__row"><h2>Royal Arch</h2><span class="h-card__n">03</span></div>
+      <p>The arch from the logo becomes a palace window, with the basin turning slowly behind the ewer like a halo. As you scroll, the arch opens into the story.</p>
+      <p class="h-fit">Majestic · Dusk Engraving look · zoom transition</p>
+      <span class="k-link">Open direction</span>
+    </a>
+    <a class="h-card" href="vault.html" data-reveal style="--d:120">
+      <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/vault.webp" alt="The Vault: silver revealed by a spotlight in a dark room"></div>
+      <div class="h-card__row"><h2>The Vault</h2><span class="h-card__n">04</span></div>
+      <p>A private viewing after dark. A beam of light follows your cursor and picks out the silver, and one switch turns the lights on.</p>
+      <p class="h-fit">Unexpected · Onyx Vault look · spotlight</p>
+      <span class="k-link">Open direction</span>
+    </a>
+  </section>
+
+  </section>
+
+  <section class="h-how">
+    <h2 class="k-display" data-split>How the silver moves</h2>
+    <ol>
+      <li data-reveal><span>01</span><div><b>It really turns</b><p>The ewer’s body is mapped around its own axis, so the engraving rotates while the handle swings. The studio shading stays still, the way real light behaves.</p></div></li>
+      <li data-reveal style="--d:100"><span>02</span><div><b>It catches your light</b><p>Surface relief is read from the photographs, so highlights travel across the filigree as you move. The silver also picks up the page’s colours at its edges.</p></div></li>
+      <li data-reveal style="--d:200"><span>03</span><div><b>The two pieces reflect each other</b><p>The basin’s polished centre reflects the ewer standing in front of it, and the ewer’s edges pick up the basin. Drop in GLB models later and the same choreography carries over.</p></div></li>
+    </ol>
+  </section>
+  <p class="k-eyebrow" style="text-align:center">Kingdom Silver Collection · A Royal Touch.</p>
+</main>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/kingdom.js"></script>
+<script>Kingdom.init({ page: 'index', preset: 'royal-midnight', editor: false });</script>
+</body>
+</html>

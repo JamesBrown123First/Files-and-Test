@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kingdom — The Art of Silver Gifting</title>
+<meta name="description" content="Kingdom Silver Collection. Filled with silver. Given with pride.">
+<meta name="theme-color" content="#18263b">
+<link rel="icon" href="assets/img/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/core.css">
+<script src="kingdom.config.js"></script>
+<style>
+/* ===== NOCTURNE ===== */
+.nc-head{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;height:96px;padding:0 var(--pad);mix-blend-mode:normal}
+.nc-head__logo{width:clamp(30px,2.4vw,40px);color:var(--accent)}
+.nc-head__mid{position:absolute;left:50%;transform:translateX(-50%);font-size:var(--t-xs);letter-spacing:.42em;text-transform:uppercase;color:var(--ink-2);text-indent:.42em}
+.nc-head__right{display:flex;align-items:center;gap:28px}
+.nc-head__right>a{font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+
+.nc-scene{position:relative;height:330vh}
+.nc-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.nc-glow{position:absolute;left:50%;top:44%;width:70vh;height:70vh;margin:-35vh 0 0 -35vh;border-radius:50%;background:radial-gradient(closest-side,rgba(var(--accent-rgb),.14),transparent);pointer-events:none}
+.nc-mirror{position:absolute;left:0;right:0;top:72%;bottom:0;background:linear-gradient(180deg,rgba(var(--ink-rgb),.05),rgba(0,0,0,.18) 70%);pointer-events:none}
+[data-mode="light"] .nc-mirror{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 80%)}
+.nc-horizon{position:absolute;left:var(--pad);right:var(--pad);top:72%;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--ink-rgb),.4) 20%,rgba(var(--accent-rgb),.8) 50%,rgba(var(--ink-rgb),.4) 80%,transparent);transform-origin:center;opacity:0}
+#stage{position:absolute;inset:0;z-index:2}
+#stage canvas{width:100%;height:100%}
+
+.nc-hero{position:absolute;inset:0;z-index:3;pointer-events:none}
+.nc-left,.nc-right{position:absolute;top:30%;width:calc(50% - 15vh - 24px);display:grid;gap:14px}
+.nc-left{left:0;padding-left:var(--pad);text-align:right;justify-items:end}
+.nc-right{right:0;padding-right:var(--pad)}
+.nc-hero .k-eyebrow{opacity:0;transform:translateY(16px)}
+.nc-h{font-size:calc(clamp(44px,6.4vw,124px) * var(--display-scale));line-height:.95;letter-spacing:var(--display-track)}
+[data-type="crest"] .nc-h{letter-spacing:.06em}
+.nc-right .nc-h em{color:var(--accent)}
+.nc-hero__foot{position:absolute;left:0;right:0;bottom:clamp(28px,6vh,60px);display:grid;justify-items:center;gap:18px;text-align:center}
+.nc-hero__foot > *{opacity:0;transform:translateY(16px);pointer-events:auto}
+.nc-hero__foot .k-lead{font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.7vw,26px);color:var(--ink);line-height:1.3}
+.nc-mid{position:absolute;left:50%;top:15%;transform:translateX(-50%);width:min(760px,88vw);text-align:center;display:grid;gap:16px;justify-items:center;opacity:0;z-index:3;pointer-events:none}
+.nc-mid h2{font-size:calc(clamp(30px,3vw,52px) * var(--display-scale));line-height:1.1}
+.nc-hint{position:absolute;right:var(--pad);bottom:clamp(28px,6vh,60px);z-index:3;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px}
+.nc-hint i{width:7px;height:7px;border-radius:50%;border:1px solid currentColor;animation:nc-ping 2.8s var(--ease) infinite}
+@keyframes nc-ping{0%{box-shadow:0 0 0 0 rgba(var(--ink-rgb),.4)}100%{box-shadow:0 0 0 14px rgba(var(--ink-rgb),0)}}
+.nc-dawn{position:absolute;inset:0;z-index:4;width:100%;height:100%;pointer-events:none}
+
+/* story: peach dawn */
+.nc-story{position:relative;z-index:2;margin-top:-1px;background:linear-gradient(180deg,#f2d4be 0%,#ebc0a5 55%,#cc917b 100%);color:#18263b;padding:clamp(100px,13vw,200px) var(--pad) clamp(120px,14vw,220px);display:grid;justify-items:center;text-align:center;gap:clamp(40px,5vw,72px)}
+.nc-story .k-eyebrow{color:rgba(24,38,59,.6)}
+.nc-story__big{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(32px,4vw,72px) * var(--display-scale));line-height:1.12;max-width:20ch;letter-spacing:var(--display-track)}
+[data-type="crest"] .nc-story__big{max-width:24ch}
+.nc-story__sub{max-width:52ch;font-size:clamp(17px,1.4vw,21px);line-height:1.6;color:rgba(24,38,59,.78)}
+.nc-story__mark{width:40px;color:#a35234}
+.nc-story__trio{display:flex;gap:clamp(16px,3vw,48px);font-family:var(--font-italic);font-style:italic;font-size:clamp(20px,1.8vw,28px);color:#a35234;flex-wrap:wrap;justify-content:center}
+.nc-story__trio span+span::before{content:"·";margin-right:clamp(16px,3vw,48px);color:rgba(24,38,59,.4)}
+
+/* basin */
+.nc-basin{position:relative;height:150vh;background:var(--c1);overflow:hidden}
+.nc-basin__copy{position:sticky;top:0;height:100vh;display:grid;align-content:start;justify-items:center;text-align:center;gap:20px;padding:clamp(110px,16vh,180px) var(--pad) 0;z-index:2;pointer-events:none}
+.nc-basin__copy h2{font-size:calc(clamp(44px,6vw,110px) * var(--display-scale))}
+.nc-basin__copy p{max-width:44ch;color:var(--ink-2)}
+.nc-basin__wrap{position:absolute;left:50%;bottom:-62vh;width:min(130vh,140vw);margin-left:calc(min(130vh,140vw) / -2);aspect-ratio:1;z-index:1}
+.nc-basin__img{width:100%;height:100%;cursor:grab;touch-action:none;filter:drop-shadow(0 -30px 80px rgba(0,0,0,.35));user-select:none;-webkit-user-drag:none}
+.nc-basin__img:active{cursor:grabbing}
+.nc-basin__hint{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);z-index:3;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);padding:10px 16px;border-radius:999px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+
+/* gifting */
+.nc-gift{position:relative;padding:clamp(100px,12vw,180px) var(--pad) clamp(60px,6vw,100px);background:var(--c1);display:grid;gap:clamp(48px,6vw,90px)}
+.nc-gift__row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,56px)}
+.nc-gift__item{display:grid;gap:16px;border-top:1px solid var(--line-2);padding-top:22px}
+.nc-gift__item h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);font-size:calc(clamp(28px,2.6vw,44px) * var(--display-scale));line-height:1.05}
+.nc-gift__item p{color:var(--ink-2);max-width:32ch}
+.nc-gift__end{display:grid;justify-items:center;text-align:center;gap:26px}
+.nc-gift__end h2{font-size:calc(clamp(56px,10vw,190px) * var(--display-scale))}
+.nc-foot{background:var(--c1)}
+
+@media (max-width:900px){
+  .nc-head{height:76px}
+  .nc-head__mid{display:none}
+  .nc-left,.nc-right{width:auto;left:var(--pad);right:var(--pad);padding:0;text-align:center;justify-items:center}
+  .nc-left{top:96px}
+  .nc-right{top:calc(98px + min(13vw,64px))}
+  .nc-h{font-size:calc(min(13vw,64px) * var(--display-scale))}
+  .nc-left .k-eyebrow{display:none}
+  .nc-right .k-eyebrow{display:none}
+  .nc-hint{display:none}
+  .nc-mirror,.nc-horizon{top:79%}
+  .nc-left{top:92px}
+  .nc-hero__foot{bottom:28px}
+  .nc-gift__row{grid-template-columns:1fr}
+  .nc-basin__wrap{bottom:-40vh;width:150vw;margin-left:-75vw}
+}
+</style>
+</head>
+<body>
+<div class="k-loader" role="status" aria-label="Loading">
+  <div class="k-loader__in">
+    <span class="k-mark k-mark--icon k-loader__mark"></span>
+    <div class="k-loader__bar"><i></i></div>
+    <div class="k-loader__row"><span>Nocturne</span><span class="k-loader__num">000</span></div>
+  </div>
+</div>
+
+<header class="nc-head k-autohide">
+  <a class="nc-head__logo" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-mark k-mark--icon"></span></a>
+  <span class="nc-head__mid">Kingdom</span>
+  <div class="nc-head__right"><a href="#collection">Shop</a><button class="k-burger" type="button" data-menu aria-label="Menu"><i></i><span class="k-burger__open">Menu</span><span class="k-burger__close">Close</span></button></div>
+</header>
+
+<main id="top">
+  <section class="nc-scene" aria-label="The Ewer">
+    <div class="nc-pin">
+      <div class="nc-glow" aria-hidden="true"></div>
+      <div class="nc-mirror" aria-hidden="true"></div>
+      <div class="nc-horizon" aria-hidden="true"></div>
+      <div id="stage" role="img" aria-label="Photograph of the silver ewer standing on a mirror. Move over the mirror to ripple it." data-cursor="none"></div>
+      <div class="nc-hero">
+        <h1 class="sr-only">The Art of Silver Gifting.</h1>
+        <div class="nc-left" aria-hidden="true"><p class="k-eyebrow">Kingdom · Silver Collection</p><span class="nc-h k-display" data-split data-manual>The Art of</span></div>
+        <div class="nc-right" aria-hidden="true"><p class="k-eyebrow">N° 01 · The Ewer</p><span class="nc-h k-display" data-split data-manual><em>Silver</em> Gifting.</span></div>
+        <div class="nc-hero__foot">
+          <p class="k-lead">Filled with silver. Given with pride.</p>
+          <a class="k-cta" href="#story" data-magnetic="0.2"><span class="k-cta__box"><svg class="k-arrow" viewBox="0 0 26 8"><path d="M0 4h25M21 .5 25 4l-4 3.5"/></svg></span>Our story</a>
+        </div>
+      </div>
+      <div class="nc-mid" aria-hidden="true"><p class="k-eyebrow">The Ewer</p><h2 class="k-display">Mirror-bright where it should shine. <em>Softly matte</em> where it should glow.</h2></div>
+      <div class="nc-hint" aria-hidden="true"><i></i>Touch the mirror</div>
+      <svg class="nc-dawn" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d4be"/><stop offset="1" stop-color="#f2d4be"/></linearGradient></defs><path fill="url(#dawn)" d="M0 100 L0 100 Q50 100 100 100 L100 100 Z"/></svg>
+    </div>
+  </section>
+
+  <section class="nc-story" id="story">
+    <span class="k-mark k-mark--icon nc-story__mark" data-reveal></span>
+    <p class="k-eyebrow" data-reveal>Our Story</p>
+    <p class="nc-story__big" data-scrub-words>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+    <p class="nc-story__sub" data-reveal>From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+    <p class="nc-story__trio" data-reveal><span>Filled with silver.</span><span>Beautifully gifted.</span><span>Priced within reach.</span></p>
+  </section>
+
+  <section class="nc-basin" id="collection">
+    <div class="nc-basin__copy">
+      <p class="k-eyebrow" data-reveal>N° 02 · The Basin</p>
+      <h2 class="k-display" data-split>Made to hold the light</h2>
+      <p data-reveal>Its border of acanthus frames a mirror-polished centre, made to stand behind the ewer and answer it.</p>
+    </div>
+    <div class="nc-basin__wrap"><img class="nc-basin__img" src="assets/img/basin-1200.webp" alt="The round silver basin. Drag to spin it." width="1200" height="1200" draggable="false" data-cursor="Spin"></div>
+    <span class="nc-basin__hint" aria-hidden="true">Drag the basin to spin it</span>
+  </section>
+
+  <section class="nc-gift" id="gifting">
+    <div class="nc-gift__row">
+      <div class="nc-gift__item" data-reveal><span class="k-num">01</span><h3>Filled with silver.</h3><p>The presence and polish of silver, for the table and the occasion.</p></div>
+      <div class="nc-gift__item" data-reveal data-delay="0.08"><span class="k-num">02</span><h3>Beautifully gifted.</h3><p>Thoughtful packaging, so opening it feels as considered as the piece.</p></div>
+      <div class="nc-gift__item" data-reveal data-delay="0.16"><span class="k-num">03</span><h3>Priced within reach.</h3><p>Generous giving, made possible.</p></div>
+    </div>
+    <div class="nc-gift__end"><p class="k-eyebrow" data-reveal>Kingdom</p><h2 class="k-display" data-split>A Royal Touch.</h2><a class="k-btn" href="#visit" data-magnetic="0.25" data-reveal>Visit the shop</a></div>
+  </section>
+</main>
+
+<footer class="k-foot nc-foot" id="visit">
+  <div class="k-foot__grid">
+    <div><span class="k-mark k-mark--full" style="width:110px;color:var(--accent)"></span></div>
+    <div><h4>Shop</h4><ul><li><a href="#collection">The Collection</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#story">Our Story</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>By appointment</li><li><a href="#visit">Contact us</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#visit">Instagram</a></li><li><a href="#visit">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="k-foot__base"><span>© <span data-year></span> Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script type="module" src="dist/nocturne.js"></script>
+</body>
+</html>

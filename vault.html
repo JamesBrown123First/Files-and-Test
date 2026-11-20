@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom — Silver, Unveiled</title>
+<meta name="description" content="Kingdom Silver Collection. Silver-filled pieces, thoughtfully packaged, priced within reach.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/img/ewer.webp" as="image">
+<link rel="stylesheet" href="css/kingdom.css">
+<script src="site.config.js"></script>
+
+</head>
+
+<body class="p-vault">
+<style>
+/* ======================= THE VAULT ======================= */
+.v-hero{position:relative;height:230vh}
+.v-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--sx:60%;--sy:45%;--sr:22vmax}
+.v-giant{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(76px,16vw,300px);letter-spacing:.02em;line-height:1;white-space:nowrap;pointer-events:none;z-index:1;text-transform:uppercase}
+.v-giant--line{color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--ink) 14%,transparent)}
+.v-giant--fill{color:color-mix(in srgb,var(--ink) 16%,transparent);-webkit-mask:radial-gradient(circle var(--sr) at var(--sx) var(--sy),#000 0%,transparent 70%);mask:radial-gradient(circle var(--sr) at var(--sx) var(--sy),#000 0%,transparent 70%)}
+.v-pin .k-stage{z-index:2}
+.v-beam{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle var(--sr) at var(--sx) var(--sy),color-mix(in srgb,var(--c3) 12%,transparent),transparent 70%)}
+.v-copy{position:absolute;left:var(--pad);bottom:clamp(40px,8vh,96px);z-index:3;display:grid;gap:var(--space-5);max-width:520px}
+.v-copy h1{font-size:clamp(44px,5vw,84px);line-height:1}
+.v-side{position:absolute;right:var(--pad);bottom:clamp(40px,8vh,96px);z-index:3;display:grid;gap:var(--space-4);justify-items:end;text-align:right}
+.v-light{display:inline-flex;align-items:center;gap:var(--space-3);min-height:48px;padding:0 var(--space-5) 0 var(--space-3);border-radius:var(--r-pill);border:0;cursor:pointer;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:500;box-shadow:inset 0 0 0 1px var(--line);transition:background .4s}
+.v-light:hover{background:color-mix(in srgb,var(--ink) 14%,transparent)}
+.v-light__sw{width:40px;height:24px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);position:relative;transition:background .4s}
+.v-light__sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--ink);transition:transform .5s var(--ease-spring),background .4s}
+.v-light[aria-pressed="true"] .v-light__sw{background:var(--accent)}
+.v-light[aria-pressed="true"] .v-light__sw::after{transform:translateX(16px);background:var(--on-accent)}
+.v-hint{font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0}
+@media (max-width:900px){
+  .v-hero{height:200vh}
+  .v-copy{right:var(--pad);bottom:var(--space-9)}
+  .v-side{left:var(--pad);right:auto;justify-items:start;text-align:left;bottom:var(--space-5)}
+  .v-side .v-hint{display:none}
+  .v-giant{top:30%}
+}
+.v-story{min-height:100vh;display:grid;place-items:center;padding:clamp(96px,16vh,180px) var(--pad);text-align:center}
+.v-story__in{display:grid;gap:var(--space-7);justify-items:center;max-width:1200px}
+.v-story__lead{font-size:clamp(34px,4.4vw,72px);line-height:1.12}
+.v-story__sub{display:flex;gap:var(--space-6);flex-wrap:wrap;justify-content:center;font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
+.v-story__sub span{display:flex;align-items:center;gap:var(--space-6)}
+.v-story__sub span+span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.v-stack{padding:0 var(--pad) var(--space-9);max-width:1360px;margin:0 auto}
+.v-stack__head{padding:var(--space-9) 0 var(--space-7);display:flex;justify-content:space-between;align-items:end;gap:var(--space-5);flex-wrap:wrap}
+.v-stack__head h2{font-size:clamp(44px,5.4vw,88px)}
+.v-card{position:sticky;top:calc(96px + var(--i) * 18px);height:min(76vh,680px);margin-bottom:12vh;border-radius:var(--r-4);overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--bg-2) 92%,#000),var(--bg));box-shadow:0 -20px 60px rgba(0,0,0,.35),inset 0 0 0 1px var(--line);transform-origin:top center;will-change:transform}
+.v-card__media{position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--c3) 16%,transparent),transparent 62%)}
+.v-card__media img{max-height:82%;max-width:80%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.v-card__media--photo img{max-height:none;max-width:none;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.v-card__body{padding:clamp(28px,4vw,64px);display:grid;align-content:space-between;gap:var(--space-6)}
+.v-card__n{font-size:var(--t-xs);letter-spacing:.24em;color:var(--ink-3)}
+.v-card h3{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(40px,4.4vw,72px);line-height:1;margin:0 0 var(--space-4)}
+.v-card p{margin:0;color:var(--ink-2);max-width:34ch}
+.v-gift{width:50%;aspect-ratio:1;position:relative;transform:rotate(-6deg)}
+.v-gift__box{position:absolute;inset:14% 0 0 0;border-radius:6px;background:linear-gradient(150deg,#14395c,#18263b 55%,#131c2b);box-shadow:0 30px 50px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+.v-gift__lid{position:absolute;inset:0 -3% 72% -3%;border-radius:6px;background:linear-gradient(120deg,#f3c09b,#dba58c 50%,#a35234)}
+.v-gift__mark{position:absolute;left:50%;top:58%;width:30%;transform:translate(-50%,-50%);color:#f3c09b}
+@media (max-width:900px){.v-card{grid-template-columns:1fr;grid-template-rows:1.2fr auto;height:auto;min-height:72vh}}
+.v-cta{min-height:90vh;display:grid;place-items:center;text-align:center;padding:var(--space-10) var(--pad);position:relative;overflow:hidden}
+.v-cta__in{display:grid;gap:var(--space-6);justify-items:center;position:relative;z-index:1}
+.v-cta h2{font-size:clamp(60px,10vw,180px);line-height:.92}
+.v-cta__glow{position:absolute;left:50%;top:50%;width:70vmax;height:70vmax;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c3) 14%,transparent),transparent 60%);pointer-events:none}
+</style>
+
+<div class="k-loader" aria-hidden="true"><div class="k-loader__panel"></div><div class="k-loader__mark"><span class="k-logo-icon"></span><span class="k-loader__bar"></span></div></div>
+<header class="k-nav">
+  <a class="k-nav__brand" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-logo-icon"></span><span class="k-logo-word"></span></a>
+  <ul class="k-nav__links"><li><a href="#collection">Collection</a></li><li><a href="#story">Our story</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a class="k-btn k-nav__cta" href="#collection" data-magnetic="0.25"><span class="k-btn__label">Shop the collection</span></a>
+  <button class="k-nav__menu" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+<nav class="k-menu" aria-label="Mobile"><a href="#collection">Collection</a><a href="#story">Our story</a><a href="#gifting">Gifting</a><a href="#contact">Contact</a></nav>
+
+<main id="top">
+  <section class="v-hero" aria-label="Introduction">
+    <div class="v-pin">
+      <div class="v-beam" aria-hidden="true"></div>
+      <div class="v-giant v-giant--line" aria-hidden="true">Kingdom</div>
+      <div class="v-giant v-giant--fill" aria-hidden="true">Kingdom</div>
+      <canvas class="k-stage" role="img" aria-label="A silver ewer and basin in a dark room, lit by a spotlight that follows your cursor."></canvas>
+      <div class="v-copy">
+        <p class="k-eyebrow" data-reveal style="--d:300">Kingdom · Silver Collection</p>
+        <h1 class="k-display" data-split style="--d:400">The Art of <em>Silver</em> Gifting.</h1>
+        <p class="k-lead" data-reveal style="--d:900">Filled with silver. Given with pride.</p>
+        <div data-reveal style="--d:1000"><a class="k-btn" href="#collection" data-magnetic="0.3"><span class="k-btn__label">Explore the collection <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a></div>
+      </div>
+      <div class="v-side" data-reveal style="--d:1200">
+        <p class="v-hint">Move the light to look closer</p>
+        <button class="v-light" type="button" aria-pressed="false"><span class="v-light__sw" aria-hidden="true"></span><span class="v-light__txt">Lights on</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="v-story" id="story">
+    <div class="v-story__in">
+      <p class="k-eyebrow" data-reveal>Our story</p>
+      <p class="k-display v-story__lead" data-scrub>Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+      <p class="k-body" data-reveal style="max-width:52ch">From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+      <p class="v-story__sub" data-reveal><span>Filled with silver</span><span>Beautifully gifted</span><span>Priced within reach</span></p>
+    </div>
+  </section>
+
+  <section class="v-stack" id="collection">
+    <div class="v-stack__head"><h2 class="k-display" data-split>The Collection</h2><p class="k-body" data-reveal style="max-width:34ch">Four ways to give silver — each one presented in Kingdom packaging.</p></div>
+    <article class="v-card" style="--i:0"><div class="v-card__media"><img src="assets/img/ewer.webp" alt="Silver ewer" loading="lazy"></div><div class="v-card__body"><span class="v-card__n">01 / 04</span><div><h3>The Ewer</h3><p>A slender neck, scrolled handle and filigree that catches every light.</p></div><a class="k-link" href="#contact">Enquire about this piece</a></div></article>
+    <article class="v-card" style="--i:1"><div class="v-card__media"><img src="assets/img/basin.webp" alt="Silver basin" loading="lazy"></div><div class="v-card__body"><span class="v-card__n">02 / 04</span><div><h3>The Basin</h3><p>An acanthus border framing a mirror-polished centre.</p></div><a class="k-link" href="#contact">Enquire about this piece</a></div></article>
+    <article class="v-card" style="--i:2"><div class="v-card__media v-card__media--photo"><img src="assets/img/pair.webp" alt="The ewer before its matching basin" loading="lazy"></div><div class="v-card__body"><span class="v-card__n">03 / 04</span><div><h3>The Set</h3><p>Ewer and basin together — a gift with real presence.</p></div><a class="k-link" href="#contact">Enquire about the set</a></div></article>
+    <article class="v-card" style="--i:3" id="gifting"><div class="v-card__media"><div class="v-gift" aria-hidden="true"><div class="v-gift__box"><span class="k-logo v-gift__mark"></span></div><div class="v-gift__lid"></div></div></div><div class="v-card__body"><span class="v-card__n">04 / 04</span><div><h3>The Gift</h3><p>Thoughtful packaging, so every piece arrives ready to give.</p></div><a class="k-link" href="#contact">Ask about gifting</a></div></article>
+  </section>
+
+  <section class="v-cta">
+    <div class="v-cta__glow" aria-hidden="true"></div>
+    <div class="v-cta__in">
+      <p class="k-eyebrow" data-reveal>Kingdom</p>
+      <h2 class="k-display" data-split>A Royal <em>Touch.</em></h2>
+      <a class="k-btn" href="#collection" data-magnetic="0.35" data-reveal style="--d:300"><span class="k-btn__label">Find the perfect gift <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="k-foot" id="contact">
+  <div class="k-foot__top">
+    <div>
+      <span class="k-logo k-foot__mark" role="img" aria-label="Kingdom Silver Collection"></span>
+    </div>
+    <div style="display:grid;gap:24px">
+      <p class="k-eyebrow">New pieces, first</p>
+      <form class="k-form" data-k-form novalidate>
+        <label class="sr-only" for="nl-vault">Email address</label>
+        <input id="nl-vault" type="email" placeholder="Your email address" autocomplete="email">
+        <button class="k-btn" type="submit" data-magnetic="0.2"><span class="k-btn__label">Subscribe</span></button>
+        <p class="k-form__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <div class="k-foot__cols">
+    <div><h4>Shop</h4><a href="#collection">The collection</a><a href="#gifting">Gift packaging</a></div>
+    <div><h4>Kingdom</h4><a href="#story">Our story</a><a href="#contact">Contact</a></div>
+    <div><h4>Follow</h4><a href="#contact">Instagram</a><a href="#contact">WhatsApp</a></div>
+  </div>
+  <div class="k-foot__base"><span>© 2026 Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/silver.js"></script>
+<script src="js/kingdom.js"></script>
+<script>
+(function(){
+  const K = Kingdom.init({ page: 'vault', preset: 'onyx-vault' });
+  const canvas = document.querySelector('.v-pin .k-stage');
+  const stage = new SilverStage(canvas, { fov: 26 });
+  const ready = stage.load().catch(e => console.warn(e));
+  K.loader([ready]);
+  const syncLook = (s) => {
+    const C = s.bg.colors.map(K.hex), dark = s.mode === 'dark';
+    Object.assign(stage.look, { envA: C[3], envB: C[2], envAmt: s.silver.tint, spec: s.silver.shine, roomA: C[2], roomB: C[0], reflShift: 0.55,
+      shadowCol: dark ? '#000000' : K.mixHex('#18263b', C[0], 0.3) });
+  };
+  syncLook(K.state); K.on(syncLook);
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const pin = document.querySelector('.v-pin'), hero = document.querySelector('.v-hero');
+  const btn = document.querySelector('.v-light'), btnTxt = btn.querySelector('.v-light__txt');
+  let mouse = [0.2, 0.1], has = false, t = 0, introT = 0, lights = false;
+  const S = KSpring;
+  const sx = new S(0.62, 40, 12), sy = new S(0.5, 40, 12), rad = new S(0, 30, 10), th = new S(0, 40, 9), amb = new S(0.04, 30, 10);
+  window.addEventListener('pointermove', e => { has = true; mouse = [e.clientX / innerWidth, 1 - e.clientY / innerHeight]; }, { passive: true });
+  pin.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') { has = true; mouse = [e.clientX / innerWidth, 1 - e.clientY / innerHeight]; } });
+  btn.addEventListener('click', () => { lights = !lights; btn.setAttribute('aria-pressed', lights); btnTxt.textContent = lights ? 'Dim the lights' : 'Lights on'; });
+
+  K.tick(dt => {
+    if (!stage.ready) return;
+    t += dt;
+    if (document.documentElement.classList.contains('is-loaded')) introT += dt;
+    const motion = K.state.motion.level;
+    const r = hero.getBoundingClientRect();
+    if (r.bottom < 0) return;
+    const p = clamp(-r.top / (r.height - innerHeight));
+    const mobile = innerWidth <= 900;
+    // the beam: follows the cursor, wanders by itself on touch, opens up as you scroll
+    const auto = [0.6 + Math.sin(t * 0.35) * 0.16, 0.52 + Math.sin(t * 0.7) * 0.12];
+    const tgt = (has && Kingdom.fine) ? mouse : (has ? mouse : auto);
+    sx.t = tgt[0]; sy.t = tgt[1];
+    const open = lights || motion === 'off' ? 1 : clamp((p - 0.15) / 0.55);
+    rad.t = introT > 0.4 ? (0.3 + open * 1.4) : 0;
+    amb.t = lights || motion === 'off' ? 1 : 0.06 + open * 0.7;
+    th.t = (mouse[0] - 0.5) * 0.24 * K.state.silver.turn + (motion === 'off' ? 0 : Math.sin(t * 0.3) * 0.04);
+    [sx, sy, rad, th, amb].forEach(s => s.step(dt));
+    const sc = (mobile ? 0.7 : 0.92) * (1 + p * 0.12);
+    const gx = mobile ? 0 : Math.min(innerWidth / innerHeight * 0.3, 0.5), gy = mobile ? 0.3 : 0.04 + p * 0.05;
+    Object.assign(stage.poses.basin, { visible: true, x: gx - 0.28 * sc, y: gy + 0.08 * sc, z: -0.38, h: 1.38 * sc, rx: (sy.v - 0.5) * 0.12, ry: -(sx.v - 0.5) * 0.16, rz: 0 });
+    Object.assign(stage.poses.ewer, { visible: true, x: gx + 0.28 * sc, y: gy - 0.07 * sc, z: 0.12, h: 1.32 * sc, theta: clamp(th.v, -0.3, 0.3), rz: 0 });
+    Object.assign(stage.poses.shadow, { visible: true, x: gx + 0.28 * sc, y: gy - 0.73 * sc, z: 0.12, w: 0.6 * sc, h: 0.1, amt: 0.6 });
+    const lk = stage.look;
+    lk.spot = [sx.v, sy.v, Math.max(0.0001, rad.v)];
+    lk.spotAmb = Math.min(1, amb.v);
+    lk.light = [(sx.v - 0.5) * 2.2, (sy.v - 0.5) * 2 + 0.3, 0.7];
+    stage.render(dt);
+    pin.style.setProperty('--sx', (sx.v * 100).toFixed(2) + '%');
+    pin.style.setProperty('--sy', ((1 - sy.v) * 100).toFixed(2) + '%');
+    pin.style.setProperty('--sr', (rad.v * 50).toFixed(2) + 'vmax');
+  });
+
+  // stacked cards: the one underneath recedes as the next slides over it
+  const cards = [...document.querySelectorAll('.v-card')];
+  K.tick(() => {
+    cards.forEach((c, i) => {
+      const next = cards[i + 1]; if (!next) return;
+      const nr = next.getBoundingClientRect(), cr = c.getBoundingClientRect();
+      const over = clamp((cr.bottom - nr.top) / cr.height);
+      c.style.transform = `scale(${1 - over * 0.06})`;
+      c.style.filter = `brightness(${1 - over * 0.45})`;
+    });
+  });
+})();
+</script>
+</body>
+</html>

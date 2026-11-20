@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom — A Royal Touch in Silver</title>
+<meta name="description" content="Kingdom Silver Collection. Silver-filled pieces, thoughtfully packaged, priced within reach.">
+<meta name="theme-color" content="#131c2b">
+<link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/img/ewer.webp" as="image">
+<link rel="stylesheet" href="css/kingdom.css">
+<script src="site.config.js"></script>
+
+</head>
+
+<body class="p-arch">
+<style>
+/* ======================= ROYAL ARCH ======================= */
+.r-hero{position:relative;height:260vh}
+.r-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.r-arch{--w:min(44vw,560px);--h:min(76vh,760px);position:absolute;left:50%;top:54%;width:var(--w);height:var(--h);transform:translate(-50%,-50%);
+  border-radius:calc(var(--w) / 2) calc(var(--w) / 2) 0 0;overflow:hidden;z-index:1;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c3) 22%,transparent),color-mix(in srgb,var(--bg-2) 30%,transparent) 70%);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 22%,transparent)}
+.r-arch::before{content:"";position:absolute;inset:14px 14px 0;border-radius:calc(var(--w) / 2 - 14px) calc(var(--w) / 2 - 14px) 0 0;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 12%,transparent);pointer-events:none}
+.r-arch__story{position:absolute;inset:0;display:grid;place-items:center;padding:var(--pad);opacity:0;text-align:center}
+.r-arch__story div{display:grid;gap:var(--space-6);justify-items:center;max-width:980px}
+.r-arch__story .k-display{font-size:clamp(30px,3.8vw,60px);line-height:1.12}
+.r-pin .k-stage{z-index:2}
+.r-title{position:absolute;top:50%;z-index:3;font-size:clamp(44px,5.4vw,100px);line-height:.95;transform:translateY(-50%)}
+.r-title--l{right:calc(50% + min(22vw,280px) + clamp(16px,3vw,48px));text-align:right}
+.r-title--r{left:calc(50% + min(22vw,280px) + clamp(16px,3vw,48px))}
+.r-title em{color:var(--accent)}
+.r-eyebrow{position:absolute;top:clamp(88px,13vh,120px);left:0;right:0;text-align:center;z-index:3}
+.r-under{position:absolute;left:0;right:0;bottom:clamp(20px,4vh,40px);display:flex;justify-content:center;align-items:center;gap:var(--space-6);z-index:3;flex-wrap:wrap;padding:0 var(--pad)}
+.r-under .k-lead{font-size:var(--t-m);max-width:none}
+.r-orn{position:absolute;left:50%;transform:translateX(-50%);z-index:3;color:var(--accent);width:22px;top:calc(54% - min(38vh,380px) - 40px)}
+@media (max-width:900px){
+  .r-hero{height:220vh}
+  .r-arch{--w:78vw;--h:58vh;top:58%}
+  .r-title{position:absolute;top:auto;transform:none;font-size:clamp(40px,11vw,60px);left:0;right:0;text-align:center}
+  .r-title--l{top:92px}.r-title--r{top:calc(92px + 1.05em)}.r-title--r br{display:none}
+  .r-orn,.r-eyebrow{display:none}
+  .r-under{flex-direction:column;gap:var(--space-3);bottom:var(--space-5)}
+}
+
+.r-carousel{padding:clamp(96px,14vh,160px) 0;display:grid;gap:var(--space-7);overflow:hidden}
+.r-carousel__head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-5);padding:0 var(--pad);flex-wrap:wrap}
+.r-carousel__head h2{font-size:clamp(44px,5.4vw,88px)}
+.r-hint{display:flex;align-items:center;gap:var(--space-3);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.r-hint i{width:44px;height:1px;background:var(--ink-3);position:relative}
+.r-hint i::before,.r-hint i::after{content:"";position:absolute;top:-3px;width:7px;height:7px;border:solid var(--ink-3);border-width:0 0 1px 1px}
+.r-hint i::before{left:0;transform:rotate(45deg)}.r-hint i::after{right:0;transform:rotate(-135deg)}
+.r-track{display:flex;gap:clamp(20px,3vw,40px);padding:0 var(--pad);cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;will-change:transform}
+.r-track.is-drag{cursor:grabbing}
+.r-card{flex:0 0 auto;width:clamp(260px,26vw,400px);display:grid;gap:var(--space-4);text-decoration:none;color:inherit}
+.r-card__arch{--w:clamp(260px,26vw,400px);position:relative;aspect-ratio:3/4.2;border-radius:calc(var(--w) / 2) calc(var(--w) / 2) var(--r-2) var(--r-2);overflow:hidden;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c3) 18%,transparent),color-mix(in srgb,var(--ink) 4%,transparent));box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;transition:transform .8s var(--ease-out)}
+.r-card:hover .r-card__arch{transform:translateY(-8px)}
+.r-card__arch img{max-width:76%;max-height:78%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 26px 30px rgba(0,0,0,.3));transition:transform 1.2s var(--ease-out)}
+.r-card:hover .r-card__arch img{transform:scale(1.05)}
+.r-card__arch--photo img{max-width:none;max-height:none;width:100%;height:100%;object-fit:cover;filter:none}
+.r-card h3{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(26px,2.2vw,36px);margin:0;line-height:1.1}
+.r-card p{margin:0;color:var(--ink-3);font-size:var(--t-s)}
+.r-gift{width:56%;aspect-ratio:1;position:relative;transform:rotate(-6deg)}
+.r-gift__box{position:absolute;inset:14% 0 0 0;border-radius:6px;background:linear-gradient(150deg,#14395c,#18263b 55%,#131c2b);box-shadow:0 30px 50px rgba(0,0,0,.35)}
+.r-gift__lid{position:absolute;inset:0 -3% 72% -3%;border-radius:6px;background:linear-gradient(120deg,#f3c09b,#dba58c 50%,#a35234)}
+.r-gift__mark{position:absolute;left:50%;top:58%;width:30%;transform:translate(-50%,-50%);color:#f3c09b}
+
+.r-colonnade{padding:clamp(64px,10vh,120px) var(--pad);display:grid;gap:var(--space-7);max-width:1440px;margin:0 auto}
+.r-colonnade h2{font-size:clamp(40px,4.6vw,72px);text-align:center}
+.r-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,32px)}
+.r-col{--w:100%;position:relative;aspect-ratio:3/4.4;border-radius:999px 999px var(--r-2) var(--r-2);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);display:grid;align-content:end;padding:clamp(20px,2.4vw,36px);gap:var(--space-3);isolation:isolate}
+.r-col::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,color-mix(in srgb,var(--accent) 34%,transparent),color-mix(in srgb,var(--c3) 10%,transparent) 55%,transparent);opacity:.35;transition:opacity 1s var(--ease-out)}
+.r-col::after{content:"";position:absolute;inset:14px 14px 0;border-radius:999px 999px 0 0;box-shadow:inset 0 0 0 1px var(--line);z-index:-1;opacity:0;transition:opacity 1s}
+.r-col:hover::before,.r-col:focus-within::before{opacity:1}
+.r-col:hover::after,.r-col:focus-within::after{opacity:1}
+.r-col__n{font-family:var(--font-display);font-size:clamp(40px,4vw,64px);line-height:1;color:var(--accent)}
+.r-col h3{margin:0;font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(26px,2.4vw,40px);line-height:1.05}
+.r-col p{margin:0;color:var(--ink-2);font-size:var(--t-s);max-width:30ch}
+@media (max-width:900px){.r-cols{grid-template-columns:1fr}.r-col{aspect-ratio:auto;min-height:360px}}
+
+.r-cta{min-height:90vh;display:grid;place-items:center;text-align:center;padding:var(--space-10) var(--pad);position:relative}
+.r-cta__inner{display:grid;gap:var(--space-6);justify-items:center}
+.r-cta__icon{width:clamp(72px,8vw,120px);color:var(--accent);position:relative}
+.r-cta__icon .k-logo-icon{width:100%;opacity:.18}
+.r-cta__icon .k-logo-icon+.k-logo-icon{position:absolute;inset:0;opacity:1;clip-path:inset(calc(100% - var(--fill,0%)) 0 0 0)}
+.r-cta h2{font-size:clamp(60px,10vw,180px);line-height:.92}
+</style>
+
+<div class="k-loader" aria-hidden="true"><div class="k-loader__panel"></div><div class="k-loader__mark"><span class="k-logo-icon"></span><span class="k-loader__bar"></span></div></div>
+<header class="k-nav">
+  <a class="k-nav__brand" href="#top" aria-label="Kingdom Silver Collection — home"><span class="k-logo-icon"></span><span class="k-logo-word"></span></a>
+  <ul class="k-nav__links"><li><a href="#collection">Collection</a></li><li><a href="#story">Our story</a></li><li><a href="#gifting">Gifting</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a class="k-btn k-nav__cta" href="#collection" data-magnetic="0.25"><span class="k-btn__label">Shop the collection</span></a>
+  <button class="k-nav__menu" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+<nav class="k-menu" aria-label="Mobile"><a href="#collection">Collection</a><a href="#story">Our story</a><a href="#gifting">Gifting</a><a href="#contact">Contact</a></nav>
+
+<main id="top">
+  <section class="r-hero" aria-label="Introduction">
+    <span id="story" style="position:absolute;top:72%;left:0" aria-hidden="true"></span>
+    <div class="r-pin">
+      <div class="r-arch">
+        <div class="r-arch__story">
+          <div>
+            <p class="k-eyebrow">Our story</p>
+            <p class="k-display">Kingdom was created to redefine silver gifting, bringing the beauty, presence, and elegance of silver to a price that makes generous giving possible.</p>
+            <p class="k-body" style="max-width:52ch">From carefully selected silver-filled pieces to thoughtful packaging, every detail is designed to make giving feel elevated.</p>
+            <p class="k-eyebrow" style="color:var(--accent)">Filled with silver · Beautifully gifted · Priced within reach</p>
+          </div>
+        </div>
+      </div>
+      <canvas class="k-stage" role="img" aria-label="A silver ewer framed by its basin like a halo."></canvas>
+      <h1 class="sr-only">The Art of Silver Gifting.</h1>
+      <div class="r-title r-title--l k-display" aria-hidden="true" data-split style="--d:400">The Art of</div>
+      <div class="r-title r-title--r k-display" aria-hidden="true" data-split style="--d:600"><em>Silver</em> <br>Gifting.</div>
+      <div class="r-under" data-reveal style="--d:1000">
+        <p class="k-lead">Filled with silver. Given with pride.</p>
+        <a class="k-btn" href="#collection" data-magnetic="0.3"><span class="k-btn__label">Explore the collection <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-carousel" id="collection">
+    <div class="r-carousel__head">
+      <h2 class="k-display" data-split>The Collection</h2>
+      <p class="r-hint" data-reveal><i></i>Drag to explore</p>
+    </div>
+    <div class="r-track" data-cursor="Drag">
+      <a class="r-card" href="#contact" draggable="false"><div class="r-card__arch"><img src="assets/img/ewer.webp" alt="Silver ewer" loading="lazy" draggable="false"></div><div><h3>The Ewer</h3><p>Slender neck, scrolled handle, rich filigree.</p></div></a>
+      <a class="r-card" href="#contact" draggable="false"><div class="r-card__arch"><img src="assets/img/basin.webp" alt="Silver basin" loading="lazy" draggable="false"></div><div><h3>The Basin</h3><p>Acanthus border, mirror-polished centre.</p></div></a>
+      <a class="r-card" href="#contact" draggable="false"><div class="r-card__arch r-card__arch--photo"><img src="assets/img/pair.webp" alt="Ewer standing before its matching basin" loading="lazy" draggable="false"></div><div><h3>The Set</h3><p>Ewer and basin, made to be given together.</p></div></a>
+      <a class="r-card" href="#gifting" draggable="false"><div class="r-card__arch"><div class="r-gift" aria-hidden="true"><div class="r-gift__box"><span class="k-logo r-gift__mark"></span></div><div class="r-gift__lid"></div></div></div><div><h3>The Gift</h3><p>Kingdom packaging, ready to give.</p></div></a>
+      <a class="r-card" href="#contact" draggable="false"><div class="r-card__arch"><img src="assets/img/ewer.webp" alt="Silver ewer, detail" loading="lazy" draggable="false" style="transform:scale(1.9) translateY(14%)"></div><div><h3>The Detail</h3><p>Filigree that catches every light.</p></div></a>
+    </div>
+  </section>
+
+  <section class="r-colonnade" id="gifting">
+    <h2 class="k-display" data-split>Every detail, <em>elevated.</em></h2>
+    <div class="r-cols">
+      <article class="r-col" tabindex="0" data-reveal><span class="r-col__n">I</span><h3>Filled with silver.</h3><p>Carefully selected pieces with the presence and brilliance of silver.</p></article>
+      <article class="r-col" tabindex="0" data-reveal style="--d:120"><span class="r-col__n">II</span><h3>Beautifully gifted.</h3><p>Thoughtful packaging, so the moment of opening feels like an occasion.</p></article>
+      <article class="r-col" tabindex="0" data-reveal style="--d:240"><span class="r-col__n">III</span><h3>Priced within reach.</h3><p>Elegance at a price that makes generous giving possible.</p></article>
+    </div>
+  </section>
+
+  <section class="r-cta">
+    <div class="r-cta__inner">
+      <div class="r-cta__icon" aria-hidden="true"><span class="k-logo-icon"></span><span class="k-logo-icon"></span></div>
+      <h2 class="k-display" data-split>A Royal <em>Touch.</em></h2>
+      <a class="k-btn" href="#collection" data-magnetic="0.35" data-reveal style="--d:300"><span class="k-btn__label">Find the perfect gift <svg class="k-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="k-foot" id="contact">
+  <div class="k-foot__top">
+    <div>
+      <span class="k-logo k-foot__mark" role="img" aria-label="Kingdom Silver Collection"></span>
+    </div>
+    <div style="display:grid;gap:24px">
+      <p class="k-eyebrow">New pieces, first</p>
+      <form class="k-form" data-k-form novalidate>
+        <label class="sr-only" for="nl-arch">Email address</label>
+        <input id="nl-arch" type="email" placeholder="Your email address" autocomplete="email">
+        <button class="k-btn" type="submit" data-magnetic="0.2"><span class="k-btn__label">Subscribe</span></button>
+        <p class="k-form__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <div class="k-foot__cols">
+    <div><h4>Shop</h4><a href="#collection">The collection</a><a href="#gifting">Gift packaging</a></div>
+    <div><h4>Kingdom</h4><a href="#story">Our story</a><a href="#contact">Contact</a></div>
+    <div><h4>Follow</h4><a href="#contact">Instagram</a><a href="#contact">WhatsApp</a></div>
+  </div>
+  <div class="k-foot__base"><span>© 2026 Kingdom Silver Collection</span><span>A Royal Touch.</span></div>
+</footer>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/silver.js"></script>
+<script src="js/kingdom.js"></script>
+<script>
+(function(){
+  const K = Kingdom.init({ page: 'arch', preset: 'dusk-engraving' });
+  const canvas = document.querySelector('.r-pin .k-stage');
+  const stage = new SilverStage(canvas, { fov: 26 });
+  const ready = stage.load().catch(e => console.warn(e));
+  K.loader([ready]);
+  const syncLook = (s) => {
+    const C = s.bg.colors.map(K.hex), dark = s.mode === 'dark';
+    Object.assign(stage.look, { envA: C[3], envB: C[1], envAmt: s.silver.tint, spec: s.silver.shine, roomA: K.mixHex(C[2], C[1], 0.5), roomB: C[1], reflShift: 0,
+      shadowCol: dark ? '#03060c' : K.mixHex('#18263b', C[0], 0.3) });
+  };
+  syncLook(K.state); K.on(syncLook);
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const hero = document.querySelector('.r-hero'), arch = hero.querySelector('.r-arch'), story = hero.querySelector('.r-arch__story');
+  const titles = hero.querySelectorAll('.r-title'), under = hero.querySelector('.r-under');
+  let mouse = [0, 0], t = 0, introT = 0, spin = 0, lastScroll = scrollY;
+  const S = KSpring;
+  const sp = { brx: new S(0, 40, 9), bry: new S(0, 40, 9), th: new S(0, 50, 10), rise: new S(1, 30, 8.5) };
+  window.addEventListener('pointermove', e => { mouse = [e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight * 2 - 1)]; }, { passive: true });
+
+  K.tick(dt => {
+    if (!stage.ready) return;
+    t += dt;
+    if (document.documentElement.classList.contains('is-loaded')) introT += dt;
+    const motion = K.state.motion.level;
+    const r = hero.getBoundingClientRect();
+    const p = clamp(-r.top / (r.height - innerHeight));
+    const vel = (scrollY - lastScroll) / Math.max(dt, 0.001); lastScroll = scrollY;
+    if (r.bottom < 0) return;
+    const mobile = innerWidth <= 900;
+    // arch opens into a full-bleed window: the zoom transition into our story
+    const e = ease(clamp((p - 0.18) / 0.6));
+    const W = mobile ? innerWidth * 0.78 : Math.min(innerWidth * 0.44, 560), H = mobile ? innerHeight * 0.58 : Math.min(innerHeight * 0.76, 760);
+    const w = W + (innerWidth - W) * e, h = H + (innerHeight - H) * e;
+    arch.style.width = w + 'px'; arch.style.height = h + 'px';
+    arch.style.borderRadius = `${(W / 2) * (1 - e)}px ${(W / 2) * (1 - e)}px 0 0`;
+    arch.style.top = (mobile ? 58 : 54) * (1 - e) + 50 * e + '%';
+    story.style.opacity = clamp((e - 0.7) / 0.3);
+    const fade = 1 - clamp(p / 0.22);
+    titles.forEach((el, i) => { el.style.opacity = fade; el.style.transform = mobile ? '' : `translateY(-50%) translateX(${(i ? 1 : -1) * p * 30}vw)`; });
+    under.style.opacity = fade;
+    // silver: halo composition
+    sp.rise.t = introT > 0.2 ? 0 : 1;
+    if (motion !== 'off') spin += dt * (motion === 'calm' ? 0.03 : 0.06) + vel * 0.00025;
+    const fol = K.state.silver.turn;
+    sp.brx.t = mouse[1] * 0.14 * fol; sp.bry.t = -mouse[0] * 0.18 * fol;
+    sp.th.t = mouse[0] * 0.12 * fol + (motion === 'off' ? 0 : Math.sin(t * 0.4) * 0.05);
+    for (const k in sp) sp[k].step(dt);
+    const s = (mobile ? 0.7 : 0.94) * (1 + e * 0.15), gy = (mobile ? -0.22 : -0.08) - sp.rise.v * 1.6 - ease(clamp(e / 0.75)) * 2.6;
+    const op = e > 0.95 ? 0 : 1;
+    Object.assign(stage.poses.basin, { visible: true, x: 0, y: gy + 0.13 * s + sp.rise.v * 0.5, z: -0.45, h: 1.06 * s,   /* lowered: the basin frames the ewer instead of crowning it */ rx: sp.brx.v, ry: sp.bry.v, rz: spin, op });
+    Object.assign(stage.poses.ewer, { visible: true, x: 0, y: gy, z: 0.05, h: 1.18 * s, theta: clamp(sp.th.v, -0.3, 0.3), rz: 0, op });
+    Object.assign(stage.poses.shadow, { visible: true, x: 0, y: gy - 0.59 * s, z: 0.05, w: 0.48 * s, h: 0.08, amt: 0.5 * op * (1 - sp.rise.v) });
+    const lk = stage.look, fl = K.state.silver.follow && Kingdom.fine;
+    const lx = fl ? mouse[0] : Math.sin(t * 0.4) * 0.6, ly = fl ? mouse[1] * 0.7 + 0.3 : 0.5;
+    lk.light[0] += (lx - lk.light[0]) * Math.min(1, dt * 4); lk.light[1] += (ly - lk.light[1]) * Math.min(1, dt * 4); lk.light[2] = 0.85;
+    lk.reflect = 0.9;
+    
+    stage.render(dt);
+  });
+
+  // draggable carousel with inertia
+  const track = document.querySelector('.r-track');
+  let x = 0, v = 0, down = false, sx = 0, lx = 0, moved = 0;
+  const bounds = () => -(track.scrollWidth - track.parentElement.clientWidth);
+  track.addEventListener('pointerdown', e => { down = true; sx = lx = e.clientX; moved = 0; track.setPointerCapture(e.pointerId); track.classList.add('is-drag'); });
+  track.addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - lx; lx = e.clientX; x += dx; v = dx; moved += Math.abs(dx); });
+  const up = () => { down = false; track.classList.remove('is-drag'); };
+  track.addEventListener('pointerup', up); track.addEventListener('pointercancel', up);
+  track.addEventListener('click', e => { if (moved > 6) e.preventDefault(); }, true);
+  K.tick(dt => {
+    if (!down) { x += v; v *= Math.pow(0.02, dt); }
+    const min = Math.min(0, bounds());
+    if (x > 0) { x += (0 - x) * Math.min(1, dt * 10); v *= 0.5; }
+    if (x < min) { x += (min - x) * Math.min(1, dt * 10); v *= 0.5; }
+    track.style.transform = `translate3d(${x}px,0,0)`;
+  });
+  // crest icon fills as you approach the end
+  const icon = document.querySelector('.r-cta__icon');
+  K.tick(() => { const r = icon.getBoundingClientRect(); icon.style.setProperty('--fill', (clamp((innerHeight - r.top) / (innerHeight * 0.6)) * 100).toFixed(1) + '%'); });
+})();
+</script>
+</body>
+</html>
