@@ -1,0 +1,157 @@
+// Kingdom · Royal kit — design state, presets and theming.
+// Every editor option maps to values defined here, so any mix stays on-brand.
+// Brand colours only: #a35234 #f3c09b · #18263b #14395c #3472a8 · #dba58c>#2b3a4a · #cc917b #f2d4be · #124980>#131c2b
+
+export const PALETTES = {
+  royal:    { name: 'Royal Night',  mode: 'dark',  colors: ['#0b1220', '#131c2b', '#124980', '#3472a8'], note: 'Navy · royal blue' },
+  navy:     { name: 'Midnight',     mode: 'dark',  colors: ['#0c1522', '#18263b', '#14395c', '#2b3a4a'], note: 'Deep navy' },
+  sapphire: { name: 'Sapphire',     mode: 'dark',  colors: ['#0d1626', '#123058', '#124980', '#3472a8'], note: 'Gradient #124980 › #131c2b' },
+  copper:   { name: 'Ink & Copper', mode: 'dark',  colors: ['#0e1520', '#18263b', '#a35234', '#f3c09b'], note: 'Navy · copper' },
+  dusk:     { name: 'Dusk Rose',    mode: 'dark',  colors: ['#18212c', '#2b3a4a', '#dba58c', '#14395c'], note: 'Gradient #dba58c › #2b3a4a' },
+  blush:    { name: 'Blush',        mode: 'light', colors: ['#f2d4be', '#f9ebe0', '#cc917b', '#f3c09b'], note: 'Gradient #cc917b › #f2d4be' },
+  peach:    { name: 'Peach',        mode: 'light', colors: ['#f3c09b', '#f8dcc6', '#dba58c', '#a35234'], note: 'Peach · copper' },
+  pearl:    { name: 'Pearl',        mode: 'light', colors: ['#ece3da', '#f8f4ef', '#f2d4be', '#3472a8'], note: 'Ivory · blush' },
+  rose:     { name: 'Rose Gold',    mode: 'light', colors: ['#e2b39d', '#f2d4be', '#cc917b', '#fff2e8'], note: 'Rose · blush' },
+  porcelain:{ name: 'Porcelain',    mode: 'light', colors: ['#e3e9f1', '#f5f7fa', '#3472a8', '#f2d4be'], note: 'Cool white · royal' }
+};
+
+export const ACCENTS = {
+  dark:  [['#f3c09b', 'Peach'], ['#f2d4be', 'Blush'], ['#dba58c', 'Rose'], ['#cc917b', 'Copper rose'], ['#e6ebf2', 'Silver']],
+  light: [['#a35234', 'Copper'], ['#18263b', 'Navy'], ['#14395c', 'Royal'], ['#124980', 'Sapphire'], ['#cc917b', 'Copper rose']]
+};
+
+export const BACKGROUNDS = [
+  ['aurora', 'Aurora', 'Navy, royal and peach light drifting'],
+  ['silk', 'Silk', 'Slow satin waves'],
+  ['guilloche', 'Guilloché', 'Engine-turned silver lines'],
+  ['liquid', 'Liquid silver', 'Molten sheen'],
+  ['stardust', 'Stardust', 'Faint glints of light'],
+  ['still', 'Still', 'A quiet gradient']
+];
+
+export const TYPE = {
+  heritage: { name: 'Heritage', note: 'Italiana · Manrope',        display: "'Italiana', 'Times New Roman', serif",          italic: "'Cormorant Garamond', serif", text: "'Manrope', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 1 },
+  couture:  { name: 'Couture',  note: 'Bodoni Moda · Manrope',     display: "'Bodoni Moda', 'Times New Roman', serif",       italic: "'Bodoni Moda', serif",        text: "'Manrope', system-ui, sans-serif", weight: 400, track: '-0.035em', up: false, scale: 0.94 },
+  crest:    { name: 'Crest',    note: 'Cinzel · Poppins',          display: "'Cinzel', 'Times New Roman', serif",            italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 400, track: '0.01em', up: true, scale: 0.8 },
+  atelier:  { name: 'Atelier',  note: 'Cormorant · Manrope',       display: "'Cormorant Garamond', 'Times New Roman', serif", italic: "'Cormorant Garamond', serif", text: "'Manrope', system-ui, sans-serif", weight: 300, track: '-0.025em', up: false, scale: 1.04 },
+  gilda:    { name: 'Gilda',    note: 'Gilda Display · Poppins',   display: "'Gilda Display', 'Times New Roman', serif",     italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 400, track: '-0.02em', up: false, scale: 0.92 },
+  bellefair:{ name: 'Bellefair',note: 'Bellefair · Manrope',       display: "'Bellefair', 'Times New Roman', serif",         italic: "'Cormorant Garamond', serif", text: "'Manrope', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 0.98 },
+  brand:    { name: 'Brand book',note: 'Poppins (brand font)',     display: "'Poppins', system-ui, sans-serif",              italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 300, track: '-0.03em', up: false, scale: 0.84 }
+};
+
+// Studio lighting for the 3D silver (base light tent + soft boxes + black flags)
+export const MOODS = {
+  studio:  { name: 'Studio',  note: 'Crisp and balanced', exposure: 1.0,  studio: { base: 1.25, flags: 0.75, strips: 1,   key: 1,   warm: 0.35, cool: 0 } },
+  gallery: { name: 'Gallery', note: 'Bright and airy',    exposure: 1.06, studio: { base: 1.4,  flags: 0.45, strips: 0.9, key: 1.2, warm: 0.45, cool: 0 } },
+  noir:    { name: 'Noir',    note: 'Deep contrast',      exposure: 0.95, studio: { base: 0.8,  flags: 1,    strips: 1.25,key: 0.8, warm: 0.2,  cool: 0.7 } },
+  candle:  { name: 'Candle',  note: 'Warm peach glow',    exposure: 1.0,  studio: { base: 1.0,  flags: 0.85, strips: 0.9, key: 0.9, warm: 1.1,  cool: 0 } },
+  moon:    { name: 'Moonlit', note: 'Cool royal light',   exposure: 0.98, studio: { base: 1.0,  flags: 0.9,  strips: 1.1, key: 0.9, warm: 0.1,  cool: 1.2 } }
+};
+
+export const PRESETS = {
+  'royal-night':   { name: 'Royal Night',        palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'heritage',  mood: 'studio' },
+  'coronation':    { name: 'Coronation Blue',    palette: 'sapphire', bg: 'silk',      accent: '#f2d4be', type: 'crest',     mood: 'noir' },
+  'guilloche':     { name: 'Midnight Guilloché', palette: 'navy',     bg: 'guilloche', accent: '#dba58c', type: 'couture',   mood: 'noir' },
+  'ink-copper':    { name: 'Ink & Copper',       palette: 'copper',   bg: 'liquid',    accent: '#f3c09b', type: 'gilda',     mood: 'candle' },
+  'dusk-rose':     { name: 'Dusk Rose',          palette: 'dusk',     bg: 'aurora',    accent: '#f2d4be', type: 'atelier',   mood: 'candle' },
+  'starlit':       { name: 'Starlit Vault',      palette: 'navy',     bg: 'stardust',  accent: '#f3c09b', type: 'bellefair', mood: 'moon' },
+  'blush-atelier': { name: 'Blush Atelier',      palette: 'blush',    bg: 'silk',      accent: '#a35234', type: 'couture',   mood: 'gallery' },
+  'peach-salon':   { name: 'Peach Salon',        palette: 'peach',    bg: 'aurora',    accent: '#18263b', type: 'atelier',   mood: 'gallery' },
+  'pearl':         { name: 'Pearl Gallery',      palette: 'pearl',    bg: 'still',     accent: '#14395c', type: 'heritage',  mood: 'gallery' },
+  'rose-gold':     { name: 'Rose Gold',          palette: 'rose',     bg: 'liquid',    accent: '#18263b', type: 'gilda',     mood: 'studio' },
+  'porcelain':     { name: 'Porcelain',          palette: 'porcelain',bg: 'guilloche', accent: '#124980', type: 'crest',     mood: 'studio' },
+  'brand-book':    { name: 'Brand Book',         palette: 'navy',     bg: 'still',     accent: '#f3c09b', type: 'brand',     mood: 'studio' }
+};
+
+const listeners = new Set();
+let state = null, page = null;
+const KEY = () => 'kingdom:royal:' + page.id;
+const store = (v) => { try { localStorage.setItem(KEY(), JSON.stringify(v)); } catch {} };
+const load = () => { try { return JSON.parse(localStorage.getItem(KEY()) || 'null'); } catch { return null; } };
+
+export function fromPreset(id) {
+  const p = PRESETS[id] || PRESETS['royal-night'];
+  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: 1 };
+}
+function decodeHash() {
+  const m = location.hash.match(/k=([A-Za-z0-9_-]+)/);
+  if (!m) return null;
+  try { return JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g, '+').replace(/_/g, '/'))))); } catch { return null; }
+}
+export function shareURL() {
+  const b = btoa(unescape(encodeURIComponent(JSON.stringify(state)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return location.href.split('#')[0] + '#k=' + b;
+}
+export const editorAllowed = () => {
+  const cfg = window.KINGDOM_CFG || {};
+  return cfg.editor !== false || /edit/.test(location.hash);
+};
+
+export function initState(cfg) {
+  page = cfg;
+  const locked = (window.KINGDOM_CFG || {})[cfg.id];
+  const def = Object.assign(fromPreset(cfg.preset), locked || {});
+  let s = decodeHash();
+  if (!s && editorAllowed()) s = load();
+  state = Object.assign(def, s || {});
+  if (!PALETTES[state.palette]) state.palette = def.palette;
+  if (!TYPE[state.type]) state.type = def.type;
+  if (!MOODS[state.mood]) state.mood = def.mood;
+  if (!BACKGROUNDS.find((b) => b[0] === state.bg)) state.bg = def.bg;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches && !s) state.motion = 'still';
+  apply();
+  return state;
+}
+export const getState = () => state;
+export const getPage = () => page;
+export const onState = (fn) => { listeners.add(fn); return () => listeners.delete(fn); };
+export function setState(patch) {
+  Object.assign(state, patch);
+  if (!('preset' in patch)) {
+    const p = PRESETS[state.preset];
+    if (p && ['palette', 'bg', 'accent', 'type', 'mood'].some((k) => p[k] !== state[k])) state.preset = null;
+  }
+  store(state); apply();
+}
+export function setPreset(id) {
+  const keep = { motion: state.motion, grain: state.grain, cursor: state.cursor, intensity: state.intensity };
+  state = Object.assign(fromPreset(id), keep);
+  store(state); apply();
+}
+export function resetState() { state = fromPreset(page.preset); store(state); apply(); }
+export const palette = () => PALETTES[state.palette];
+export const isDark = () => palette().mode === 'dark';
+
+const hex = (h) => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+export const rgb01 = (h) => hex(h).map((v) => v / 255);
+const lum = (h) => { const [r, g, b] = rgb01(h).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+
+function apply() {
+  const root = document.documentElement;
+  const P = palette(), T = TYPE[state.type], dark = P.mode === 'dark';
+  const allowed = ACCENTS[P.mode].map((a) => a[0]);
+  if (!allowed.includes(state.accent)) state.accent = allowed[0];
+  const ink = dark ? '#f4efe9' : '#18263b';
+  const ir = hex(ink).join(',');
+  const acc = state.accent;
+  const v = {
+    '--c0': P.colors[0], '--c1': P.colors[1], '--c2': P.colors[2], '--c3': P.colors[3],
+    '--c1-rgb': hex(P.colors[1]).join(','), '--c0-rgb': hex(P.colors[0]).join(','),
+    '--ink': ink, '--ink-rgb': ir,
+    '--ink-2': `rgba(${ir},${dark ? 0.76 : 0.8})`, '--ink-3': `rgba(${ir},${dark ? 0.56 : 0.62})`, '--ink-4': `rgba(${ir},${dark ? 0.3 : 0.3})`,
+    '--line': `rgba(${ir},${dark ? 0.13 : 0.14})`, '--line-2': `rgba(${ir},${dark ? 0.26 : 0.28})`,
+    '--accent': acc, '--accent-rgb': hex(acc).join(','), '--on-accent': lum(acc) > 0.32 ? '#131c2b' : '#fbf3ec',
+    '--surface': dark ? 'rgba(255,255,255,0.045)' : 'rgba(255,255,255,0.5)',
+    '--surface-2': dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.72)',
+    '--glass': dark ? 'rgba(12,18,30,0.66)' : 'rgba(255,250,245,0.7)',
+    '--shade': dark ? 'rgba(0,0,0,0.45)' : 'rgba(24,38,59,0.18)',
+    '--font-display': T.display, '--font-italic': T.italic, '--font-text': T.text,
+    '--display-weight': T.weight, '--display-track': T.track, '--display-case': T.up ? 'uppercase' : 'none', '--ds': T.scale
+  };
+  for (const k in v) root.style.setProperty(k, v[k]);
+  root.dataset.mode = P.mode; root.dataset.type = state.type; root.dataset.motion = state.motion;
+  root.classList.toggle('no-grain', !state.grain);
+  root.classList.toggle('no-cursor', !state.cursor);
+  const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = P.colors[1];
+  listeners.forEach((fn) => fn(state));
+}

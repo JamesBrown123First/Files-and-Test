@@ -1,0 +1,4 @@
+.sh-wait{position:relative;min-height:100vh;display:grid;align-content:center;justify-items:start;gap:var(--s6);padding:calc(var(--head-h) + 64px) var(--pad) var(--s9);overflow:hidden}
+.sh-wait img{position:absolute;right:6vw;bottom:-4vh;height:86vh;width:auto;z-index:-1;filter:drop-shadow(0 40px 60px rgba(0,0,0,.4))}
+.sh-btns{display:flex;flex-wrap:wrap;gap:var(--s3)}
+@media (max-width:900px){.sh-wait img{opacity:.25;right:-10vw}}

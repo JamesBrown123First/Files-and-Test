@@ -1,0 +1,68 @@
+/* CORONATION — 3D ewer descends into the headline; five orbiting details */
+.co-hero{position:relative;height:760vh;margin-top:calc(var(--ann-h) * -1)}
+.co-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.co-title{position:absolute;z-index:1;left:0;right:0;top:50%;transform:translateY(-52%);display:grid;justify-items:center;text-align:center;font-size:calc(clamp(64px,12.4vw,240px) * var(--ds));line-height:.86;pointer-events:none}
+.co-title>span{display:block;opacity:0}
+.co-title>span:nth-child(1){transform:translateX(-16vw)}
+.co-title>span:nth-child(2){font-size:1.18em;line-height:.8;transform:translateX(-22vw)}
+.co-title>span:nth-child(3){transform:translateX(18vw)}
+.co-stage{position:absolute;inset:0;z-index:2;touch-action:pan-y;cursor:grab}
+.co-stage.is-dragging{cursor:grabbing}
+.co-canvas{width:100%!important;height:100%!important}
+.co-line{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
+.co-line path{fill:none;stroke:var(--accent);stroke-width:1;opacity:.8;stroke-dasharray:3 4}
+.co-dot{position:absolute;left:0;top:0;z-index:4;width:0;height:0;pointer-events:none}
+.co-dot::before,.co-dot::after{content:"";position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .6s var(--ease)}
+.co-dot::after{left:-18px;top:-18px;width:36px;height:36px;background:none;box-shadow:inset 0 0 0 1px var(--accent)}
+.co-dot.is-on::before{transform:scale(1)}
+.co-dot.is-on::after{transform:scale(1);animation:ping 2.2s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.co-intro{position:absolute;z-index:5;left:var(--pad);bottom:clamp(32px,6vh,64px);display:grid;gap:var(--s5);max-width:440px}
+.co-intro .r-lead{font-family:var(--font-italic);font-style:italic;font-size:clamp(22px,1.8vw,28px);color:var(--ink)}
+.co-intro__btns{display:flex;flex-wrap:wrap;gap:var(--s3)}
+.co-hint{position:absolute;z-index:5;right:var(--pad);bottom:clamp(40px,6vh,72px);display:flex;align-items:center;gap:var(--s3);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-3)}
+.co-hint i{width:40px;height:1px;background:var(--line-2);position:relative;overflow:hidden}
+.co-hint i::after{content:"";position:absolute;inset:0;background:var(--accent);animation:run 2.4s var(--ease) infinite}
+@keyframes run{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.co-card{position:absolute;z-index:5;top:50%;width:min(400px,32vw);display:grid;gap:var(--s4);opacity:0;visibility:hidden;transform:translateY(-40%);transition:opacity .7s var(--ease),transform .9s var(--ease),visibility 0s .7s}
+.co-card.is-on{opacity:1;visibility:visible;transform:translateY(-50%);transition-delay:.15s,.15s,0s}
+.co-card--r{right:calc(var(--pad) + 200px)}
+.co-card--l{left:var(--pad)}
+.co-card b{font-size:12px;font-weight:600;letter-spacing:.24em;color:var(--accent);font-variant-numeric:tabular-nums}
+.co-card b span{color:var(--ink-3);font-weight:500}
+.co-card .r-h3{font-size:calc(clamp(36px,3.6vw,60px) * var(--ds))}
+.co-card p{color:var(--ink-2);max-width:34ch}
+.co-rail{position:absolute;z-index:5;right:var(--pad);top:50%;transform:translateY(-50%);display:grid;gap:var(--s3);justify-items:end}
+.co-rail button{display:flex;align-items:center;gap:var(--s3);min-height:32px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);transition:color .4s}
+.co-rail button::after{content:"";width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ink-3);transition:background .4s,box-shadow .4s,transform .4s var(--ease)}
+.co-rail button span{opacity:0;transform:translateX(8px);transition:opacity .4s,transform .5s var(--ease)}
+.co-rail:hover button span,.co-rail button.is-on span{opacity:1;transform:none}
+.co-rail button.is-on{color:var(--ink)}
+.co-rail button.is-on::after{background:var(--accent);box-shadow:none;transform:scale(1.25)}
+.co-rail__track{position:absolute;right:3.5px;top:16px;bottom:16px;width:1px;background:var(--line);z-index:-1}
+.co-rail__fill{position:absolute;inset:0;background:var(--accent);transform-origin:top;transform:scaleY(0)}
+.co-final{position:absolute;z-index:5;left:var(--pad);top:50%;transform:translateY(-50%);display:grid;gap:var(--s5);max-width:520px;opacity:0;pointer-events:none}
+.co-final-on .co-final{pointer-events:auto}
+.co-final-on .co-rail{opacity:0;pointer-events:none}
+.co-rail{transition:opacity .5s}
+@media (max-width:900px){
+  .co-hero{height:700vh}
+  .co-title{top:calc(var(--ann-h) + var(--head-h) + 8px);transform:none;justify-items:start;text-align:left;padding:0 var(--pad);font-size:calc(min(14vw,84px) * var(--ds))}
+  .co-title>span:nth-child(1),.co-title>span:nth-child(3){transform:none}
+  .co-title>span:nth-child(2){font-size:1em;line-height:.9;transform:none}
+  .co-intro .r-btn--ghost{display:none}
+  .co-intro{right:var(--pad);bottom:calc(24px + env(safe-area-inset-bottom));max-width:none;justify-items:center;text-align:center}
+  .co-hint{display:none}
+  .co-rail{top:auto;bottom:calc(16px + env(safe-area-inset-bottom));right:50%;transform:translateX(50%);display:flex;gap:var(--s2)}
+  .co-rail button span{display:none}
+  html:not(.co-in-detail) .co-rail{opacity:0;pointer-events:none}
+  .co-final .r-lead{display:none}
+  .co-rail__track{display:none}
+  .co-card,.co-card--l,.co-card--r{left:var(--pad);right:var(--pad);top:auto;bottom:calc(64px + env(safe-area-inset-bottom));width:auto;transform:translateY(20px);padding:var(--s5);border-radius:var(--r-m);background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);gap:var(--s2)}
+  .co-card.is-on{transform:none}
+  .co-card .r-h3{font-size:calc(32px * var(--ds))}
+  .co-card p{font-size:15px}
+  .co-final{top:auto;bottom:calc(32px + env(safe-area-inset-bottom));right:var(--pad);transform:none;padding:var(--s5);border-radius:var(--r-m);background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);gap:var(--s3)}
+  .co-final .r-h2{font-size:calc(40px * var(--ds))}
+  .co-final .r-lead{font-size:15px}
+}
