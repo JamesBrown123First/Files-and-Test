@@ -71,7 +71,7 @@ function Basin({ physics }) {
     <group ref={g} position={[0, C.basinY, BASIN_REST.z]} rotation={[C.basinRx, 0, C.basinRz]}>
       <mesh>
         <planeGeometry args={[R * 2, R * 2]} />
-        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.5, 0.5]} metalness={0.12} roughness={0.5} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.25} />
+        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.8, 0.8]} metalness={0.85} roughness={0.36} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.12} />
       </mesh>
       {/* polished centre: a true planar mirror that reflects the ewer standing in front of it */}
       <primitive object={mirror} position={[0, 0, 0.004]} />
