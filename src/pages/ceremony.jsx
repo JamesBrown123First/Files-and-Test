@@ -36,7 +36,7 @@ function MirrorBackdrop() {
     gl.render = function (sc, cam) {
       if (sc === scene && cam !== camera && cam.isPerspectiveCamera && scene.environment) {
         const b = sc.background, bb = sc.backgroundBlurriness, bi = sc.backgroundIntensity;
-        sc.background = scene.environment; sc.backgroundBlurriness = 0.22; sc.backgroundIntensity = 0.6;
+        sc.background = scene.environment; sc.backgroundBlurriness = 0.18; sc.backgroundIntensity = 1.0;
         orig.call(this, sc, cam);
         sc.background = b; sc.backgroundBlurriness = bb; sc.backgroundIntensity = bi;
         return;
@@ -55,7 +55,7 @@ function Basin({ physics }) {
   const mirror = useMemo(() => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     const size = Math.round((isMobile() ? 512 : 1024) * dpr);
-    const m = new Reflector(new THREE.CircleGeometry(R * 0.35 * 0.985, 96), { textureWidth: size, textureHeight: size, clipBias: 0.003, color: 0xc4c6cb, multisample: 4 });
+    const m = new Reflector(new THREE.CircleGeometry(R * 0.35 * 0.985, 96), { textureWidth: size, textureHeight: size, clipBias: 0.003, color: 0xd4d6da, multisample: 4 });
     return m;
   }, []);
   useEffect(() => () => { mirror.getRenderTarget().dispose(); mirror.geometry.dispose(); }, [mirror]);
@@ -71,7 +71,7 @@ function Basin({ physics }) {
     <group ref={g} position={[0, C.basinY, BASIN_REST.z]} rotation={[C.basinRx, 0, C.basinRz]}>
       <mesh>
         <planeGeometry args={[R * 2, R * 2]} />
-        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.9, 0.9]} metalness={1} roughness={0.34} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.15} />
+        <meshStandardMaterial map={map} normalMap={normal} normalScale={[0.45, 0.45]} metalness={0.6} roughness={0.42} alphaTest={0.5} side={THREE.DoubleSide} envMapIntensity={1.05} />
       </mesh>
       {/* polished centre: a true planar mirror that reflects the ewer standing in front of it */}
       <primitive object={mirror} position={[0, 0, 0.004]} />
