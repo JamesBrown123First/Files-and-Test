@@ -41,6 +41,12 @@
 .h-how li p{margin:0;color:var(--ink-2)}
 kbd{font:500 12px Manrope,sans-serif;padding:2px 7px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}
 @media (max-width:860px){.h-grid,.h-how{grid-template-columns:1fr}}
+.h-share{display:flex;align-items:center;gap:12px;margin-top:-8px;font-size:12px;color:var(--ink-3);flex-wrap:wrap}
+.h-share span{font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60%}
+.h-share button,.h-share a{font:500 12px Manrope,sans-serif;letter-spacing:.04em;padding:6px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);background:none;border:0;cursor:pointer;text-decoration:none}
+.h-share button:hover,.h-share a:hover{box-shadow:inset 0 0 0 1px var(--accent)}
+.h-item{display:grid;gap:var(--space-4);align-content:start}
+.h-share{margin-top:0}
 </style>
 </head>
 <body>
@@ -54,8 +60,56 @@ kbd{font:500 12px Manrope,sans-serif;padding:2px 7px;border-radius:6px;box-shado
     <p class="k-lead" style="max-width:56ch" data-reveal>Each direction is built from scratch. The newest ones are made for the real 3D ewer, or for the photograph alone. Open one, then press <b>Design</b> (or <b>Style</b> on the first four) to mix presets, colours, backgrounds, type and lighting.</p>
   </section>
 
+  <section class="h-group" aria-label="Round four">
+    <div class="h-group__head"><p class="k-eyebrow">Newest · Round four · Built on Regalia</p><p class="h-group__note">Five built on the photograph, one on the 3D model. Each has its own layout, type pairing and motion, plus the real campaign ads. Press <b>Design</b> on any page: 38 presets, 18 palettes, 10 animated backgrounds, 14 type pairings. Every card has a <b>public link</b> to share: it shows only that page, without the Design studio or this list.</p></div>
+    <div class="h-grid h-grid--3">
+      <a class="h-card" href="threshold.html" data-reveal style="--d:0">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/threshold.webp" alt="Threshold: photograph direction"></div>
+        <div class="h-card__row"><h2>Threshold</h2><span class="h-card__n">16 · Photograph</span></div>
+        <p>The castle doors swing open on the ewer, standing in a pool of peach light. Scrolling walks you through the arch and into the light, where the story is told. Then a colonnade of five lit niches.</p>
+        <p class="h-fit">Majestic · Throne Room look · Aboreto + Jost · doors + walk-through</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="maison.html" data-reveal style="--d:100">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/maison.webp" alt="Maison: photograph direction"></div>
+        <div class="h-card__row"><h2>Maison</h2><span class="h-card__n">17 · Photograph</span></div>
+        <p>A couture magazine cover: the KINGDOM masthead, cover lines and the ewer standing over a copper disc. Then a lookbook whose lens travels over the ewer, detail by detail, as you read.</p>
+        <p class="h-fit">Editorial · Maison Ivory look · Libre Caslon + Inter Tight · lookbook lens</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="diptych.html" data-reveal style="--d:200">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/diptych.webp" alt="Diptych: photograph direction"></div>
+        <div class="h-card__row"><h2>Diptych</h2><span class="h-card__n">18 · Photograph</span></div>
+        <p>The ewer and the basin in two arches, blush and royal blue; the basin turns slowly, low in its arch. Scrolling closes the arches into one and reveals the real photograph of the pair.</p>
+        <p class="h-fit">Graceful · Apricot look · Instrument Serif + Hanken · arches merge</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="filled.html" data-reveal style="--d:300">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/filled.webp" alt="Filled: photograph direction"></div>
+        <div class="h-card__row"><h2>Filled</h2><span class="h-card__n">19 · Photograph</span></div>
+        <p>The ewer begins as a fine engraving and fills with silver as you scroll, with a gauge counting to 100%. The surface sways with your scrolling and your cursor.</p>
+        <p class="h-fit">Storytelling · Silver Tide look · Playfair + Jost · scroll to fill</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="sceptre.html" data-reveal style="--d:400">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/sceptre.webp" alt="Sceptre: photograph direction"></div>
+        <div class="h-card__row"><h2>Sceptre</h2><span class="h-card__n">20 · Photograph</span></div>
+        <p>An Art Deco sunburst behind the ewer while giant words drift behind it and in front of it, pushed faster by your scroll. Then four deco-framed hallmarks.</p>
+        <p class="h-fit">Bold · Sapphire Deco look · Forum + Josefin Sans · kinetic type</p>
+        <span class="k-link">Open direction</span>
+      </a>
+      <a class="h-card" href="majesty.html" data-reveal style="--d:500">
+        <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/majesty.webp" alt="Majesty: 3d direction"></div>
+        <div class="h-card__row"><h2>Majesty</h2><span class="h-card__n">21 · 3D</span></div>
+        <p>Regalia, in real 3D: the model descends in front of the wordmark and lands with a soft recoil. Scrolling turns it a full circle through four views. Drag it to turn it.</p>
+        <p class="h-fit">Light · Champagne Salon look · Marcellus + Tenor Sans · scroll orbit</p>
+        <span class="k-link">Open direction</span>
+      </a>
+    </div>
+  </section>
+
   <section class="h-group" aria-label="Round three: full landing pages">
-    <div class="h-group__head"><p class="k-eyebrow">Newest · Round three · Complete landing pages</p><p class="h-group__note">Full pages with every section: occasions, collection, story, gift box, campaign gallery, Shop Now, concierge. One built on the 3D ewer, four on the photograph. Press <b>Design</b> for 12 presets, 10 palettes, 6 animated backgrounds, 7 type pairings and 5 silver lighting moods.</p></div>
+    <div class="h-group__head"><p class="k-eyebrow">Round three · Complete landing pages</p><p class="h-group__note">Full pages with every section: occasions, collection, story, gift box, campaign gallery, Shop Now, concierge. One built on the 3D ewer, four on the photograph. Press <b>Design</b> for 12 presets, 10 palettes, 6 animated backgrounds, 7 type pairings and 5 silver lighting moods.</p></div>
     <div class="h-grid h-grid--3">
       <a class="h-card" href="coronation.html" data-reveal style="--d:0">
         <div class="h-card__img" data-tilt="4"><img src="assets/thumbs/coronation.webp" alt="Coronation: 3d direction"></div>
@@ -190,5 +244,21 @@ kbd{font:500 12px Manrope,sans-serif;padding:2px 7px;border-radius:6px;box-shado
 <script src="vendor/lenis.min.js"></script>
 <script src="js/kingdom.js"></script>
 <script>Kingdom.init({ page: 'index', preset: 'royal-midnight', editor: false });</script>
+<script>
+// Each direction has its own public link (no Design studio, no list of directions).
+(function(){
+  var base = location.origin + '/';
+  document.querySelectorAll('a.h-card').forEach(function(a){
+    var id = a.getAttribute('href').replace('.html','');
+    var url = base + id;
+    var row = document.createElement('div'); row.className = 'h-share';
+    row.innerHTML = '<span>' + url.replace(/^https?:\/\//,'') + '</span><button type="button">Copy public link</button><a href="' + url + '" target="_blank" rel="noopener">Open</a>';
+    var w = document.createElement('div'); w.className = 'h-item'; a.before(w); w.appendChild(a); w.appendChild(row);
+    row.querySelector('button').addEventListener('click', function(){
+      var b = this; (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy public link'; }, 1800); }, function(){ prompt('Copy this link:', url); });
+    });
+  });
+})();
+</script>
 </body>
 </html>

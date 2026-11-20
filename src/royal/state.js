@@ -12,7 +12,16 @@ export const PALETTES = {
   peach:    { name: 'Peach',        mode: 'light', colors: ['#f3c09b', '#f8dcc6', '#dba58c', '#a35234'], note: 'Peach · copper' },
   pearl:    { name: 'Pearl',        mode: 'light', colors: ['#ece3da', '#f8f4ef', '#f2d4be', '#3472a8'], note: 'Ivory · blush' },
   rose:     { name: 'Rose Gold',    mode: 'light', colors: ['#e2b39d', '#f2d4be', '#cc917b', '#fff2e8'], note: 'Rose · blush' },
-  porcelain:{ name: 'Porcelain',    mode: 'light', colors: ['#e3e9f1', '#f5f7fa', '#3472a8', '#f2d4be'], note: 'Cool white · royal' }
+  porcelain:{ name: 'Porcelain',    mode: 'light', colors: ['#e3e9f1', '#f5f7fa', '#3472a8', '#f2d4be'], note: 'Cool white · royal' },
+  // round four — richer, deeper gradients (brand colours and their shades)
+  regal:    { name: 'Regal Night',  mode: 'dark',  colors: ['#060c18', '#0f1d33', '#14395c', '#3472a8'], note: 'Night · royal · light from above' },
+  velvet:   { name: 'Sapphire Velvet', mode: 'dark', colors: ['#080f1d', '#131c2b', '#124980', '#cc917b'], note: 'Gradient #124980 › #131c2b, copper rose glow' },
+  ember:    { name: 'Copper Night', mode: 'dark',  colors: ['#0f0b0b', '#1f1512', '#a35234', '#f3c09b'], note: 'Black copper · peach' },
+  twilight: { name: 'Twilight',     mode: 'dark',  colors: ['#161f2a', '#2b3a4a', '#dba58c', '#3472a8'], note: '#dba58c › #2b3a4a, royal edge' },
+  champagne:{ name: 'Champagne',    mode: 'light', colors: ['#ead9ca', '#faf3ec', '#dba58c', '#a35234'], note: 'Ivory · champagne · copper' },
+  ivory:    { name: 'Ivory & Navy', mode: 'light', colors: ['#efe8e0', '#fbf8f4', '#cc917b', '#18263b'], note: 'Gallery ivory, navy ink' },
+  apricot:  { name: 'Apricot',      mode: 'light', colors: ['#cc917b', '#f2d4be', '#f3c09b', '#a35234'], note: 'Gradient #cc917b › #f2d4be' },
+  mist:     { name: 'Silver Mist',  mode: 'light', colors: ['#d5dbe4', '#eef1f5', '#3472a8', '#cc917b'], note: 'Cool silver · royal · rose' }
 };
 
 export const ACCENTS = {
@@ -26,7 +35,11 @@ export const BACKGROUNDS = [
   ['guilloche', 'Guilloché', 'Engine-turned silver lines'],
   ['liquid', 'Liquid silver', 'Molten sheen'],
   ['stardust', 'Stardust', 'Faint glints of light'],
-  ['still', 'Still', 'A quiet gradient']
+  ['still', 'Still', 'A quiet gradient'],
+  ['tide', 'Royal tide', 'Navy, royal and peach waves rolling slowly'],
+  ['rays', 'Throne light', 'Soft beams falling from above'],
+  ['velvet', 'Velvet', 'Deep folds of a jewel-case lining'],
+  ['moire', 'Moiré', 'Watered-silk rings, barely moving']
 ];
 
 export const TYPE = {
@@ -36,7 +49,14 @@ export const TYPE = {
   atelier:  { name: 'Atelier',  note: 'Cormorant · Manrope',       display: "'Cormorant Garamond', 'Times New Roman', serif", italic: "'Cormorant Garamond', serif", text: "'Manrope', system-ui, sans-serif", weight: 300, track: '-0.025em', up: false, scale: 1.04 },
   gilda:    { name: 'Gilda',    note: 'Gilda Display · Poppins',   display: "'Gilda Display', 'Times New Roman', serif",     italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 400, track: '-0.02em', up: false, scale: 0.92 },
   bellefair:{ name: 'Bellefair',note: 'Bellefair · Manrope',       display: "'Bellefair', 'Times New Roman', serif",         italic: "'Cormorant Garamond', serif", text: "'Manrope', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 0.98 },
-  brand:    { name: 'Brand book',note: 'Poppins (brand font)',     display: "'Poppins', system-ui, sans-serif",              italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 300, track: '-0.03em', up: false, scale: 0.84 }
+  brand:    { name: 'Brand book',note: 'Poppins (brand font)',     display: "'Poppins', system-ui, sans-serif",              italic: "'Cormorant Garamond', serif", text: "'Poppins', system-ui, sans-serif", weight: 300, track: '-0.03em', up: false, scale: 0.84 },
+  regent:   { name: 'Regent',   note: 'Aboreto · Cormorant · Jost',   display: "'Aboreto', 'Times New Roman', serif",        italic: "'Cormorant Garamond', serif", text: "'Jost', system-ui, sans-serif", weight: 400, track: '0.02em', up: true, scale: 0.62 },
+  maison:   { name: 'Maison',   note: 'Libre Caslon · Inter Tight',   display: "'Libre Caslon Display', 'Times New Roman', serif", italic: "'Playfair Display', serif", text: "'Inter Tight', system-ui, sans-serif", weight: 400, track: '-0.03em', up: false, scale: 0.98 },
+  modern:   { name: 'Instrument', note: 'Instrument Serif · Hanken',  display: "'Instrument Serif', 'Times New Roman', serif", italic: "'Instrument Serif', serif", text: "'Hanken Grotesk', system-ui, sans-serif", weight: 400, track: '-0.025em', up: false, scale: 1.04, ital: 400 },
+  deco:     { name: 'Deco',     note: 'Forum · Josefin Sans',         display: "'Forum', 'Times New Roman', serif",          italic: "'Cormorant Garamond', serif", text: "'Josefin Sans', system-ui, sans-serif", weight: 400, track: '0em', up: true, scale: 0.76 },
+  playfair: { name: 'Playfair', note: 'Playfair Display · Jost',      display: "'Playfair Display', 'Times New Roman', serif", italic: "'Playfair Display', serif", text: "'Jost', system-ui, sans-serif", weight: 400, track: '-0.035em', up: false, scale: 0.9, ital: 400 },
+  soft:     { name: 'Fraunces', note: 'Fraunces · Inter Tight',       display: "'Fraunces', 'Times New Roman', serif",       italic: "'Fraunces', serif", text: "'Inter Tight', system-ui, sans-serif", weight: 300, track: '-0.04em', up: false, scale: 0.94 },
+  salon:    { name: 'Salon',    note: 'Marcellus · Tenor Sans',       display: "'Marcellus', 'Times New Roman', serif",      italic: "'Cormorant Garamond', serif", text: "'Tenor Sans', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 0.9 }
 };
 
 // Studio lighting for the 3D silver (base light tent + soft boxes + black flags)
@@ -60,7 +80,27 @@ export const PRESETS = {
   'pearl':         { name: 'Pearl Gallery',      palette: 'pearl',    bg: 'still',     accent: '#14395c', type: 'heritage',  mood: 'gallery' },
   'rose-gold':     { name: 'Rose Gold',          palette: 'rose',     bg: 'liquid',    accent: '#18263b', type: 'gilda',     mood: 'studio' },
   'porcelain':     { name: 'Porcelain',          palette: 'porcelain',bg: 'guilloche', accent: '#124980', type: 'crest',     mood: 'studio' },
-  'brand-book':    { name: 'Brand Book',         palette: 'navy',     bg: 'still',     accent: '#f3c09b', type: 'brand',     mood: 'studio' }
+  'brand-book':    { name: 'Brand Book',         palette: 'navy',     bg: 'still',     accent: '#f3c09b', type: 'brand',     mood: 'studio' },
+  // round four
+  'throne-room':   { name: 'Throne Room',        palette: 'regal',    bg: 'rays',      accent: '#f3c09b', type: 'regent',    mood: 'noir' },
+  'royal-tide':    { name: 'Royal Tide',         palette: 'regal',    bg: 'tide',      accent: '#f3c09b', type: 'modern',    mood: 'moon' },
+  'sapphire-velvet':{ name: 'Sapphire Velvet',   palette: 'velvet',   bg: 'velvet',    accent: '#cc917b', type: 'playfair',  mood: 'noir' },
+  'copper-night':  { name: 'Copper Night',       palette: 'ember',    bg: 'velvet',    accent: '#f3c09b', type: 'maison',    mood: 'candle' },
+  'twilight':      { name: 'Twilight Salon',     palette: 'twilight', bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'candle' },
+  'deco-night':    { name: 'Deco Midnight',      palette: 'navy',     bg: 'tide',      accent: '#dba58c', type: 'deco',      mood: 'studio' },
+  'maison-ivory':  { name: 'Maison Ivory',       palette: 'ivory',    bg: 'moire',     accent: '#a35234', type: 'maison',    mood: 'gallery' },
+  'champagne':     { name: 'Champagne',          palette: 'champagne',bg: 'silk',      accent: '#a35234', type: 'modern',    mood: 'gallery' },
+  'apricot-court': { name: 'Apricot Court',      palette: 'apricot',  bg: 'rays',      accent: '#18263b', type: 'regent',    mood: 'gallery' },
+  'apricot-soft':  { name: 'Apricot Soft',       palette: 'apricot',  bg: 'tide',      accent: '#a35234', type: 'soft',      mood: 'candle' },
+  'silver-mist':   { name: 'Silver Mist',        palette: 'mist',     bg: 'moire',     accent: '#14395c', type: 'modern',    mood: 'studio' },
+  'deco-blush':    { name: 'Deco Blush',         palette: 'blush',    bg: 'moire',     accent: '#18263b', type: 'deco',      mood: 'gallery' },
+  'velvet-regent': { name: 'Velvet Regent',      palette: 'velvet',   bg: 'aurora',    accent: '#f3c09b', type: 'regent',    mood: 'moon' },
+  'twilight-play': { name: 'Twilight Editorial', palette: 'twilight', bg: 'silk',      accent: '#f3c09b', type: 'playfair',  mood: 'studio' },
+  'diptych':       { name: 'Apricot Diptych',    palette: 'apricot',  bg: 'silk',      accent: '#18263b', type: 'modern',    mood: 'gallery' },
+  'majesty':       { name: 'Champagne Salon',    palette: 'champagne',bg: 'rays',      accent: '#a35234', type: 'salon',     mood: 'gallery', exposure: 1.18 },
+  'filled':        { name: 'Silver Tide',        palette: 'regal',    bg: 'tide',      accent: '#f3c09b', type: 'playfair',  mood: 'moon' },
+  'sceptre':       { name: 'Sapphire Deco',      palette: 'velvet',   bg: 'guilloche', accent: '#dba58c', type: 'deco',      mood: 'noir' },
+  'regal-salon':   { name: 'Regal Salon',        palette: 'regal',    bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'moon' }
 };
 
 const listeners = new Set();
@@ -71,7 +111,7 @@ const load = () => { try { return JSON.parse(localStorage.getItem(KEY()) || 'nul
 
 export function fromPreset(id) {
   const p = PRESETS[id] || PRESETS['royal-night'];
-  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: 1 };
+  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: p.exposure || 1 };
 }
 function decodeHash() {
   const m = location.hash.match(/k=([A-Za-z0-9_-]+)/);
@@ -84,6 +124,7 @@ export function shareURL() {
 }
 export const editorAllowed = () => {
   const cfg = window.KINGDOM_CFG || {};
+  if (window.KINGDOM_PUBLIC) return false; // public share links never show the studio
   return cfg.editor !== false || /edit/.test(location.hash);
 };
 
@@ -146,6 +187,7 @@ function apply() {
     '--glass': dark ? 'rgba(12,18,30,0.66)' : 'rgba(255,250,245,0.7)',
     '--shade': dark ? 'rgba(0,0,0,0.45)' : 'rgba(24,38,59,0.18)',
     '--font-display': T.display, '--font-italic': T.italic, '--font-text': T.text,
+    '--ital-weight': T.ital || 300,
     '--display-weight': T.weight, '--display-track': T.track, '--display-case': T.up ? 'uppercase' : 'none', '--ds': T.scale
   };
   for (const k in v) root.style.setProperty(k, v[k]);

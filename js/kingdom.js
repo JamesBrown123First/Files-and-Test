@@ -616,7 +616,7 @@
       this.page = opts.page;
       this.key = 'kingdom:v1:' + opts.page;
       const cfg = (window.KINGDOM_CONFIG && window.KINGDOM_CONFIG[opts.page]) || null;
-      this.editorEnabled = opts.editor !== false && (!(window.KINGDOM_CONFIG && window.KINGDOM_CONFIG.editor === false) || location.hash === '#edit');
+      this.editorEnabled = !window.KINGDOM_PUBLIC && opts.editor !== false && (!(window.KINGDOM_CONFIG && window.KINGDOM_CONFIG.editor === false) || location.hash === '#edit');
       const saved = this.editorEnabled ? store.get(this.key) : null;
       this.defaultPreset = opts.preset;
       this.state = saved || cfg || presetToState(opts.preset);

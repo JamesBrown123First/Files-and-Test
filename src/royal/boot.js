@@ -4,6 +4,7 @@ import { initScroll, initReveals, initCursor, initMagnetic, initTilt, initDrag, 
 import { initEditor } from './editor.js';
 import { initCampaign } from './campaign.js';
 import { initGift } from './gift.js';
+import { initReel } from './reel.js';
 export { gsap, ScrollTrigger, fine, reduced, getState, onState, split, initReveals };
 export const getLenis = () => lenis;
 
@@ -27,6 +28,7 @@ export function boot(cfg) {
     initOccasions();
     initCampaign();
     initGift();
+    initReel();
     ScrollTrigger.refresh();
   };
   return { loader, start, fonts };

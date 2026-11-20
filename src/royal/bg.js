@@ -2,7 +2,7 @@
 // Colours ease toward the palette whenever the editor changes them.
 import { getState, palette, onState, rgb01, isDark } from './state.js';
 
-const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5 };
+const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9 };
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
 const FRAG = `
 precision highp float;
@@ -100,10 +100,64 @@ void main(){
       float star = smoothstep(0.08, 0.0, d) * step(0.93, h) * tw;
       col += mix(vec3(1.), cA, 0.4) * star * (0.5 - float(k)*0.12) * A;
     }
-  } else {
+  } else if (uStyle < 5.5) {
     // STILL — a quiet gradient with one soft glow
     col = mix(col, c2, blob(p, vec2(0.45, 0.2), 1.1)*0.35*A);
     col = mix(col, cA, blob(p, vec2(-0.6, -0.55), 0.7)*0.08*A);
+  } else if (uStyle < 6.5) {
+    // ROYAL TIDE — long, slow waves: navy troughs, royal bodies, a peach light on each crest
+    vec3 acc = col;
+    for (int k=0;k<4;k++){
+      float fk = float(k);
+      float yb = 0.42 - fk*0.3 + sc*0.12*(fk+1.);
+      float n = snoise(vec3(p.x*0.7 + fk*3.1, fk*1.7, t*0.04));
+      float wave = yb + 0.09*sin(p.x*(1.6+fk*0.35) + t*(0.16 + fk*0.03) + fk*2.) + 0.07*n;
+      float d = p.y - wave;
+      float body = smoothstep(0.02, -0.4, d);
+      vec3 wc = mix(c2, c3, 0.25 + 0.2*fk);
+      acc = mix(acc, mix(wc, c0, 0.15*fk), body*(0.38 - fk*0.05)*A);
+      float crest = exp(-d*d*900.) * (0.55 + 0.45*sin(p.x*3. - t*0.3 + fk));
+      acc += cA * crest * (uLight > 0.5 ? 0.16 : 0.22) * A;
+      acc += cA * exp(-d*d*60.) * 0.025 * A;
+    }
+    col = acc;
+    col = mix(col, cA, blob(p, m*0.7, 0.45) * 0.05);
+  } else if (uStyle < 7.5) {
+    // THRONE LIGHT — beams falling from a source above, slowly breathing, dust in the light
+    vec2 src = vec2(0.15*sin(t*0.05) + m.x*0.08, 0.95);
+    vec2 d = p - src; float an = atan(d.x, -d.y);
+    float beams = 0.;
+    beams += pow(0.5 + 0.5*sin(an*9. + t*0.07), 6.) * 0.6;
+    beams += pow(0.5 + 0.5*sin(an*15. - t*0.05 + 1.3), 8.) * 0.4;
+    beams *= smoothstep(0.9, 0.0, abs(an)) * smoothstep(2.2, 0.2, length(d));
+    col = mix(col, c2, blob(p, vec2(0., 0.6), 1.0)*0.45*A);
+    col += mix(cA, vec3(1.), 0.3) * beams * (uLight > 0.5 ? 0.14 : 0.18) * A;
+    col = mix(col, cA, blob(p, src - vec2(0., 0.2), 0.35)*0.18*A);
+    vec2 g = p*40. + vec2(0., t*0.6); vec2 id = floor(g); vec2 f = fract(g)-0.5;
+    float h = hash(id); float dust = smoothstep(0.06, 0., length(f - (vec2(hash(id+1.3), hash(id+4.2))-0.5)*0.7)) * step(0.97, h);
+    col += cA * dust * beams * 2.5 * A;
+  } else if (uStyle < 8.5) {
+    // VELVET — deep folds of a jewel-case lining, light grazing the ridges
+    vec2 q = p*vec2(1.4, 0.9);
+    float n = snoise(vec3(q*0.8, t*0.025 + sc*0.2));
+    float f1 = sin(q.x*3.4 + n*2.4 + t*0.05);
+    float f2 = sin(q.x*5.6 - q.y*1.2 + n*1.8 - t*0.04);
+    float h = f1*0.65 + f2*0.35;
+    float ridge = pow(clamp(h*0.5+0.5, 0., 1.), 3.);
+    col = mix(c0, col, 0.55 + 0.45*ridge);
+    col = mix(col, c2, ridge*0.35*A);
+    col += mix(cA, c3, 0.4) * pow(ridge, 6.) * (uLight > 0.5 ? 0.1 : 0.14) * A;
+    col = mix(col, cA, blob(p, m*0.7, 0.5) * 0.05);
+  } else {
+    // MOIRÉ — watered silk: two ring fields interfering, very slowly drifting
+    vec2 a = p - vec2(-0.5 + 0.1*sin(t*0.03), 0.3);
+    vec2 b = p - vec2(0.6, -0.4 + 0.1*cos(t*0.025)) - m*0.03;
+    float w = snoise(vec3(p*1.5, t*0.03))*0.04;
+    float r1 = sin((length(a) + w)*70.); float r2 = sin((length(b) - w)*66.);
+    float moire = smoothstep(0.6, 1.0, r1*r2*0.5+0.5);
+    col = mix(col, c2, blob(p, vec2(0.4, 0.1), 1.0)*0.3*A);
+    col = mix(col, mix(c3, cA, 0.5), moire * (uLight > 0.5 ? 0.09 : 0.11) * A);
+    col = mix(col, cA, blob(p, vec2(-0.6, -0.5), 0.7)*0.08*A);
   }
   // vignette + grain
   col *= mix(1.0, 0.86 + 0.14*smoothstep(1.4, 0.25, length(p*vec2(0.85, 1.))), uLight > 0.5 ? 0.4 : 1.0);

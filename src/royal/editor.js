@@ -7,7 +7,11 @@ const BG_ICON = {
   guilloche: 'repeating-radial-gradient(circle at 70% 50%, transparent 0 3px, rgba(255,255,255,.22) 3.6px, transparent 4.4px)',
   liquid: 'radial-gradient(40% 30% at 30% 60%, rgba(255,255,255,.35), transparent 70%), radial-gradient(30% 40% at 75% 30%, rgba(255,255,255,.22), transparent 70%)',
   stardust: 'radial-gradient(1.2px 1.2px at 20% 30%, #fff, transparent), radial-gradient(1px 1px at 60% 70%, #fff, transparent), radial-gradient(1.4px 1.4px at 80% 20%, #fff, transparent), radial-gradient(1px 1px at 35% 80%, #fff, transparent)',
-  still: 'radial-gradient(70% 80% at 70% 30%, var(--sw2), transparent 75%)'
+  still: 'radial-gradient(70% 80% at 70% 30%, var(--sw2), transparent 75%)',
+  tide: 'radial-gradient(120% 40% at 50% 115%, var(--sw2) 60%, transparent 61%), radial-gradient(120% 40% at 40% 80%, transparent 58%, var(--swa) 59%, transparent 62%), radial-gradient(130% 45% at 60% 95%, rgba(255,255,255,.08) 60%, transparent 61%)',
+  rays: 'conic-gradient(from 160deg at 50% -10%, transparent 0 4deg, rgba(255,255,255,.18) 6deg, transparent 9deg 14deg, rgba(255,255,255,.12) 16deg, transparent 19deg 24deg, rgba(255,255,255,.16) 26deg, transparent 29deg 40deg), radial-gradient(40% 30% at 50% 0, var(--swa), transparent 70%)',
+  velvet: 'repeating-linear-gradient(95deg, rgba(0,0,0,.25) 0 6px, rgba(255,255,255,.08) 10px, rgba(0,0,0,.2) 16px), radial-gradient(60% 60% at 60% 40%, var(--sw2), transparent 70%)',
+  moire: 'repeating-radial-gradient(circle at 20% 30%, transparent 0 3px, rgba(255,255,255,.14) 4px, transparent 5px), repeating-radial-gradient(circle at 80% 70%, transparent 0 3px, rgba(255,255,255,.12) 4px, transparent 5px)'
 };
 
 export function initEditor() {

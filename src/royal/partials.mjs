@@ -265,3 +265,31 @@ export function tail(id) {
 </body>
 </html>`;
 }
+
+// ---------- round four: the real ads, as a reel (same height; spreads twice as wide) ----------
+const adsSrc = readFileSync(ROOT + 'assets/ads/ads.js', 'utf8');
+export const ADS = JSON.parse(adsSrc.slice(adsSrc.indexOf('['), adsSrc.lastIndexOf(']') + 1));
+export function reel({ label = 'From our campaigns', heading = 'The <em>campaign</em>', lead = 'Every page from the Kingdom campaigns. Spreads open full width.', variant = 'line' } = {}) {
+  const items = ADS.map((a, i) => `<figure class="r-reel__item${a.spread ? ' is-spread' : ''}" data-i="${i}">
+      <button type="button" class="r-reel__open" aria-label="Open ${a.title}" data-cursor="View"><img src="${a.lo}" data-hi="${a.src}" alt="${a.alt}" loading="lazy" decoding="async" width="${a.spread ? 1236 : 618}" height="800"></button>
+      <figcaption><b>${String(i + 1).padStart(2, '0')}</b><span>${a.title}</span><small>${a.spread ? 'Spread' : 'Page'}</small></figcaption>
+    </figure>`).join('');
+  return `<section class="r-reel r-reel--${variant}" id="campaign" aria-label="Campaign gallery">
+  <div class="r-reel__head">
+    <div><p class="r-label" data-reveal>${label}</p><h2 class="r-h2" data-split>${heading}</h2></div>
+    <div class="r-reel__side"><p class="r-lead" data-reveal>${lead}</p>
+      <div class="r-reel__ctrl" data-reveal><button type="button" class="r-reel__btn" data-dir="-1" aria-label="Previous ad">${arrow}</button><span class="r-reel__count"><b>01</b> / ${String(ADS.length).padStart(2, '0')}</span><button type="button" class="r-reel__btn" data-dir="1" aria-label="Next ad">${arrow}</button></div>
+    </div>
+  </div>
+  <div class="r-reel__view" tabindex="0" aria-label="Ads, scroll sideways" data-cursor="Drag">
+    <div class="r-reel__track">${items}<span class="r-reel__end" aria-hidden="true"></span></div>
+  </div>
+  <div class="r-reel__bar" aria-hidden="true"><i></i></div>
+</section>
+<div class="r-lb" role="dialog" aria-modal="true" aria-label="Ad viewer" hidden>
+  <button type="button" class="r-lb__x" aria-label="Close">×</button>
+  <button type="button" class="r-lb__nav r-lb__nav--p" data-dir="-1" aria-label="Previous">${arrow}</button>
+  <figure class="r-lb__fig"><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="r-lb__nav r-lb__nav--n" data-dir="1" aria-label="Next">${arrow}</button>
+</div>`;
+}

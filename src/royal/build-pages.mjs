@@ -197,6 +197,254 @@ ${P.campaign()}
 ${P.shopNow('grand')}
 ${P.concierge()}`);
 
+/* =====================================================================
+   ROUND FOUR — built on Regalia: the photograph, a monumental mark, light.
+   ===================================================================== */
+const EWER = 'assets/img/ewer-2400.webp';
+const EWER_ALT = 'The Baroque Ewer, a silver-filled ewer with acanthus relief and a crowned stopper';
+const h1 = (cls = '') => `<h1 class="r-h1 ${cls}"><span>${COPY.h1a}</span> <span><em>${COPY.h1b}</em></span> <span>${COPY.h1c}</span></h1>`;
+
+/* ============ 6 · THRESHOLD (photo · the royal doors open; scroll walks you through) ============ */
+pages.threshold = page({ id: 'threshold', title: 'Kingdom — Threshold · The Art of Silver Gifting', announce: 'The Kingdom has opened its doors — every piece arrives gift-ready' }, `
+<section class="th-hero" aria-label="The Kingdom has opened its doors">
+  <div class="th-pin">
+    <div class="th-word" aria-hidden="true"><i></i></div>
+    <div class="th-portal">
+      <div class="th-arch">
+        <span class="th-arch__glow" aria-hidden="true"></span>
+        <span class="th-arch__floor" aria-hidden="true"></span>
+        <figure class="th-ewer" data-cursor="Light">
+          <img class="th-ewer__img" src="${EWER}" alt="${EWER_ALT}" width="1113" height="2400">
+          <span class="th-ewer__sheen" aria-hidden="true"></span>
+          <img class="th-ewer__refl" src="assets/img/ewer-1400.webp" alt="" aria-hidden="true">
+        </figure>
+        <span class="th-door th-door--l" aria-hidden="true"><i></i>${logo('k-icon')}</span>
+        <span class="th-door th-door--r" aria-hidden="true"><i></i>${logo('k-icon')}</span>
+      </div>
+      <svg class="th-arch__line" viewBox="0 0 100 160" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0.5,159.5 V50 A49.5,49.5 0 0 1 99.5,50 V159.5"/></svg>
+      <svg class="th-arch__line th-arch__line--2" viewBox="0 0 100 160" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0.5,159.5 V50 A49.5,49.5 0 0 1 99.5,50 V159.5"/></svg>
+      <span class="th-step" aria-hidden="true"></span>
+    </div>
+    <div class="th-copy th-copy--l">
+      <p class="r-label">The Kingdom has opened its doors</p>
+      ${h1('th-h1')}
+    </div>
+    <div class="th-copy th-copy--r">
+      <p class="r-lead">${COPY.sub}</p>
+      <a class="r-btn" href="#collection" data-magnetic="0.25"><span>Step inside</span>${a}</a>
+    </div>
+    <p class="th-scroll" aria-hidden="true"><i></i><span>Scroll to enter</span></p>
+    <div class="th-inside" id="story">
+      <p class="r-label">Our story</p>
+      <p class="th-inside__big">${COPY.story1}</p>
+      <p class="th-inside__small">${COPY.story2}</p>
+    </div>
+  </div>
+</section>
+${P.ticker(undefined, 'r-ticker--solid')}
+<section class="th-treasury" aria-label="Five details">
+  <div class="r-sec-head r-sec-head--row"><div><p class="r-label" data-reveal>The treasury</p><h2 class="r-h2" data-split>Five details,<br><em>each in its niche</em></h2></div><p class="r-lead" data-reveal>Move along the colonnade. Every niche holds a detail of the ewer, lit like a crown jewel.</p></div>
+  <div class="th-niches" data-drag>${DETAILS.map(([t, d, img], i) => `<a class="th-niche th-niche--${i}" href="shop.html" data-cursor="View"><span class="th-niche__arch"><img src="${img}" alt="${t}" loading="lazy"></span><span class="th-niche__n">${['I', 'II', 'III', 'IV', 'V'][i]}</span><span class="th-niche__t">${t}</span><span class="th-niche__d">${d}</span></a>`).join('')}</div>
+</section>
+${P.collection('rail', 'The Baroque<br><em>Collection</em>')}
+${P.occasions('accordion', 'A gift for every<br><em>occasion</em>')}
+${P.gift()}
+${P.reel({ heading: 'The Kingdom <em>campaign</em>', lead: 'Our ads, page by page. Drag, use the arrows, or open any page full screen.' })}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
+/* ============ 7 · MAISON (photo · couture magazine cover; scroll lookbook) ============ */
+const ROMAN = ['I', 'II', 'III', 'IV', 'V'];
+pages.maison = page({ id: 'maison', title: 'Kingdom — Maison · The Art of Silver Gifting', header: 'left', announce: 'The Baroque Issue — gift-ready, in Kingdom packaging' }, `
+<section class="ma-cover" aria-label="The Baroque Issue">
+  <div class="ma-mast" aria-hidden="true">${logo('k-name')}</div>
+  <div class="ma-bar" aria-hidden="true"><span>No. 01 — The Baroque Issue</span><span class="r-hide-m">Silver · Gifting · Heirlooms</span><span>Winter 2026</span></div>
+  <span class="ma-disc" aria-hidden="true"></span>
+  <figure class="ma-ewer" data-cursor="Light">
+    <img class="ma-ewer__img" src="${EWER}" alt="${EWER_ALT}" width="1113" height="2400">
+    <span class="ma-ewer__sheen" aria-hidden="true"></span>
+  </figure>
+  <div class="ma-feature">
+    <p class="r-label">Cover story</p>
+    ${h1('ma-h1')}
+    <p class="r-lead">${COPY.sub}</p>
+    <a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the issue</span>${a}</a>
+  </div>
+  <ol class="ma-lines" aria-label="In this issue">
+    <li><b>p. 04</b><strong>Filled with silver</strong><span>The presence of silver, within reach</span></li>
+    <li><b>p. 12</b><strong>The ewer, <em>up close</em></strong><span>Five details worth a long look</span></li>
+    <li><b>p. 24</b><strong>Given with pride</strong><span>Inside the Kingdom gift box</span></li>
+  </ol>
+  <div class="ma-seal" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="ma-seal" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#ma-seal">THE BAROQUE ISSUE · A ROYAL TOUCH · KINGDOM · </textPath></text></svg>${logo('k-icon')}</div>
+</section>
+<section class="ma-look" aria-label="The ewer, up close">
+  <div class="ma-look__stage">
+    <div class="ma-look__frame"><img class="ma-look__img" src="${EWER}" alt="${EWER_ALT}" loading="lazy"></div>
+    <p class="ma-look__num" aria-hidden="true"><span>I</span></p>
+    <p class="ma-look__cap" aria-hidden="true">Detail <b>01</b> / 05</p>
+  </div>
+  <div class="ma-look__text">
+    <div class="ma-look__intro"><p class="r-label">p. 12 — Up close</p><h2 class="r-h2">The ewer,<br><em>up close.</em></h2><p class="r-lead">Scroll slowly. The lens moves over each detail as you read.</p></div>
+    ${DETAILS.map(([t, d], i) => `<article class="ma-ch" data-i="${i}"><span class="ma-ch__n">${ROMAN[i]}</span><h3 class="r-h3">${t}</h3><p>${d}</p></article>`).join('')}
+  </div>
+</section>
+${P.ticker(['The Baroque Issue', 'Filled with silver', 'Given with pride', 'A royal touch'])}
+${P.collection('rail', 'In this<br><em>issue</em>')}
+${P.story('split')}
+${P.reel({ label: 'p. 32 — The campaign', heading: 'Seen in<br><em>our ads</em>', lead: 'Every page from the campaign, at the size it was printed. Spreads open across two pages.', variant: 'paper' })}
+${P.occasions('accordion', 'Chosen for<br><em>the occasion</em>')}
+${P.gift()}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
+/* ============ 8 · DIPTYCH (photo · ewer and basin as two panels that become one) ============ */
+pages.diptych = page({ id: 'diptych', title: 'Kingdom — Diptych · The Art of Silver Gifting' }, `
+<section class="dp-hero" aria-label="The Baroque Ewer and Basin">
+  <div class="dp-pin">
+    <div class="dp-word" aria-hidden="true">${logo('k-name')}</div>
+    <div class="dp-panels">
+      <a class="dp-panel dp-panel--l" href="shop.html" data-cursor="The Ewer">
+        <span class="dp-panel__bg" aria-hidden="true"></span>
+        <img class="dp-ewer" src="${EWER}" alt="${EWER_ALT}" width="1113" height="2400">
+        <span class="dp-ewer__sheen" aria-hidden="true"></span>
+        <span class="dp-cap"><b>I</b>The Ewer</span>
+      </a>
+      <a class="dp-panel dp-panel--r" href="shop.html" data-cursor="The Basin">
+        <span class="dp-panel__bg" aria-hidden="true"></span>
+        <span class="dp-basin" aria-hidden="true"><img src="assets/img/basin-1200.webp" alt=""></span>
+        <span class="dp-cap"><b>II</b>The Basin</span>
+      </a>
+      <figure class="dp-pair"><img src="assets/img/pair.webp" alt="The Baroque Ewer and Basin together, the basin's polished centre reflecting the ewer" loading="lazy"></figure>
+    </div>
+    <div class="dp-title">
+      <p class="r-label">Kingdom · Silver Collection</p>
+      ${h1('dp-h1')}
+    </div>
+    <div class="dp-foot"><p class="r-lead">${COPY.sub}</p><a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the pair</span>${a}</a></div>
+    <div class="dp-set">
+      <p class="r-label">Better together</p>
+      <h2 class="r-h2">The Baroque<br><em>Set</em></h2>
+      <p class="r-lead">Ewer and basin, presented together in one Kingdom box. Its polished well holds the ewer’s reflection.</p>
+      <div class="dp-set__btns"><button class="r-btn" type="button" data-add="The Baroque Set" data-magnetic="0.2">${icons.bag}<span>Add the set</span></button><a class="r-btn r-btn--ghost" href="shop.html"><span>View details</span></a></div>
+    </div>
+  </div>
+</section>
+${P.ticker()}
+<section class="dp-facts" aria-label="Ewer and basin">
+  <div class="dp-facts__col"><p class="r-label" data-reveal>I · The Ewer</p><h2 class="r-h2" data-split>Poured with<br><em>ceremony</em></h2><ul>${DETAILS.slice(0, 3).map(([t, d]) => `<li data-reveal><b>${t}</b><span>${d}</span></li>`).join('')}</ul></div>
+  <figure class="dp-facts__mid" data-img-reveal><img src="assets/img/pair.webp" alt="" loading="lazy"></figure>
+  <div class="dp-facts__col"><p class="r-label" data-reveal>II · The Basin</p><h2 class="r-h2" data-split>Received with<br><em>grace</em></h2><ul><li data-reveal><b>The Pierced Rim</b><span>Scrolled acanthus, opened up so the light passes through.</span></li><li data-reveal><b>The Engraved Ground</b><span>Foliage over a finely stippled field.</span></li><li data-reveal><b>The Mirror Well</b><span>A polished centre that reflects whatever stands above it.</span></li></ul></div>
+</section>
+${P.occasions('accordion', 'For every<br><em>table</em>')}
+${P.story('center')}
+${P.reel({ heading: 'The <em>campaign</em>', lead: 'Single pages and full spreads, all at the same height. Drag or use the arrows.' })}
+${P.collection('arch')}
+${P.gift()}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
+/* ============ 9 · FILLED (photo · the engraving fills with silver as you scroll) ============ */
+pages.filled = page({ id: 'filled', title: 'Kingdom — Filled · The Art of Silver Gifting', announce: 'Filled with silver. Given with pride. — every piece gift-ready' }, `
+<section class="fi-hero" aria-label="Filled with silver">
+  <div class="fi-pin">
+    <div class="fi-word" aria-hidden="true">${logo('k-name')}</div>
+    <figure class="fi-vessel" data-cursor="Silver">
+      <img class="fi-etch" src="assets/img/ewer-etch.webp" alt="" aria-hidden="true">
+      <div class="fi-silver"><img src="${EWER}" alt="${EWER_ALT}" width="1113" height="2400"><span class="fi-sheen" aria-hidden="true"></span></div>
+      <svg class="fi-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d=""/><path class="fi-line__glow" d=""/></svg>
+    </figure>
+    <div class="fi-copy">
+      <p class="fi-kicker" aria-live="polite"><span class="is-on">Filled with <em>silver.</em></span><span>Given with <em>pride.</em></span></p>
+      ${h1('fi-h1')}
+      <div class="fi-copy__row"><a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the collection</span>${a}</a><a class="r-btn r-btn--ghost" href="#silver-filled"><span>What silver-filled means</span></a></div>
+    </div>
+    <div class="fi-gauge" aria-hidden="true"><span class="fi-gauge__n">000</span><i><b></b></i><span>Silver</span></div>
+    <p class="fi-hint" aria-hidden="true"><i></i>Scroll to fill</p>
+  </div>
+</section>
+<section class="fi-know" id="silver-filled" aria-label="What silver-filled means">
+  <div class="r-sec-head"><p class="r-label" data-reveal>Silver-filled</p><h2 class="r-h2" data-split>The beauty of silver,<br><em>within reach</em></h2><p class="r-lead" data-reveal>Silver-filled, also known as fusion silver: beautiful pieces, beautiful presentation, unbeatable prices.</p></div>
+  <ol class="fi-know__list">
+    <li data-reveal><span class="fi-know__n">01</span><span class="fi-know__drop" style="--f:.92"><i></i></span><h3 class="r-h3">Filled with silver</h3><p>The presence and gleam of silver in every piece.</p></li>
+    <li data-reveal data-delay=".1"><span class="fi-know__n">02</span><span class="fi-know__drop" style="--f:.66"><i></i></span><h3 class="r-h3">Beautifully presented</h3><p>Every piece arrives in Kingdom packaging, ready to give.</p></li>
+    <li data-reveal data-delay=".2"><span class="fi-know__n">03</span><span class="fi-know__drop" style="--f:.4"><i></i></span><h3 class="r-h3">Priced within reach</h3><p>So generous giving is possible, for every occasion.</p></li>
+  </ol>
+</section>
+${P.collection('arch', 'Filled with<br><em>silver</em>')}
+${P.story('center')}
+${P.reel({ heading: 'As seen in<br><em>our ads</em>', lead: 'Every page of the campaign. Spreads are shown full width beside single pages.' })}
+${P.occasions('accordion')}
+${P.gift()}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
+/* ============ 10 · SCEPTRE (photo · deco sunburst, kinetic type in front of and behind the silver) ============ */
+const rowOf = (t, n = 4) => Array.from({ length: n }, () => `<span>${t}</span><svg class="sc-star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z"/></svg>`).join('');
+pages.sceptre = page({ id: 'sceptre', title: 'Kingdom — Sceptre · The Art of Silver Gifting', announce: 'A royal touch — every piece arrives gift-ready' }, `
+<section class="sc-hero" aria-label="The Baroque Ewer">
+  <div class="sc-pin">
+    <svg class="sc-fan" viewBox="-500 -500 1000 1000" aria-hidden="true"><g class="sc-fan__rays">${Array.from({ length: 72 }, (_, i) => `<line x1="0" y1="0" x2="0" y2="-500" transform="rotate(${i * 5})"/>`).join('')}</g><g class="sc-fan__rings">${[120, 200, 290, 390, 480].map((r) => `<circle r="${r}"/>`).join('')}</g></svg>
+    <div class="sc-row sc-row--a" aria-hidden="true"><div>${rowOf(COPY.h1a)}</div></div>
+    <div class="sc-row sc-row--b" aria-hidden="true"><div>${rowOf(COPY.h1b)}</div></div>
+    <figure class="sc-ewer" data-cursor="Light"><img class="sc-ewer__img" src="${EWER}" alt="${EWER_ALT}" width="1113" height="2400"><span class="sc-ewer__sheen" aria-hidden="true"></span></figure>
+    <div class="sc-row sc-row--c" aria-hidden="true"><div>${rowOf(COPY.h1c.replace('.', ''))}</div></div>
+    <div class="sc-copy">
+      <p class="r-label">Kingdom · Silver Collection</p>
+      ${h1('sc-h1')}
+    </div>
+    <div class="sc-cta"><p class="r-lead">${COPY.sub}</p><a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the collection</span>${a}</a></div>
+    <ul class="sc-marks" aria-label="Highlights"><li><b>Silver-filled</b></li><li><b>Gift-ready</b></li><li><b>Within reach</b></li><li><b>A royal touch</b></li></ul>
+  </div>
+</section>
+<section class="sc-deco" aria-label="Hallmarks of a Kingdom gift">
+  <div class="r-sec-head"><p class="r-label" data-reveal>Hallmarks</p><h2 class="r-h2" data-split>Four marks of a<br><em>Kingdom gift</em></h2></div>
+  <div class="sc-cards">
+    ${[['Silver-filled', 'The beauty and presence of silver, also known as fusion silver.', 'M12 3l7 4v10l-7 4-7-4V7z'], ['Gift-ready', 'Dressed in navy and blush Kingdom packaging, ribboned and sealed.', 'M4 9h16v11H4zM2 6h20v3H2zM12 6v14'], ['Within reach', 'Priced so generous giving is possible, for every occasion.', 'M3 18h18M4 16l1.6-9 4.4 4.6L12 5l2 6.6L18.4 7 20 16z'], ['Concierge', 'Tell us who it is for. We’ll suggest three pieces and wrap the one you choose.', 'M4 5h16v11H8l-4 4z']].map(([t, d, path], i) => `<article class="sc-card" data-i="${i}"><svg class="sc-card__frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M20,1 H280 L299,20 V380 L280,399 H20 L1,380 V20 Z"/><path pathLength="1" d="M28,9 H272 L291,28 V372 L272,391 H28 L9,372 V28 Z"/></svg><svg class="sc-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg><b>0${i + 1}</b><h3 class="r-h3">${t}</h3><p>${d}</p></article>`).join('')}
+  </div>
+</section>
+${P.collection('arch')}
+${P.ticker()}
+${P.story('center')}
+${P.reel({ heading: 'The <em>campaign</em>', lead: 'Page by page, as printed. Drag the reel or open any ad full screen.' })}
+${P.occasions('accordion')}
+${P.gift()}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
+/* ============ 11 · MAJESTY (3D · Regalia’s composition, with the real model) ============ */
+pages.majesty = page({ id: 'majesty', title: 'Kingdom — Majesty · The Art of Silver Gifting', preloadModel: true }, `
+<section class="mj-hero" aria-label="The Baroque Ewer in 3D">
+  <div class="mj-pin">
+    <div class="mj-word" aria-hidden="true">${logo('k-name')}</div>
+    <div id="stage" class="mj-stage" data-cursor="Drag" role="img" aria-label="A silver ewer, shown in 3D. Drag to turn it; scroll to see it from every side."></div>
+    <div class="mj-copy mj-copy--l"><p class="r-label">Kingdom · Silver Collection</p>${h1('mj-h1')}</div>
+    <div class="mj-copy mj-copy--r"><p class="r-lead">${COPY.sub}</p><a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the collection</span>${a}</a></div>
+    <ul class="mj-specs" aria-label="Highlights"><li><b>Silver-filled</b><span>Presence of solid silver</span></li><li><b>Gift-ready</b><span>Kingdom packaging</span></li><li><b>Within reach</b><span>Priced for generous giving</span></li></ul>
+    ${[['Presence', 'The Baroque Ewer', 'Acanthus relief over a stippled ground, a flared mirror spout, a crowned stopper.'], ['Ornament', 'Deep relief', 'Polished leaves over a matte, finely stippled field, so the polish reads brighter.'], ['Line', 'The scroll handle', 'Beaded and leaf-capped, it curls down into a single bead.'], ['Foundation', 'The footed base', 'Pierced scrolled feet lift the piece like a crown on a cushion.']].map(([k, t, d], i) => `<article class="mj-ch mj-ch--${i % 2 ? 'l' : 'r'}" data-i="${i}"><p class="mj-ch__k"><b>0${i + 1}</b>${k}</p><h2 class="r-h2">${t.replace(/ (\S+)$/, '<br><em>$1</em>')}</h2><p class="r-lead">${d}</p></article>`).join('')}
+    <div class="mj-final"><p class="r-label">Signature piece</p><h2 class="r-h2">Yours to<br><em>give.</em></h2><div class="mj-final__btns"><button class="r-btn" type="button" data-add="The Baroque Ewer" data-magnetic="0.2">${icons.bag}<span>Add to bag</span></button><a class="r-btn r-btn--ghost" href="shop.html"><span>View details</span></a></div></div>
+    <div class="mj-progress" aria-hidden="true"><span>01</span><i><b></b></i><span>04</span></div>
+    <p class="mj-hint" aria-hidden="true"><span>Drag to turn</span><i></i><span>Scroll to orbit</span></p>
+  </div>
+</section>
+${P.ticker(undefined, 'r-ticker--solid')}
+<section class="rg-loupe" aria-label="Look closer">
+  <div class="r-sec-head"><p class="r-label" data-reveal>Look closer</p><h2 class="r-h2" data-split>Every detail,<br><em>magnified.</em></h2><p class="r-lead" data-reveal>Move over the ewer to inspect it, or choose a detail.</p></div>
+  <div class="rg-loupe__grid">
+    <div class="rg-loupe__stage" data-cursor="Inspect">
+      <img src="assets/img/ewer-1400.webp" alt="The Baroque Ewer" loading="lazy">
+      <span class="rg-lens" aria-hidden="true"><span></span></span>
+    </div>
+    <ol class="rg-loupe__list">${DETAILS.map(([t, d], i) => `<li><button type="button" data-spot="${i}"${i === 0 ? ' class="is-on"' : ''}><b>0${i + 1}</b><span><strong>${t}</strong><em>${d}</em></span></button></li>`).join('')}</ol>
+  </div>
+</section>
+${P.collection('rail', 'The Baroque<br><em>Collection</em>')}
+${P.story('split')}
+${P.reel({ heading: 'The <em>campaign</em>', lead: 'Every page from our ads. Spreads are twice as wide, at the same height.' })}
+${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
+${P.gift()}
+${P.shopNow('grand')}
+${P.concierge()}`);
+
 /* ============ shop placeholder (e-commerce is added later) ============ */
 pages.shop = page({ id: 'shop', title: 'Kingdom — Shop' }, `
 <section class="sh-wait" aria-label="Shop">
