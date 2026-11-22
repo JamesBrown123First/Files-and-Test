@@ -1,0 +1,1 @@
+import{a as r}from"./chunks/chunk-Y7PDB42R.js";r({id:"sapphire",name:"Sapphire Court",preset:"sapphire-court",presets:["sapphire-court","royal-blush","obsidian","royal-mercury","midnight-script","velvet-court"]});

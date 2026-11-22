@@ -1,1 +1,1 @@
-import{i as t}from"./chunks/chunk-XNIOVI7X.js";import"./chunks/chunk-LOKUJV26.js";var{loader:e,start:o}=t({id:"shop",name:"Shop",preset:"royal-night",presets:["royal-night","blush-atelier","pearl"]});e.finish().then(o);
+import{i as t}from"./chunks/chunk-ZT3XTXKJ.js";import"./chunks/chunk-LOKUJV26.js";var{loader:e,start:o}=t({id:"shop",name:"Shop",preset:"royal-night",presets:["royal-night","blush-atelier","pearl"]});e.finish().then(o);

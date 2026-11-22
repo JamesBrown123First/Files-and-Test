@@ -21,7 +21,18 @@ export const PALETTES = {
   champagne:{ name: 'Champagne',    mode: 'light', colors: ['#ead9ca', '#faf3ec', '#dba58c', '#a35234'], note: 'Ivory · champagne · copper' },
   ivory:    { name: 'Ivory & Navy', mode: 'light', colors: ['#efe8e0', '#fbf8f4', '#cc917b', '#18263b'], note: 'Gallery ivory, navy ink' },
   apricot:  { name: 'Apricot',      mode: 'light', colors: ['#cc917b', '#f2d4be', '#f3c09b', '#a35234'], note: 'Gradient #cc917b › #f2d4be' },
-  mist:     { name: 'Silver Mist',  mode: 'light', colors: ['#d5dbe4', '#eef1f5', '#3472a8', '#cc917b'], note: 'Cool silver · royal · rose' }
+  mist:     { name: 'Silver Mist',  mode: 'light', colors: ['#d5dbe4', '#eef1f5', '#3472a8', '#cc917b'], note: 'Cool silver · royal · rose' },
+  // round five — deeper, richer gradients built from the brand colours
+  abyss:    { name: 'Abyss Sapphire', mode: 'dark', colors: ['#03060b', '#0b1626', '#124980', '#f3c09b'], note: 'Near black · sapphire · a peach flame' },
+  royalblush:{ name: 'Royal Blush',  mode: 'dark',  colors: ['#0a1322', '#14395c', '#3472a8', '#f2d4be'], note: 'Royal blue lit with blush' },
+  duskfall: { name: 'Dusk Fall',    mode: 'dark',  colors: ['#1a232e', '#2b3a4a', '#cc917b', '#dba58c'], note: 'Gradient #dba58c › #2b3a4a, warm' },
+  terracotta:{ name: 'Terracotta Night', mode: 'dark', colors: ['#120a08', '#24160f', '#a35234', '#dba58c'], note: 'Espresso · copper · rose' },
+  obsidian: { name: 'Obsidian',     mode: 'dark',  colors: ['#060709', '#111419', '#2b3a4a', '#9fb1c6'], note: 'Black silver, a royal edge' },
+  nude:     { name: 'Nude Silk',    mode: 'light', colors: ['#efcdb6', '#fbf1e8', '#dba58c', '#cc917b'], note: 'Gradient #cc917b › #f2d4be, softer' },
+  sunrise:  { name: 'Sunrise',      mode: 'light', colors: ['#e7b49c', '#f7e3d4', '#cc917b', '#3472a8'], note: 'Copper rose dawn, a royal glint' },
+  delft:    { name: 'Delft Porcelain', mode: 'light', colors: ['#d9e3ee', '#f7f9fc', '#124980', '#cc917b'], note: 'Porcelain white · sapphire' },
+  linen:    { name: 'Copper Linen', mode: 'light', colors: ['#ecdccd', '#fbf6f0', '#a35234', '#14395c'], note: 'Linen · copper · royal ink' },
+  duskpeach:{ name: 'Dusk Peach',   mode: 'light', colors: ['#d9a58c', '#f3d9c8', '#2b3a4a', '#a35234'], note: '#dba58c with slate shadows' }
 };
 
 export const ACCENTS = {
@@ -39,7 +50,11 @@ export const BACKGROUNDS = [
   ['tide', 'Royal tide', 'Navy, royal and peach waves rolling slowly'],
   ['rays', 'Throne light', 'Soft beams falling from above'],
   ['velvet', 'Velvet', 'Deep folds of a jewel-case lining'],
-  ['moire', 'Moiré', 'Watered-silk rings, barely moving']
+  ['moire', 'Moiré', 'Watered-silk rings, barely moving'],
+  ['ribbons', 'Ribbons', 'Navy, royal and peach ribbons folding past each other'],
+  ['mercury', 'Mercury', 'Polished liquid metal, slow highlights'],
+  ['halo', 'Halo', 'A breathing ring of light behind the silver'],
+  ['drift', 'Drift', 'Soft out-of-focus lights floating by']
 ];
 
 export const TYPE = {
@@ -56,8 +71,27 @@ export const TYPE = {
   deco:     { name: 'Deco',     note: 'Forum · Josefin Sans',         display: "'Forum', 'Times New Roman', serif",          italic: "'Cormorant Garamond', serif", text: "'Josefin Sans', system-ui, sans-serif", weight: 400, track: '0em', up: true, scale: 0.76 },
   playfair: { name: 'Playfair', note: 'Playfair Display · Jost',      display: "'Playfair Display', 'Times New Roman', serif", italic: "'Playfair Display', serif", text: "'Jost', system-ui, sans-serif", weight: 400, track: '-0.035em', up: false, scale: 0.9, ital: 400 },
   soft:     { name: 'Fraunces', note: 'Fraunces · Inter Tight',       display: "'Fraunces', 'Times New Roman', serif",       italic: "'Fraunces', serif", text: "'Inter Tight', system-ui, sans-serif", weight: 300, track: '-0.04em', up: false, scale: 0.94 },
-  salon:    { name: 'Salon',    note: 'Marcellus · Tenor Sans',       display: "'Marcellus', 'Times New Roman', serif",      italic: "'Cormorant Garamond', serif", text: "'Tenor Sans', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 0.9 }
+  salon:    { name: 'Salon',    note: 'Marcellus · Tenor Sans',       display: "'Marcellus', 'Times New Roman', serif",      italic: "'Cormorant Garamond', serif", text: "'Tenor Sans', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 0.9 },
+  // round five
+  didone:   { name: 'Didone',   note: 'Noto Serif Display · Outfit',  display: "'Noto Serif Display', 'Times New Roman', serif", italic: "'Noto Serif Display', serif", text: "'Outfit', system-ui, sans-serif", weight: 200, track: '-0.03em', up: false, scale: 1, ital: 300 },
+  dmserif:  { name: 'Grand',    note: 'DM Serif Display · Urbanist',  display: "'DM Serif Display', 'Times New Roman', serif", italic: "'DM Serif Display', serif", text: "'Urbanist', system-ui, sans-serif", weight: 400, track: '-0.03em', up: false, scale: 0.9, ital: 400 },
+  prata:    { name: 'Prata',    note: 'Prata · Cormorant · Jost',     display: "'Prata', 'Times New Roman', serif",          italic: "'Cormorant Garamond', serif", text: "'Jost', system-ui, sans-serif", weight: 400, track: '-0.02em', up: false, scale: 0.88 },
+  gloock:   { name: 'Gloock',   note: 'Gloock · Instrument · Inter Tight', display: "'Gloock', 'Times New Roman', serif",     italic: "'Instrument Serif', serif", text: "'Inter Tight', system-ui, sans-serif", weight: 400, track: '-0.03em', up: false, scale: 0.9, ital: 400 },
+  calligraphy:{ name: 'Calligraphy', note: 'Italiana · Pinyon Script · Outfit', display: "'Italiana', 'Times New Roman', serif", italic: "'Pinyon Script', cursive", text: "'Outfit', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 1, ital: 400, iscale: 1.18 },
+  royalscript:{ name: 'Royal Script', note: 'Bodoni Moda · Pinyon Script · Urbanist', display: "'Bodoni Moda', 'Times New Roman', serif", italic: "'Pinyon Script', cursive", text: "'Urbanist', system-ui, sans-serif", weight: 400, track: '-0.035em', up: false, scale: 0.92, ital: 400, iscale: 1.2 },
+  engraved: { name: 'Engraved', note: 'Cinzel · Noto Display italic · Urbanist', display: "'Cinzel', 'Times New Roman', serif", italic: "'Noto Serif Display', serif", text: "'Urbanist', system-ui, sans-serif", weight: 400, track: '0.02em', up: true, scale: 0.74, ital: 300, iscale: 1.08 }
 };
+
+// Round five: layout details. Each is a set of designed variations, so any mix stays clean.
+export const DETAILS = {
+  eyebrow: { name: 'Section labels', opts: [['cartouche', 'Cartouche', 'A small framed hallmark'], ['numeral', 'Numerals', 'Roman numeral and fine rule'], ['seal', 'Seal', 'A tiny crown in a ring'], ['flourish', 'Flourish', 'Script word with a swash'], ['minimal', 'Minimal', 'Small caps only']] },
+  banner:  { name: 'Ribbon banner', opts: [['wave', 'Silk wave', 'Words gliding along a gentle curve'], ['ribbon', 'Ribbon', 'A soft rounded band'], ['pearls', 'Pearls', 'Hairlines strung with pearls'], ['script', 'Script', 'Large script, slow and airy']] },
+  finish:  { name: 'Silver finish', opts: [['mono', 'Monochrome', 'True black and white'], ['crisp', 'Crisp', 'More contrast, brighter polish'], ['soft', 'Soft', 'Lifted shadows, gentle'], ['noir', 'Noir', 'Deep shadows, bright highlights']] },
+  word:    { name: 'Wordmark', opts: [['solid', 'Solid', 'Filled with the page colour'], ['outline', 'Outline', 'A fine engraved line'], ['metal', 'Silver', 'Brushed silver gradient'], ['gradient', 'Gradient', 'Brand gradient']] },
+  shape:   { name: 'Shapes', opts: [['arch', 'Arches', 'Castle arches from the logo'], ['soft', 'Soft', 'Rounded corners'], ['sharp', 'Sharp', 'Square, architectural']] },
+  space:   { name: 'Spacing', opts: [['airy', 'Airy', 'The most negative space'], ['balanced', 'Balanced', 'Even rhythm'], ['compact', 'Compact', 'Tighter sections']] }
+};
+export const DETAIL_DEFAULTS = { eyebrow: 'cartouche', banner: 'wave', finish: 'mono', word: 'solid', shape: 'arch', space: 'airy' };
 
 // Studio lighting for the 3D silver (base light tent + soft boxes + black flags)
 export const MOODS = {
@@ -100,7 +134,30 @@ export const PRESETS = {
   'majesty':       { name: 'Champagne Salon',    palette: 'champagne',bg: 'rays',      accent: '#a35234', type: 'salon',     mood: 'gallery', exposure: 1.18 },
   'filled':        { name: 'Silver Tide',        palette: 'regal',    bg: 'tide',      accent: '#f3c09b', type: 'playfair',  mood: 'moon' },
   'sceptre':       { name: 'Sapphire Deco',      palette: 'velvet',   bg: 'guilloche', accent: '#dba58c', type: 'deco',      mood: 'noir' },
-  'regal-salon':   { name: 'Regal Salon',        palette: 'regal',    bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'moon' }
+  'regal-salon':   { name: 'Regal Salon',        palette: 'regal',    bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'moon' },
+  // round five — complete looks, including layout details
+  'monarch':       { name: 'Monarch',            palette: 'champagne',bg: 'halo',      accent: '#a35234', type: 'didone',    mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'wave', finish: 'mono', word: 'gradient', shape: 'arch', space: 'airy' } },
+  'monarch-night': { name: 'Monarch Night',      palette: 'abyss',    bg: 'halo',      accent: '#f3c09b', type: 'didone',    mood: 'noir',    d: { eyebrow: 'cartouche', banner: 'wave', finish: 'crisp', word: 'metal', shape: 'arch', space: 'airy' } },
+  'sapphire-court':{ name: 'Sapphire Court',     palette: 'abyss',    bg: 'ribbons',   accent: '#f3c09b', type: 'engraved',  mood: 'moon',    d: { eyebrow: 'seal', banner: 'pearls', finish: 'noir', word: 'metal', shape: 'arch', space: 'airy' } },
+  'royal-blush':   { name: 'Royal Blush',        palette: 'royalblush',bg: 'ribbons',  accent: '#f2d4be', type: 'royalscript',mood: 'moon',   d: { eyebrow: 'flourish', banner: 'script', finish: 'crisp', word: 'outline', shape: 'soft', space: 'airy' } },
+  'rosewater':     { name: 'Rosewater',          palette: 'nude',     bg: 'drift',     accent: '#a35234', type: 'gloock',    mood: 'gallery', d: { eyebrow: 'numeral', banner: 'ribbon', finish: 'soft', word: 'solid', shape: 'soft', space: 'balanced' } },
+  'sunrise':       { name: 'Sunrise Salon',      palette: 'sunrise',  bg: 'silk',      accent: '#14395c', type: 'calligraphy',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'script', finish: 'mono', word: 'gradient', shape: 'arch', space: 'airy' } },
+  'dusk-vault':    { name: 'Dusk Vault',         palette: 'duskfall', bg: 'mercury',   accent: '#f2d4be', type: 'dmserif',   mood: 'candle',  d: { eyebrow: 'numeral', banner: 'pearls', finish: 'noir', word: 'outline', shape: 'sharp', space: 'balanced' } },
+  'dusk-peach':    { name: 'Dusk Peach',         palette: 'duskpeach',bg: 'tide',      accent: '#18263b', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'numeral', banner: 'wave', finish: 'crisp', word: 'solid', shape: 'sharp', space: 'balanced' } },
+  'terracotta':    { name: 'Terracotta',         palette: 'terracotta',bg: 'velvet',   accent: '#f3c09b', type: 'prata',     mood: 'candle',  d: { eyebrow: 'cartouche', banner: 'ribbon', finish: 'noir', word: 'gradient', shape: 'arch', space: 'airy' } },
+  'obsidian':      { name: 'Obsidian Silver',    palette: 'obsidian', bg: 'mercury',   accent: '#e6ebf2', type: 'didone',    mood: 'noir',    d: { eyebrow: 'minimal', banner: 'pearls', finish: 'crisp', word: 'metal', shape: 'sharp', space: 'airy' } },
+  'delft':         { name: 'Delft',              palette: 'delft',    bg: 'guilloche', accent: '#124980', type: 'engraved',  mood: 'gallery', d: { eyebrow: 'seal', banner: 'pearls', finish: 'mono', word: 'outline', shape: 'arch', space: 'airy' } },
+  'copper-linen':  { name: 'Copper Linen',       palette: 'linen',    bg: 'moire',     accent: '#a35234', type: 'prata',     mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'ribbon', finish: 'soft', word: 'gradient', shape: 'soft', space: 'balanced' } },
+  'nude-silk':     { name: 'Nude Silk',          palette: 'nude',     bg: 'silk',      accent: '#18263b', type: 'royalscript',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'wave', finish: 'mono', word: 'solid', shape: 'arch', space: 'airy' } },
+  'midnight-script':{ name: 'Midnight Script',   palette: 'regal',    bg: 'drift',     accent: '#f3c09b', type: 'calligraphy',mood: 'moon',   d: { eyebrow: 'flourish', banner: 'script', finish: 'crisp', word: 'outline', shape: 'arch', space: 'airy' } },
+  'velvet-court':  { name: 'Velvet Court',       palette: 'velvet',   bg: 'halo',      accent: '#cc917b', type: 'gloock',    mood: 'noir',    d: { eyebrow: 'seal', banner: 'ribbon', finish: 'noir', word: 'gradient', shape: 'soft', space: 'balanced' } },
+  'pearl-engraved':{ name: 'Pearl Engraved',     palette: 'pearl',    bg: 'halo',      accent: '#14395c', type: 'engraved',  mood: 'gallery', d: { eyebrow: 'numeral', banner: 'pearls', finish: 'crisp', word: 'outline', shape: 'sharp', space: 'airy' } },
+  'apricot-grand': { name: 'Apricot Grand',      palette: 'apricot',  bg: 'drift',     accent: '#18263b', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'wave', finish: 'mono', word: 'solid', shape: 'arch', space: 'compact' } },
+  'twilight-ribbon':{ name: 'Twilight Ribbons',  palette: 'twilight', bg: 'ribbons',   accent: '#f2d4be', type: 'prata',     mood: 'candle',  d: { eyebrow: 'seal', banner: 'wave', finish: 'soft', word: 'metal', shape: 'arch', space: 'balanced' } },
+  'royal-mercury': { name: 'Royal Mercury',      palette: 'sapphire', bg: 'mercury',   accent: '#f3c09b', type: 'gloock',    mood: 'moon',    d: { eyebrow: 'minimal', banner: 'ribbon', finish: 'crisp', word: 'metal', shape: 'soft', space: 'compact' } },
+  'champagne-script':{ name: 'Champagne Script', palette: 'champagne',bg: 'ribbons',   accent: '#18263b', type: 'royalscript',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'script', finish: 'soft', word: 'gradient', shape: 'soft', space: 'airy' } },
+  'brand-dusk':    { name: 'Brand Dusk',         palette: 'dusk',     bg: 'drift',     accent: '#f2d4be', type: 'didone',    mood: 'candle',  d: { eyebrow: 'numeral', banner: 'pearls', finish: 'mono', word: 'outline', shape: 'arch', space: 'airy' } },
+  'porcelain-grand':{ name: 'Porcelain Grand',   palette: 'porcelain',bg: 'silk',      accent: '#124980', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'seal', banner: 'ribbon', finish: 'crisp', word: 'gradient', shape: 'soft', space: 'balanced' } }
 };
 
 const listeners = new Set();
@@ -111,7 +168,8 @@ const load = () => { try { return JSON.parse(localStorage.getItem(KEY()) || 'nul
 
 export function fromPreset(id) {
   const p = PRESETS[id] || PRESETS['royal-night'];
-  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: p.exposure || 1 };
+  const d = Object.assign({}, DETAIL_DEFAULTS, (page && page.details) || {}, p.d || {});
+  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: p.exposure || 1, ...d };
 }
 function decodeHash() {
   const m = location.hash.match(/k=([A-Za-z0-9_-]+)/);
@@ -139,6 +197,7 @@ export function initState(cfg) {
   if (!TYPE[state.type]) state.type = def.type;
   if (!MOODS[state.mood]) state.mood = def.mood;
   if (!BACKGROUNDS.find((b) => b[0] === state.bg)) state.bg = def.bg;
+  for (const k in DETAILS) if (!DETAILS[k].opts.find((o) => o[0] === state[k])) state[k] = def[k];
   if (matchMedia('(prefers-reduced-motion: reduce)').matches && !s) state.motion = 'still';
   apply();
   return state;
@@ -151,6 +210,7 @@ export function setState(patch) {
   if (!('preset' in patch)) {
     const p = PRESETS[state.preset];
     if (p && ['palette', 'bg', 'accent', 'type', 'mood'].some((k) => p[k] !== state[k])) state.preset = null;
+    if (p && p.d && Object.keys(p.d).some((k) => p.d[k] !== state[k])) state.preset = null;
   }
   store(state); apply();
 }
@@ -187,11 +247,12 @@ function apply() {
     '--glass': dark ? 'rgba(12,18,30,0.66)' : 'rgba(255,250,245,0.7)',
     '--shade': dark ? 'rgba(0,0,0,0.45)' : 'rgba(24,38,59,0.18)',
     '--font-display': T.display, '--font-italic': T.italic, '--font-text': T.text,
-    '--ital-weight': T.ital || 300,
+    '--ital-weight': T.ital || 300, '--ital-scale': T.iscale || 1,
     '--display-weight': T.weight, '--display-track': T.track, '--display-case': T.up ? 'uppercase' : 'none', '--ds': T.scale
   };
   for (const k in v) root.style.setProperty(k, v[k]);
   root.dataset.mode = P.mode; root.dataset.type = state.type; root.dataset.motion = state.motion;
+  for (const k in DETAILS) root.dataset[k] = state[k];
   root.classList.toggle('no-grain', !state.grain);
   root.classList.toggle('no-cursor', !state.cursor);
   const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = P.colors[1];

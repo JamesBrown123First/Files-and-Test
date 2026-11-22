@@ -41,6 +41,23 @@
 @font-face{font-family:'Fraunces';src:url(../assets/fonts/fraunces-latin-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap}
 @font-face{font-family:'Marcellus';src:url(../assets/fonts/marcellus-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 
+/* round five type */
+@font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-200-normal.woff2) format('woff2');font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-200-italic.woff2) format('woff2');font-weight:200;font-style:italic;font-display:swap}
+@font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap}
+@font-face{font-family:'DM Serif Display';src:url(../assets/fonts/dm-serif-display-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Serif Display';src:url(../assets/fonts/dm-serif-display-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Prata';src:url(../assets/fonts/prata-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gloock';src:url(../assets/fonts/gloock-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Pinyon Script';src:url(../assets/fonts/pinyon-script-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Outfit';src:url(../assets/fonts/outfit-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Outfit';src:url(../assets/fonts/outfit-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Outfit';src:url(../assets/fonts/outfit-latin-500-normal.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Urbanist';src:url(../assets/fonts/urbanist-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Urbanist';src:url(../assets/fonts/urbanist-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Urbanist';src:url(../assets/fonts/urbanist-latin-500-normal.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+
 :root{
   --c0:#0b1220;--c1:#131c2b;--c2:#124980;--c3:#3472a8;--ink:#f4efe9;--ink-rgb:244,239,233;--accent:#f3c09b;--accent-rgb:243,192,155;--on-accent:#131c2b;
   --ink-2:rgba(244,239,233,.76);--ink-3:rgba(244,239,233,.56);--ink-4:rgba(244,239,233,.3);--line:rgba(244,239,233,.13);--line-2:rgba(244,239,233,.26);
@@ -552,3 +569,50 @@ body::after{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:none
   .r-lb__nav--p{left:16px}.r-lb__nav--n{right:16px}
   .r-lb__fig img{max-height:calc(100vh - 160px)}
 }
+
+/* design studio — round five additions */
+.r-ed__surprise{width:100%;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:var(--s3);text-align:left;padding:var(--s4);border-radius:12px;margin-bottom:var(--s5);background:linear-gradient(120deg,rgba(243,192,155,.16),rgba(52,114,168,.18));box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-size:14px;font-weight:600;transition:box-shadow .3s,transform .4s var(--ease)}
+.r-ed__surprise span{grid-row:span 2;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#f4efe9;color:#131c2b;font-size:16px}
+.r-ed__surprise small{font-size:12px;font-weight:400;color:rgba(244,239,233,.6)}
+.r-ed__surprise:hover{box-shadow:inset 0 0 0 1px #f3c09b;transform:translateY(-1px)}
+.r-ed__body h3.r-ed__group{margin-top:var(--s6)}
+.r-ed__body h3.r-ed__group:first-of-type{margin-top:0}
+.r-ed__tabs{overflow-x:auto;scrollbar-width:none}
+.r-ed__tabs button{white-space:nowrap;padding:0 10px}
+.r-ed__dets{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:var(--s2)}
+.r-ed__dets button{display:grid;gap:4px;text-align:left;padding:6px;border-radius:10px;font-size:12px;transition:background .3s}
+.r-ed__dets button:hover{background:rgba(255,255,255,.05)}
+.r-ed__dets b{font-weight:600;padding:0 2px}
+.r-ed__dets small{font-size:10.5px;line-height:1.35;color:rgba(244,239,233,.55);padding:0 2px}
+.r-ed__dv{position:relative;display:block;aspect-ratio:1.6;border-radius:7px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);overflow:hidden;transition:box-shadow .3s}
+.r-ed__dets .is-on .r-ed__dv{box-shadow:0 0 0 2px var(--a1)}
+.r-ed__dv::before,.r-ed__dv::after{content:"";position:absolute}
+/* label previews */
+.r-ed__dv--eyebrow-cartouche::before{left:22%;right:22%;top:40%;height:20%;border:1px solid #f3c09b;border-radius:3px}
+.r-ed__dv--eyebrow-numeral::before{left:18%;top:45%;width:14%;height:12%;border-left:1.5px solid #f3c09b;border-right:1.5px solid #f3c09b}.r-ed__dv--eyebrow-numeral::after{left:38%;right:18%;top:51%;height:1px;background:rgba(244,239,233,.5)}
+.r-ed__dv--eyebrow-seal::before{left:calc(50% - 11px);top:calc(50% - 11px);width:22px;height:22px;border-radius:50%;border:1px solid #f3c09b}.r-ed__dv--eyebrow-seal::after{left:calc(50% - 3px);top:calc(50% - 3px);width:6px;height:6px;background:#f3c09b;transform:rotate(45deg)}
+.r-ed__dv--eyebrow-flourish::before{content:"Story";left:0;right:0;top:22%;text-align:center;font:400 22px 'Pinyon Script',cursive;color:#f3c09b}
+.r-ed__dv--eyebrow-minimal::before{left:30%;right:30%;top:48%;height:3px;background:repeating-linear-gradient(90deg,rgba(244,239,233,.7) 0 4px,transparent 4px 6px)}
+/* banner previews */
+.r-ed__dv--banner-wave::before{inset:30% -10%;border-top:2px solid #f3c09b;border-radius:50%}
+.r-ed__dv--banner-ribbon::before{left:8%;right:8%;top:38%;height:24%;border-radius:999px;background:rgba(243,192,155,.45)}
+.r-ed__dv--banner-pearls::before{left:6%;right:6%;top:50%;height:4px;background:radial-gradient(circle,#f4efe9 1.5px,transparent 2px) 0 0/12px 4px}.r-ed__dv--banner-pearls::after{left:6%;right:6%;top:42%;bottom:42%;border-top:1px solid rgba(244,239,233,.3);border-bottom:1px solid rgba(244,239,233,.3)}
+.r-ed__dv--banner-script::before{content:"with pride";left:0;right:0;top:20%;text-align:center;font:400 22px 'Pinyon Script',cursive;color:#f4efe9;white-space:nowrap}
+/* finish previews: a polished sphere */
+.r-ed__dv[class*="finish"]::before{left:calc(50% - 16px);top:calc(50% - 16px);width:32px;height:32px;border-radius:50%;background:radial-gradient(40% 40% at 35% 32%,#fff,#bfbfbf 40%,#4a4a4a 75%,#111)}
+.r-ed__dv--finish-crisp::before{filter:contrast(1.35) brightness(1.08)}
+.r-ed__dv--finish-soft::before{filter:contrast(.8) brightness(1.15)}
+.r-ed__dv--finish-noir::before{filter:contrast(1.6) brightness(.85)}
+/* wordmark previews */
+.r-ed__dv[class*="--word-"]::before{content:"K";left:0;right:0;top:4%;text-align:center;font:400 40px 'Italiana',serif;line-height:1.2}
+.r-ed__dv--word-solid::before{color:#cc917b}
+.r-ed__dv--word-outline::before{color:transparent;-webkit-text-stroke:1px #f3c09b}
+.r-ed__dv--word-metal::before{background:linear-gradient(180deg,#fff,#8d96a3 50%,#e9edf2 60%,#5d6571);-webkit-background-clip:text;background-clip:text;color:transparent}
+.r-ed__dv--word-gradient::before{background:linear-gradient(180deg,#dba58c,#2b3a4a);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* shapes */
+.r-ed__dv[class*="--shape-"]::before{left:34%;right:34%;top:18%;bottom:0;border:1px solid #f3c09b;border-bottom:0}
+.r-ed__dv--shape-arch::before{border-radius:999px 999px 0 0}
+.r-ed__dv--shape-soft::before{border-radius:8px 8px 0 0}
+/* spacing */
+.r-ed__dv[class*="--space-"]::before{left:20%;right:20%;height:6px;top:22%;background:rgba(244,239,233,.5);box-shadow:0 var(--g) 0 rgba(244,239,233,.5),0 calc(var(--g) * 2) 0 rgba(244,239,233,.5)}
+.r-ed__dv--space-airy{--g:14px}.r-ed__dv--space-balanced{--g:10px}.r-ed__dv--space-compact{--g:7px}
