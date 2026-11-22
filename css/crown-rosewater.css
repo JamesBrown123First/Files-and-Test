@@ -1,5 +1,6 @@
 /* ROSEWATER — copper-rose to blush, an editorial grid, the ewer standing on the wordmark */
 .pg-rosewater .cr-hero::after{content:"";position:absolute;inset:0 var(--pad);z-index:-1;pointer-events:none;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100% / 6));border-right:1px solid var(--line);-webkit-mask:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent);mask:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent)}
-.pg-rosewater .cr-word{--ww:min(84vw,1500px);top:55%}
+.pg-rosewater .cr-word{--ww:min(84vw,1500px)}
+.pg-rosewater .cr-hero{--wy:54%}
 .pg-rosewater .cr-ewer{bottom:clamp(20px,5vh,56px)}
 @media (max-width:900px){.pg-rosewater .cr-hero::after{display:none}}

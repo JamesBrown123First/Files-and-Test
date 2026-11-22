@@ -38,8 +38,8 @@ function heroIntro() {
     const st = { trigger: '.cr-hero', start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.cr-word', { yPercent: -26, scale: 1.06, opacity: 0.25, ease: 'none', scrollTrigger: st });
     gsap.to('.cr-ewer', { yPercent: -12, ease: 'none', scrollTrigger: st });
-    gsap.to('.cr-h1', { yPercent: -60, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '45% top' } });
-    gsap.to('.cr-side, .cr-specs, .cr-scroll', { y: -70, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '50% top' } });
+    gsap.to('.cr-h1, .cr-specs', { y: -90, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '50% top' } });
+    gsap.to('.cr-side, .cr-scroll', { y: -70, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '50% top' } });
   });
 }
 
