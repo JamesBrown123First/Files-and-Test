@@ -447,11 +447,23 @@ ${P.concierge()}`);
 
 
 /* ============ REGALIA II — Regalia, refined to the notes (photograph) ============ */
-const R2_DET = [...DETAILS];
+const R2_DET = [
+  ['The Crown', 'Acanthus, wrapped around an ovoid finial.'],
+  ['The Spout', 'A mirror lip that catches every light.'],
+  ['The Handle', 'Beaded and leaf-capped, ending in one bead.'],
+  ['The Body', 'Deep relief over a stippled ground.'],
+  ['The Foot', 'Pierced scrolls, lifting it like a crown.']
+];
+const R2_ITEMS = [
+  ['decanter', 'Crowned Decanter', 'Repoussé, crowned stopper'], ['candlesticks', 'Grand Candlesticks', 'A tall pair'],
+  ['spice-tower', 'Crown Spice Tower', 'Domed and belled'], ['casket', 'Baroque Casket', 'On scrolled feet'],
+  ['ewer-basin', 'Ewer & Basin', 'The washing set'], ['candelabra', 'Five-Branch Candelabra', 'Scrolled arms'],
+  ['tureen', 'Songbird Tureen', 'A bird on the lid'], ['honey-dish', 'Honey Dish & Tray', 'For a sweet new year']
+];
 const R2_STEPS = [
-  ['Choose your piece', 'From the collection, or with our gift concierge.'],
-  ['Laid in tissue', 'Blush tissue, folded by hand around the silver.'],
-  ['Your words, on a card', 'A handwritten-style note, tucked inside.'],
+  ['Choose your piece', 'From the collection, or with our concierge.'],
+  ['Laid in tissue', 'Blush tissue, folded by hand.'],
+  ['Your words, on a card', 'A handwritten-style note inside.'],
   ['Tied with a bow', 'Navy box, blush ribbon. Ready to give.']
 ];
 const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><defs><linearGradient id="g2r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8e2d2"/><stop offset=".55" stop-color="#eec3a9"/><stop offset="1" stop-color="#d49d84"/></linearGradient><linearGradient id="g2s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9a48a"/><stop offset=".5" stop-color="#f6dccb"/><stop offset="1" stop-color="#cf987f"/></linearGradient></defs>
@@ -460,6 +472,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
   <path fill="none" stroke="rgba(163,82,52,.25)" stroke-width="1.2" d="M96 58 C70 30 34 24 28 40 M104 58 C130 30 166 24 172 40"/>
   <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
 const R2_ADS = (P.ADS || []).slice(0, 10);
+const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
 pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting' }, `
 <section class="rg-hero rg2-hero" aria-label="The Baroque Ewer">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
@@ -475,39 +488,45 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   </div>
   <ul class="rg-specs" aria-label="Highlights"><li><b>Silver-filled</b><span>Presence of solid silver</span></li><li><b>Gift-ready</b><span>Kingdom packaging</span></li><li><b>Within reach</b><span>Priced for generous giving</span></li></ul>
 </section>
-<div class="rg2-band" aria-label="Filled with silver, Given with pride, Gift-ready packaging, A royal touch, Priced within reach">
-  <div class="rg2-band__run" aria-hidden="true">${[0, 1, 2].map(() => ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'].map((t, i) => `<span class="${i % 2 ? 'is-i' : ''}" style="--k:${i}">${t}</span><i class="rg2-star"></i>`).join('')).join('')}</div>
+<div class="rg2-band" aria-label="${R2_BAND.join(', ')}">
+  <div class="rg2-band__glass"><span class="rg2-band__shine" aria-hidden="true"></span>
+    <div class="rg2-band__run" aria-hidden="true">${[0, 1, 2, 3].map(() => R2_BAND.map((t, i) => `<span class="${i % 2 ? 'is-i' : ''}">${t}</span>${icons.crown}`).join('')).join('')}</div>
+  </div>
 </div>
 <section class="rg2-loupe" aria-label="Look closer">
-  <div class="rg2-loupe__grid">
-    <div class="rg2-loupe__sticky">
-      <div class="rg-loupe__stage" data-cursor="Inspect">
-        <img src="assets/img/ewer-bw-1400.webp" alt="The Baroque Ewer" loading="lazy">
-        <span class="rg-lens" aria-hidden="true"><span></span></span>
-      </div>
+  <div class="rg2-loupe__pin">
+    <div class="rg2-loupe__stage" data-cursor="Inspect">
+      <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-1400.webp" alt="The Baroque Ewer" loading="lazy" width="649" height="1400"></div>
+      <span class="rg2-loupe__veil" aria-hidden="true"></span>
+      <span class="rg-lens" aria-hidden="true"><span></span></span>
     </div>
-    <div class="rg2-loupe__col">
-      <div class="rg2-loupe__intro"><p class="r-label" data-reveal>Look closer</p><h2 class="r-h2" data-split>Every detail,<br><em>magnified.</em></h2><p class="r-lead" data-reveal>Move over the ewer to look closer, or keep scrolling through its details.</p></div>
-      ${R2_DET.map(([t, d], i) => `<article class="rg2-det${i === 0 ? ' is-on' : ''}" data-spot="${i}"><span class="rg2-det__n">${['I', 'II', 'III', 'IV', 'V'][i]}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}
+    <div class="rg2-loupe__copy">
+      <p class="r-label">Look closer</p>
+      <h2 class="r-h2">Every detail,<br><em>magnified.</em></h2>
+      <div class="rg2-ch">
+        <span class="rg2-ch__num" aria-hidden="true"><span>${['I', 'II', 'III', 'IV', 'V'].map((n) => `<b>${n}</b>`).join('')}</span></span>
+        <div class="rg2-ch__texts" aria-live="polite">${R2_DET.map(([t, d], i) => `<div class="rg2-ch__t${i === 0 ? ' is-on' : ''}"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
+      </div>
+      <nav class="rg2-dots" aria-label="Details">${R2_DET.map(([t], i) => `<button type="button" aria-label="${t}"${i === 0 ? ' class="is-on"' : ''}><i></i></button>`).join('')}</nav>
     </div>
   </div>
 </section>
-${P.collection('rail', 'The Baroque<br><em>Collection</em>')}
+<section class="rg2-coll" id="collection" aria-label="The collection">
+  <div class="rg2-head rg2-head--row">
+    <div><p class="r-label" data-reveal>The collection</p><h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2></div>
+    <a class="r-link" href="shop.html" data-reveal>View all pieces ${a}</a>
+  </div>
+  <div class="rg2-coll__grid">${R2_ITEMS.map(([id, n, l], i) => `<article class="rg2-prod" data-reveal data-delay="${(i % 4) * 0.06}">
+      <a class="rg2-prod__media" href="shop.html" data-cursor="View"><img src="assets/items/${id}-480.webp" srcset="assets/items/${id}-480.webp 480w, assets/items/${id}-960.webp 960w" sizes="(max-width:900px) 50vw, 25vw" alt="${n}" loading="lazy" width="480" height="600"><span class="rg2-prod__shine" aria-hidden="true"></span></a>
+      <div class="rg2-prod__meta"><div><h3>${n}</h3><p>${l}</p></div><button class="rg2-prod__add" type="button" data-add="${n}" aria-label="Add ${n} to bag">${icons.bag}</button></div>
+    </article>`).join('')}</div>
+</section>
 ${P.story('split')}
-<section class="rg2-hall" aria-label="The hallmark">
-  <div class="rg2-hall__copy">
-    <p class="r-label" data-reveal>The hallmark</p>
-    <h2 class="r-h2" data-split>Turned by<br><em>your hand.</em></h2>
-    <p class="r-lead" data-reveal>Drag the basin to turn it, and watch the light travel across the engraving.</p>
-    <ul class="rg2-hall__marks" data-stagger><li><b>${logo('k-icon')}</b><span>Kingdom mark</span></li><li><b>Ag</b><span>Silver-filled</span></li><li><b>${icons.crown}</b><span>Gift-ready</span></li></ul>
-  </div>
-  <div class="rg2-hall__stage">
-    <div class="rg2-basin" data-cursor="Turn" role="img" aria-label="The Baroque Basin. Drag to turn it." tabindex="0">
-      <img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false">
-      <span class="rg2-basin__light" aria-hidden="true"></span>
-    </div>
-    <p class="rg2-hint"><i></i>Drag to turn</p>
-  </div>
+<section class="rg2-basin" aria-label="The Baroque Basin">
+  <p class="r-label" data-reveal>The basin</p>
+  <h2 class="r-h2" data-split>The perfect <em>answer</em></h2>
+  <p class="r-lead" data-reveal>A border of acanthus around a mirror-polished centre. Drag it to turn it.</p>
+  <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="The Baroque Basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>
 </section>
 ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
 <section class="rg2-gift" id="gifting" aria-label="The gift">
@@ -519,11 +538,13 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
     </div>
     <div class="rg2-gift__scene" aria-hidden="true">
       <div class="g2">
-        <div class="g2-rise"><img class="g2-piece" src="assets/img/ewer-bw-800.webp" alt=""></div>
-        <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 40 C30 10 50 52 80 26 C110 4 130 48 165 22 C190 6 215 44 245 20 C275 0 300 46 330 24 C355 8 380 40 400 30 L400 70 Z"/></svg>
-        <div class="g2-base"><span class="g2-rib"></span><span class="g2-foil">${logo('k-full')}</span></div>
-        <div class="g2-lid"><span class="g2-lid__top"></span><span class="g2-lid__front"><span class="g2-rib"></span></span>${R2_BOW}</div>
         <span class="g2-shadow"></span>
+        <div class="g2-base"><i class="f f--floor"></i><i class="f f--back"></i><i class="f f--left"><span class="g2-rib"></span></i><i class="f f--right"><span class="g2-rib"></span></i>
+          <svg class="g2-tissue is-back" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 40 C30 10 50 52 80 26 C110 4 130 48 165 22 C190 6 215 44 245 20 C275 0 300 46 330 24 C355 8 380 40 400 30 L400 70 Z"/></svg>
+          <img class="g2-piece" src="assets/img/ewer-bw-800.webp" alt="">
+          <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 44 C40 20 60 50 95 30 C125 12 150 46 190 26 C220 10 250 48 285 28 C315 12 345 44 400 34 L400 70 Z"/></svg>
+          <i class="f f--front"><span class="g2-rib"></span><span class="g2-foil">${logo('k-full')}</span></i></div>
+        <div class="g2-lid"><i class="f f--llining"></i><i class="f f--ltop"></i><i class="f f--lback"></i><i class="f f--lleft"><span class="g2-rib"></span></i><i class="f f--lright"><span class="g2-rib"></span></i><i class="f f--lfront"><span class="g2-rib"></span></i>${R2_BOW}</div>
       </div>
       <div class="g2-card"><span>For you,</span><em>with love.</em>${logo('k-icon')}</div>
     </div>
