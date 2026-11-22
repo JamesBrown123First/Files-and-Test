@@ -50,11 +50,7 @@ export const BACKGROUNDS = [
   ['tide', 'Royal tide', 'Navy, royal and peach waves rolling slowly'],
   ['rays', 'Throne light', 'Soft beams falling from above'],
   ['velvet', 'Velvet', 'Deep folds of a jewel-case lining'],
-  ['moire', 'Moiré', 'Watered-silk rings, barely moving'],
-  ['ribbons', 'Ribbons', 'Navy, royal and peach ribbons folding past each other'],
-  ['mercury', 'Mercury', 'Polished liquid metal, slow highlights'],
-  ['halo', 'Halo', 'A breathing ring of light behind the silver'],
-  ['drift', 'Drift', 'Soft out-of-focus lights floating by']
+  ['moire', 'Moiré', 'Watered-silk rings, barely moving']
 ];
 
 export const TYPE = {
@@ -134,30 +130,7 @@ export const PRESETS = {
   'majesty':       { name: 'Champagne Salon',    palette: 'champagne',bg: 'rays',      accent: '#a35234', type: 'salon',     mood: 'gallery', exposure: 1.18 },
   'filled':        { name: 'Silver Tide',        palette: 'regal',    bg: 'tide',      accent: '#f3c09b', type: 'playfair',  mood: 'moon' },
   'sceptre':       { name: 'Sapphire Deco',      palette: 'velvet',   bg: 'guilloche', accent: '#dba58c', type: 'deco',      mood: 'noir' },
-  'regal-salon':   { name: 'Regal Salon',        palette: 'regal',    bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'moon' },
-  // round five — complete looks, including layout details
-  'monarch':       { name: 'Monarch',            palette: 'champagne',bg: 'halo',      accent: '#a35234', type: 'didone',    mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'wave', finish: 'mono', word: 'gradient', shape: 'arch', space: 'airy' } },
-  'monarch-night': { name: 'Monarch Night',      palette: 'abyss',    bg: 'halo',      accent: '#f3c09b', type: 'didone',    mood: 'noir',    d: { eyebrow: 'cartouche', banner: 'wave', finish: 'crisp', word: 'metal', shape: 'arch', space: 'airy' } },
-  'sapphire-court':{ name: 'Sapphire Court',     palette: 'abyss',    bg: 'ribbons',   accent: '#f3c09b', type: 'engraved',  mood: 'moon',    d: { eyebrow: 'seal', banner: 'pearls', finish: 'noir', word: 'metal', shape: 'arch', space: 'airy' } },
-  'royal-blush':   { name: 'Royal Blush',        palette: 'royalblush',bg: 'ribbons',  accent: '#f2d4be', type: 'royalscript',mood: 'moon',   d: { eyebrow: 'flourish', banner: 'script', finish: 'crisp', word: 'outline', shape: 'soft', space: 'airy' } },
-  'rosewater':     { name: 'Rosewater',          palette: 'nude',     bg: 'drift',     accent: '#a35234', type: 'gloock',    mood: 'gallery', d: { eyebrow: 'numeral', banner: 'ribbon', finish: 'soft', word: 'solid', shape: 'soft', space: 'balanced' } },
-  'sunrise':       { name: 'Sunrise Salon',      palette: 'sunrise',  bg: 'silk',      accent: '#14395c', type: 'calligraphy',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'script', finish: 'mono', word: 'gradient', shape: 'arch', space: 'airy' } },
-  'dusk-vault':    { name: 'Dusk Vault',         palette: 'duskfall', bg: 'mercury',   accent: '#f2d4be', type: 'dmserif',   mood: 'candle',  d: { eyebrow: 'numeral', banner: 'pearls', finish: 'noir', word: 'outline', shape: 'sharp', space: 'balanced' } },
-  'dusk-peach':    { name: 'Dusk Peach',         palette: 'duskpeach',bg: 'tide',      accent: '#18263b', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'numeral', banner: 'wave', finish: 'crisp', word: 'solid', shape: 'sharp', space: 'balanced' } },
-  'terracotta':    { name: 'Terracotta',         palette: 'terracotta',bg: 'velvet',   accent: '#f3c09b', type: 'prata',     mood: 'candle',  d: { eyebrow: 'cartouche', banner: 'ribbon', finish: 'noir', word: 'gradient', shape: 'arch', space: 'airy' } },
-  'obsidian':      { name: 'Obsidian Silver',    palette: 'obsidian', bg: 'mercury',   accent: '#e6ebf2', type: 'didone',    mood: 'noir',    d: { eyebrow: 'minimal', banner: 'pearls', finish: 'crisp', word: 'metal', shape: 'sharp', space: 'airy' } },
-  'delft':         { name: 'Delft',              palette: 'delft',    bg: 'guilloche', accent: '#124980', type: 'engraved',  mood: 'gallery', d: { eyebrow: 'seal', banner: 'pearls', finish: 'mono', word: 'outline', shape: 'arch', space: 'airy' } },
-  'copper-linen':  { name: 'Copper Linen',       palette: 'linen',    bg: 'moire',     accent: '#a35234', type: 'prata',     mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'ribbon', finish: 'soft', word: 'gradient', shape: 'soft', space: 'balanced' } },
-  'nude-silk':     { name: 'Nude Silk',          palette: 'nude',     bg: 'silk',      accent: '#18263b', type: 'royalscript',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'wave', finish: 'mono', word: 'solid', shape: 'arch', space: 'airy' } },
-  'midnight-script':{ name: 'Midnight Script',   palette: 'regal',    bg: 'drift',     accent: '#f3c09b', type: 'calligraphy',mood: 'moon',   d: { eyebrow: 'flourish', banner: 'script', finish: 'crisp', word: 'outline', shape: 'arch', space: 'airy' } },
-  'velvet-court':  { name: 'Velvet Court',       palette: 'velvet',   bg: 'halo',      accent: '#cc917b', type: 'gloock',    mood: 'noir',    d: { eyebrow: 'seal', banner: 'ribbon', finish: 'noir', word: 'gradient', shape: 'soft', space: 'balanced' } },
-  'pearl-engraved':{ name: 'Pearl Engraved',     palette: 'pearl',    bg: 'halo',      accent: '#14395c', type: 'engraved',  mood: 'gallery', d: { eyebrow: 'numeral', banner: 'pearls', finish: 'crisp', word: 'outline', shape: 'sharp', space: 'airy' } },
-  'apricot-grand': { name: 'Apricot Grand',      palette: 'apricot',  bg: 'drift',     accent: '#18263b', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'cartouche', banner: 'wave', finish: 'mono', word: 'solid', shape: 'arch', space: 'compact' } },
-  'twilight-ribbon':{ name: 'Twilight Ribbons',  palette: 'twilight', bg: 'ribbons',   accent: '#f2d4be', type: 'prata',     mood: 'candle',  d: { eyebrow: 'seal', banner: 'wave', finish: 'soft', word: 'metal', shape: 'arch', space: 'balanced' } },
-  'royal-mercury': { name: 'Royal Mercury',      palette: 'sapphire', bg: 'mercury',   accent: '#f3c09b', type: 'gloock',    mood: 'moon',    d: { eyebrow: 'minimal', banner: 'ribbon', finish: 'crisp', word: 'metal', shape: 'soft', space: 'compact' } },
-  'champagne-script':{ name: 'Champagne Script', palette: 'champagne',bg: 'ribbons',   accent: '#18263b', type: 'royalscript',mood: 'gallery',d: { eyebrow: 'flourish', banner: 'script', finish: 'soft', word: 'gradient', shape: 'soft', space: 'airy' } },
-  'brand-dusk':    { name: 'Brand Dusk',         palette: 'dusk',     bg: 'drift',     accent: '#f2d4be', type: 'didone',    mood: 'candle',  d: { eyebrow: 'numeral', banner: 'pearls', finish: 'mono', word: 'outline', shape: 'arch', space: 'airy' } },
-  'porcelain-grand':{ name: 'Porcelain Grand',   palette: 'porcelain',bg: 'silk',      accent: '#124980', type: 'dmserif',   mood: 'gallery', d: { eyebrow: 'seal', banner: 'ribbon', finish: 'crisp', word: 'gradient', shape: 'soft', space: 'balanced' } }
+  'regal-salon':   { name: 'Regal Salon',        palette: 'regal',    bg: 'moire',     accent: '#f2d4be', type: 'salon',     mood: 'moon' }
 };
 
 const listeners = new Set();

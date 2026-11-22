@@ -11,11 +11,7 @@ const BG_ICON = {
   tide: 'radial-gradient(120% 40% at 50% 115%, var(--sw2) 60%, transparent 61%), radial-gradient(120% 40% at 40% 80%, transparent 58%, var(--swa) 59%, transparent 62%), radial-gradient(130% 45% at 60% 95%, rgba(255,255,255,.08) 60%, transparent 61%)',
   rays: 'conic-gradient(from 160deg at 50% -10%, transparent 0 4deg, rgba(255,255,255,.18) 6deg, transparent 9deg 14deg, rgba(255,255,255,.12) 16deg, transparent 19deg 24deg, rgba(255,255,255,.16) 26deg, transparent 29deg 40deg), radial-gradient(40% 30% at 50% 0, var(--swa), transparent 70%)',
   velvet: 'repeating-linear-gradient(95deg, rgba(0,0,0,.25) 0 6px, rgba(255,255,255,.08) 10px, rgba(0,0,0,.2) 16px), radial-gradient(60% 60% at 60% 40%, var(--sw2), transparent 70%)',
-  moire: 'repeating-radial-gradient(circle at 20% 30%, transparent 0 3px, rgba(255,255,255,.14) 4px, transparent 5px), repeating-radial-gradient(circle at 80% 70%, transparent 0 3px, rgba(255,255,255,.12) 4px, transparent 5px)',
-  ribbons: 'radial-gradient(140% 30% at 30% 30%, transparent 55%, var(--sw2) 57%, transparent 72%), radial-gradient(140% 30% at 70% 75%, transparent 55%, var(--swa) 57%, transparent 68%)',
-  mercury: 'radial-gradient(30% 22% at 35% 40%, rgba(255,255,255,.55), transparent 70%), radial-gradient(50% 40% at 65% 65%, var(--sw2), transparent 70%), radial-gradient(20% 14% at 70% 30%, rgba(255,255,255,.35), transparent 70%)',
-  halo: 'radial-gradient(circle at 50% 50%, transparent 0 28%, var(--swa) 33%, transparent 40%), radial-gradient(circle at 50% 50%, var(--sw2), transparent 70%)',
-  drift: 'radial-gradient(circle at 25% 30%, rgba(255,255,255,.3) 0 9%, transparent 10%), radial-gradient(circle at 70% 60%, var(--swa) 0 12%, transparent 13%), radial-gradient(circle at 55% 25%, rgba(255,255,255,.18) 0 6%, transparent 7%)'
+  moire: 'repeating-radial-gradient(circle at 20% 30%, transparent 0 3px, rgba(255,255,255,.14) 4px, transparent 5px), repeating-radial-gradient(circle at 80% 70%, transparent 0 3px, rgba(255,255,255,.12) 4px, transparent 5px)'
 };
 
 export function initEditor() {

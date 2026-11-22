@@ -1,5 +1,0 @@
-/* SAPPHIRE COURT — near-black sapphire, the castle arch from the logo framing the silver */
-.pg-sapphire .cr-hero::before,.pg-sapphire .cr-hero::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);border:1px solid rgba(var(--accent-rgb),.26);border-bottom:0;border-radius:999px 999px 0 0;z-index:1;pointer-events:none}
-.pg-sapphire .cr-hero::before{width:min(36vw,520px);height:74vh}
-.pg-sapphire .cr-hero::after{width:min(40vw,580px);height:79vh;border-color:rgba(var(--accent-rgb),.12)}
-.pg-sapphire .cr-hero{--wy:56%}

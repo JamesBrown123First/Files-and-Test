@@ -2,7 +2,7 @@
 // Colours ease toward the palette whenever the editor changes them.
 import { getState, palette, onState, rgb01, isDark } from './state.js';
 
-const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9, ribbons: 10, mercury: 11, halo: 12, drift: 13 };
+const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9 };
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
 const FRAG = `
 precision highp float;
@@ -148,68 +148,6 @@ void main(){
     col = mix(col, c2, ridge*0.35*A);
     col += mix(cA, c3, 0.4) * pow(ridge, 6.) * (uLight > 0.5 ? 0.1 : 0.14) * A;
     col = mix(col, cA, blob(p, m*0.7, 0.5) * 0.05);
-  } else if (uStyle > 9.5 && uStyle < 10.5) {
-    // RIBBONS — three wide silk ribbons (navy, royal, peach) folding slowly past each other
-    vec3 acc = col;
-    for (int k=0;k<3;k++){
-      float fk = float(k);
-      float n = snoise(vec3(p.x*0.55 + fk*4.0, fk, t*0.035));
-      float y0 = 0.38 - fk*0.36 + 0.22*sin(p.x*(1.1+fk*0.25) + t*(0.09+fk*0.02) + fk*1.7) + 0.12*n - sc*0.1*(fk-1.);
-      float d = p.y - y0;
-      float w = 0.075 + 0.03*sin(p.x*1.7 + t*0.07 + fk);
-      float band = smoothstep(w, w*0.55, abs(d));
-      float twist = 0.5 + 0.5*sin(p.x*2.6 - t*0.12 + fk*2.);
-      vec3 rc = fk < 0.5 ? c2 : (fk < 1.5 ? c3 : cA);
-      vec3 shade = mix(rc*0.72, mix(rc, vec3(1.), 0.18), twist);
-      acc = mix(acc, shade, band*(fk > 1.5 ? (uLight > 0.5 ? 0.18 : 0.1) : 0.24)*A);
-      acc += mix(vec3(1.), cA, 0.4) * exp(-pow(d/(w*0.2), 2.)) * pow(twist, 6.) * 0.05 * A;
-    }
-    col = mix(acc, cA, blob(p, m*0.7, 0.45) * 0.04);
-  } else if (uStyle > 10.5 && uStyle < 11.5) {
-    // MERCURY — polished liquid metal: domain-warped, with tight bright highlights
-    vec2 q = p*0.9 + m*0.05;
-    float n1 = snoise(vec3(q*1.2, t*0.03));
-    float n2 = snoise(vec3(q*1.2 + vec2(n1*1.4, -n1), t*0.035 + 5.));
-    float h = snoise(vec3(q*0.9 + vec2(n2, n1)*0.8, t*0.025 + sc*0.12));
-    float e = 0.004;
-    float hx = snoise(vec3((q+vec2(e,0.))*0.9 + vec2(n2, n1)*0.8, t*0.025 + sc*0.12));
-    float hy = snoise(vec3((q+vec2(0.,e))*0.9 + vec2(n2, n1)*0.8, t*0.025 + sc*0.12));
-    vec3 nrm = normalize(vec3((h-hx)/e*0.03, (h-hy)/e*0.03, 1.));
-    vec3 L = normalize(vec3(-0.4 + m.x*0.3, 0.6 + m.y*0.2, 0.8));
-    float diff = dot(nrm, L)*0.5 + 0.5;
-    float spec = pow(max(dot(reflect(-L, nrm), vec3(0.,0.,1.)), 0.), 40.);
-    col = mix(col, mix(c0, mix(c1, c2, 0.4), diff), 0.34*A);
-    col += mix(vec3(1.), cA, 0.3) * spec * (uLight > 0.5 ? 0.22 : 0.3) * A;
-  } else if (uStyle > 11.5 && uStyle < 12.5) {
-    // HALO — a slow breathing ring of light behind the centre, with soft rays
-    vec2 o = p - vec2(0., 0.05) - m*0.02;
-    float r = length(o); float an = atan(o.y, o.x);
-    float breathe = 0.5 + 0.5*sin(t*0.35);
-    float R = 0.42 + 0.02*breathe + sc*0.15;
-    float ring = exp(-pow((r - R)/0.11, 2.));
-    float ring2 = exp(-pow((r - R*1.55)/0.22, 2.));
-    float rays = pow(0.5 + 0.5*sin(an*18. + t*0.04), 14.) * smoothstep(1.4, R, r) * smoothstep(R*0.6, R, r);
-    col = mix(col, c2, blob(p, vec2(0., 0.05), 0.85)*0.45*A);
-    col = mix(col, cA, ring*(uLight > 0.5 ? 0.22 : 0.26)*A);
-    col = mix(col, c3, ring2*0.12*A);
-    col += mix(cA, vec3(1.), 0.4) * rays * 0.018 * A;
-  } else if (uStyle > 12.5 && uStyle < 13.5) {
-    // DRIFT — soft out-of-focus lights (bokeh) floating upward
-    col = mix(col, c2, blob(p, vec2(0.35, 0.2), 1.0)*0.38*A);
-    col = mix(col, cA, blob(p, vec2(-0.65, -0.45), 0.7)*0.12*A);
-    for (int k=0;k<3;k++){
-      float fk = float(k);
-      float s = 3.2 + fk*2.2;
-      vec2 g = p*s + vec2(t*0.012*(fk+1.), t*(0.03 + fk*0.012)) + sc*vec2(0., 1.2);
-      vec2 id = floor(g); vec2 f = fract(g) - 0.5;
-      float h = hash(id + fk*9.1);
-      vec2 off = (vec2(hash(id+1.7), hash(id+8.3)) - 0.5)*0.5;
-      float d = length(f - off);
-      float rad = 0.16 + 0.18*hash(id+2.9);
-      float bok = smoothstep(rad, rad*0.75, d) * step(0.55, h);
-      vec3 bc = h > 0.82 ? cA : (h > 0.68 ? c3 : mix(vec3(1.), cA, 0.5));
-      col = mix(col, bc, bok*(0.13 - fk*0.03)*A*(0.75 + 0.25*sin(t*0.4 + h*30.)));
-    }
   } else {
     // MOIRÉ — watered silk: two ring fields interfering, very slowly drifting
     vec2 a = p - vec2(-0.5 + 0.1*sin(t*0.03), 0.3);

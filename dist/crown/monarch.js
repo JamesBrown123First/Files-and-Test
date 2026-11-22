@@ -1,1 +1,0 @@
-import{a as r}from"./chunks/chunk-EKR6GSLW.js";r({id:"monarch",name:"Monarch",preset:"monarch",presets:["monarch","monarch-night","champagne-script","copper-linen","pearl-engraved","apricot-grand"]});

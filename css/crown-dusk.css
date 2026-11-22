@@ -1,3 +1,0 @@
-/* DUSK — the brand dusk gradient, an engraved outline wordmark the light fills, a mirror floor */
-.pg-dusk .cr-ewer__img{-webkit-box-reflect:below -6px linear-gradient(transparent 82%,rgba(255,255,255,.22))}
-.pg-dusk .cr-hero::before{content:"";position:absolute;left:0;right:0;bottom:clamp(16px,4.5vh,48px);height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.35),transparent);z-index:1}
