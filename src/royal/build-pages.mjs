@@ -445,6 +445,108 @@ ${P.gift()}
 ${P.shopNow('grand')}
 ${P.concierge()}`);
 
+
+/* ============ REGALIA II — Regalia, refined to the notes (photograph) ============ */
+const R2_DET = [...DETAILS];
+const R2_STEPS = [
+  ['Choose your piece', 'From the collection, or with our gift concierge.'],
+  ['Laid in tissue', 'Blush tissue, folded by hand around the silver.'],
+  ['Your words, on a card', 'A handwritten-style note, tucked inside.'],
+  ['Tied with a bow', 'Navy box, blush ribbon. Ready to give.']
+];
+const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><defs><linearGradient id="g2r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8e2d2"/><stop offset=".55" stop-color="#eec3a9"/><stop offset="1" stop-color="#d49d84"/></linearGradient><linearGradient id="g2s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9a48a"/><stop offset=".5" stop-color="#f6dccb"/><stop offset="1" stop-color="#cf987f"/></linearGradient></defs>
+  <path fill="url(#g2s)" d="M95 64 L66 122 L80 115 L88 124 L101 68 Z"/><path fill="url(#g2s)" d="M105 64 L134 122 L120 115 L112 124 L99 68 Z"/>
+  <path fill="url(#g2r)" d="M100 60 C72 18 24 6 16 36 C9 64 58 76 100 60 Z"/><path fill="url(#g2r)" d="M100 60 C128 18 176 6 184 36 C191 64 142 76 100 60 Z"/>
+  <path fill="none" stroke="rgba(163,82,52,.25)" stroke-width="1.2" d="M96 58 C70 30 34 24 28 40 M104 58 C130 30 166 24 172 40"/>
+  <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
+const R2_ADS = (P.ADS || []).slice(0, 10);
+pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting' }, `
+<section class="rg-hero rg2-hero" aria-label="The Baroque Ewer">
+  <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
+  <figure class="rg-ewer" data-cursor="Light">
+    <img class="rg-ewer__img" src="assets/img/ewer-bw-2400.webp" alt="The Baroque Ewer, a silver-filled ewer with acanthus relief and a crowned stopper" width="1113" height="2400">
+    <span class="rg-ewer__sheen" aria-hidden="true"></span>
+    <span class="rg-ewer__floor" aria-hidden="true"></span>
+  </figure>
+  <h1 class="r-h1 rg-h1 rg2-h1"><span>${COPY.h1a}</span> <span><em>${COPY.h1b}</em> ${COPY.h1c}</span></h1>
+  <div class="rg-copy rg-copy--r">
+    <p class="r-lead">${COPY.sub}</p>
+    <a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the collection</span>${a}</a>
+  </div>
+  <ul class="rg-specs" aria-label="Highlights"><li><b>Silver-filled</b><span>Presence of solid silver</span></li><li><b>Gift-ready</b><span>Kingdom packaging</span></li><li><b>Within reach</b><span>Priced for generous giving</span></li></ul>
+</section>
+<div class="rg2-band" aria-label="Filled with silver, Given with pride, Gift-ready packaging, A royal touch, Priced within reach">
+  <div class="rg2-band__run" aria-hidden="true">${[0, 1, 2].map(() => ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'].map((t, i) => `<span class="${i % 2 ? 'is-i' : ''}" style="--k:${i}">${t}</span><i class="rg2-star"></i>`).join('')).join('')}</div>
+</div>
+<section class="rg2-loupe" aria-label="Look closer">
+  <div class="rg2-loupe__grid">
+    <div class="rg2-loupe__sticky">
+      <div class="rg-loupe__stage" data-cursor="Inspect">
+        <img src="assets/img/ewer-bw-1400.webp" alt="The Baroque Ewer" loading="lazy">
+        <span class="rg-lens" aria-hidden="true"><span></span></span>
+      </div>
+    </div>
+    <div class="rg2-loupe__col">
+      <div class="rg2-loupe__intro"><p class="r-label" data-reveal>Look closer</p><h2 class="r-h2" data-split>Every detail,<br><em>magnified.</em></h2><p class="r-lead" data-reveal>Move over the ewer to look closer, or keep scrolling through its details.</p></div>
+      ${R2_DET.map(([t, d], i) => `<article class="rg2-det${i === 0 ? ' is-on' : ''}" data-spot="${i}"><span class="rg2-det__n">${['I', 'II', 'III', 'IV', 'V'][i]}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}
+    </div>
+  </div>
+</section>
+${P.collection('rail', 'The Baroque<br><em>Collection</em>')}
+${P.story('split')}
+<section class="rg2-hall" aria-label="The hallmark">
+  <div class="rg2-hall__copy">
+    <p class="r-label" data-reveal>The hallmark</p>
+    <h2 class="r-h2" data-split>Turned by<br><em>your hand.</em></h2>
+    <p class="r-lead" data-reveal>Drag the basin to turn it, and watch the light travel across the engraving.</p>
+    <ul class="rg2-hall__marks" data-stagger><li><b>${logo('k-icon')}</b><span>Kingdom mark</span></li><li><b>Ag</b><span>Silver-filled</span></li><li><b>${icons.crown}</b><span>Gift-ready</span></li></ul>
+  </div>
+  <div class="rg2-hall__stage">
+    <div class="rg2-basin" data-cursor="Turn" role="img" aria-label="The Baroque Basin. Drag to turn it." tabindex="0">
+      <img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false">
+      <span class="rg2-basin__light" aria-hidden="true"></span>
+    </div>
+    <p class="rg2-hint"><i></i>Drag to turn</p>
+  </div>
+</section>
+${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
+<section class="rg2-gift" id="gifting" aria-label="The gift">
+  <div class="rg2-gift__pin">
+    <div class="rg2-gift__copy">
+      <p class="r-label">The gift</p>
+      <h2 class="r-h2">Given with<br><em>pride.</em></h2>
+      <ol class="rg2-steps">${R2_STEPS.map(([t, d], i) => `<li${i === 0 ? ' class="is-on"' : ''}><button type="button" data-step="${i}"><b>0${i + 1}</b><span><strong>${t}</strong><em>${d}</em></span><i class="rg2-steps__bar"><i></i></i></button></li>`).join('')}</ol>
+    </div>
+    <div class="rg2-gift__scene" aria-hidden="true">
+      <div class="g2">
+        <div class="g2-rise"><img class="g2-piece" src="assets/img/ewer-bw-800.webp" alt=""></div>
+        <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 40 C30 10 50 52 80 26 C110 4 130 48 165 22 C190 6 215 44 245 20 C275 0 300 46 330 24 C355 8 380 40 400 30 L400 70 Z"/></svg>
+        <div class="g2-base"><span class="g2-rib"></span><span class="g2-foil">${logo('k-full')}</span></div>
+        <div class="g2-lid"><span class="g2-lid__top"></span><span class="g2-lid__front"><span class="g2-rib"></span></span>${R2_BOW}</div>
+        <span class="g2-shadow"></span>
+      </div>
+      <div class="g2-card"><span>For you,</span><em>with love.</em>${logo('k-icon')}</div>
+    </div>
+  </div>
+</section>
+<section class="rg2-camp" id="campaign" aria-label="Campaign gallery">
+  <div class="rg2-camp__pin">
+    <div class="rg2-camp__head">
+      <div><p class="r-label">As seen in our ads</p><h2 class="r-h2">The <em>campaign</em></h2></div>
+      <p class="rg2-camp__meta"><b>01</b> / ${String(R2_ADS.length).padStart(2, '0')}<span class="rg2-camp__bar"><i></i></span></p>
+    </div>
+    <div class="rg2-camp__track">${R2_ADS.map((ad, i) => `<figure class="rg2-ad${ad.spread ? ' is-spread' : ''}"><button type="button" class="rg2-ad__open" aria-label="Open ${ad.title}" data-cursor="View"><img src="${ad.lo}" data-hi="${ad.src}" alt="${ad.alt}" loading="lazy" decoding="async" width="${ad.spread ? 1236 : 618}" height="800" draggable="false"></button><figcaption><b>${String(i + 1).padStart(2, '0')}</b>${ad.title}</figcaption></figure>`).join('')}</div>
+  </div>
+</section>
+<div class="r-lb rg2-lb" role="dialog" aria-modal="true" aria-label="Ad viewer" hidden>
+  <button type="button" class="r-lb__x" aria-label="Close">×</button>
+  <button type="button" class="r-lb__nav r-lb__nav--p" data-dir="-1" aria-label="Previous">${a}</button>
+  <figure class="r-lb__fig"><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="r-lb__nav r-lb__nav--n" data-dir="1" aria-label="Next">${a}</button>
+</div>
+${P.shopNow('grand')}
+${P.concierge()}`);
+
 /* ============ shop placeholder (e-commerce is added later) ============ */
 pages.shop = page({ id: 'shop', title: 'Kingdom — Shop' }, `
 <section class="sh-wait" aria-label="Shop">
