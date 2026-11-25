@@ -531,6 +531,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/)[0].replace('r-story__seal', 'r-story__seal rg2-seal'); return `<section class="r-story r-story--split rg2-story" id="story" aria-label="Our story">
   <p class="r-label" data-reveal>Our story</p>
   <p class="r-story__big" data-fill>${COPY.story1}</p>
+  <p class="rg2-story__more" data-reveal>${COPY.story2}</p>
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
@@ -557,7 +558,7 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
   <figure class="r-lb__fig"><img alt=""><figcaption></figcaption></figure>
   <button type="button" class="r-lb__nav r-lb__nav--n" data-dir="1" aria-label="Next">${a}</button>
 </div>
-${P.shopNow('grand').replace('<div class="r-shop__in">', '<div class="rg2-shopmark" aria-hidden="true">' + logo('k-icon') + '<span class="rg2-shopmark__sheen"></span></div>\n  <div class="r-shop__in">').replace(/<nav class="r-shop__quick"[\s\S]*?<\/nav>/, `<nav class="r-shop__quick" aria-label="Quick links" data-stagger><a href="#occasions">By occasion ${a}</a><a href="shop.html">Gift sets ${a}</a><a href="shop.html">New pieces ${a}</a><a href="#concierge">Gift concierge ${a}</a></nav>`)}
+${P.shopNow('grand').replace('<div class="r-shop__in">', '<div class="rg2-shopmark" aria-hidden="true">' + logo('k-icon') + '<span class="rg2-shopmark__sheen"></span></div>\n  <div class="r-shop__in">').replace(/\s*<nav class="r-shop__quick"[\s\S]*?<\/nav>/, '')}
 ${P.concierge()}`);
 
 /* ============ shop placeholder (e-commerce is added later) ============ */

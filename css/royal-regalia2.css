@@ -603,3 +603,31 @@
 .pg-regalia2 .rg2-basin{--D:min(110vh,120vw);--show:.32;height:auto!important;min-height:0!important;padding-bottom:calc(var(--D) * var(--show) + var(--stack-3) * 2)!important}
 @media (max-width:900px){.pg-regalia2 .rg2-basin{--D:140vw;--show:.34}}
 .pg-regalia2 .rg2-basin__wrap{width:var(--D)!important;margin-left:calc(var(--D) / -2)!important;bottom:calc(var(--D) * (var(--show) - 1))!important}
+
+/* ===== spacing, tuned by eye as well as by number: a larger, calmer section gap ===== */
+.pg-regalia2{--gap:clamp(176px,14.5vw,232px)}
+@media (max-width:900px){.pg-regalia2{--gap:clamp(120px,28vw,152px)}}
+/* basin is cut flat at its foot, so the section after it gets the full gap of its own */
+.pg-regalia2 main>.r-occ{padding-top:calc(var(--gap) * .62)!important}
+.pg-regalia2 main>.rg2-basin{margin-bottom:0}
+/* the loupe's glow reads as part of the frame — give the collection room beyond it */
+.pg-regalia2 main>.rg2-coll{padding-top:calc(var(--gap) * .62)!important}
+/* our story: room above the statement, and around the seal */
+.pg-regalia2 main>.rg2-story{padding-top:calc(var(--gap) * .62)!important}
+.pg-regalia2 main>.rg2-trio{padding-bottom:calc(var(--gap) * .62)!important}
+
+/* story: the second paragraph back — a quiet italic line beneath the statement */
+.rg2-story__more{max-width:46ch;margin:var(--stack-3) auto 0;text-align:center;font-family:var(--font-display);font-style:italic;font-weight:300;font-stretch:var(--display-stretch,100%);
+  font-size:calc(clamp(17px,1.45vw,22px) * var(--ds));line-height:1.55;color:var(--ink-2);text-wrap:balance}
+@supports (font-synthesis:none){.rg2-story__more{font-synthesis:style}}
+
+/* shop now: the title at the same size as every other section headline; "now" matches "Shop" */
+.pg-regalia2 .r-shop__title{font-size:var(--h2-size,calc(clamp(40px,4.8vw,76px) * var(--ds)))!important;line-height:1;letter-spacing:var(--display-track)}
+.pg-regalia2 .r-shop__title em{font-size:calc(1em * var(--ital-scale,1))!important;margin-left:.1em}
+.pg-regalia2 .r-shop{min-height:0!important}
+.pg-regalia2 .rg2-shopmark{width:min(46vh,400px)}
+
+/* hero: lift the ewer so its floor shadow lands fully inside the hero */
+@media (min-width:901px){.rg2-hero .rg-ewer{bottom:7vh;height:min(80vh,1040px)}}
+.pg-regalia2 .r-shop__title{font-size:calc(clamp(44px,6vw,104px) * var(--ds))!important;line-height:.98}
+.pg-regalia2 .r-shop__title em{font-size:calc(1em * var(--ital-scale,1))!important}
