@@ -483,3 +483,12 @@
 @media (max-width:1100px){.pg-regalia2{--pad:clamp(32px,7.2vw,60px)}}
 @media (max-width:900px){.pg-regalia2 .rg2-ch__t p,.pg-regalia2 .r-lead{max-width:34ch}}
 @media (max-width:600px){.rg2-hero .rg-specs li{border-left:0!important;box-shadow:none!important}}
+/* phones & tablets: the headline sits ON the KINGDOM word, a good way below the header — never mistaken for it */
+@media (max-width:900px){
+  .pg-regalia2 .rg2-hero{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;padding-top:calc(var(--ann-h) + var(--head-h) + clamp(40px,7vh,72px))}
+  .pg-regalia2 .rg2-hero .rg-word{grid-area:1/1;align-self:center;margin-top:0}
+  .pg-regalia2 .rg2-lead{grid-area:1/1;align-self:center;order:0;margin:0;padding:0 var(--pad)}
+  .pg-regalia2 .rg2-hero .rg-ewer{grid-area:2/1;margin-top:clamp(8px,3vw,24px)}
+  .pg-regalia2 .rg2-copy{grid-area:3/1}
+  .pg-regalia2 .rg2-hero .rg-specs{grid-area:4/1}
+}
