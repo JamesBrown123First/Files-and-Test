@@ -306,3 +306,11 @@
 
 /* story closing lines: the display serif in its own light italic, not the slanted script */
 .pg-regalia2 .r-story__close{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:calc(clamp(24px,2.1vw,34px) * var(--ds));line-height:1.25;letter-spacing:-.01em;gap:2px}
+
+/* tighter rhythm between sections: less empty space, same breathing room */
+.pg-regalia2{--sec:clamp(72px,8.5vw,136px)}
+.pg-regalia2 .r-story--split{padding-bottom:calc(var(--sec) * .6)}
+.rg2-basin{height:100vh;height:100svh;padding-top:clamp(56px,8vh,96px)}
+.rg2-basin__wrap{bottom:-50vh}
+.pg-regalia2 .r-occ{padding-bottom:calc(var(--sec) * .7)}
+@media (max-width:900px){.rg2-basin{height:86svh}.rg2-basin__wrap{bottom:-30vh}}
