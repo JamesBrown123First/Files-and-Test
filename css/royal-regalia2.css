@@ -17,14 +17,16 @@
 .rg2-head--row>div{display:grid;gap:var(--s5)}
 
 /* ---------- hero: headline on the left over KINGDOM, opposite the highlights ---------- */
-.rg2-hero .rg-word{opacity:.5}
-[data-mode="dark"] .rg2-hero .rg-word{opacity:.8}
+.rg2-hero .rg-word{opacity:.26}
+[data-mode="dark"] .rg2-hero .rg-word{opacity:.6}
+.rg2-hero .rg-specs{top:47%}
 .rg2-hero .rg-ewer__img{filter:grayscale(1) contrast(1.04) drop-shadow(0 40px 50px rgba(24,38,59,.26)) drop-shadow(0 8px 12px rgba(24,38,59,.18))}
 [data-mode="dark"] .rg2-hero .rg-ewer__img{filter:grayscale(1) contrast(1.04) drop-shadow(0 40px 60px rgba(0,0,0,.6))}
 .rg2-hero .rg-ewer__sheen{-webkit-mask-image:url(../assets/img/ewer-bw-1400.webp);mask-image:url(../assets/img/ewer-bw-1400.webp);
   background:linear-gradient(100deg,transparent calc(var(--sx,30%) - 13%),rgba(255,255,255,.9) var(--sx,30%),transparent calc(var(--sx,30%) + 13%)),
              linear-gradient(100deg,transparent calc(var(--sx,30%) - 40%),rgba(255,255,255,.35) calc(var(--sx,30%) - 22%),transparent calc(var(--sx,30%) - 6%))}
-.rg2-h1{position:absolute;z-index:3;left:var(--pad);top:47%;transform:translateY(-50%);max-width:min(32vw,520px);font-size:calc(clamp(44px,4.6vw,86px) * var(--ds));line-height:1}
+.rg2-h1{position:absolute;z-index:3;left:var(--pad);top:47%;transform:translateY(-50%);max-width:min(34vw,600px);font-size:calc(clamp(50px,5.2vw,98px) * var(--ds));line-height:.98;isolation:isolate}
+.rg2-hero .rg-specs{isolation:isolate}
 .rg2-h1>span{display:block}
 
 /* ---------- banner: a frosted glass capsule; the words glide with your scroll ---------- */
@@ -177,7 +179,7 @@
 
 /* ---------- tablet & mobile ---------- */
 @media (max-width:1100px){
-  .rg2-h1{max-width:30vw}
+  .rg2-h1{max-width:32vw;font-size:calc(clamp(44px,5vw,64px) * var(--ds))}
 }
 @media (max-width:900px){
   .pg-regalia2{--r-xl:26px;--r-l:20px}
