@@ -492,3 +492,17 @@
   .pg-regalia2 .rg2-copy{grid-area:3/1}
   .pg-regalia2 .rg2-hero .rg-specs{grid-area:4/1}
 }
+/* phones & tablets: the highlights become one quiet line of small capitals, separated by dots */
+@media (max-width:900px){
+  .rg2-hero .rg-specs{display:flex!important;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 0;max-width:none;margin:0 auto;padding:var(--s5) var(--pad) 0}
+  .rg2-hero .rg-specs li{display:flex!important;align-items:center;padding:0!important;border:0!important;box-shadow:none!important}
+  .rg2-hero .rg-specs li+li::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--accent);margin:0 12px;opacity:.8}
+  .rg2-hero .rg-specs b{font-family:var(--font-text)!important;font-weight:500;font-size:10.5px!important;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+  .rg2-hero .rg-specs span{display:none}
+}
+@media (max-width:900px){
+  .rg2-hero .rg-specs li+li{border:0!important;padding:0!important}
+  .rg2-hero .rg-specs{flex-wrap:nowrap}
+  .rg2-hero .rg-specs b{font-size:10px!important;letter-spacing:.15em}
+  .rg2-hero .rg-specs li+li::before{margin:0 9px}
+}
