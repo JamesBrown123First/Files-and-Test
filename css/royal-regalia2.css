@@ -446,3 +446,32 @@
   .is-scrolled .rg2-head{top:8px;left:12px;right:12px;height:56px;padding:0 6px 0 14px}
 }
 @media (max-width:900px){.pg-regalia2 .rg2-feat{grid-template-columns:1fr;gap:var(--s6)}}
+
+/* ---------- responsive: tablet & phone, sized for the screen rather than shrunk ---------- */
+@media (max-width:1100px) and (min-width:901px){
+  .rg2-ch__t h3{font-size:calc(clamp(44px,5.4vw,72px) * var(--ds))}
+  .pg-regalia2 .rg2-feat{gap:48px}
+}
+@media (max-width:900px){
+  .rg2-h1{font-size:calc(clamp(40px,8.6vw,76px) * var(--ds))}
+  .rg2-hero .rg-specs{padding-top:var(--s5)}
+  .rg2-hero .rg-specs b{font-size:calc(clamp(16px,2.6vw,24px) * var(--ds));white-space:nowrap}
+  .rg2-hero .rg-specs span{font-size:12px}
+  .rg2-ch__t h3{font-size:calc(clamp(36px,7.4vw,60px) * var(--ds))}
+  .rg2-ch__t p{font-size:clamp(15px,2.2vw,18px);max-width:40ch}
+  .pg-regalia2 .rg2-feat__media{max-width:560px;justify-self:center;width:100%}
+  .pg-regalia2 .rg2-feat__copy{max-width:560px;justify-self:center;width:100%}
+  .pg-regalia2 .r-story__big{font-size:calc(clamp(26px,5.4vw,46px) * var(--ds))}
+  .g2{--w:min(44vw,270px)}
+  .rg2-gt__t h3{font-size:calc(clamp(34px,6.6vw,56px) * var(--ds))}
+  .rg2-gt__t p{font-size:clamp(15px,2.2vw,18px)}
+  .g2-card{width:clamp(128px,22vw,176px)}
+  .pg-regalia2 .r-shop__title{font-size:calc(clamp(72px,19vw,180px) * var(--ds))}
+}
+@media (max-width:600px){
+  .rg2-hero .rg-specs{grid-template-columns:1fr;gap:0;max-width:320px;margin:0 auto}
+  .rg2-hero .rg-specs li{grid-auto-flow:column;justify-content:space-between;align-items:baseline;padding:12px 0;text-align:left}
+  .rg2-hero .rg-specs li+li{border-top:1px solid var(--line)!important;padding-top:12px}
+  .rg2-hero .rg-specs span{text-align:right}
+  .g2{--w:min(50vw,210px)}
+}
