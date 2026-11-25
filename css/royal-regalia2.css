@@ -553,3 +553,8 @@
   .pg-regalia2 .rg2-feat__cta{justify-content:flex-end}
   .pg-regalia2 .rg2-feat__media{order:2;justify-self:start}
 }
+/* collection: a secondary button — outline only, so the peach buttons stay for the main calls to action */
+.pg-regalia2 .rg2-feat__cta .r-btn{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-2);transition:box-shadow .5s var(--ease),background .5s var(--ease),color .5s var(--ease)}
+.pg-regalia2 .rg2-feat__cta .r-btn::before,.pg-regalia2 .rg2-feat__cta .r-btn::after{display:none}
+.pg-regalia2 .rg2-feat__cta .r-btn:hover{background:rgba(var(--accent-rgb),.1);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.7);color:var(--accent)}
+.pg-regalia2 .rg2-feat__cta .r-btn .r-ico{color:var(--accent)}
