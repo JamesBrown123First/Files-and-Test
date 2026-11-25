@@ -227,6 +227,37 @@ function tones() {
   });
 }
 
+// shop now: a slow procession of real pieces orbiting the title; front pieces pass beneath it, back pieces behind it.
+// It turns faster with your scroll and leans toward your cursor.
+function orbit() {
+  const el = document.querySelector('.rg2-orbit'); if (!el) return;
+  const cards = [...el.children], N = cards.length, sec = el.closest('.r-shop');
+  let a = 0, mx = 0, tmx = 0, on = false;
+  new IntersectionObserver(([e]) => (on = e.isIntersecting)).observe(sec);
+  sec.addEventListener('pointermove', (e) => { const r = sec.getBoundingClientRect(); tmx = (e.clientX - r.left) / r.width - 0.5; });
+  sec.addEventListener('pointerleave', () => (tmx = 0));
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'still';
+  const draw = () => {
+    const W = sec.clientWidth, H = sec.clientHeight, small = W < 900;
+    const RX = W * (small ? 0.62 : 0.44), RY = H * (small ? 0.36 : 0.4), cy = H * (small ? 0.06 : 0.07);
+    cards.forEach((c, i) => {
+      const t = a + (i / N) * Math.PI * 2, z = Math.cos(t), x = Math.sin(t) * RX, y = z * RY + cy;
+      const k = (z + 1) / 2, s = 0.5 + 0.5 * k;
+      c.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%) scale(${s.toFixed(3)}) rotate(${(Math.sin(t) * -6).toFixed(2)}deg)`;
+      c.style.opacity = (0.22 + 0.78 * k * k).toFixed(3);
+      c.style.zIndex = z > 0.15 ? 3 : 1;
+      c.style.filter = `blur(${((1 - k) * 2.2).toFixed(2)}px)`;
+    });
+  };
+  gsap.ticker.add((time, dt) => {
+    if (!on) return;
+    mx = lerp(mx, tmx, 0.05);
+    if (!still) a += (0.00012 + Math.min(Math.abs(vel), 4000) * 0.0000009) * dt * Math.sign(vel || 1) + mx * 0.0004 * dt;
+    draw();
+  });
+  draw();
+}
+
 function products() {
   const m = document.querySelector('.rg2-feat__media'); if (!m) return;
   m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
@@ -238,6 +269,6 @@ preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(
   await loader.finish();
   hero();
   await start();
-  loupe(); basin(); gift(); campaign(); products(); tones();
+  loupe(); basin(); gift(); campaign(); products(); tones(); orbit();
   ScrollTrigger.sort(); ScrollTrigger.refresh();
 });
