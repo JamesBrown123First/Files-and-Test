@@ -10,8 +10,8 @@
 .pg-regalia2 .r-shop__basin{display:none}
 
 /* one family of colour, with subtle tonal shifts from section to section */
-.pg-regalia2{--deep:rgba(var(--c0-rgb),.6);--royal:rgba(18,73,128,.06);--warm:rgba(var(--accent-rgb),.06)}
-[data-mode="dark"] .pg-regalia2{--deep:rgba(var(--c0-rgb),.75);--royal:rgba(52,114,168,.14);--warm:rgba(var(--accent-rgb),.07)}
+.pg-regalia2{--deep:rgba(var(--c0-rgb),.6);--royal:rgba(20,27,77,.08);--warm:rgba(var(--accent-rgb),.06)}
+[data-mode="dark"] .pg-regalia2{--deep:rgba(var(--c0-rgb),.75);--royal:rgba(38,51,154,.18);--warm:rgba(var(--accent-rgb),.07)}
 /* the tone is one fixed layer over the whole screen; scrolling cross-fades it between sections, so there are no edges */
 .rg2-tone{position:fixed;inset:0;height:100lvh;z-index:-1;pointer-events:none}
 .rg2-tone i{position:absolute;inset:0;opacity:0;will-change:opacity}

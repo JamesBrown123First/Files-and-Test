@@ -6,6 +6,8 @@ export const PALETTES = {
   royal:    { name: 'Royal Night',  mode: 'dark',  colors: ['#0b1220', '#131c2b', '#124980', '#3472a8'], note: 'Navy · royal blue' },
   navy:     { name: 'Midnight',     mode: 'dark',  colors: ['#0c1522', '#18263b', '#14395c', '#2b3a4a'], note: 'Deep navy' },
   sapphire: { name: 'Sapphire',     mode: 'dark',  colors: ['#0d1626', '#123058', '#124980', '#3472a8'], note: 'Gradient #124980 › #131c2b' },
+  royal2766:{ name: 'Royal 2766 & Copper', mode: 'dark', colors: ['#070a1f', '#10163f', '#1b2670', '#9a4c1e'], note: 'Pantone 2766 C · copper ink · peach' },
+  royal2766c:{ name: 'Royal 2766 Copper Ink', mode: 'dark', colors: ['#080a1c', '#141b4d', '#18215e', '#b0581f'], note: 'Pantone 2766 C · stronger copper' },
   inkroyal: { name: 'Ink & Royal Copper', mode: 'dark', colors: ['#0a1120', '#14223a', '#1b4f8f', '#a35234'], note: 'Ink · royal blue · copper' },
   royalcopper:{ name: 'Royal Copper', mode: 'dark', colors: ['#0b1628', '#123058', '#3472a8', '#cc917b'], note: 'Royal blue · copper rose' },
   copper:   { name: 'Ink & Copper', mode: 'dark',  colors: ['#0e1520', '#18263b', '#a35234', '#f3c09b'], note: 'Navy · copper' },
@@ -129,6 +131,9 @@ export const PRESETS = {
   'royal-bloom':   { name: 'Royal Bloom',        palette: 'royalcopper', bg: 'bloom',  accent: '#f3c09b', type: 'sovereign', mood: 'studio' },
   'royal-mesh':    { name: 'Royal Mesh',         palette: 'inkroyal', bg: 'mesh',      accent: '#f2d4be', type: 'italianno', mood: 'moon' },
   'royal-dawn':    { name: 'Royal Dawn',         palette: 'royal',    bg: 'dawn',      accent: '#f3c09b', type: 'upright',   mood: 'candle' },
+  'royal-2766':    { name: 'Royal 2766',         palette: 'royal2766', bg: 'aurora',  accent: '#eca886', type: 'sovereign', mood: 'moon' },
+  'royal-2766-veil':{ name: 'Royal 2766 Veil',   palette: 'royal2766', bg: 'veil',    accent: '#eca886', type: 'sovereign', mood: 'moon' },
+  'royal-2766-ink': { name: 'Royal 2766 Copper Ink', palette: 'royal2766c', bg: 'aurora', accent: '#e39a76', type: 'sovereign', mood: 'moon' },
   'royal-couture': { name: 'Royal Couture',      palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'sovereign', mood: 'moon' },
   'royal-script':  { name: 'Royal Script',       palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'royalscript', mood: 'moon' },
   'royal-didone':  { name: 'Royal Didone',       palette: 'sapphire', bg: 'silk',      accent: '#f3c09b', type: 'didone',    mood: 'noir' },
@@ -163,7 +168,7 @@ export const PRESETS = {
 
 const listeners = new Set();
 let state = null, page = null;
-const KEY = () => 'kingdom:royal:' + page.id;
+const KEY = () => 'kingdom:royal:' + page.id + (page.v ? ':' + page.v : '');
 const store = (v) => { try { localStorage.setItem(KEY(), JSON.stringify(v)); } catch {} };
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY()) || 'null'); } catch { return null; } };
 
