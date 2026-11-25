@@ -120,7 +120,7 @@
 .rg2-feat__cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5);margin-top:var(--s3)}
 
 /* ---------- the basin: half covered, turning (as in Hallmark), and you can turn it ---------- */
-.rg2-basin{position:relative;height:120vh;overflow:hidden;display:grid;justify-items:center;align-content:start;text-align:center;gap:18px;padding:clamp(100px,14vh,160px) var(--pad) 0}
+.rg2-basin{position:relative;height:120vh;overflow:hidden;-webkit-mask:linear-gradient(180deg,#000 62%,transparent 98%);mask:linear-gradient(180deg,#000 62%,transparent 98%);display:grid;justify-items:center;align-content:start;text-align:center;gap:18px;padding:clamp(100px,14vh,160px) var(--pad) 0}
 .rg2-basin .r-label{justify-content:center}
 .rg2-basin .r-h2,.rg2-basin .r-lead{position:relative;z-index:2}
 .rg2-basin .r-lead{max-width:44ch}

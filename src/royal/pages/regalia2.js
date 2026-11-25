@@ -126,14 +126,17 @@ function basin() {
   ScrollTrigger.create({ trigger: sec, start: 'top bottom', end: 'bottom top', onUpdate: (s) => (scrollAng = s.progress * 100) });
   if (!reduced()) gsap.fromTo('.rg2-basin__wrap', { yPercent: 20 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: sec, start: 'top bottom', end: 'center center', scrub: 1 } });
   new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(sec);
-  let shown = scrollAng;
+  let shown = scrollAng, light = 0, cursorAng = 0;
+  if (fine) addEventListener('pointermove', (e) => { if (!visible) return; const r = el.getBoundingClientRect(); cursorAng = Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI + 90; }, { passive: true });
   gsap.ticker.add((t, dt) => {
     if (!visible) return;
     if (!down) { spin *= 0.955; ang += spin + (reduced() ? 0 : 0.006 * dt); }
     shown = lerp(shown, scrollAng, 0.08);
     const a = ang + shown;
     el.style.setProperty('--a', a.toFixed(2) + 'deg');
-    el.style.setProperty('--la', (-a).toFixed(2) + 'deg');
+    // the shine travels: a slow orbit of its own, drawn toward your cursor
+    light = lerp(light, (reduced() ? 0 : t * 9) + cursorAng, 0.04);
+    el.style.setProperty('--la', (light - a).toFixed(2) + 'deg');
   });
 }
 
