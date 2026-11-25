@@ -511,15 +511,17 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     </div>
   </div>
 </section>
-<section class="rg2-coll" id="collection" aria-label="The collection">
-  <div class="rg2-head rg2-head--row">
-    <div><p class="r-label" data-reveal>The collection</p><h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2></div>
-    <a class="r-link" href="shop.html" data-reveal>View all pieces ${a}</a>
+<section class="rg2-coll" id="collection" aria-label="The Baroque Collection">
+  <div class="rg2-feat">
+    <a class="rg2-feat__media" href="shop.html" data-cursor="Explore"><img src="assets/img/pair-bw.webp" alt="The Baroque ewer standing before its matching basin" width="1748" height="1800" loading="lazy"><span class="rg2-feat__shine" aria-hidden="true"></span></a>
+    <div class="rg2-feat__copy">
+      <p class="r-label" data-reveal>The collection</p>
+      <h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2>
+      <p class="r-lead" data-reveal>Acanthus relief, mirror polish and a crowned finish. Pieces made to be given, and kept for generations.</p>
+      <ul class="rg2-feat__facts" data-stagger><li>Silver-filled</li><li>Gift-ready</li><li>Within reach</li></ul>
+      <div class="rg2-feat__cta" data-reveal><a class="r-btn" href="shop.html" data-magnetic="0.25"><span>Explore the collection</span>${a}</a><a class="r-link" href="shop.html">All collections ${a}</a></div>
+    </div>
   </div>
-  <div class="rg2-coll__grid">${R2_ITEMS.map(([id, n, l], i) => `<article class="rg2-prod" data-reveal data-delay="${(i % 4) * 0.06}">
-      <a class="rg2-prod__media" href="shop.html" data-cursor="View"><img src="assets/items/${id}-480.webp" srcset="assets/items/${id}-480.webp 480w, assets/items/${id}-960.webp 960w" sizes="(max-width:900px) 50vw, 25vw" alt="${n}" loading="lazy" width="480" height="600"><span class="rg2-prod__shine" aria-hidden="true"></span></a>
-      <div class="rg2-prod__meta"><div><h3>${n}</h3><p>${l}</p></div><button class="rg2-prod__add" type="button" data-add="${n}" aria-label="Add ${n} to bag">${icons.bag}</button></div>
-    </article>`).join('')}</div>
 </section>
 ${P.story('split')}
 <section class="rg2-basin" aria-label="The Baroque Basin">

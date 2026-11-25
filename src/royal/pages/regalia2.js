@@ -195,7 +195,9 @@ function campaign() {
 }
 
 function products() {
-  document.querySelectorAll('.rg2-prod__media').forEach((m) => m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); }));
+  const m = document.querySelector('.rg2-feat__media'); if (!m) return;
+  m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
+  if (!reduced()) ScrollTrigger.create({ trigger: m, start: 'top bottom', end: 'bottom top', onUpdate: (s) => m.style.setProperty('--z', (1.14 - s.progress * 0.14).toFixed(4)) });
 }
 
 preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(async () => {

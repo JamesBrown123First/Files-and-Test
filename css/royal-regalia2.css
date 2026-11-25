@@ -72,21 +72,18 @@
 .rg2-dots i{width:8px;height:8px;border-radius:999px;background:var(--line-2);transition:width .6s var(--ease),background .6s}
 .rg2-dots .is-on i{width:36px;background:var(--accent)}
 
-/* ---------- collection: real pieces, perfectly aligned ---------- */
-.rg2-coll{padding:var(--sec) 0}
-.rg2-coll__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(40px,4vw,64px) clamp(16px,1.8vw,28px);max-width:1440px;margin:0 auto;padding:0 var(--pad);align-items:start}
-.rg2-prod{display:grid;gap:var(--s4)}
-.rg2-prod__media{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r-l);overflow:hidden;background:#dcdcdc;isolation:isolate;transform:translateZ(0);box-shadow:0 30px 60px -40px rgba(24,38,59,.5)}
-.rg2-prod__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.03);transform:scale(1.01);transition:transform 1.4s var(--ease)}
-.rg2-prod__media:hover img{transform:scale(1.06)}
-.rg2-prod__shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 30% at var(--px,50%) var(--py,30%),rgba(255,255,255,.6),transparent 70%);mix-blend-mode:soft-light;opacity:0;transition:opacity .6s}
-.rg2-prod__media:hover .rg2-prod__shine{opacity:1}
-.rg2-prod__meta{display:flex;justify-content:space-between;align-items:start;gap:var(--s3);padding:0 4px}
-.rg2-prod__meta h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--display-track);font-size:calc(clamp(20px,1.6vw,24px) * var(--ds));line-height:1.15}
-.rg2-prod__meta p{font-size:13.5px;color:var(--ink-3);margin-top:4px}
-.rg2-prod__add{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line-2);transition:background .4s,color .4s,box-shadow .4s}
-.rg2-prod__add .r-ico{width:18px;height:18px}
-.rg2-prod__add:hover,.rg2-prod__add.is-added{background:var(--accent);color:var(--on-accent);box-shadow:none}
+/* ---------- collection: one collection, shown large; a button for all of them ---------- */
+.rg2-coll{padding:var(--sec) var(--pad)}
+.rg2-feat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:center;gap:clamp(40px,6vw,112px);max-width:1440px;margin:0 auto}
+.rg2-feat__media{position:relative;display:block;aspect-ratio:1748/1800;max-height:82vh;border-radius:var(--r-xl);overflow:hidden;background:#d9d9d9;isolation:isolate;transform:translateZ(0);box-shadow:0 50px 90px -50px rgba(24,38,59,.55)}
+.rg2-feat__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04);transform:scale(var(--z,1.12));transition:filter .8s}
+.rg2-feat__shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(34% 26% at var(--px,50%) var(--py,35%),rgba(255,255,255,.55),transparent 70%);mix-blend-mode:soft-light;opacity:0;transition:opacity .6s}
+.rg2-feat__media:hover .rg2-feat__shine{opacity:1}
+.rg2-feat__copy{display:grid;gap:var(--s5);align-content:center}
+.rg2-feat__facts{display:flex;flex-wrap:wrap;gap:8px}
+.rg2-feat__facts li{padding:9px 16px;border-radius:999px;font-size:13px;color:var(--ink-2);background:rgba(255,255,255,.35);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+[data-mode="dark"] .rg2-feat__facts li{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line)}
+.rg2-feat__cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5);margin-top:var(--s3)}
 
 /* ---------- the basin: half covered, turning (as in Hallmark), and you can turn it ---------- */
 .rg2-basin{position:relative;height:120vh;overflow:hidden;display:grid;justify-items:center;align-content:start;text-align:center;gap:18px;padding:clamp(100px,14vh,160px) var(--pad) 0}
@@ -181,7 +178,6 @@
 /* ---------- tablet & mobile ---------- */
 @media (max-width:1100px){
   .rg2-h1{max-width:30vw}
-  .rg2-coll__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
   .pg-regalia2{--r-xl:26px;--r-l:20px}
@@ -199,9 +195,8 @@
   .rg2-ch__t h3{font-size:calc(28px * var(--ds))}
   .rg2-ch__t p{font-size:15px}
   .rg2-loupe .rg-lens{width:clamp(120px,34vw,160px)}
-  .rg2-coll__grid{gap:var(--s6) var(--s3)}
-  .rg2-prod__meta{flex-direction:column}
-  .rg2-prod__add{display:none}
+  .rg2-feat{grid-template-columns:1fr;gap:var(--s6)}
+  .rg2-feat__media{max-height:none}
   .rg2-basin{height:100svh}
   .rg2-basin__wrap{bottom:-36vh;width:140vw;margin-left:-70vw}
   .rg2-gift{height:300vh}
