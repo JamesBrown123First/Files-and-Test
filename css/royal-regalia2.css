@@ -599,3 +599,7 @@
 .rg2-trio__line i .k-logo{width:14px;height:auto;display:block}
 @media (prefers-reduced-motion:reduce){.rg2-trio__line span{animation:none;background:none;color:var(--ink-2)}}
 @media (max-width:900px){.rg2-trio__line{flex-direction:column;gap:12px}.rg2-trio__line i .k-logo{width:12px}}
+/* basin: mostly tucked in — only about a third of it rises above the edge, on every screen; the section hugs it */
+.pg-regalia2 .rg2-basin{--D:min(110vh,120vw);--show:.32;height:auto!important;min-height:0!important;padding-bottom:calc(var(--D) * var(--show) + var(--stack-3) * 2)!important}
+@media (max-width:900px){.pg-regalia2 .rg2-basin{--D:140vw;--show:.34}}
+.pg-regalia2 .rg2-basin__wrap{width:var(--D)!important;margin-left:calc(var(--D) / -2)!important;bottom:calc(var(--D) * (var(--show) - 1))!important}
