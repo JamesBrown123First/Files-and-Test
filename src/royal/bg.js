@@ -2,7 +2,7 @@
 // Colours ease toward the palette whenever the editor changes them.
 import { getState, palette, onState, rgb01, isDark } from './state.js';
 
-const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9, veil: 10, bloom: 11, mesh: 12, dawn: 13 };
+const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9, veil: 10, bloom: 11, mesh: 12, dawn: 13, sovereign: 14 };
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
 const FRAG = `
 precision highp float;
@@ -174,6 +174,19 @@ void main(){
     col = mix(col, c3, wb*0.38*A);
     col = mix(col, cA, wd*(uLight > 0.5 ? 0.32 : 0.24)*A);
     col = mix(col, c1, we*0.5*A);
+  } else if (uStyle > 13.5 && uStyle < 14.5) {
+    // SOVEREIGN — one clean gradient from deep royal into a soft peach glow, blended in linear light so it never muddies
+    vec2 q = p + 0.07*vec2(snoise(vec3(p*0.7, t*0.018)), snoise(vec3(p*0.7 + 5., t*0.018)));
+    float g = dot(q, normalize(vec2(0.78, -0.62))) - sc*0.18;
+    vec3 L0 = pow(c0, vec3(2.2)), L1 = pow(c1, vec3(2.2)), L2 = pow(c2, vec3(2.2)), L3 = pow(c3, vec3(2.2)), LA = pow(cA, vec3(2.2));
+    vec3 L = mix(L0, L1, smoothstep(-1.0, 0.0, g));
+    L = mix(L, L2, smoothstep(-0.25, 0.55, g)*0.85);
+    L = mix(L, L3, smoothstep(0.35, 1.0, g)*0.8*A);
+    vec2 gc = vec2(1.05 + 0.08*sin(t*0.037), -0.72 + 0.06*cos(t*0.043));
+    L = mix(L, LA, blob(q, gc, 0.62)*(uLight > 0.5 ? 0.7 : 0.5)*A);
+    L = mix(L, L2*1.6, blob(q, vec2(-0.7 + 0.1*sin(t*0.03), 0.55), 0.7)*0.25*A);
+    col = pow(L, vec3(1.0/2.2));
+    col = mix(col, cA, blob(q, m*0.7, 0.4)*0.05);
   } else if (uStyle > 12.5 && uStyle < 13.5) {
     // DAWN — royal sky above, a warm glow rising softly from the horizon
     float h = p.y + 0.06*snoise(vec3(p.x*0.8, 0., t*0.03)) + sc*0.25;

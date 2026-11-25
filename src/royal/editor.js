@@ -15,7 +15,8 @@ const BG_ICON = {
   veil: 'linear-gradient(90deg, transparent, var(--sw2) 30%, transparent 50%, var(--swa) 70%, transparent)',
   bloom: 'radial-gradient(circle at 50% 45%, var(--swa) 0, var(--sw2) 30%, transparent 70%)',
   mesh: 'radial-gradient(60% 60% at 20% 20%, var(--sw2), transparent 70%), radial-gradient(50% 50% at 80% 80%, var(--swa), transparent 70%)',
-  dawn: 'linear-gradient(180deg, var(--sw2), transparent 60%), radial-gradient(80% 40% at 50% 100%, var(--swa), transparent 70%)'
+  dawn: 'linear-gradient(180deg, var(--sw2), transparent 60%), radial-gradient(80% 40% at 50% 100%, var(--swa), transparent 70%)',
+  sovereign: 'radial-gradient(70% 60% at 95% 100%, var(--swa), transparent 70%), linear-gradient(140deg, var(--sw1), var(--sw2) 60%, var(--sw3))'
 };
 
 export function initEditor() {

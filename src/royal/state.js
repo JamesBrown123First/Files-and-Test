@@ -6,6 +6,7 @@ export const PALETTES = {
   royal:    { name: 'Royal Night',  mode: 'dark',  colors: ['#0b1220', '#131c2b', '#124980', '#3472a8'], note: 'Navy · royal blue' },
   navy:     { name: 'Midnight',     mode: 'dark',  colors: ['#0c1522', '#18263b', '#14395c', '#2b3a4a'], note: 'Deep navy' },
   sapphire: { name: 'Sapphire',     mode: 'dark',  colors: ['#0d1626', '#123058', '#124980', '#3472a8'], note: 'Gradient #124980 › #131c2b' },
+  royal489: { name: 'Royal 2766 & Peach 489', mode: 'dark', colors: ['#070a22', '#141b4d', '#283080', '#9a7aa6'], note: 'Pantone 2766 C › Pantone 489 C' },
   royal2766:{ name: 'Royal 2766 & Copper', mode: 'dark', colors: ['#070a1f', '#10163f', '#1b2670', '#9a4c1e'], note: 'Pantone 2766 C · copper ink · peach' },
   royal2766c:{ name: 'Royal 2766 Copper Ink', mode: 'dark', colors: ['#080a1c', '#141b4d', '#18215e', '#b0581f'], note: 'Pantone 2766 C · stronger copper' },
   inkroyal: { name: 'Ink & Royal Copper', mode: 'dark', colors: ['#0a1120', '#14223a', '#1b4f8f', '#a35234'], note: 'Ink · royal blue · copper' },
@@ -58,7 +59,8 @@ export const BACKGROUNDS = [
   ['veil', 'Veil', 'Soft curtains of royal and peach light'],
   ['bloom', 'Bloom', 'One great soft light, breathing'],
   ['mesh', 'Mesh', 'Four colours blending like painted light'],
-  ['dawn', 'Dawn', 'Royal sky, a warm glow rising']
+  ['dawn', 'Dawn', 'Royal sky, a warm glow rising'],
+  ['sovereign', 'Sovereign', 'One clean royal-to-peach gradient']
 ];
 
 export const TYPE = {
@@ -131,6 +133,8 @@ export const PRESETS = {
   'royal-bloom':   { name: 'Royal Bloom',        palette: 'royalcopper', bg: 'bloom',  accent: '#f3c09b', type: 'sovereign', mood: 'studio' },
   'royal-mesh':    { name: 'Royal Mesh',         palette: 'inkroyal', bg: 'mesh',      accent: '#f2d4be', type: 'italianno', mood: 'moon' },
   'royal-dawn':    { name: 'Royal Dawn',         palette: 'royal',    bg: 'dawn',      accent: '#f3c09b', type: 'upright',   mood: 'candle' },
+  'royal-489':     { name: 'Royal 2766 · 489',   palette: 'royal489', bg: 'sovereign', accent: '#ecc3b2', type: 'sovereign', mood: 'moon' },
+  'royal-489-veil':{ name: 'Royal 489 Veil',     palette: 'royal489', bg: 'veil',     accent: '#ecc3b2', type: 'sovereign', mood: 'moon' },
   'royal-2766':    { name: 'Royal 2766',         palette: 'royal2766', bg: 'aurora',  accent: '#eca886', type: 'sovereign', mood: 'moon' },
   'royal-2766-veil':{ name: 'Royal 2766 Veil',   palette: 'royal2766', bg: 'veil',    accent: '#eca886', type: 'sovereign', mood: 'moon' },
   'royal-2766-ink': { name: 'Royal 2766 Copper Ink', palette: 'royal2766c', bg: 'aurora', accent: '#e39a76', type: 'sovereign', mood: 'moon' },
