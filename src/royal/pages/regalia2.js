@@ -142,7 +142,8 @@ function basin() {
 
 // gift: the lid swings open on its hinge as the silver rises; tissue, a card, then it closes and the bow is tied
 function gift() {
-  const sec = document.querySelector('.rg2-gift'), steps = [...sec.querySelectorAll('.rg2-steps li')];
+  const sec = document.querySelector('.rg2-gift'), steps = [...sec.querySelectorAll('.rg2-gt__t')], segs = [...sec.querySelectorAll('.rg2-segs button')], count = sec.querySelector('.rg2-count b');
+  steps.forEach((t) => { let k = 0; t.querySelectorAll('h3, h3 em').forEach((n) => n.childNodes.forEach((c) => { if (c.nodeType !== 3) return; const f = document.createDocumentFragment(); [...c.textContent].forEach((ch) => { if (ch === ' ') { f.append(' '); return; } const i = document.createElement('i'); i.style.setProperty('--c', k++); i.textContent = ch; f.append(i); }); c.replaceWith(f); })); });
   const box = sec.querySelector('.g2'), card = sec.querySelector('.g2-card');
   const S = { open: 0, rise: 0, tis: 0, bow: 0 };
   const apply = () => { box.style.setProperty('--open', S.open.toFixed(2) + 'deg'); box.style.setProperty('--rise', S.rise.toFixed(3)); box.style.setProperty('--tis', S.tis.toFixed(3)); box.style.setProperty('--bow', S.bow.toFixed(3)); };
@@ -158,16 +159,17 @@ function gift() {
     .to(S, { bow: 1, duration: 0.7, ease: 'back.out(2.2)' }, 4.05)         //    and the bow is tied
     .to({}, { duration: 0.3 });
   const marks = [0, 1.15, 2.15, 3.0, tl.duration()];
-  const set = (t) => steps.forEach((li, i) => {
-    const on = t >= marks[i] - 0.02 && (i === steps.length - 1 || t < marks[i + 1] - 0.02);
-    li.classList.toggle('is-on', on); li.classList.toggle('is-done', t >= marks[i + 1] - 0.02);
-    li.style.setProperty('--p', clamp((t - marks[i]) / (marks[i + 1] - marks[i]), 0, 1).toFixed(3));
-  });
+  const set = (t) => { let on = 0; steps.forEach((el, i) => {
+    const a = t >= marks[i] - 0.02 && (i === steps.length - 1 || t < marks[i + 1] - 0.02); if (a) on = i;
+    el.classList.toggle('is-on', a);
+    segs[i].style.setProperty('--p', clamp((t - marks[i]) / (marks[i + 1] - marks[i]), 0, 1).toFixed(3));
+  }); count.textContent = '0' + (on + 1); };
   apply();
   if (reduced()) { tl.progress(1); apply(); set(tl.duration()); return; }
-  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', scrub: 0.8, animation: tl, onUpdate: () => set(tl.time()) });
+  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', scrub: 0.8, animation: tl });
+  tl.eventCallback('onUpdate', () => set(tl.time()));
   set(0);
-  steps.forEach((li, i) => li.querySelector('button').addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((marks[i] + (marks[i + 1] - marks[i]) * 0.6) / tl.duration()))));
+  segs.forEach((b, i) => b.addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((marks[i] + (marks[i + 1] - marks[i]) * 0.6) / tl.duration()))));
   // the box turns a little toward your cursor
   if (fine) {
     const scene = sec.querySelector('.rg2-gift__scene'); let ry = -16, rx = -14, try_ = -16, trx = -14;

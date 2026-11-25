@@ -461,7 +461,7 @@ const R2_ITEMS = [
   ['tureen', 'Songbird Tureen', 'A bird on the lid'], ['honey-dish', 'Honey Dish & Tray', 'For a sweet new year']
 ];
 const R2_STEPS = [
-  ['Choose your piece', 'From the collection, or with our concierge.'],
+  ['Choose your treasure', 'From the collection, or with our concierge.'],
   ['Laid in tissue', 'Blush tissue, folded by hand.'],
   ['Your words, on a card', 'A handwritten-style note inside.'],
   ['Tied with a bow', 'Navy box, blush ribbon. Ready to give.']
@@ -531,9 +531,9 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
 <section class="rg2-gift" id="gifting" aria-label="The gift">
   <div class="rg2-gift__pin">
     <div class="rg2-gift__copy">
-      <p class="r-label">The gift</p>
-      <h2 class="r-h2">Given with<br><em>pride.</em></h2>
-      <ol class="rg2-steps">${R2_STEPS.map(([t, d], i) => `<li${i === 0 ? ' class="is-on"' : ''}><button type="button" data-step="${i}"><b>0${i + 1}</b><span><strong>${t}</strong><em>${d}</em></span><i class="rg2-steps__bar"><i></i></i></button></li>`).join('')}</ol>
+      <p class="r-label">Given with pride <span class="rg2-count"><b>01</b> / 04</span></p>
+      <div class="rg2-gt" aria-live="polite">${R2_STEPS.map(([t, d], i) => { const k = t.lastIndexOf(' ', t.length - (t.endsWith('card') ? 10 : 6)); return `<div class="rg2-gt__t${i === 0 ? ' is-on' : ''}"><h3>${t.slice(0, k)} <em>${t.slice(k + 1)}</em></h3><p>${d}</p></div>`; }).join('')}</div>
+      <div class="rg2-segs">${R2_STEPS.map(([t], i) => `<button type="button" aria-label="${t}"><i><i></i></i></button>`).join('')}</div>
     </div>
     <div class="rg2-gift__scene" aria-hidden="true">
       <div class="g2">
