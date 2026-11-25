@@ -534,9 +534,9 @@ ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-sto
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
-<section class="rg2-trio" aria-label="The Kingdom promise"><ul data-stagger>${COPY.close.map((c, i) => `<li>${i === 2 ? `<em>${c}</em>` : c}</li>`).join('')}</ul></section>`; })()}
+<section class="rg2-trio" aria-label="The Kingdom promise"><p class="rg2-trio__line" data-reveal>${COPY.close.map((c, i) => `<span>${i === 2 ? `<em>${c.replace(/\.$/, '')}</em>` : c.replace(/\.$/, '')}</span>`).join(`<i aria-hidden="true">${logo('k-icon')}</i>`)}</p></section>`; })()}
 <section class="rg2-basin" aria-label="A royal touch">
-  <p class="r-label" data-reveal>Filled with silver</p>
+  <p class="r-label" data-reveal>Kingdom silver</p>
   <h2 class="r-h2" data-split>A royal <em>touch</em></h2>
   <p class="r-lead" data-reveal>The beauty, presence and elegance of silver, at a price that makes generous giving possible.</p>
   <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="A silver-filled basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>

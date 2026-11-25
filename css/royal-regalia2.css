@@ -585,3 +585,17 @@
   .pg-regalia2 .rg2-feat__cta{justify-content:flex-start}
   .pg-regalia2 .rg2-feat__media{justify-self:end}
 }
+
+/* promise band v2: one quiet line, polished like silver — a slow light passes along the words; tiny crests between */
+.rg2-trio ul{display:none}
+.rg2-trio__line{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 clamp(18px,2.4vw,40px);max-width:1180px;margin:0 auto;text-align:center;
+  font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:calc(var(--display-track) + .04em);font-stretch:var(--display-stretch,100%);font-size:calc(clamp(17px,1.5vw,24px) * var(--ds));line-height:1.3}
+.rg2-trio__line span{background:linear-gradient(100deg,var(--ink-2) 0 40%,#fff 48%,rgba(var(--accent-rgb),1) 52%,var(--ink-2) 60% 100%) 0 0/300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rg2-polish 9s var(--ease) infinite}
+.rg2-trio__line span:nth-of-type(2){animation-delay:.5s}
+.rg2-trio__line span:nth-of-type(3){animation-delay:1s}
+.rg2-trio__line em{font-family:var(--font-italic);font-weight:var(--ital-weight,300);font-size:calc(1.25em * var(--ital-scale,1));letter-spacing:0;text-transform:none;line-height:1;padding:0 .12em}
+@keyframes rg2-polish{0%,55%{background-position:100% 0}85%,100%{background-position:0 0}}
+.rg2-trio__line i{display:grid;place-items:center;color:var(--accent);opacity:.7}
+.rg2-trio__line i .k-logo{width:14px;height:auto;display:block}
+@media (prefers-reduced-motion:reduce){.rg2-trio__line span{animation:none;background:none;color:var(--ink-2)}}
+@media (max-width:900px){.rg2-trio__line{flex-direction:column;gap:12px}.rg2-trio__line i .k-logo{width:12px}}
