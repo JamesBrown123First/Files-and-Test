@@ -12,9 +12,12 @@
 /* one family of colour, with subtle tonal shifts from section to section */
 .pg-regalia2{--deep:rgba(var(--c0-rgb),.6);--royal:rgba(18,73,128,.06);--warm:rgba(var(--accent-rgb),.06)}
 [data-mode="dark"] .pg-regalia2{--deep:rgba(var(--c0-rgb),.75);--royal:rgba(52,114,168,.14);--warm:rgba(var(--accent-rgb),.07)}
-.rg2-loupe,.rg2-basin,.rg2-gift,.pg-regalia2 .r-conc{background:linear-gradient(180deg,transparent,var(--deep) 14%,var(--deep) 86%,transparent)}
-.rg2-coll,.pg-regalia2 .r-occ,.rg2-camp{background:radial-gradient(80% 60% at 50% 50%,var(--royal),transparent 75%)}
-.pg-regalia2 .r-shop,.pg-regalia2 .r-story{background:radial-gradient(70% 55% at 50% 50%,var(--warm),transparent 75%)}
+/* the tone is one fixed layer over the whole screen; scrolling cross-fades it between sections, so there are no edges */
+.rg2-tone{position:fixed;inset:0;height:100lvh;z-index:-1;pointer-events:none}
+.rg2-tone i{position:absolute;inset:0;opacity:0;will-change:opacity}
+.rg2-tone .t-deep{background:var(--deep)}
+.rg2-tone .t-royal{background:radial-gradient(90% 75% at 50% 50%,var(--royal),transparent 80%)}
+.rg2-tone .t-warm{background:radial-gradient(80% 65% at 50% 55%,var(--warm),transparent 80%)}
 [data-mode="dark"] .g2 .f{box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
 [data-mode="dark"] .rg2-gift__scene::before{content:"";position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;transform:translate(-50%,-40%);border-radius:50%;background:radial-gradient(closest-side,rgba(var(--accent-rgb),.22),transparent);pointer-events:none}
 [data-mode="dark"] .rg2-band__glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}

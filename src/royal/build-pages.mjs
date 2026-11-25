@@ -474,6 +474,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
 const R2_ADS = (P.ADS || []).slice(0, 10);
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
 pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting' }, `
+<div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Baroque Ewer">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
   <figure class="rg-ewer" data-cursor="Light">

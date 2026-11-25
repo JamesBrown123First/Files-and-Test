@@ -202,6 +202,26 @@ function campaign() {
   addEventListener('keydown', (e) => { if (lb.hidden) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowRight') show(at + 1); if (e.key === 'ArrowLeft') show(at - 1); });
 }
 
+// page tone: each section asks for a tone; the fixed tone layer eases between them as you scroll
+function tones() {
+  const layers = { deep: document.querySelector('.t-deep'), royal: document.querySelector('.t-royal'), warm: document.querySelector('.t-warm') };
+  const map = [['.rg2-loupe', 'deep'], ['.rg2-coll', 'royal'], ['.r-story', 'warm'], ['.rg2-basin', 'deep'], ['.r-occ', 'royal'], ['.rg2-gift', 'deep'], ['.rg2-camp', 'royal'], ['.r-shop', 'warm'], ['.r-conc', 'deep']]
+    .map(([sel, t]) => [document.querySelector(sel), t]).filter(([el]) => el);
+  const cur = { deep: 0, royal: 0, warm: 0 };
+  gsap.ticker.add(() => {
+    const mid = innerHeight / 2, tgt = { deep: 0, royal: 0, warm: 0 };
+    map.forEach(([el, t]) => {
+      const sp = el.parentElement.classList.contains('pin-spacer') ? el.parentElement : el;
+      const r = sp.getBoundingClientRect();
+      // weight: 1 while the section covers the middle of the screen, easing over 45% of a screen at each end
+      const fade = innerHeight * 0.45;
+      const w = clamp(Math.min((mid - r.top) / fade + 0.5, (r.bottom - mid) / fade + 0.5), 0, 1);
+      tgt[t] = Math.max(tgt[t], w * w * (3 - 2 * w));
+    });
+    for (const k in cur) { cur[k] = lerp(cur[k], tgt[k], reduced() ? 1 : 0.06); layers[k].style.opacity = cur[k].toFixed(3); }
+  });
+}
+
 function products() {
   const m = document.querySelector('.rg2-feat__media'); if (!m) return;
   m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
@@ -213,6 +233,6 @@ preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(
   await loader.finish();
   hero();
   await start();
-  loupe(); basin(); gift(); campaign(); products();
+  loupe(); basin(); gift(); campaign(); products(); tones();
   ScrollTrigger.sort(); ScrollTrigger.refresh();
 });
