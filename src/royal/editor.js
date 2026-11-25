@@ -1,5 +1,5 @@
 // Design studio: presets first, then fine control. Every option is pre-designed and brand-bounded.
-import { PALETTES, ACCENTS, BACKGROUNDS, TYPE, MOODS, PRESETS, DETAILS, getState, getPage, setState, setPreset, resetState, onState, shareURL, editorAllowed } from './state.js';
+import { PALETTES, ACCENTS, BACKGROUNDS, TYPE, MOODS, PRESETS, HEADLINES, SCRIPTS, DETAILS, getState, getPage, setState, setPreset, resetState, onState, shareURL, editorAllowed } from './state.js';
 
 const BG_ICON = {
   aurora: 'radial-gradient(60% 70% at 25% 35%, var(--sw2) 0, transparent 70%), radial-gradient(50% 60% at 80% 75%, var(--swa) 0, transparent 70%)',
@@ -63,7 +63,7 @@ export function initEditor() {
         <h3>Accent</h3><div class="r-ed__accents"></div>
         <h3>Background</h3><div class="r-ed__bgs"></div>
       </section>
-      <section data-pane="type" hidden><div class="r-ed__types"></div></section>
+      <section data-pane="type" hidden><h3>Headline font</h3><div class="r-ed__fonts" data-fk="hfont"></div><h3>Script font</h3><div class="r-ed__fonts r-ed__fonts--script" data-fk="sfont"></div><h3>Pairings</h3><p class="r-ed__hint">A pairing sets both at once; pick a headline or script above to override it.</p><div class="r-ed__types"></div></section>
       ${page.details ? `<section data-pane="details" hidden>
         <p class="r-ed__hint">Designed variations of the page’s details. Every combination works.</p>
         ${Object.entries(DETAILS).map(([k, d]) => `<h3>${d.name}</h3><div class="r-ed__dets" data-det="${k}">${d.opts.map(([v, n, note]) => `<button type="button" data-v="${v}" title="${note}"><span class="r-ed__dv r-ed__dv--${k}-${v}" aria-hidden="true"></span><b>${n}</b><small>${note}</small></button>`).join('')}</div>`).join('')}
@@ -146,7 +146,13 @@ export function initEditor() {
   const typeOrder = Object.entries(TYPE).sort((a, b) => (b[1].iscale ? 1 : 0) - (a[1].iscale ? 1 : 0));
   $('.r-ed__types').innerHTML = typeOrder.map(([id, t]) =>
     `<button class="r-ed__type" data-type="${id}"><b style="font-family:${t.display};font-weight:${t.weight};letter-spacing:${t.track};text-transform:${t.up ? 'uppercase' : 'none'}">The Art of <i style="font-family:${t.italic};font-style:italic;font-weight:${t.ital || 300};font-size:${t.iscale || 1}em;text-transform:none;color:var(--a1)">Silver</i></b><span><em>${t.name}</em> ${t.note}</span></button>`).join('');
-  wrap.querySelectorAll('[data-type]').forEach((b) => b.addEventListener('click', () => setState({ type: b.dataset.type })));
+  wrap.querySelectorAll('[data-type]').forEach((b) => b.addEventListener('click', () => setState({ type: b.dataset.type, hfont: '', sfont: '' })));
+  // headline and script fonts, each on its own
+  wrap.querySelector('[data-fk="hfont"]').innerHTML = `<button type="button" data-fv=""><b>Aa</b><small>From pairing</small></button>` + Object.entries(HEADLINES).map(([id, h]) =>
+    `<button type="button" data-fv="${id}" title="${h.note}"><b style="font-family:${h.family};font-weight:${h.weight};font-stretch:${h.stretch};letter-spacing:${h.track};text-transform:${h.up ? 'uppercase' : 'none'}">Kingdom</b><small>${h.name}</small></button>`).join('');
+  wrap.querySelector('[data-fk="sfont"]').innerHTML = `<button type="button" data-fv=""><b style="font-style:italic">Aa</b><small>From pairing</small></button>` + Object.entries(SCRIPTS).map(([id, f]) =>
+    `<button type="button" data-fv="${id}"><b style="font-family:${f.family};font-weight:${f.weight};font-size:${(26 * Math.min(f.scale, 1.4)).toFixed(0)}px;${f.serif ? 'font-style:italic;' : ''}color:var(--a1)">Silver</b><small>${f.name}</small></button>`).join('');
+  wrap.querySelectorAll('.r-ed__fonts').forEach((g) => g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => setState({ [g.dataset.fk]: b.dataset.fv }))));
   if (page.three) {
     $('.r-ed__moods').innerHTML = Object.entries(MOODS).map(([id, m]) => `<button class="r-ed__mood" data-mood="${id}"><span data-moodprev="${id}"></span><b>${m.name}</b><small>${m.note}</small></button>`).join('');
     wrap.querySelectorAll('[data-mood]').forEach((b) => b.addEventListener('click', () => setState({ mood: b.dataset.mood })));
@@ -180,7 +186,8 @@ export function initEditor() {
     wrap.querySelectorAll('[data-preset]').forEach((b) => b.classList.toggle('is-on', b.dataset.preset === s.preset));
     wrap.querySelectorAll('[data-pal]').forEach((b) => b.classList.toggle('is-on', b.dataset.pal === s.palette));
     wrap.querySelectorAll('[data-bg]').forEach((b) => b.classList.toggle('is-on', b.dataset.bg === s.bg));
-    wrap.querySelectorAll('[data-type]').forEach((b) => b.classList.toggle('is-on', b.dataset.type === s.type));
+    wrap.querySelectorAll('[data-type]').forEach((b) => b.classList.toggle('is-on', b.dataset.type === s.type && !s.hfont && !s.sfont));
+    wrap.querySelectorAll('.r-ed__fonts').forEach((g) => g.querySelectorAll('button').forEach((b) => b.classList.toggle('is-on', (s[g.dataset.fk] || '') === b.dataset.fv)));
     wrap.querySelectorAll('[data-mood]').forEach((b) => b.classList.toggle('is-on', b.dataset.mood === s.mood));
     $('.r-ed__accents').innerHTML = ACCENTS[mode].map(([c, n]) => `<button class="r-ed__acc${c === s.accent ? ' is-on' : ''}" data-acc="${c}" style="--sw:${c}" aria-label="${n}"><i></i><b>${n}</b></button>`).join('');
     wrap.querySelectorAll('[data-acc]').forEach((b) => b.addEventListener('click', () => setState({ accent: b.dataset.acc })));

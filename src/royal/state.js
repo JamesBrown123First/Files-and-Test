@@ -121,6 +121,42 @@ export const MOODS = {
   moon:    { name: 'Moonlit', note: 'Cool royal light',   exposure: 0.98, studio: { base: 1.0,  flags: 0.9,  strips: 1.1, key: 0.9, warm: 0.1,  cool: 1.2 } }
 };
 
+// Headline and script fonts, chosen on their own (empty = take them from the pairing)
+export const HEADLINES = {
+  kingdom:   { name: 'Kingdom Caps',    note: 'Kalnia · like the campaign headlines', family: "'Kalnia', serif", weight: 300, up: true, track: '0.005em', scale: 0.8, stretch: '100%' },
+  tower:     { name: 'Tower Caps',      note: 'Condensed Didone, tall and narrow',  family: "'Noto Serif Display Var', serif", weight: 250, up: true, track: '0em', scale: 0.92, stretch: '62.5%' },
+  imbue:     { name: 'Imbue',           note: 'Slim condensed couture',             family: "'Imbue', serif", weight: 250, up: true, track: '0.01em', scale: 1, stretch: '100%' },
+  didone:    { name: 'Antic Didone',    note: 'Fine hairline Didone',               family: "'Antic Didone', serif", weight: 400, up: true, track: '0.01em', scale: 0.8, stretch: '100%' },
+  aboreto:   { name: 'Aboreto',         note: 'Fashion-house capitals',             family: "'Aboreto', serif", weight: 400, up: true, track: '0.02em', scale: 0.72, stretch: '100%' },
+  italiana:  { name: 'Italiana',        note: 'Airy, high contrast',                family: "'Italiana', serif", weight: 400, up: true, track: '0.01em', scale: 0.82, stretch: '100%' },
+  unicase:   { name: 'Unicase',         note: 'Cormorant Unicase, engraved',        family: "'Cormorant Unicase', serif", weight: 300, up: false, track: '0em', scale: 0.92, stretch: '100%' },
+  bellefair: { name: 'Bellefair',       note: 'Soft classical capitals',            family: "'Bellefair', serif", weight: 400, up: true, track: '0.01em', scale: 0.8, stretch: '100%' },
+  playfair:  { name: 'Playfair Caps',   note: 'Playfair 2, light',                  family: "'Playfair', serif", weight: 300, up: true, track: '0em', scale: 0.8, stretch: '87.5%' },
+  noto:      { name: 'Noto Display',    note: 'Refined, sentence case',             family: "'Noto Serif Display', serif", weight: 300, up: false, track: '-0.03em', scale: 1, stretch: '100%' },
+  bodoni:    { name: 'Bodoni Moda',     note: 'Classic Didone, sentence case',      family: "'Bodoni Moda', serif", weight: 400, up: false, track: '-0.035em', scale: 0.92, stretch: '100%' },
+  cormorant: { name: 'Cormorant',       note: 'Garamond, sentence case',            family: "'Cormorant Garamond', serif", weight: 300, up: false, track: '-0.02em', scale: 1.06, stretch: '100%' },
+  gilda:     { name: 'Gilda Display',   note: 'Gentle, sentence case',              family: "'Gilda Display', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%' },
+  instrument:{ name: 'Instrument',      note: 'Narrow editorial, sentence case',    family: "'Instrument Serif', serif", weight: 400, up: false, track: '-0.02em', scale: 1.08, stretch: '100%' }
+};
+export const SCRIPTS = {
+  pinyon:     { name: 'Pinyon',          family: "'Pinyon Script', cursive", weight: 400, scale: 1.4 },
+  ballet:     { name: 'Ballet',          family: "'Ballet', cursive", weight: 400, scale: 1.05 },
+  monsieur:   { name: 'Monsieur',        family: "'Monsieur La Doulaise', cursive", weight: 400, scale: 1.45 },
+  delafield:  { name: 'Saint Delafield', family: "'Mrs Saint Delafield', cursive", weight: 400, scale: 1.5 },
+  imperial:   { name: 'Imperial',        family: "'Imperial Script', cursive", weight: 400, scale: 1.25 },
+  bonheur:    { name: 'Bonheur Royale',  family: "'Bonheur Royale', cursive", weight: 400, scale: 1.35 },
+  alex:       { name: 'Alex Brush',      family: "'Alex Brush', cursive", weight: 400, scale: 1.2 },
+  vibes:      { name: 'Great Vibes',     family: "'Great Vibes', cursive", weight: 400, scale: 1.22 },
+  petit:      { name: 'Petit Formal',    family: "'Petit Formal Script', cursive", weight: 400, scale: 0.95 },
+  parisienne: { name: 'Parisienne',      family: "'Parisienne', cursive", weight: 400, scale: 1.1 },
+  italianno:  { name: 'Italianno',       family: "'Italianno', cursive", weight: 400, scale: 1.5 },
+  corinthia:  { name: 'Corinthia',       family: "'Corinthia', cursive", weight: 400, scale: 1.55 },
+  allura:     { name: 'Allura',          family: "'Allura', cursive", weight: 400, scale: 1.3 },
+  serifital:  { name: 'Serif italic',    family: "'Noto Serif Display', serif", weight: 300, scale: 1, serif: true },
+  garamond:   { name: 'Garamond italic', family: "'Cormorant Garamond', serif", weight: 300, scale: 1.06, serif: true },
+  playital:   { name: 'Playfair italic', family: "'Playfair', serif", weight: 300, scale: 0.96, serif: true }
+};
+
 export const PRESETS = {
   'royal-night':   { name: 'Royal Night',        palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'heritage',  mood: 'studio' },
   'coronation':    { name: 'Coronation Blue',    palette: 'sapphire', bg: 'silk',      accent: '#f2d4be', type: 'crest',     mood: 'noir' },
@@ -133,8 +169,8 @@ export const PRESETS = {
   'royal-bloom':   { name: 'Royal Bloom',        palette: 'royalcopper', bg: 'bloom',  accent: '#f3c09b', type: 'sovereign', mood: 'studio' },
   'royal-mesh':    { name: 'Royal Mesh',         palette: 'inkroyal', bg: 'mesh',      accent: '#f2d4be', type: 'italianno', mood: 'moon' },
   'royal-dawn':    { name: 'Royal Dawn',         palette: 'royal',    bg: 'dawn',      accent: '#f3c09b', type: 'upright',   mood: 'candle' },
-  'royal-489':     { name: 'Royal 2766 · 489',   palette: 'royal489', bg: 'sovereign', accent: '#ecc3b2', type: 'sovereign', mood: 'moon' },
-  'royal-489-veil':{ name: 'Royal 489 Veil',     palette: 'royal489', bg: 'veil',     accent: '#ecc3b2', type: 'sovereign', mood: 'moon' },
+  'royal-489':     { name: 'Royal 2766 · 489',   palette: 'royal489', bg: 'sovereign', accent: '#ecc3b2', type: 'sovereign', mood: 'moon', hfont: 'kingdom', sfont: 'pinyon' },
+  'royal-489-veil':{ name: 'Royal 489 Veil',     palette: 'royal489', bg: 'veil',     accent: '#ecc3b2', type: 'sovereign', mood: 'moon', hfont: 'tower', sfont: 'ballet' },
   'royal-2766':    { name: 'Royal 2766',         palette: 'royal2766', bg: 'aurora',  accent: '#eca886', type: 'sovereign', mood: 'moon' },
   'royal-2766-veil':{ name: 'Royal 2766 Veil',   palette: 'royal2766', bg: 'veil',    accent: '#eca886', type: 'sovereign', mood: 'moon' },
   'royal-2766-ink': { name: 'Royal 2766 Copper Ink', palette: 'royal2766c', bg: 'aurora', accent: '#e39a76', type: 'sovereign', mood: 'moon' },
@@ -179,7 +215,7 @@ const load = () => { try { return JSON.parse(localStorage.getItem(KEY()) || 'nul
 export function fromPreset(id) {
   const p = PRESETS[id] || PRESETS['royal-night'];
   const d = Object.assign({}, DETAIL_DEFAULTS, (page && page.details) || {}, p.d || {});
-  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, motion: 'full', grain: true, cursor: true, intensity: 1, exposure: p.exposure || 1, ...d };
+  return { preset: id, palette: p.palette, bg: p.bg, accent: p.accent, type: p.type, mood: p.mood, hfont: p.hfont || '', sfont: p.sfont || '', motion: 'full', grain: true, cursor: true, intensity: 1, exposure: p.exposure || 1, ...d };
 }
 function decodeHash() {
   const m = location.hash.match(/k=([A-Za-z0-9_-]+)/);
@@ -206,6 +242,8 @@ export function initState(cfg) {
   if (!PALETTES[state.palette]) state.palette = def.palette;
   if (!TYPE[state.type]) state.type = def.type;
   if (!MOODS[state.mood]) state.mood = def.mood;
+  if (state.hfont && !HEADLINES[state.hfont]) state.hfont = '';
+  if (state.sfont && !SCRIPTS[state.sfont]) state.sfont = '';
   if (!BACKGROUNDS.find((b) => b[0] === state.bg)) state.bg = def.bg;
   for (const k in DETAILS) if (!DETAILS[k].opts.find((o) => o[0] === state[k])) state[k] = def[k];
   if (matchMedia('(prefers-reduced-motion: reduce)').matches && !s) state.motion = 'still';
@@ -245,6 +283,7 @@ function apply() {
   const ink = dark ? '#f4efe9' : '#18263b';
   const ir = hex(ink).join(',');
   const acc = state.accent;
+  const Hf = HEADLINES[state.hfont], Sf = SCRIPTS[state.sfont];
   const v = {
     '--c0': P.colors[0], '--c1': P.colors[1], '--c2': P.colors[2], '--c3': P.colors[3],
     '--c1-rgb': hex(P.colors[1]).join(','), '--c0-rgb': hex(P.colors[0]).join(','),
@@ -256,9 +295,10 @@ function apply() {
     '--surface-2': dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.72)',
     '--glass': dark ? 'rgba(12,18,30,0.66)' : 'rgba(255,250,245,0.7)',
     '--shade': dark ? 'rgba(0,0,0,0.45)' : 'rgba(24,38,59,0.18)',
-    '--font-display': T.display, '--font-italic': T.italic, '--font-text': T.text,
-    '--ital-weight': T.ital || 300, '--ital-scale': T.iscale || 1,
-    '--display-weight': T.weight, '--display-track': T.track, '--display-case': T.up ? 'uppercase' : 'none', '--ds': T.scale
+    '--font-display': Hf ? Hf.family : T.display, '--font-italic': Sf ? Sf.family : T.italic, '--font-text': T.text,
+    '--ital-weight': Sf ? Sf.weight : (T.ital || 300), '--ital-scale': Sf ? Sf.scale : (T.iscale || 1),
+    '--display-weight': Hf ? Hf.weight : T.weight, '--display-track': Hf ? Hf.track : T.track, '--display-case': (Hf ? Hf.up : T.up) ? 'uppercase' : 'none', '--ds': Hf ? Hf.scale : T.scale,
+    '--display-stretch': Hf ? Hf.stretch : '100%'
   };
   for (const k in v) root.style.setProperty(k, v[k]);
   root.dataset.mode = P.mode; root.dataset.type = state.type; root.dataset.motion = state.motion;

@@ -1,5 +1,19 @@
 /* Kingdom · Royal kit — shared styles for the third round of directions.
    Colour/type tokens are written by src/royal/state.js from the editor's presets. */
+@font-face{font-family:'Kalnia';src:url(../assets/fonts/kalnia-latin-var.woff2) format('woff2');font-weight:100 700;font-style:normal;font-stretch:100% 125%;font-display:swap}
+@font-face{font-family:'Imbue';src:url(../assets/fonts/imbue-latin-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Serif Display Var';src:url(../assets/fonts/noto-serif-display-latin-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-stretch:62.5% 100%;font-display:swap}
+@font-face{font-family:'Antic Didone';src:url(../assets/fonts/antic-didone-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant Unicase';src:url(../assets/fonts/cormorant-unicase-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Playfair';src:url(../assets/fonts/playfair2-latin-var.woff2) format('woff2');font-weight:300 900;font-style:normal;font-stretch:87.5% 112.5%;font-display:swap}
+@font-face{font-family:'Playfair';src:url(../assets/fonts/playfair2-latin-var-italic.woff2) format('woff2');font-weight:300 900;font-style:italic;font-stretch:87.5% 112.5%;font-display:swap}
+@font-face{font-family:'Monsieur La Doulaise';src:url(../assets/fonts/monsieur-la-doulaise-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Mrs Saint Delafield';src:url(../assets/fonts/mrs-saint-delafield-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Alex Brush';src:url(../assets/fonts/alex-brush-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Imperial Script';src:url(../assets/fonts/imperial-script-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Bonheur Royale';src:url(../assets/fonts/bonheur-royale-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Petit Formal Script';src:url(../assets/fonts/petit-formal-script-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Ballet';src:url(../assets/fonts/ballet-latin-var.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Italiana';src:url(../assets/fonts/italiana-latin-400-normal.woff2) format('woff2');font-display:swap}
 @font-face{font-family:'Cormorant Garamond';src:url(../assets/fonts/cormorant-garamond-latin-300-normal.woff2) format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Cormorant Garamond';src:url(../assets/fonts/cormorant-garamond-latin-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap}
@@ -445,6 +459,13 @@ body::after{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:none
 .r-ed__acc b{font-weight:500}
 .r-ed__acc.is-on{box-shadow:0 0 0 2px var(--a1)}
 .r-ed__types{display:grid;gap:var(--s2)}
+.r-ed__fonts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:var(--s5)}
+.r-ed__fonts button{display:grid;gap:4px;justify-items:center;align-content:center;min-height:78px;padding:10px 6px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);transition:box-shadow .3s,background .3s}
+.r-ed__fonts button:hover{background:rgba(255,255,255,.05)}
+.r-ed__fonts button.is-on{box-shadow:inset 0 0 0 1.5px var(--a1);background:rgba(243,192,155,.08)}
+.r-ed__fonts b{font-size:19px;line-height:1.15;font-weight:400;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:clip}
+.r-ed__fonts small{font-size:10.5px;letter-spacing:.04em;color:rgba(244,239,233,.6);text-align:center;line-height:1.2}
+.r-ed__fonts--script b{font-size:26px;line-height:1.3;padding:0 6px}
 .r-ed__type{display:grid;gap:4px;text-align:left;padding:var(--s4);border-radius:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
 .r-ed__type b{font-size:28px;line-height:1.1}
 .r-ed__type span{font-size:12px;color:rgba(244,239,233,.6)}
@@ -645,3 +666,6 @@ body::after{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:none
 /* spacing */
 .r-ed__dv[class*="--space-"]::before{left:20%;right:20%;height:6px;top:22%;background:rgba(244,239,233,.5);box-shadow:0 var(--g) 0 rgba(244,239,233,.5),0 calc(var(--g) * 2) 0 rgba(244,239,233,.5)}
 .r-ed__dv--space-airy{--g:14px}.r-ed__dv--space-balanced{--g:10px}.r-ed__dv--space-compact{--g:7px}
+
+/* headline width (for fonts with a width axis) */
+body{font-stretch:var(--display-stretch,100%)}
