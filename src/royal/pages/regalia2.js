@@ -56,14 +56,15 @@ function band() {
 }
 
 // loupe: pinned. Each detail moves the camera to it and dims the rest; the lens always follows your mouse.
-const SPOTS = [[0.47, 0.085], [0.17, 0.235], [0.8, 0.31], [0.5, 0.6], [0.5, 0.91]];
+const SPOTS = [[0.47, 0.085], [0.17, 0.235], [0.95, 0.27], [0.5, 0.6], [0.5, 0.91]];
 function loupe() {
   const sec = document.querySelector('.rg2-loupe'), stage = sec.querySelector('.rg2-loupe__stage'), zoom = sec.querySelector('.rg2-loupe__zoom'), img = zoom.querySelector('img');
   const lens = stage.querySelector('.rg-lens'), inner = lens.querySelector('span'), veil = sec.querySelector('.rg2-loupe__veil');
-  const texts = [...sec.querySelectorAll('.rg2-ch__t')], dots = [...sec.querySelectorAll('.rg2-dots button')], num = sec.querySelector('.rg2-ch__num');
-  texts.forEach((t) => { const h = t.querySelector('h3'); h.innerHTML = [...h.textContent].map((c, i) => c === ' ' ? ' ' : `<i style="--c:${i}">${c}</i>`).join(''); });
+  const texts = [...sec.querySelectorAll('.rg2-ch__t')], dots = [...sec.querySelectorAll('.rg2-dots button')], count = sec.querySelector('.rg2-count b');
+  const pin = sec.querySelector('.rg2-loupe__pin'), leader = sec.querySelector('.rg2-leader'), ln = leader.querySelector('line'), dot = leader.querySelector('circle');
+  texts.forEach((t) => { let k = 0; t.querySelectorAll('h3, h3 em').forEach((n) => n.childNodes.forEach((c) => { if (c.nodeType !== 3) return; const f = document.createDocumentFragment(); [...c.textContent].forEach((ch) => { if (ch === ' ') { f.append(' '); return; } const i = document.createElement('i'); i.style.setProperty('--c', k++); i.textContent = ch; f.append(i); }); c.replaceWith(f); })); });
   let active = -1, prog = 0, f = 0, hover = false, mx = 0, my = 0, lx = 0, ly = 0, first = true;
-  const select = (i) => { if (i === active) return; active = i; texts.forEach((t, k) => t.classList.toggle('is-on', k === i)); dots.forEach((d, k) => d.classList.toggle('is-on', k === i)); num.style.setProperty('--i', i); };
+  const select = (i) => { if (i === active) return; active = i; texts.forEach((t, k) => t.classList.toggle('is-on', k === i)); dots.forEach((d, k) => d.classList.toggle('is-on', k === i)); count.textContent = ['I', 'II', 'III', 'IV', 'V'][i]; };
   select(0);
   const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * 3.4, pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
     onUpdate: (s) => { prog = s.progress; select(clamp(Math.round(s.progress * 4.4 - 0.2), 0, 4)); } });
@@ -99,6 +100,15 @@ function loupe() {
     inner.style.backgroundPosition = `${-((lx - imgX) / S * Z - L / 2)}px ${-((ly - imgY) / S * Z - L / 2)}px`;
     veil.style.setProperty('--vx', lx.toFixed(0) + 'px'); veil.style.setProperty('--vy', ly.toFixed(0) + 'px');
     veil.style.setProperty('--vo', (zoomIn * 0.9).toFixed(3));
+    // a fine leader line from the lens to the detail's name
+    if (leader.getClientRects().length) {
+      const P = pin.getBoundingClientRect(), Sg = stage.getBoundingClientRect(), h = texts[Math.max(0, active)].querySelector('h3').getBoundingClientRect();
+      const x1 = Sg.left - P.left + lx + L * 0.5 * 0.72, y1 = Sg.top - P.top + ly, x2 = h.left - P.left - 18, y2 = h.top - P.top + h.height * 0.35;
+      ln.setAttribute('x1', x1.toFixed(1)); ln.setAttribute('y1', y1.toFixed(1)); ln.setAttribute('x2', x2.toFixed(1)); ln.setAttribute('y2', y2.toFixed(1));
+      dot.setAttribute('cx', x2.toFixed(1)); dot.setAttribute('cy', y2.toFixed(1));
+      leader.style.setProperty('--len', (hover ? 0 : Math.hypot(x2 - x1, y2 - y1) * zoomIn).toFixed(0) + 'px');
+      dot.style.opacity = hover ? 0 : zoomIn;
+    }
   });
 }
 

@@ -501,14 +501,11 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
       <span class="rg-lens" aria-hidden="true"><span></span></span>
     </div>
     <div class="rg2-loupe__copy">
-      <p class="r-label">Look closer</p>
-      <h2 class="r-h2">Every detail,<br><em>magnified.</em></h2>
-      <div class="rg2-ch">
-        <span class="rg2-ch__num" aria-hidden="true"><span>${['I', 'II', 'III', 'IV', 'V'].map((n) => `<b>${n}</b>`).join('')}</span></span>
-        <div class="rg2-ch__texts" aria-live="polite">${R2_DET.map(([t, d], i) => `<div class="rg2-ch__t${i === 0 ? ' is-on' : ''}"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
-      </div>
-      <nav class="rg2-dots" aria-label="Details">${R2_DET.map(([t], i) => `<button type="button" aria-label="${t}"${i === 0 ? ' class="is-on"' : ''}><i></i></button>`).join('')}</nav>
+      <p class="r-label">Look closer <span class="rg2-count"><b>I</b> / V</span></p>
+      <div class="rg2-ch__texts" aria-live="polite">${R2_DET.map(([t, d], i) => { const w = t.split(' '); return `<div class="rg2-ch__t${i === 0 ? ' is-on' : ''}"><h3>${w[0]} <em>${w.slice(1).join(' ')}</em></h3><p>${d}</p></div>`; }).join('')}</div>
     </div>
+    <nav class="rg2-dots" aria-label="Details">${R2_DET.map(([t], i) => `<button type="button" aria-label="${t}"${i === 0 ? ' class="is-on"' : ''}><i></i></button>`).join('')}</nav>
+    <svg class="rg2-leader" aria-hidden="true"><line x1="0" y1="0" x2="0" y2="0"/><circle r="3.5"/></svg>
   </div>
 </section>
 <section class="rg2-coll" id="collection" aria-label="The Baroque Collection">
