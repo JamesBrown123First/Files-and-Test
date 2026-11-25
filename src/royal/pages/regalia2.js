@@ -59,7 +59,7 @@ function band() {
 const SPOTS = [[0.47, 0.085], [0.17, 0.235], [0.95, 0.27], [0.5, 0.6], [0.5, 0.91]];
 function loupe() {
   const sec = document.querySelector('.rg2-loupe'), stage = sec.querySelector('.rg2-loupe__stage'), zoom = sec.querySelector('.rg2-loupe__zoom'), img = zoom.querySelector('img');
-  const lens = stage.querySelector('.rg-lens'), inner = lens.querySelector('span'), veil = sec.querySelector('.rg2-loupe__veil');
+  const lens = stage.querySelector('.rg-lens'), inner = lens.querySelector('span');
   const texts = [...sec.querySelectorAll('.rg2-ch__t')], dots = [...sec.querySelectorAll('.rg2-dots button')], count = sec.querySelector('.rg2-count b');
   const pin = sec.querySelector('.rg2-loupe__pin'), leader = sec.querySelector('.rg2-leader'), ln = leader.querySelector('line'), dot = leader.querySelector('circle');
   texts.forEach((t) => { let k = 0; t.querySelectorAll('h3, h3 em').forEach((n) => n.childNodes.forEach((c) => { if (c.nodeType !== 3) return; const f = document.createDocumentFragment(); [...c.textContent].forEach((ch) => { if (ch === ' ') { f.append(' '); return; } const i = document.createElement('i'); i.style.setProperty('--c', k++); i.textContent = ch; f.append(i); }); c.replaceWith(f); })); });
@@ -72,7 +72,7 @@ function loupe() {
   stage.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; hover = true; const s = stage.getBoundingClientRect(); mx = e.clientX - s.left; my = e.clientY - s.top; });
   stage.addEventListener('pointerleave', () => (hover = false));
   // the image box inside the (unzoomed) stage
-  const base = () => { const W = stage.clientWidth, H = stage.clientHeight; const bx = W * 0.1, by = H * 0.06, bw = W * 0.8, bh = H * 0.9; const ar = 649 / 1400, w = Math.min(bw, bh * ar), h = w / ar; return { x: bx + (bw - w) / 2, y: by + (bh - h) / 2, w, h, W, H }; };
+  const base = () => { const W = stage.clientWidth, H = stage.clientHeight; const bx = W * 0.1, by = H * 0.06, bw = W * 0.8, bh = H * 0.9; const ar = 1113 / 2400, w = Math.min(bw, bh * ar), h = w / ar; return { x: bx + (bw - w) / 2, y: by + (bh - h) / 2, w, h, W, H }; };
   let S = 1, px = 0.5, py = 0.5;
   gsap.ticker.add(() => {
     const b = base();
@@ -98,8 +98,6 @@ function loupe() {
     const imgX = TX + S * b.x, imgY = TY + S * b.y;
     inner.style.backgroundSize = `${b.w * Z}px ${b.h * Z}px`;
     inner.style.backgroundPosition = `${-((lx - imgX) / S * Z - L / 2)}px ${-((ly - imgY) / S * Z - L / 2)}px`;
-    veil.style.setProperty('--vx', lx.toFixed(0) + 'px'); veil.style.setProperty('--vy', ly.toFixed(0) + 'px');
-    veil.style.setProperty('--vo', (zoomIn * 0.9).toFixed(3));
     // a fine leader line from the lens to the detail's name
     if (leader.getClientRects().length) {
       const P = pin.getBoundingClientRect(), Sg = stage.getBoundingClientRect(), h = texts[Math.max(0, active)].querySelector('h3').getBoundingClientRect();
