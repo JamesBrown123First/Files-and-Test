@@ -25,9 +25,19 @@
 .rg2-hero .rg-ewer__sheen{-webkit-mask-image:url(../assets/img/ewer-bw-1400.webp);mask-image:url(../assets/img/ewer-bw-1400.webp);
   background:linear-gradient(100deg,transparent calc(var(--sx,30%) - 13%),rgba(255,255,255,.9) var(--sx,30%),transparent calc(var(--sx,30%) + 13%)),
              linear-gradient(100deg,transparent calc(var(--sx,30%) - 40%),rgba(255,255,255,.35) calc(var(--sx,30%) - 22%),transparent calc(var(--sx,30%) - 6%))}
-.rg2-h1{position:absolute;z-index:3;left:var(--pad);top:47%;transform:translateY(-50%);max-width:min(34vw,600px);font-size:calc(clamp(50px,5.2vw,98px) * var(--ds));line-height:.98;isolation:isolate}
-.rg2-hero .rg-specs{isolation:isolate}
+/* left: headline, line and button; right: the highlights. Both centred on KINGDOM, the ewer in a beam of light between */
+.rg2-lead{position:absolute;z-index:3;left:var(--pad);top:47%;transform:translateY(-50%);display:grid;justify-items:start;gap:clamp(20px,2.4vh,28px);max-width:min(34vw,600px)}
+.rg2-h1{position:static;transform:none;font-size:calc(clamp(50px,5.2vw,98px) * var(--ds));line-height:.98}
 .rg2-h1>span{display:block}
+.rg2-sub{font-size:clamp(15px,1.1vw,18px);color:var(--ink-2);margin-top:-4px}
+.rg2-hero .rg-specs{gap:clamp(22px,3vh,34px)}
+.rg2-hero .rg-specs li+li{padding-top:0;border-top:0}
+.rg2-hero .rg-specs b{font-size:calc(clamp(22px,1.9vw,28px) * var(--ds))}
+.rg2-hero::before{content:"";position:absolute;left:50%;top:-10%;width:min(70vh,760px);height:110%;transform:translateX(-50%);z-index:1;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 0,rgba(255,255,255,.55),rgba(255,255,255,0) 100%),conic-gradient(from 180deg at 50% -8%,transparent 168deg,rgba(255,255,255,.22) 176deg,rgba(255,255,255,.3) 180deg,rgba(255,255,255,.22) 184deg,transparent 192deg);
+  -webkit-mask:linear-gradient(180deg,#000 40%,transparent 95%);mask:linear-gradient(180deg,#000 40%,transparent 95%);opacity:.9}
+[data-mode="dark"] .rg2-hero::before{opacity:.35}
+.rg2-hero .rg-ewer__floor{background:radial-gradient(closest-side,rgba(24,38,59,.3),transparent),radial-gradient(closest-side,rgba(255,255,255,.4),transparent) 50% 0/60% 100% no-repeat}
 
 /* ---------- banner: a frosted glass capsule; the words glide with your scroll ---------- */
 .rg2-band{padding:clamp(64px,9vh,112px) var(--pad) 0}
@@ -175,16 +185,18 @@
 .rg2-lb.is-spread .r-lb__fig img{max-width:min(92vw,1500px)}
 
 /* ---------- footer: the big KINGDOM fades away at the bottom ---------- */
-.pg-regalia2 .r-foot__mark{-webkit-mask:linear-gradient(180deg,#000 50%,transparent 100%);mask:linear-gradient(180deg,#000 50%,transparent 100%);margin-bottom:-2vw}
 
 /* ---------- tablet & mobile ---------- */
 @media (max-width:1100px){
-  .rg2-h1{max-width:32vw;font-size:calc(clamp(44px,5vw,64px) * var(--ds))}
+  .rg2-lead{max-width:34vw}
+  .rg2-h1{font-size:calc(clamp(44px,5vw,64px) * var(--ds))}
 }
 @media (max-width:900px){
   .pg-regalia2{--r-xl:26px;--r-l:20px}
   .rg2-hero{display:flex;flex-direction:column;align-items:center}
-  .rg2-h1{position:relative;left:auto;top:auto;transform:none;max-width:none;text-align:center;padding:0 var(--pad);font-size:calc(min(12vw,60px) * var(--ds));order:-1;margin-bottom:var(--s4)}
+  .rg2-lead{position:relative;left:auto;top:auto;transform:none;max-width:none;justify-items:center;text-align:center;padding:0 var(--pad);order:-1;margin-bottom:var(--s4)}
+  .rg2-h1{font-size:calc(min(12vw,60px) * var(--ds))}
+  .rg2-hero::before{display:none}
   .rg2-head--row{grid-template-columns:1fr}
   .rg2-band__glass{height:56px}
   .rg2-loupe__pin{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:var(--s4);padding:calc(var(--head-h) + 8px) var(--pad) var(--s5);align-items:stretch}

@@ -29,14 +29,14 @@ function hero() {
   const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
   tl.fromTo('.rg-word', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.8 * d, ease: 'expo.inOut' })
     .fromTo('.rg-ewer', { yPercent: 14, opacity: 0, scale: 0.94 }, { yPercent: 0, opacity: 1, scale: 1, duration: 2.2 * d }, still ? 0 : 0.5)
-    .fromTo('.rg2-h1 > span', { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1, duration: 1.4 * d }, still ? 0 : 1)
-    .fromTo('.rg-copy--r > *, .rg-specs li', { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 1.2 * d }, still ? 0 : 1.3);
+    .fromTo('.rg2-h1 > span, .rg2-sub, .rg2-lead .r-btn', { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1, duration: 1.4 * d }, still ? 0 : 1)
+    .fromTo('.rg-specs li', { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 1.2 * d }, still ? 0 : 1.3);
   if (still) return;
   gsap.matchMedia().add('(min-width: 901px)', () => {
     const st = { trigger: '.rg-hero', start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.rg-word', { scale: 1.12, yPercent: -24, opacity: 0.3, ease: 'none', scrollTrigger: st });
     gsap.to('.rg-ewer', { yPercent: -8, scale: 0.95, ease: 'none', scrollTrigger: st });
-    gsap.to('.rg2-h1, .rg-specs, .rg-copy', { y: -80, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '55% top' } });
+    gsap.to('.rg2-lead, .rg-specs', { y: -80, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '55% top' } });
   });
 }
 

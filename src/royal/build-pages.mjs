@@ -481,9 +481,9 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     <span class="rg-ewer__sheen" aria-hidden="true"></span>
     <span class="rg-ewer__floor" aria-hidden="true"></span>
   </figure>
-  <h1 class="r-h1 rg-h1 rg2-h1"><span>${COPY.h1a}</span> <span><em>${COPY.h1b}</em> ${COPY.h1c}</span></h1>
-  <div class="rg-copy rg-copy--r">
-    <p class="r-lead">${COPY.sub}</p>
+  <div class="rg2-lead">
+    <h1 class="r-h1 rg-h1 rg2-h1"><span>${COPY.h1a}</span> <span><em>${COPY.h1b}</em> ${COPY.h1c}</span></h1>
+    <p class="rg2-sub">${COPY.sub}</p>
     <a class="r-btn" href="#collection" data-magnetic="0.25"><span>Shop the collection</span>${a}</a>
   </div>
   <ul class="rg-specs" aria-label="Highlights"><li><b>Silver-filled</b><span>Presence of solid silver</span></li><li><b>Gift-ready</b><span>Kingdom packaging</span></li><li><b>Within reach</b><span>Priced for generous giving</span></li></ul>
