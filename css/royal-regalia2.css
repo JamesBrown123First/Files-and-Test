@@ -475,3 +475,7 @@
   .rg2-hero .rg-specs span{text-align:right}
   .g2{--w:min(50vw,210px)}
 }
+/* consistency: one left edge (the page margin) for every left-aligned section, one vertical rhythm */
+.pg-regalia2 main>section.r-occ{padding-left:0!important;padding-right:0!important;padding-bottom:var(--sec)}
+.pg-regalia2 .rg2-trio{padding-top:calc(var(--sec) * .5);padding-bottom:calc(var(--sec) * .5)}
+.pg-regalia2 .rg2-basin{padding-top:calc(var(--sec) * .5)}
