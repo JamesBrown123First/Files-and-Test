@@ -558,3 +558,23 @@
 .pg-regalia2 .rg2-feat__cta .r-btn::before,.pg-regalia2 .rg2-feat__cta .r-btn::after{display:none}
 .pg-regalia2 .rg2-feat__cta .r-btn:hover{background:rgba(var(--accent-rgb),.1);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.7);color:var(--accent)}
 .pg-regalia2 .rg2-feat__cta .r-btn .r-ico{color:var(--accent)}
+/* story seal: clearly more room above it than before, a little less below — measured, on every screen */
+.pg-regalia2{--seal:clamp(140px,12vw,184px)}
+@media (max-width:900px){.pg-regalia2{--seal:140px}}
+.pg-regalia2 .rg2-story .rg2-story__row{margin-top:calc(var(--seal) / 2 + var(--gap) * .7 - var(--stack-3))!important}
+.pg-regalia2 main>.rg2-story{padding-bottom:calc(var(--seal) / 2)!important}
+.pg-regalia2 main>.rg2-trio{padding-top:calc(var(--gap) * .6 - 10px)!important}
+.pg-regalia2 .rg2-seal{width:var(--seal)}
+.pg-regalia2 .rg2-story .rg2-story__row{margin-top:calc(var(--seal) / 2 + var(--gap) - var(--stack-3))!important}
+.pg-regalia2 main>.rg2-trio{padding-top:calc(var(--gap) * .5 - 22px)!important}
+.pg-regalia2 main>.rg2-trio{padding-top:calc(var(--gap) * .7 - 22px)!important}
+
+/* ===== one heading stack everywhere: label → 16 → title → 24 → text → 36 → actions (scales down on phones) ===== */
+.pg-regalia2{--stack-1:16px;--stack-2:24px;--stack-3:36px}
+@media (max-width:900px){.pg-regalia2{--stack-1:12px;--stack-2:18px;--stack-3:28px}}
+.pg-regalia2 :is(.rg2-feat__copy,.rg2-basin,.r-sec-head,.r-shop__in,.r-conc__card,.rg2-camp__head,.rg2-story){row-gap:0!important}
+.pg-regalia2 :is(.rg2-feat__copy,.rg2-basin,.r-sec-head,.r-shop__in,.r-conc__card,.rg2-camp__head,.rg2-story,.rg2-loupe__copy,.rg2-gift__copy)>.r-label{margin:0 0 var(--stack-1)!important}
+.pg-regalia2 :is(.rg2-feat__copy,.rg2-basin,.r-sec-head,.r-shop__in,.r-conc__card,.rg2-camp__head,.rg2-story)>:is(h2,.r-h2,.r-h3,.r-shop__title,.r-story__big){margin-top:0!important;margin-bottom:0!important}
+.pg-regalia2 :is(.rg2-feat__copy,.rg2-basin,.r-sec-head,.r-shop__in,.r-conc__card,.rg2-camp__head)>:is(h2,.r-h2,.r-h3,.r-shop__title)+p{margin-top:var(--stack-2)!important}
+.pg-regalia2 :is(.rg2-feat__cta,.r-conc__btns,.r-shop__btn){margin-top:var(--stack-3)!important}
+.pg-regalia2 .r-shop__btn+.r-shop__quick{margin-top:var(--stack-3)!important}
