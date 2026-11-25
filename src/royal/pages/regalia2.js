@@ -47,7 +47,7 @@ function band() {
   gsap.ticker.add((t, dt) => {
     if (reduced()) return;
     if (Math.abs(vel) > 40) dir = vel > 0 ? -1 : 1;
-    speed = lerp(speed, 28 + Math.min(900, Math.abs(vel)) * 0.35, 0.08);
+    speed = lerp(speed, 18 + Math.min(900, Math.abs(vel)) * 0.12, 0.05);
     x += dir * speed * dt / 1000;
     const w = run.scrollWidth / 4;
     if (x < -w) x += w; if (x > 0) x -= w;

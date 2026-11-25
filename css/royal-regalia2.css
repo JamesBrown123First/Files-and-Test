@@ -20,7 +20,7 @@
 [data-mode="dark"] .rg2-band__glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
 
 /* script accents (Pinyon and similar) need a little more size to sit with the serif */
-.pg-regalia2 :is(.r-h1,.r-h2,.r-shop__title,.rg2-band__run .is-i,.rg2-ch__num,.g2-card) em,.pg-regalia2 .rg2-band__run span.is-i{font-size:calc(1em * var(--ital-scale,1));line-height:.9}
+.pg-regalia2 :is(.r-h1,.r-h2,.r-shop__title,.rg2-ch__num,.g2-card) em{font-size:calc(1em * var(--ital-scale,1));line-height:.9}
 .pg-regalia2 .rg2-ch__num{font-family:var(--font-display);font-style:normal;font-weight:var(--display-weight)}
 .pg-regalia2 em .w{padding:.04em .28em .2em .06em;margin:-.04em -.28em -.2em -.06em}
 
@@ -58,21 +58,17 @@
   background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--shade-c) 55%,transparent) 0%,color-mix(in srgb,var(--shade-c) 30%,transparent) 32%,color-mix(in srgb,var(--shade-c) 10%,transparent) 58%,transparent 78%)}
 .rg2-hero .rg-ewer__floor::after{content:"";position:absolute;left:32%;right:32%;top:30%;height:40%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--shade-c) 70%,transparent),transparent 75%)}
 
-/* ---------- banner: a frosted glass capsule; the words glide with your scroll ---------- */
-.rg2-band{padding:clamp(64px,9vh,112px) var(--pad) 0}
-.rg2-band__glass{position:relative;max-width:1180px;height:76px;margin:0 auto;border-radius:999px;overflow:hidden;display:flex;align-items:center;
-  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.22));-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65),inset 0 -1px 0 rgba(var(--accent-rgb),.18),0 24px 50px -30px rgba(24,38,59,.35)}
-[data-mode="dark"] .rg2-band__glass{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.03));box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 24px 50px -30px rgba(0,0,0,.6)}
-.rg2-band__run{display:flex;align-items:center;gap:26px;width:max-content;padding-left:26px;will-change:transform;-webkit-mask:none}
-.rg2-band__run span{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--display-track);font-size:calc(23px * var(--ds));color:var(--ink);white-space:nowrap}
-.rg2-band__run span.is-i{font-family:var(--font-italic);font-style:italic;font-weight:var(--ital-weight,300);text-transform:none;color:var(--accent);font-size:25px}
-.rg2-band__run .r-crown{flex:none;width:15px;height:15px;fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linejoin:round;opacity:.85}
-.rg2-band__glass>.rg2-band__run{-webkit-mask-image:linear-gradient(90deg,transparent,#000 60px,#000 calc(100% - 60px),transparent)}
-.rg2-band__glass{--fade:linear-gradient(90deg,transparent,#000 70px)}
-.rg2-band__shine{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);background-size:250% 100%;animation:rg2shine 7s var(--ease) infinite}
-@keyframes rg2shine{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
-[data-motion="still"] .rg2-band__shine{animation:none;opacity:0}
+/* ---------- banner: one quiet line of small capitals between two hairlines ---------- */
+.rg2-band{padding:clamp(72px,10vh,120px) var(--pad) 0}
+.rg2-band__glass{position:relative;max-width:1320px;margin:0 auto;padding:22px 0;overflow:hidden;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.rg2-band__glass::before,.rg2-band__glass::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line-2)}
+.rg2-band__glass::before{top:0}.rg2-band__glass::after{bottom:0}
+.rg2-band__shine{display:none}
+.rg2-band__run{display:flex;align-items:center;gap:clamp(28px,3vw,48px);width:max-content;will-change:transform}
+.rg2-band__run span,.rg2-band__run span.is-i{font-family:var(--font-text);font-style:normal;font-weight:400;font-size:12px;letter-spacing:.36em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.rg2-band__run .r-crown{flex:none;width:4px;height:4px;border-radius:50%;background:var(--accent);fill:none;stroke:none}
+.rg2-band__run .r-crown *{display:none}
 
 /* ---------- loupe: pinned; each detail moves the camera, and the lens follows your mouse ---------- */
 .rg2-loupe{position:relative}
@@ -217,7 +213,6 @@
   .rg2-h1{font-size:calc(min(12vw,60px) * var(--ds))}
   .rg2-hero::before{display:none}
   .rg2-head--row{grid-template-columns:1fr}
-  .rg2-band__glass{height:56px}
   .rg2-loupe__pin{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:var(--s4);padding:calc(var(--head-h) + 8px) var(--pad) var(--s5);align-items:stretch}
   .rg2-loupe__stage{height:auto;min-height:0}
   .rg2-loupe__copy{gap:var(--s3)}
