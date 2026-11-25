@@ -2,7 +2,7 @@
 // Colours ease toward the palette whenever the editor changes them.
 import { getState, palette, onState, rgb01, isDark } from './state.js';
 
-const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9 };
+const STYLES = { aurora: 0, silk: 1, guilloche: 2, liquid: 3, stardust: 4, still: 5, tide: 6, rays: 7, velvet: 8, moire: 9, veil: 10, bloom: 11, mesh: 12, dawn: 13 };
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
 const FRAG = `
 precision highp float;
@@ -80,10 +80,10 @@ void main(){
     float n1 = snoise(vec3(q, t*0.04));
     float n2 = snoise(vec3(q*1.7 + n1, t*0.05 + 3.));
     float v = snoise(vec3(q + vec2(n1, n2)*0.9, t*0.03 + sc*0.15));
-    float band = 0.5 + 0.5*sin(v*5.5 + t*0.15);
-    col = mix(col, c2, 0.3*smoothstep(0.2, 1., band)*A);
-    float spec = pow(band, 14.);
-    col += mix(vec3(1.), cA, 0.35) * spec * (uLight > 0.5 ? 0.16 : 0.12) * A;
+    float band = 0.5 + 0.5*sin(v*3.2 + t*0.08);
+    col = mix(col, c2, 0.22*smoothstep(0.1, 1., band)*A);
+    float spec = pow(band, 6.);
+    col += mix(vec3(1.), cA, 0.4) * spec * (uLight > 0.5 ? 0.06 : 0.045) * A;
     col = mix(col, cA, blob(p, m*0.7, 0.5) * 0.05);
   } else if (uStyle < 4.5) {
     // STARDUST — faint glints drifting upward, like light catching polished silver
@@ -148,6 +148,39 @@ void main(){
     col = mix(col, c2, ridge*0.35*A);
     col += mix(cA, c3, 0.4) * pow(ridge, 6.) * (uLight > 0.5 ? 0.1 : 0.14) * A;
     col = mix(col, cA, blob(p, m*0.7, 0.5) * 0.05);
+  } else if (uStyle > 9.5 && uStyle < 10.5) {
+    // VEIL — luminous curtains of royal and peach light drifting sideways, very soft
+    float n = snoise(vec3(p.x*0.6, p.y*0.25, t*0.025));
+    float x = p.x + n*0.35 + t*0.012;
+    float c1v = 0.5 + 0.5*sin(x*2.1 + t*0.05);
+    float c2v = 0.5 + 0.5*sin(x*1.3 - t*0.037 + 1.7);
+    float fall = smoothstep(-1.1, 0.9, p.y);
+    col = mix(col, c2, c1v*c1v*fall*0.38*A);
+    col = mix(col, cA, pow(c2v, 3.)*fall*(uLight > 0.5 ? 0.2 : 0.15)*A);
+    col = mix(col, c3, blob(p, vec2(0., 1.1), 1.2)*0.16*A);
+  } else if (uStyle > 10.5 && uStyle < 11.5) {
+    // BLOOM — one great soft light that breathes and wanders; it leans toward your cursor
+    vec2 c = vec2(0.35*sin(t*0.031), 0.12 + 0.16*cos(t*0.027) - sc*0.18) + m*0.12;
+    float br = 0.85 + 0.12*sin(t*0.21);
+    col = mix(col, c2, blob(p, c, 1.25*br)*0.55*A);
+    col = mix(col, c3, blob(p, c + vec2(0.18, -0.08), 0.8*br)*0.32*A);
+    col = mix(col, cA, blob(p, c + vec2(-0.05, 0.04), 0.42*br)*(uLight > 0.5 ? 0.3 : 0.24)*A);
+  } else if (uStyle > 11.5 && uStyle < 12.5) {
+    // MESH — a slow mesh gradient: four colours blending as if painted in light
+    vec2 q = p + 0.18*vec2(snoise(vec3(p*0.7, t*0.02)), snoise(vec3(p*0.7 + 9., t*0.02)));
+    vec2 a = vec2(-0.8 + 0.2*sin(t*0.04), 0.6), b = vec2(0.9, 0.5 + 0.2*cos(t*0.035)), d = vec2(0.6 + 0.2*sin(t*0.03), -0.7), e = vec2(-0.7, -0.6 + 0.2*cos(t*0.045));
+    float wa = blob(q, a, 1.1), wb = blob(q, b, 1.0), wd = blob(q, d, 1.0), we = blob(q, e, 1.1);
+    col = mix(col, c2, wa*0.6*A);
+    col = mix(col, c3, wb*0.38*A);
+    col = mix(col, cA, wd*(uLight > 0.5 ? 0.32 : 0.24)*A);
+    col = mix(col, c1, we*0.5*A);
+  } else if (uStyle > 12.5 && uStyle < 13.5) {
+    // DAWN — royal sky above, a warm glow rising softly from the horizon
+    float h = p.y + 0.06*snoise(vec3(p.x*0.8, 0., t*0.03)) + sc*0.25;
+    col = mix(col, c2, smoothstep(-0.2, 1.1, h)*0.5*A);
+    float glow = exp(-pow((h + 0.85)/0.55, 2.)) * (0.8 + 0.2*sin(t*0.15));
+    col = mix(col, cA, glow*(uLight > 0.5 ? 0.32 : 0.28)*A);
+    col = mix(col, c3, exp(-pow((h + 0.5)/0.7, 2.))*0.2*A);
   } else {
     // MOIRÉ — watered silk: two ring fields interfering, very slowly drifting
     vec2 a = p - vec2(-0.5 + 0.1*sin(t*0.03), 0.3);
