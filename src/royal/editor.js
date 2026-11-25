@@ -50,7 +50,16 @@ export function initEditor() {
     </nav>
     <div class="r-ed__body">
       <section data-pane="presets">
-        <p class="r-ed__hint">Ready-made looks. Pick one, then fine-tune in the other tabs.</p>
+        <h3 class="r-ed__group">Your looks</h3>
+        <p class="r-ed__hint">Save any combination you like, then flip between your saved looks to compare them on the page.</p>
+        <div class="r-ed__mine">
+          <form class="r-ed__saveform" data-saveform hidden><input type="text" maxlength="28" placeholder="Name this look" aria-label="Name this look"><button type="submit">Save</button></form>
+          <button type="button" class="r-ed__save" data-act="save-look"><span>+</span> Save this look</button>
+          <div class="r-ed__presets" data-group="mine"></div>
+          <button type="button" class="r-ed__cmp" data-act="compare" hidden>Compare your looks</button>
+        </div>
+        <h3 class="r-ed__group">Ready-made</h3>
+        <p class="r-ed__hint">Pick one, then fine-tune in the other tabs.</p>
         <button type="button" class="r-ed__surprise" data-act="surprise"><span>✦</span> Surprise me <small>a new, balanced combination</small></button>
         <h3 class="r-ed__group">Suggested for ${page.name}</h3>
         <div class="r-ed__presets" data-group="rec"></div>
@@ -88,6 +97,7 @@ export function initEditor() {
     </footer>
     <p class="r-ed__status" role="status"></p>
   </aside>
+  <div class="r-ed__cmpbar" role="group" aria-label="Compare your looks"><button type="button" data-cmp="-1" aria-label="Previous look">‹</button><span><b></b><small></small></span><button type="button" data-cmp="1" aria-label="Next look">›</button><button type="button" data-cmp="done" class="r-ed__cmpdone">Done</button></div>
   <button class="r-ed__back" type="button" aria-label="Back to the design studio" title="Back to studio (H)">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg>
     <span>Back to studio</span>
@@ -134,6 +144,52 @@ export function initEditor() {
   const rest = Object.keys(PRESETS).filter((k) => !recs.includes(k)).sort((a, b) => (PRESETS[b].d ? 1 : 0) - (PRESETS[a].d ? 1 : 0));
   $('[data-group="all"]').innerHTML = rest.map((id) => card(id, false)).join('');
   wrap.querySelectorAll('[data-preset]').forEach((b) => b.addEventListener('click', () => setPreset(b.dataset.preset)));
+
+  // your own looks: save the current combination, re-apply it, delete it, and flip between them on the page
+  const LKEY = 'kingdom:looks:' + page.id, LOOK_KEYS = ['palette', 'bg', 'accent', 'type', 'mood', 'hfont', 'sfont', 'intensity'];
+  const loadLooks = () => { try { return JSON.parse(localStorage.getItem(LKEY) || '[]'); } catch { return []; } };
+  const saveLooks = (l) => { try { localStorage.setItem(LKEY, JSON.stringify(l)); } catch {} };
+  let looks = loadLooks(), cmpI = 0;
+  const lookCard = (l, i) => {
+    const P = PALETTES[l.s.palette] || PALETTES.royal, T = TYPE[l.s.type] || {}, H = HEADLINES[l.s.hfont], bgI = BG_ICON[l.s.bg] || '';
+    return `<div class="r-ed__look" data-look="${i}"><button class="r-ed__preset" type="button" style="--a:${P.colors[0]};--b:${P.colors[1]};--g:${P.colors[2]};--x:${l.s.accent};--f:${H ? H.family : T.display};--ink:${P.mode === 'dark' ? '#f4efe9' : '#18263b'}">
+      <span class="r-ed__pv"><i style="background-image:${bgI.replace(/var\(--sw2\)/g, P.colors[2]).replace(/var\(--swa\)/g, l.s.accent).replace(/var\(--sw1\)/g, P.colors[1]).replace(/var\(--sw3\)/g, P.colors[3])}"></i><b style="text-transform:${(H ? H.up : T.up) ? 'uppercase' : 'none'}">Aa</b><em></em></span>
+      <span class="r-ed__pn">${l.name.replace(/[<>&"]/g, '')}<small>Yours</small></span></button><button type="button" class="r-ed__del" aria-label="Delete ${l.name.replace(/[<>&"]/g, '')}">×</button></div>`;
+  };
+  const renderLooks = () => {
+    $('[data-group="mine"]').innerHTML = looks.map(lookCard).join('');
+    $('[data-act="compare"]').hidden = looks.length < 2;
+    wrap.querySelectorAll('[data-look]').forEach((el) => {
+      const i = +el.dataset.look;
+      el.querySelector('.r-ed__preset').addEventListener('click', () => applyLook(i));
+      el.querySelector('.r-ed__del').addEventListener('click', () => { looks.splice(i, 1); saveLooks(looks); renderLooks(); });
+    });
+    markLook();
+  };
+  const sameAs = (l) => { const s = getState(); return LOOK_KEYS.every((k) => (l.s[k] ?? '') === (s[k] ?? '')); };
+  const markLook = () => wrap.querySelectorAll('[data-look]').forEach((el) => el.classList.toggle('is-on', !!looks[+el.dataset.look] && sameAs(looks[+el.dataset.look])));
+  const applyLook = (i) => { const l = looks[i]; if (!l) return; setState(Object.assign({ hfont: '', sfont: '' }, l.s, { preset: null })); };
+  const form = $('[data-saveform]'), input = form.querySelector('input');
+  $('[data-act="save-look"]').addEventListener('click', () => { form.hidden = false; $('[data-act="save-look"]').hidden = true; input.value = 'Look ' + (looks.length + 1); input.focus(); input.select(); });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const s = getState(), snap = {}; LOOK_KEYS.forEach((k) => (snap[k] = s[k] ?? ''));
+    looks.push({ name: (input.value || 'Look ' + (looks.length + 1)).trim().slice(0, 28), s: snap }); saveLooks(looks);
+    form.hidden = true; $('[data-act="save-look"]').hidden = false; renderLooks(); say('Look saved');
+  });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.stopPropagation(); form.hidden = true; $('[data-act="save-look"]').hidden = false; } });
+  const bar = $('.r-ed__cmpbar');
+  const showCmp = () => { const l = looks[cmpI]; bar.querySelector('b').textContent = l.name; bar.querySelector('small').textContent = `${cmpI + 1} of ${looks.length}`; applyLook(cmpI); };
+  const startCmp = () => { if (looks.length < 2) return; cmpI = Math.max(0, looks.findIndex(sameAs)); preview(true); wrap.classList.add('is-compare'); showCmp(); };
+  const endCmp = () => { wrap.classList.remove('is-compare'); preview(false); };
+  $('[data-act="compare"]').addEventListener('click', startCmp);
+  bar.querySelectorAll('[data-cmp]').forEach((b) => b.addEventListener('click', () => { if (b.dataset.cmp === 'done') return endCmp(); cmpI = (cmpI + +b.dataset.cmp + looks.length) % looks.length; showCmp(); }));
+  addEventListener('keydown', (e) => {
+    if (!wrap.classList.contains('is-compare')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); cmpI = (cmpI + (e.key === 'ArrowRight' ? 1 : -1) + looks.length) % looks.length; showCmp(); }
+    if (e.key === 'Escape') endCmp();
+  });
+  onState(markLook);
 
   ['dark', 'light'].forEach((m) => {
     wrap.querySelector(`.r-ed__pals[data-mode="${m}"]`).innerHTML = Object.entries(PALETTES).filter(([, p]) => p.mode === m).map(([id, p]) =>
@@ -201,4 +257,5 @@ export function initEditor() {
     });
   };
   sync(getState()); onState(sync);
+  renderLooks();
 }

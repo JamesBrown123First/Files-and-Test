@@ -258,6 +258,7 @@ export function setState(patch) {
   if (!('preset' in patch)) {
     const p = PRESETS[state.preset];
     if (p && ['palette', 'bg', 'accent', 'type', 'mood'].some((k) => p[k] !== state[k])) state.preset = null;
+    if (p && ((p.hfont || '') !== (state.hfont || '') || (p.sfont || '') !== (state.sfont || ''))) state.preset = null;
     if (p && p.d && Object.keys(p.d).some((k) => p.d[k] !== state[k])) state.preset = null;
   }
   store(state); apply();

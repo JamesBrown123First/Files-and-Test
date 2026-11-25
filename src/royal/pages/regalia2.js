@@ -260,6 +260,12 @@ function orbit() {
   draw();
 }
 
+// announcement bar: two lines that take turns, crossfading
+function ann() {
+  const items = [...document.querySelectorAll('.rg2-ann__rot span')]; if (items.length < 2) return;
+  let i = 0; setInterval(() => { items[i].classList.remove('is-on'); i = (i + 1) % items.length; items[i].classList.add('is-on'); }, 4200);
+}
+
 function products() {
   const m = document.querySelector('.rg2-feat__media'); if (!m) return;
   m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
@@ -267,7 +273,7 @@ function products() {
 }
 
 preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(async () => {
-  sheen(); band();
+  sheen(); band(); ann();
   await loader.finish();
   hero();
   await start();

@@ -6,7 +6,7 @@ const { COPY, DETAILS, icons, logo } = P;
 const ROOT = new URL('../../', import.meta.url).pathname;
 const a = icons.arrow;
 
-const page = (cfg, body) => `${P.head(cfg)}
+const pageRaw = (cfg, body) => `${P.head(cfg)}
 <body class="pg-${cfg.id}">
 ${P.sprite}
 ${P.loader()}
@@ -17,6 +17,7 @@ ${body}
 </main>
 ${P.footer()}
 ${P.tail(cfg.id)}`;
+const page = (cfg, body) => (cfg.post ? cfg.post(pageRaw(cfg, body)) : pageRaw(cfg, body));
 
 const pages = {};
 
@@ -448,11 +449,11 @@ ${P.concierge()}`);
 
 /* ============ REGALIA II — Regalia, refined to the notes (photograph) ============ */
 const R2_DET = [
-  ['The Crown', 'Acanthus, wrapped around an ovoid finial.'],
-  ['The Spout', 'A mirror lip that catches every light.'],
-  ['The Handle', 'Beaded and leaf-capped, ending in one bead.'],
-  ['The Body', 'Deep relief over a stippled ground.'],
-  ['The Foot', 'Pierced scrolls, lifting it like a crown.']
+  ['The Silver', 'Silver-filled, with the presence of solid silver.'],
+  ['The Shine', 'A mirror finish that catches every light.'],
+  ['The Detail', 'Fine relief, made to be looked at closely.'],
+  ['The Selection', 'Every piece carefully selected.'],
+  ['The Price', 'The elegance of silver, within reach.']
 ];
 const R2_ITEMS = [
   ['decanter', 'Crowned Decanter', 'Repoussé, crowned stopper'], ['candlesticks', 'Grand Candlesticks', 'A tall pair'],
@@ -473,7 +474,13 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
   <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
 const R2_ADS = (P.ADS || []).slice(0, 10);
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
-pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting' }, `
+pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => h
+  .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
+  .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
+  .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
+  .replace('    <a href="#collection">Collection</a>\n  </nav>', '    <a href="#collection">Collection</a>\n    <a href="#story">Our Story</a>\n  </nav>')
+  .replace('    <a href="#story" class="r-hide-m">Our Story</a>\n    <a href="#concierge" class="r-hide-m">Concierge</a>', '    <a href="#concierge" class="r-hide-m rg2-head__cta">Gift concierge</a>')
+  .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>') }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Baroque Ewer">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
@@ -501,7 +508,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     <div class="rg2-loupe__stage" data-cursor="Inspect">
       <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="The Baroque Ewer" loading="lazy" decoding="async" width="1113" height="2400"></div>
       <span class="rg-lens" aria-hidden="true"><span></span></span>
-      <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${icons.crown}</span></span>
+      <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${logo('k-icon')}</span></span>
     </div>
     <div class="rg2-loupe__copy">
       <p class="r-label">Look closer <span class="rg2-count"><b>I</b> / V</span></p>
@@ -517,17 +524,22 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     <div class="rg2-feat__copy">
       <p class="r-label" data-reveal>The collection</p>
       <h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2>
-      <p class="r-lead" data-reveal>Acanthus relief and mirror polish, made to be given.</p>
       <div class="rg2-feat__cta" data-reveal><a class="r-btn" href="shop.html" data-magnetic="0.25"><span>Explore the collection</span>${a}</a><a class="r-link" href="shop.html">All collections ${a}</a></div>
     </div>
   </div>
 </section>
-${(() => { const h = P.story('split'); const m = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/); return h.replace(m[0], '').replace('<div class="r-story__row">', '<div class="r-story__row rg2-story__row">\n' + m[0].replace('r-story__seal', 'r-story__seal rg2-seal')); })()}
-<section class="rg2-basin" aria-label="The Baroque Basin">
-  <p class="r-label" data-reveal>The basin</p>
-  <h2 class="r-h2" data-split>The perfect <em>answer</em></h2>
-  <p class="r-lead" data-reveal>A border of acanthus around a mirror-polished centre. Drag it to turn it.</p>
-  <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="The Baroque Basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>
+${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/)[0].replace('r-story__seal', 'r-story__seal rg2-seal'); return `<section class="r-story r-story--split rg2-story" id="story" aria-label="Our story">
+  <p class="r-label" data-reveal>Our story</p>
+  <p class="r-story__big" data-fill>${COPY.story1}</p>
+  <div class="rg2-story__row">
+${seal}  </div>
+</section>
+<section class="rg2-trio" aria-label="The Kingdom promise"><ul data-stagger>${COPY.close.map((c, i) => `<li>${i === 2 ? `<em>${c}</em>` : c}</li>`).join('')}</ul></section>`; })()}
+<section class="rg2-basin" aria-label="A royal touch">
+  <p class="r-label" data-reveal>Filled with silver</p>
+  <h2 class="r-h2" data-split>A royal <em>touch</em></h2>
+  <p class="r-lead" data-reveal>The beauty, presence and elegance of silver, at a price that makes generous giving possible.</p>
+  <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="A silver-filled basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>
 </section>
 ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
 <section class="rg2-gift" id="gifting" aria-label="The gift">
@@ -566,7 +578,7 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
   <figure class="r-lb__fig"><img alt=""><figcaption></figcaption></figure>
   <button type="button" class="r-lb__nav r-lb__nav--n" data-dir="1" aria-label="Next">${a}</button>
 </div>
-${P.shopNow('grand').replace('<div class="r-shop__in">', '<div class="rg2-orbit" aria-hidden="true"><i><img src="assets/items/candelabra-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/pitcher-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/spice-tower-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/decanter-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/vase-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/candlesticks-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/honey-dish-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/tureen-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/washing-set-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/casket-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/leaf-bowl-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i><i><img src="assets/items/wine-barrel-480.webp" alt="" loading="lazy" decoding="async" width="480" height="600"></i></div>\n  <div class="r-shop__in">')}
+${P.shopNow('grand').replace('<div class="r-shop__in">', '<div class="rg2-shopmark" aria-hidden="true">' + logo('k-icon') + '<span class="rg2-shopmark__sheen"></span></div>\n  <div class="r-shop__in">').replace(/<nav class="r-shop__quick"[\s\S]*?<\/nav>/, `<nav class="r-shop__quick" aria-label="Quick links" data-stagger><a href="#occasions">By occasion ${a}</a><a href="shop.html">Gift sets ${a}</a><a href="shop.html">New pieces ${a}</a><a href="#concierge">Gift concierge ${a}</a></nav>`)}
 ${P.concierge()}`);
 
 /* ============ shop placeholder (e-commerce is added later) ============ */

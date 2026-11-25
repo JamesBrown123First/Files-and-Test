@@ -79,19 +79,21 @@ export function split(el) {
 
 export function initReveals(root = document) {
   const still = reduced();
+  // refined pages reveal text a little later, once it is well on screen
+  const late = document.body.hasAttribute('data-refined'), at = (n) => `top ${late ? n - 16 : n}%`;
   root.querySelectorAll('[data-split]:not([data-manual])').forEach((el) => {
     const words = split(el);
     if (still) return;
-    gsap.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: el, start: 'top 88%' } });
+    gsap.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05, scrollTrigger: { trigger: el, start: at(88) } });
   });
   root.querySelectorAll('[data-reveal]').forEach((el) => {
     if (still) return gsap.set(el, { opacity: 1 });
     const d = +(el.dataset.delay || 0);
-    gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 1.1, delay: d, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 1.1, delay: d, ease: 'power3.out', scrollTrigger: { trigger: el, start: at(90) } });
   });
   root.querySelectorAll('[data-stagger]').forEach((el) => {
     if (still) return;
-    gsap.fromTo(el.children, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.09, scrollTrigger: { trigger: el, start: 'top 86%' } });
+    gsap.fromTo(el.children, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.09, scrollTrigger: { trigger: el, start: at(86) } });
   });
   root.querySelectorAll('[data-img-reveal]').forEach((el) => {
     if (still) return;
@@ -109,7 +111,7 @@ export function initReveals(root = document) {
     const words = split(el);
     gsap.set(words, { opacity: 0.18 });
     if (still) return gsap.set(words, { opacity: 1 });
-    gsap.to(words, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 78%', end: 'bottom 45%', scrub: true } });
+    gsap.to(words, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: at(78), end: late ? 'bottom 32%' : 'bottom 45%', scrub: true } });
   });
   root.querySelectorAll('[data-count]').forEach((el) => {
     const to = +el.dataset.count; const o = { v: 0 };
@@ -142,9 +144,11 @@ export function initCursor() {
 export function initMagnetic() {
   if (!fine) return;
   document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    const s = +el.dataset.magnetic || 0.3;
-    const xTo = gsap.quickTo(el, 'x', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });
-    const yTo = gsap.quickTo(el, 'y', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });
+    // refined pages: the same playful pull, a little firmer — less travel, a softer spring
+    const calm = document.body.hasAttribute('data-refined');
+    const s = (+el.dataset.magnetic || 0.3) * (calm ? 0.7 : 1), ease = calm ? 'elastic.out(1, 0.7)' : 'elastic.out(1, 0.4)', dur = calm ? 1 : 0.8;
+    const xTo = gsap.quickTo(el, 'x', { duration: dur, ease });
+    const yTo = gsap.quickTo(el, 'y', { duration: dur, ease });
     el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * s); yTo((e.clientY - r.top - r.height / 2) * s); });
     el.addEventListener('pointerleave', () => { xTo(0); yTo(0); });
   });
