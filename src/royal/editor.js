@@ -31,7 +31,13 @@ export function initEditor() {
   <aside class="r-ed__panel" id="r-ed-panel" aria-label="Design studio" aria-hidden="true">
     <header class="r-ed__head">
       <div><p class="r-ed__kicker">Design studio</p><h2>${page.name}</h2></div>
-      <button class="r-ed__x" type="button" aria-label="Close design studio">×</button>
+      <div class="r-ed__hbtns">
+        <button class="r-ed__peek" type="button" aria-label="Hide the studio and view the design" title="View design (H)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.6-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.6 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          <span>View design</span>
+        </button>
+        <button class="r-ed__x" type="button" aria-label="Close design studio">×</button>
+      </div>
     </header>
     <nav class="r-ed__tabs" role="tablist">
       <button role="tab" data-tab="presets" aria-selected="true">Presets</button>
@@ -80,14 +86,34 @@ export function initEditor() {
       <button type="button" data-act="copy" class="is-main">Copy settings</button>
     </footer>
     <p class="r-ed__status" role="status"></p>
-  </aside>`;
+  </aside>
+  <button class="r-ed__back" type="button" aria-label="Back to the design studio" title="Back to studio (H)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg>
+    <span>Back to studio</span>
+  </button>`;
   document.body.appendChild(wrap);
   const $ = (s) => wrap.querySelector(s);
   const fab = $('.r-ed__fab'), panel = $('.r-ed__panel');
   const toggle = (on) => { wrap.classList.toggle('is-open', on); fab.setAttribute('aria-expanded', on); panel.setAttribute('aria-hidden', !on); };
   fab.addEventListener('click', () => toggle(!wrap.classList.contains('is-open')));
   $('.r-ed__x').addEventListener('click', () => toggle(false));
-  addEventListener('keydown', (e) => e.key === 'Escape' && toggle(false));
+  // view design: the whole studio steps away (panel + button) so the page is seen clean
+  let dimT;
+  const preview = (on) => {
+    wrap.classList.toggle('is-preview', on);
+    clearTimeout(dimT); wrap.classList.remove('is-dim');
+    if (on) { toggle(false); dimT = setTimeout(() => wrap.classList.add('is-dim'), 2600); }
+    else toggle(true);
+  };
+  $('.r-ed__peek').addEventListener('click', () => preview(true));
+  $('.r-ed__back').addEventListener('click', () => preview(false));
+  addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { wrap.classList.contains('is-preview') ? preview(false) : toggle(false); return; }
+    if ((e.key === 'h' || e.key === 'H') && !e.metaKey && !e.ctrlKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '')) {
+      if (wrap.classList.contains('is-preview')) preview(false);
+      else if (wrap.classList.contains('is-open')) preview(true);
+    }
+  });
   if (/edit/.test(location.hash)) toggle(true);
 
   wrap.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => {
