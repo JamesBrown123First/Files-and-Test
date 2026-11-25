@@ -154,7 +154,7 @@ export function story(variant = 'center') {
   return `<section class="r-story r-story--${variant}" id="story" aria-label="Our story">
   <div class="r-story__seal" aria-hidden="true">
     <svg viewBox="0 0 200 200"><defs><path id="seal-${variant}" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-      <text><textPath href="#seal-${variant}">KINGDOM · SILVER COLLECTION · A ROYAL TOUCH · </textPath></text></svg>
+      <text><textPath href="#seal-${variant}" textLength="486" lengthAdjust="spacing">KINGDOM · SILVER COLLECTION · A ROYAL TOUCH · </textPath></text></svg>
     ${logo('k-icon')}
   </div>
   <p class="r-label" data-reveal>Our story</p>

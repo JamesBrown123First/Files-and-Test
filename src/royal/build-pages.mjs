@@ -522,7 +522,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     </div>
   </div>
 </section>
-${P.story('split')}
+${(() => { const h = P.story('split'); const m = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/); return h.replace(m[0], '').replace('<div class="r-story__row">', '<div class="r-story__row rg2-story__row">\n' + m[0].replace('r-story__seal', 'r-story__seal rg2-seal')); })()}
 <section class="rg2-basin" aria-label="The Baroque Basin">
   <p class="r-label" data-reveal>The basin</p>
   <h2 class="r-h2" data-split>The perfect <em>answer</em></h2>
