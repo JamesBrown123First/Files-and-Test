@@ -9,6 +9,16 @@
 .pg-regalia2 .r-toast{border-radius:999px}
 .pg-regalia2 .r-shop__basin{display:none}
 
+/* one family of colour, with subtle tonal shifts from section to section */
+.pg-regalia2{--deep:rgba(var(--c0-rgb),.6);--royal:rgba(18,73,128,.06);--warm:rgba(var(--accent-rgb),.06)}
+[data-mode="dark"] .pg-regalia2{--deep:rgba(var(--c0-rgb),.75);--royal:rgba(52,114,168,.14);--warm:rgba(var(--accent-rgb),.07)}
+.rg2-loupe,.rg2-basin,.rg2-gift,.pg-regalia2 .r-conc{background:linear-gradient(180deg,transparent,var(--deep) 14%,var(--deep) 86%,transparent)}
+.rg2-coll,.pg-regalia2 .r-occ,.rg2-camp{background:radial-gradient(80% 60% at 50% 50%,var(--royal),transparent 75%)}
+.pg-regalia2 .r-shop,.pg-regalia2 .r-story{background:radial-gradient(70% 55% at 50% 50%,var(--warm),transparent 75%)}
+[data-mode="dark"] .g2 .f{box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+[data-mode="dark"] .rg2-gift__scene::before{content:"";position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;transform:translate(-50%,-40%);border-radius:50%;background:radial-gradient(closest-side,rgba(var(--accent-rgb),.22),transparent);pointer-events:none}
+[data-mode="dark"] .rg2-band__glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
+
 /* section labels: a small silver glint, no rule */
 .pg-regalia2 .r-label{gap:12px;letter-spacing:.3em;font-size:11.5px}
 .pg-regalia2 .r-label::before{width:9px;height:9px;background:var(--accent);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}

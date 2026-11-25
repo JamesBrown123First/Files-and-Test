@@ -105,6 +105,7 @@ export const PRESETS = {
   'ink-copper':    { name: 'Ink & Copper',       palette: 'copper',   bg: 'liquid',    accent: '#f3c09b', type: 'gilda',     mood: 'candle' },
   'dusk-rose':     { name: 'Dusk Rose',          palette: 'dusk',     bg: 'aurora',    accent: '#f2d4be', type: 'atelier',   mood: 'candle' },
   'starlit':       { name: 'Starlit Vault',      palette: 'navy',     bg: 'stardust',  accent: '#f3c09b', type: 'bellefair', mood: 'moon' },
+  'royal-couture': { name: 'Royal Couture',      palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'couture',   mood: 'moon' },
   'blush-atelier': { name: 'Blush Atelier',      palette: 'blush',    bg: 'silk',      accent: '#a35234', type: 'couture',   mood: 'gallery' },
   'peach-salon':   { name: 'Peach Salon',        palette: 'peach',    bg: 'aurora',    accent: '#18263b', type: 'atelier',   mood: 'gallery' },
   'pearl':         { name: 'Pearl Gallery',      palette: 'pearl',    bg: 'still',     accent: '#14395c', type: 'heritage',  mood: 'gallery' },
