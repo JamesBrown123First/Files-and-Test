@@ -506,3 +506,12 @@
   .rg2-hero .rg-specs b{font-size:10px!important;letter-spacing:.15em}
   .rg2-hero .rg-specs li+li::before{margin:0 9px}
 }
+/* phones & tablets: the collection reads title first, then the photo, then the actions */
+@media (max-width:900px){
+  .pg-regalia2 .rg2-feat{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
+  .pg-regalia2 .rg2-feat__copy{display:contents}
+  .pg-regalia2 .rg2-feat__copy .r-label{order:1;justify-content:center;margin-bottom:var(--stack-1)}
+  .pg-regalia2 .rg2-feat__copy .r-h2{order:2;margin-bottom:var(--stack-3)}
+  .pg-regalia2 .rg2-feat__media{order:3;width:100%;max-width:480px}
+  .pg-regalia2 .rg2-feat__cta{order:4;align-items:center!important;margin-top:var(--stack-3)}
+}
