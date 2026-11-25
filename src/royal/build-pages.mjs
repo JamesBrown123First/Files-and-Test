@@ -539,9 +539,9 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
       <div class="g2">
         <span class="g2-shadow"></span>
         <div class="g2-base"><i class="f f--floor"></i><i class="f f--back"></i><i class="f f--left"><span class="g2-rib"></span></i><i class="f f--right"><span class="g2-rib"></span></i>
-          <svg class="g2-tissue is-back" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 40 C30 10 50 52 80 26 C110 4 130 48 165 22 C190 6 215 44 245 20 C275 0 300 46 330 24 C355 8 380 40 400 30 L400 70 Z"/></svg>
+          <svg class="g2-tissue is-back" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 36 C80 22 140 40 200 32 S320 22 400 34 L400 70 Z"/></svg>
           <img class="g2-piece" src="assets/img/ewer-bw-800.webp" alt="">
-          <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 44 C40 20 60 50 95 30 C125 12 150 46 190 26 C220 10 250 48 285 28 C315 12 345 44 400 34 L400 70 Z"/></svg>
+          <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 42 C90 30 150 46 210 38 S330 30 400 40 L400 70 Z"/></svg>
           <i class="f f--front"><span class="g2-rib"></span><span class="g2-foil">${logo('k-full')}</span></i></div>
         <div class="g2-lid"><i class="f f--llining"></i><i class="f f--ltop"></i><i class="f f--lback"></i><i class="f f--lleft"><span class="g2-rib"></span></i><i class="f f--lright"><span class="g2-rib"></span></i><i class="f f--lfront"><span class="g2-rib"></span></i>${R2_BOW}</div>
       </div>

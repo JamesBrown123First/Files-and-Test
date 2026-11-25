@@ -152,7 +152,7 @@ function gift() {
     .to(S, { rise: 0.88, duration: 1, ease: 'power3.out' }, 0.15)          //    …and the silver rises with it
     .to(S, { tis: 1, duration: 0.6, ease: 'back.out(1.6)' }, 1.15)         // 02 laid in tissue
     .to(S, { rise: 0.3, duration: 0.8 }, 1.15)
-    .to(card, { opacity: 1, y: 0, rotate: -6, duration: 0.9, ease: 'power3.out' }, 2.15)   // 03 the card
+    .to(card, { opacity: 1, y: 0, rotate: -3, duration: 0.9, ease: 'power3.out' }, 2.15)   // 03 the card
     .to(S, { rise: 0, duration: 0.7, ease: 'power2.in' }, 3.0)             // 04 the silver settles in,
     .to(S, { tis: 0.55, duration: 0.4 }, 3.2)
     .to(S, { open: 0, duration: 0.8, ease: 'power3.inOut' }, 3.3)          //    the lid closes,
