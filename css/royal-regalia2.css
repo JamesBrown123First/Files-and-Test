@@ -295,3 +295,11 @@
   .pg-regalia2 .rg2-story__row{padding-top:calc(clamp(140px,12vw,184px) / 2 + 32px)}
   .pg-regalia2 .rg2-seal{width:140px}
 }
+
+/* story: the statement centred on the page, over the seal, so both sides hold */
+.pg-regalia2 .r-story--split{justify-items:center}
+.pg-regalia2 .r-story--split > .r-label{justify-self:center}
+.pg-regalia2 .r-story--split .r-story__big{text-align:center;max-width:24ch;margin-inline:auto;text-wrap:balance}
+.pg-regalia2 .rg2-story__row{width:100%}
+@media (max-width:900px){.pg-regalia2 .r-story--split .r-story__big{max-width:none}}
+@media (max-width:900px){.pg-regalia2 .rg2-story__row{margin-top:96px}}
