@@ -525,3 +525,24 @@
   .pg-regalia2 .r-conc__btns{gap:10px}
   .r-ed__fab{height:44px}
 }
+
+/* ===== one spacing system: every gap between sections is the same (half above, half below each section) ===== */
+.pg-regalia2{--gap:clamp(112px,11vw,168px)}
+@media (max-width:900px){.pg-regalia2{--gap:clamp(88px,20vw,120px)}}
+.pg-regalia2 main>:is(.rg2-coll,.rg2-story,.rg2-trio,.r-occ,.r-shop){padding-top:calc(var(--gap) / 2)!important;padding-bottom:calc(var(--gap) / 2)!important}
+.pg-regalia2 main>.rg2-story{padding-bottom:calc(var(--gap) / 2 + clamp(140px,12vw,184px) / 2)!important}
+.pg-regalia2 main>.rg2-basin{padding-top:calc(var(--gap) / 2)!important}
+.pg-regalia2 main>.r-conc{padding-top:calc(var(--gap) / 2)!important;padding-bottom:calc(var(--gap) / 2)!important}
+.pg-regalia2 .rg2-band{padding-top:calc(var(--gap) / 2);padding-bottom:0}
+.pg-regalia2 .r-shop{min-height:0!important}
+.pg-regalia2 .rg2-trio li{padding-top:10px;padding-bottom:10px}
+.pg-regalia2 main>.rg2-basin{margin-bottom:calc(var(--gap) / 2)}
+.pg-regalia2 .rg2-band{padding-top:calc(var(--gap) * .8)}
+.pg-regalia2 .r-foot{padding-top:calc(var(--gap) / 2)}
+.pg-regalia2 main>.rg2-gift{margin-top:-26vh}
+.pg-regalia2 main>.rg2-basin{padding-top:calc(var(--gap) / 2 - 28px)!important}
+.pg-regalia2 main>.r-occ{padding-top:calc(var(--gap) / 2 - 28px)!important}
+.pg-regalia2 .r-foot{padding-top:calc(var(--gap) / 2 + 26px)}
+@media (max-width:900px){.pg-regalia2 main>.rg2-basin,.pg-regalia2 main>.r-occ{padding-top:calc(var(--gap) / 2 - 14px)!important}}
+.pg-regalia2 main>.rg2-loupe{margin-top:30px}
+@media (max-width:900px){.pg-regalia2 main>.rg2-loupe{margin-top:22px}}

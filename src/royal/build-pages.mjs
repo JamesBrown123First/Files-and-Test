@@ -482,10 +482,10 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace('    <a href="#story" class="r-hide-m">Our Story</a>\n    <a href="#concierge" class="r-hide-m">Concierge</a>', '    <a href="#concierge" class="r-hide-m rg2-head__cta">Gift concierge</a>')
   .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>') }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
-<section class="rg-hero rg2-hero" aria-label="The Baroque Ewer">
+<section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
   <figure class="rg-ewer" data-cursor="Light">
-    <img class="rg-ewer__img" src="assets/img/ewer-bw-2400.webp" alt="The Baroque Ewer, a silver-filled ewer with acanthus relief and a crowned stopper" width="1113" height="2400">
+    <img class="rg-ewer__img" src="assets/img/ewer-bw-2400.webp" alt="A silver-filled Kingdom piece with deep acanthus relief" width="1113" height="2400">
     <span class="rg-ewer__sheen" aria-hidden="true"></span>
     <span class="rg-ewer__floor" aria-hidden="true"></span>
   </figure>
@@ -506,7 +506,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 <section class="rg2-loupe" aria-label="Look closer">
   <div class="rg2-loupe__pin">
     <div class="rg2-loupe__stage" data-cursor="Inspect">
-      <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="The Baroque Ewer" loading="lazy" decoding="async" width="1113" height="2400"></div>
+      <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="Kingdom silver, seen up close" loading="lazy" decoding="async" width="1113" height="2400"></div>
       <span class="rg-lens" aria-hidden="true"><span></span></span>
       <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${logo('k-icon')}</span></span>
     </div>
@@ -520,7 +520,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 </section>
 <section class="rg2-coll" id="collection" aria-label="The Baroque Collection">
   <div class="rg2-feat">
-    <a class="rg2-feat__media" href="shop.html" data-cursor="Explore"><img src="assets/img/pair-bw.webp" alt="The Baroque ewer standing before its matching basin" width="1748" height="1800" loading="lazy"><span class="rg2-feat__shine" aria-hidden="true"></span></a>
+    <a class="rg2-feat__media" href="shop.html" data-cursor="Explore"><img src="assets/img/pair-bw.webp" alt="Pieces from the Baroque Collection" width="1748" height="1800" loading="lazy"><span class="rg2-feat__shine" aria-hidden="true"></span></a>
     <div class="rg2-feat__copy">
       <p class="r-label" data-reveal>The collection</p>
       <h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2>
