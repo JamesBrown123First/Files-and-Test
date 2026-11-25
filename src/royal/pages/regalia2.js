@@ -1,7 +1,7 @@
 // REGALIA II — Regalia, refined to the notes.
 import { boot, gsap, ScrollTrigger, reduced, fine, preloadImages, getLenis } from '../boot.js';
 
-const { loader, start } = boot({ id: 'regalia2', name: 'Regalia II', preset: 'royal-couture', presets: ['royal-couture', 'royal-night', 'coronation', 'guilloche', 'blush-atelier', 'porcelain'] });
+const { loader, start } = boot({ id: 'regalia2', name: 'Regalia II', preset: 'royal-couture', presets: ['royal-couture', 'royal-script', 'royal-didone', 'royal-calligraphy', 'royal-night', 'blush-atelier'] });
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const smoothTo = (y) => { const L = getLenis(); L ? L.scrollTo(y, { duration: 1.4 }) : scrollTo({ top: y, behavior: 'smooth' }); };
 const lerp = (a, b, k) => a + (b - a) * k;

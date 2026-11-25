@@ -19,6 +19,11 @@
 [data-mode="dark"] .rg2-gift__scene::before{content:"";position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;transform:translate(-50%,-40%);border-radius:50%;background:radial-gradient(closest-side,rgba(var(--accent-rgb),.22),transparent);pointer-events:none}
 [data-mode="dark"] .rg2-band__glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
 
+/* script accents (Pinyon and similar) need a little more size to sit with the serif */
+.pg-regalia2 :is(.r-h1,.r-h2,.r-shop__title,.rg2-band__run .is-i,.rg2-ch__num,.g2-card) em,.pg-regalia2 .rg2-band__run span.is-i{font-size:calc(1em * var(--ital-scale,1));line-height:.9}
+.pg-regalia2 .rg2-ch__num{font-family:var(--font-display);font-style:normal;font-weight:var(--display-weight)}
+.pg-regalia2 em .w{padding:.04em .28em .2em .06em;margin:-.04em -.28em -.2em -.06em}
+
 /* section labels: a small silver glint, no rule */
 .pg-regalia2 .r-label{gap:12px;letter-spacing:.3em;font-size:11.5px}
 .pg-regalia2 .r-label::before{width:9px;height:9px;background:var(--accent);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}

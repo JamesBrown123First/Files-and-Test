@@ -74,6 +74,7 @@ export const TYPE = {
   prata:    { name: 'Prata',    note: 'Prata · Cormorant · Jost',     display: "'Prata', 'Times New Roman', serif",          italic: "'Cormorant Garamond', serif", text: "'Jost', system-ui, sans-serif", weight: 400, track: '-0.02em', up: false, scale: 0.88 },
   gloock:   { name: 'Gloock',   note: 'Gloock · Instrument · Inter Tight', display: "'Gloock', 'Times New Roman', serif",     italic: "'Instrument Serif', serif", text: "'Inter Tight', system-ui, sans-serif", weight: 400, track: '-0.03em', up: false, scale: 0.9, ital: 400 },
   calligraphy:{ name: 'Calligraphy', note: 'Italiana · Pinyon Script · Outfit', display: "'Italiana', 'Times New Roman', serif", italic: "'Pinyon Script', cursive", text: "'Outfit', system-ui, sans-serif", weight: 400, track: '-0.01em', up: false, scale: 1, ital: 400, iscale: 1.18 },
+  sovereign: { name: 'Sovereign Script', note: 'Noto Serif Display · Pinyon Script · Jost', display: "'Noto Serif Display', 'Times New Roman', serif", italic: "'Pinyon Script', cursive", text: "'Jost', system-ui, sans-serif", weight: 300, track: '-0.03em', up: false, scale: 1, ital: 400, iscale: 1.28 },
   royalscript:{ name: 'Royal Script', note: 'Bodoni Moda · Pinyon Script · Urbanist', display: "'Bodoni Moda', 'Times New Roman', serif", italic: "'Pinyon Script', cursive", text: "'Urbanist', system-ui, sans-serif", weight: 400, track: '-0.035em', up: false, scale: 0.92, ital: 400, iscale: 1.2 },
   engraved: { name: 'Engraved', note: 'Cinzel · Noto Display italic · Urbanist', display: "'Cinzel', 'Times New Roman', serif", italic: "'Noto Serif Display', serif", text: "'Urbanist', system-ui, sans-serif", weight: 400, track: '0.02em', up: true, scale: 0.74, ital: 300, iscale: 1.08 }
 };
@@ -105,7 +106,10 @@ export const PRESETS = {
   'ink-copper':    { name: 'Ink & Copper',       palette: 'copper',   bg: 'liquid',    accent: '#f3c09b', type: 'gilda',     mood: 'candle' },
   'dusk-rose':     { name: 'Dusk Rose',          palette: 'dusk',     bg: 'aurora',    accent: '#f2d4be', type: 'atelier',   mood: 'candle' },
   'starlit':       { name: 'Starlit Vault',      palette: 'navy',     bg: 'stardust',  accent: '#f3c09b', type: 'bellefair', mood: 'moon' },
-  'royal-couture': { name: 'Royal Couture',      palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'couture',   mood: 'moon' },
+  'royal-couture': { name: 'Royal Couture',      palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'sovereign', mood: 'moon' },
+  'royal-script':  { name: 'Royal Script',       palette: 'royal',    bg: 'aurora',    accent: '#f3c09b', type: 'royalscript', mood: 'moon' },
+  'royal-didone':  { name: 'Royal Didone',       palette: 'sapphire', bg: 'silk',      accent: '#f3c09b', type: 'didone',    mood: 'noir' },
+  'royal-calligraphy': { name: 'Royal Calligraphy', palette: 'regal', bg: 'aurora',   accent: '#f2d4be', type: 'calligraphy', mood: 'moon' },
   'blush-atelier': { name: 'Blush Atelier',      palette: 'blush',    bg: 'silk',      accent: '#a35234', type: 'couture',   mood: 'gallery' },
   'peach-salon':   { name: 'Peach Salon',        palette: 'peach',    bg: 'aurora',    accent: '#18263b', type: 'atelier',   mood: 'gallery' },
   'pearl':         { name: 'Pearl Gallery',      palette: 'pearl',    bg: 'still',     accent: '#14395c', type: 'heritage',  mood: 'gallery' },
