@@ -501,6 +501,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
     <div class="rg2-loupe__stage" data-cursor="Inspect">
       <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="The Baroque Ewer" loading="lazy" decoding="async" width="1113" height="2400"></div>
       <span class="rg-lens" aria-hidden="true"><span></span></span>
+      <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${icons.crown}</span></span>
     </div>
     <div class="rg2-loupe__copy">
       <p class="r-label">Look closer <span class="rg2-count"><b>I</b> / V</span></p>
