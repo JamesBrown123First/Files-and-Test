@@ -515,3 +515,13 @@
   .pg-regalia2 .rg2-feat__media{order:3;width:100%;max-width:480px}
   .pg-regalia2 .rg2-feat__cta{order:4;align-items:center!important;margin-top:var(--stack-3)}
 }
+/* phones: buttons sized for the hand, not the billboard — 44px tall (the touch minimum), finer type */
+@media (max-width:900px){
+  .pg-regalia2 .r-btn{min-height:44px;padding:0 18px 0 22px;font-size:13px;gap:10px;letter-spacing:.04em}
+  .pg-regalia2 .r-btn .r-ico{width:16px;height:16px}
+  .pg-regalia2 .r-shop__btn{height:48px;padding:0 22px 0 26px;font-size:12px;letter-spacing:.14em;gap:10px}
+  .pg-regalia2 .r-shop__btn .r-ico{width:16px;height:16px}
+  .pg-regalia2 .r-link{font-size:13px}
+  .pg-regalia2 .r-conc__btns{gap:10px}
+  .r-ed__fab{height:44px}
+}
