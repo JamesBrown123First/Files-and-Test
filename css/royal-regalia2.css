@@ -546,3 +546,10 @@
 @media (max-width:900px){.pg-regalia2 main>.rg2-basin,.pg-regalia2 main>.r-occ{padding-top:calc(var(--gap) / 2 - 14px)!important}}
 .pg-regalia2 main>.rg2-loupe{margin-top:30px}
 @media (max-width:900px){.pg-regalia2 main>.rg2-loupe{margin-top:22px}}
+/* desktop zig-zag: Look closer has the image left and text right, so the collection mirrors it — text left, photo right */
+@media (min-width:901px){
+  .pg-regalia2 .rg2-feat__copy{order:1;justify-self:end;text-align:right;align-items:flex-end}
+  .pg-regalia2 .rg2-feat__copy .r-label{justify-content:flex-end}
+  .pg-regalia2 .rg2-feat__cta{justify-content:flex-end}
+  .pg-regalia2 .rg2-feat__media{order:2;justify-self:start}
+}
