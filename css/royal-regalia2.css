@@ -303,3 +303,6 @@
 .pg-regalia2 .rg2-story__row{width:100%}
 @media (max-width:900px){.pg-regalia2 .r-story--split .r-story__big{max-width:none}}
 @media (max-width:900px){.pg-regalia2 .rg2-story__row{margin-top:96px}}
+
+/* story closing lines: the display serif in its own light italic, not the slanted script */
+.pg-regalia2 .r-story__close{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:calc(clamp(24px,2.1vw,34px) * var(--ds));line-height:1.25;letter-spacing:-.01em;gap:2px}
