@@ -52,7 +52,11 @@
   background:radial-gradient(50% 60% at 50% 0,rgba(255,255,255,.55),rgba(255,255,255,0) 100%),conic-gradient(from 180deg at 50% -8%,transparent 168deg,rgba(255,255,255,.22) 176deg,rgba(255,255,255,.3) 180deg,rgba(255,255,255,.22) 184deg,transparent 192deg);
   -webkit-mask:linear-gradient(180deg,#000 40%,transparent 95%);mask:linear-gradient(180deg,#000 40%,transparent 95%);opacity:.9}
 [data-mode="dark"] .rg2-hero::before{opacity:.35}
-.rg2-hero .rg-ewer__floor{background:radial-gradient(closest-side,rgba(24,38,59,.3),transparent),radial-gradient(closest-side,rgba(255,255,255,.4),transparent) 50% 0/60% 100% no-repeat}
+.rg2-hero .rg-ewer{overflow:visible}
+.rg2-hero .rg-ewer__floor{left:-45%;right:-45%;bottom:-4.5%;height:10%;filter:none;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(10,16,30,.42) 0%,rgba(10,16,30,.22) 32%,rgba(10,16,30,.08) 58%,rgba(10,16,30,0) 78%)}
+.rg2-hero .rg-ewer__floor::after{content:"";position:absolute;left:32%;right:32%;top:30%;height:40%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(5,8,16,.5),rgba(5,8,16,0) 75%)}
+[data-mode="dark"] .rg2-hero .rg-ewer__floor{background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.55) 0%,rgba(0,0,0,.3) 32%,rgba(0,0,0,.1) 58%,rgba(0,0,0,0) 78%)}
 
 /* ---------- banner: a frosted glass capsule; the words glide with your scroll ---------- */
 .rg2-band{padding:clamp(64px,9vh,112px) var(--pad) 0}
