@@ -73,7 +73,7 @@ function loupe() {
   stage.addEventListener('pointerleave', () => (hover = false));
   // the image box inside the (unzoomed) stage
   const base = () => { const W = stage.clientWidth, H = stage.clientHeight; const bx = W * 0.1, by = H * 0.06, bw = W * 0.8, bh = H * 0.9; const ar = 1113 / 2400, w = Math.min(bw, bh * ar), h = w / ar; return { x: bx + (bw - w) / 2, y: by + (bh - h) / 2, w, h, W, H }; };
-  let S = 1, px = 0.5, py = 0.5;
+  let S = 1, px = 0.5, py = 0.5, vis = 0;
   gsap.ticker.add(() => {
     const b = base();
     // where we are along the route of details, eased between stops
@@ -104,8 +104,10 @@ function loupe() {
       const x1 = Sg.left - P.left + lx + L * 0.5 * 0.72, y1 = Sg.top - P.top + ly, x2 = h.left - P.left - 18, y2 = h.top - P.top + h.height * 0.35;
       ln.setAttribute('x1', x1.toFixed(1)); ln.setAttribute('y1', y1.toFixed(1)); ln.setAttribute('x2', x2.toFixed(1)); ln.setAttribute('y2', y2.toFixed(1));
       dot.setAttribute('cx', x2.toFixed(1)); dot.setAttribute('cy', y2.toFixed(1));
-      leader.style.setProperty('--len', (hover ? 0 : Math.hypot(x2 - x1, y2 - y1) * zoomIn).toFixed(0) + 'px');
-      dot.style.opacity = hover ? 0 : zoomIn;
+      // stays drawn while you steer the lens yourself; it follows the lens to the current name
+      vis = reduced() ? (hover ? 1 : zoomIn) : lerp(vis, hover ? 1 : zoomIn, 0.08);
+      leader.style.setProperty('--len', (Math.hypot(x2 - x1, y2 - y1) * vis).toFixed(1) + 'px');
+      dot.style.opacity = vis.toFixed(3);
     }
   });
 }

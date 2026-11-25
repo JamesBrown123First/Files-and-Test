@@ -346,3 +346,4 @@
 @media (max-width:900px){.rg2-orbit i{width:96px}.pg-regalia2 .r-shop{min-height:100svh}}
 .pg-regalia2 .r-shop{min-height:max(108vh,960px)}
 .pg-regalia2 .r-shop__in{z-index:4}
+.rg2-leader line{transition:none}
