@@ -41,6 +41,22 @@
 @font-face{font-family:'Fraunces';src:url(../assets/fonts/fraunces-latin-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap}
 @font-face{font-family:'Marcellus';src:url(../assets/fonts/marcellus-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 
+
+/* luxury type collection */
+@font-face{font-family:'Great Vibes';src:url(../assets/fonts/great-vibes-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Italianno';src:url(../assets/fonts/italianno-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Parisienne';src:url(../assets/fonts/parisienne-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Allura';src:url(../assets/fonts/allura-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Corinthia';src:url(../assets/fonts/corinthia-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cinzel Decorative';src:url(../assets/fonts/cinzel-decorative-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Yeseva One';src:url(../assets/fonts/yeseva-one-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant Upright';src:url(../assets/fonts/cormorant-upright-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant Upright';src:url(../assets/fonts/cormorant-upright-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Della Respira';src:url(../assets/fonts/della-respira-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Playfair Display SC';src:url(../assets/fonts/playfair-display-sc-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant SC';src:url(../assets/fonts/cormorant-sc-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant SC';src:url(../assets/fonts/cormorant-sc-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Rozha One';src:url(../assets/fonts/rozha-one-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 /* round five type */
 @font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-200-normal.woff2) format('woff2');font-weight:200;font-style:normal;font-display:swap}
 @font-face{font-family:'Noto Serif Display';src:url(../assets/fonts/noto-serif-display-latin-200-italic.woff2) format('woff2');font-weight:200;font-style:italic;font-display:swap}

@@ -111,8 +111,10 @@ export function initEditor() {
   wrap.querySelectorAll('[data-pal]').forEach((b) => b.addEventListener('click', () => setState({ palette: b.dataset.pal })));
   wrap.querySelectorAll('.r-ed__bgs').forEach((el) => (el.innerHTML = BACKGROUNDS.map(([id, n, note]) => `<button class="r-ed__bg" data-bg="${id}" title="${note}"><span data-bgprev="${id}"></span><b>${n}</b></button>`).join('')));
   wrap.querySelectorAll('[data-bg]').forEach((b) => b.addEventListener('click', () => setState({ bg: b.dataset.bg })));
-  $('.r-ed__types').innerHTML = Object.entries(TYPE).map(([id, t]) =>
-    `<button class="r-ed__type" data-type="${id}"><b style="font-family:${t.display};font-weight:${t.weight};letter-spacing:${t.track};text-transform:${t.up ? 'uppercase' : 'none'}">The Art of Silver</b><span><em>${t.name}</em> ${t.note}</span></button>`).join('');
+  // luxury pairings with a script accent first, then the rest
+  const typeOrder = Object.entries(TYPE).sort((a, b) => (b[1].iscale ? 1 : 0) - (a[1].iscale ? 1 : 0));
+  $('.r-ed__types').innerHTML = typeOrder.map(([id, t]) =>
+    `<button class="r-ed__type" data-type="${id}"><b style="font-family:${t.display};font-weight:${t.weight};letter-spacing:${t.track};text-transform:${t.up ? 'uppercase' : 'none'}">The Art of <i style="font-family:${t.italic};font-style:italic;font-weight:${t.ital || 300};font-size:${t.iscale || 1}em;text-transform:none;color:var(--a1)">Silver</i></b><span><em>${t.name}</em> ${t.note}</span></button>`).join('');
   wrap.querySelectorAll('[data-type]').forEach((b) => b.addEventListener('click', () => setState({ type: b.dataset.type })));
   if (page.three) {
     $('.r-ed__moods').innerHTML = Object.entries(MOODS).map(([id, m]) => `<button class="r-ed__mood" data-mood="${id}"><span data-moodprev="${id}"></span><b>${m.name}</b><small>${m.note}</small></button>`).join('');
