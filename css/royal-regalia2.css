@@ -479,3 +479,7 @@
 .pg-regalia2 main>section.r-occ{padding-left:0!important;padding-right:0!important;padding-bottom:var(--sec)}
 .pg-regalia2 .rg2-trio{padding-top:calc(var(--sec) * .5);padding-bottom:calc(var(--sec) * .5)}
 .pg-regalia2 .rg2-basin{padding-top:calc(var(--sec) * .5)}
+/* breathing room on phones and tablets: a wider page margin everywhere */
+@media (max-width:1100px){.pg-regalia2{--pad:clamp(32px,7.2vw,60px)}}
+@media (max-width:900px){.pg-regalia2 .rg2-ch__t p,.pg-regalia2 .r-lead{max-width:34ch}}
+@media (max-width:600px){.rg2-hero .rg-specs li{border-left:0!important;box-shadow:none!important}}
