@@ -1,0 +1,21 @@
+<section class="rg2-gift" id="gifting" aria-label="The gift">
+  <div class="rg2-gift__pin">
+    <div class="rg2-gift__copy">
+      <p class="r-label">Given with pride <span class="rg2-count"><b>01</b> / 04</span></p>
+      <div class="rg2-gt" aria-live="polite">${R2_STEPS.map(([t, d], i) => { const k = t.lastIndexOf(' ', t.length - (t.endsWith('card') ? 10 : 6)); return `<div class="rg2-gt__t${i === 0 ? ' is-on' : ''}"><h3>${t.slice(0, k)} <em>${t.slice(k + 1)}</em></h3><p>${d}</p></div>`; }).join('')}</div>
+      <div class="rg2-segs">${R2_STEPS.map(([t], i) => `<button type="button" aria-label="${t}"><i><i></i></i></button>`).join('')}</div>
+    </div>
+    <div class="rg2-gift__scene" aria-hidden="true">
+      <div class="g2">
+        <span class="g2-shadow"></span>
+        <div class="g2-base"><i class="f f--floor"></i><i class="f f--back"></i><i class="f f--left"><span class="g2-rib"></span></i><i class="f f--right"><span class="g2-rib"></span></i>
+          <svg class="g2-tissue is-back" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 36 C80 22 140 40 200 32 S320 22 400 34 L400 70 Z"/></svg>
+          <img class="g2-piece" src="assets/img/ewer-bw-800.webp" alt="">
+          <svg class="g2-tissue" viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 70 L0 42 C90 30 150 46 210 38 S330 30 400 40 L400 70 Z"/></svg>
+          <i class="f f--front"><span class="g2-rib"></span><span class="g2-foil">${logo('k-full')}</span></i></div>
+        <div class="g2-lid"><i class="f f--llining"></i><i class="f f--ltop"></i><i class="f f--lback"></i><i class="f f--lleft"><span class="g2-rib"></span></i><i class="f f--lright"><span class="g2-rib"></span></i><i class="f f--lfront"><span class="g2-rib"></span></i>${R2_BOW}</div>
+      </div>
+      <div class="g2-card"><span>For you,</span><em>with love.</em>${logo('k-icon')}</div>
+    </div>
+  </div>
+</section>

@@ -147,6 +147,7 @@ function basin() {
 
 // gift: the lid swings open on its hinge as the silver rises; tissue, a card, then it closes and the bow is tied
 function gift() {
+  if (!document.querySelector('.rg2-gift')) return;
   const sec = document.querySelector('.rg2-gift'), steps = [...sec.querySelectorAll('.rg2-gt__t')], segs = [...sec.querySelectorAll('.rg2-segs button')], count = sec.querySelector('.rg2-count b');
   steps.forEach((t) => { let k = 0; t.querySelectorAll('h3, h3 em').forEach((n) => n.childNodes.forEach((c) => { if (c.nodeType !== 3) return; const f = document.createDocumentFragment(); [...c.textContent].forEach((ch) => { if (ch === ' ') { f.append(' '); return; } const i = document.createElement('i'); i.style.setProperty('--c', k++); i.textContent = ch; f.append(i); }); c.replaceWith(f); })); });
   const box = sec.querySelector('.g2'), card = sec.querySelector('.g2-card');
