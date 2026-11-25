@@ -578,3 +578,10 @@
 .pg-regalia2 :is(.rg2-feat__copy,.rg2-basin,.r-sec-head,.r-shop__in,.r-conc__card,.rg2-camp__head)>:is(h2,.r-h2,.r-h3,.r-shop__title)+p{margin-top:var(--stack-2)!important}
 .pg-regalia2 :is(.rg2-feat__cta,.r-conc__btns,.r-shop__btn){margin-top:var(--stack-3)!important}
 .pg-regalia2 .r-shop__btn+.r-shop__quick{margin-top:var(--stack-3)!important}
+/* collection copy: left-aligned like every other text block on the page (it stays in the left column) */
+@media (min-width:901px){
+  .pg-regalia2 .rg2-feat__copy{justify-self:start;text-align:left;align-items:flex-start}
+  .pg-regalia2 .rg2-feat__copy .r-label{justify-content:flex-start}
+  .pg-regalia2 .rg2-feat__cta{justify-content:flex-start}
+  .pg-regalia2 .rg2-feat__media{justify-self:end}
+}
