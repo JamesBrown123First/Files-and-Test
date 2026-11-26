@@ -123,6 +123,18 @@ export const MOODS = {
 
 // Headline and script fonts, chosen on their own (empty = take them from the pairing)
 export const HEADLINES = {
+  // refined, curvy display serifs in sentence case — the closest free relatives of Kalieb Luxury
+  gloock:    { name: 'Gloock',          note: 'Like Kalieb · sculpted, high contrast', family: "'Gloock', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
+  fraunces:  { name: 'Fraunces',        note: 'Like Kalieb · soft, curvy serifs',      family: "'Fraunces', serif", weight: 300, up: false, track: '-0.025em', scale: 0.98, stretch: '100%', like: true },
+  playfairdisp:{ name: 'Playfair Display', note: 'Like Kalieb · classic luxury',      family: "'Playfair Display', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
+  dmserif:   { name: 'DM Serif',        note: 'Like Kalieb · elegant, sleek curves',   family: "'DM Serif Display', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
+  youngserif:{ name: 'Young Serif',     note: 'Like Kalieb · warm, rounded',           family: "'Young Serif', serif", weight: 400, up: false, track: '-0.02em', scale: 0.86, stretch: '100%', like: true },
+  prata:     { name: 'Prata',           note: 'Like Kalieb · refined Didone',          family: "'Prata', serif", weight: 400, up: false, track: '-0.02em', scale: 0.88, stretch: '100%', like: true },
+  yeseva:    { name: 'Yeseva One',      note: 'Like Kalieb · bold, feminine curves',   family: "'Yeseva One', serif", weight: 400, up: false, track: '-0.01em', scale: 0.86, stretch: '100%', like: true },
+  rufina:    { name: 'Rufina',          note: 'Like Kalieb · calligraphic serif',      family: "'Rufina', serif", weight: 400, up: false, track: '-0.02em', scale: 0.9, stretch: '100%', like: true },
+  lustria:   { name: 'Lustria',         note: 'Like Kalieb · flared, gentle',          family: "'Lustria', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
+  caslon:    { name: 'Caslon Display',  note: 'Like Kalieb · fine, bookish luxury',    family: "'Libre Caslon Display', serif", weight: 400, up: false, track: '-0.02em', scale: 1, stretch: '100%', like: true },
+  marcellus: { name: 'Marcellus',       note: 'Like Kalieb · flared Roman',            family: "'Marcellus', serif", weight: 400, up: false, track: '0em', scale: 0.88, stretch: '100%', like: true },
   kingdom:   { name: 'Kingdom Caps',    note: 'Kalnia · like the campaign headlines', family: "'Kalnia', serif", weight: 300, up: true, track: '0.005em', scale: 0.8, stretch: '100%' },
   tower:     { name: 'Tower Caps',      note: 'Condensed Didone, tall and narrow',  family: "'Noto Serif Display Var', serif", weight: 250, up: true, track: '0em', scale: 0.92, stretch: '62.5%' },
   imbue:     { name: 'Imbue',           note: 'Slim condensed couture',             family: "'Imbue', serif", weight: 250, up: true, track: '0.01em', scale: 1, stretch: '100%' },

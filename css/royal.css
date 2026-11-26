@@ -1,5 +1,8 @@
 /* Kingdom · Royal kit — shared styles for the third round of directions.
    Colour/type tokens are written by src/royal/state.js from the editor's presets. */
+@font-face{font-family:'Young Serif';src:url(../assets/fonts/young-serif-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Rufina';src:url(../assets/fonts/rufina-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Lustria';src:url(../assets/fonts/lustria-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Kalnia';src:url(../assets/fonts/kalnia-latin-var.woff2) format('woff2');font-weight:100 700;font-style:normal;font-stretch:100% 125%;font-display:swap}
 @font-face{font-family:'Imbue';src:url(../assets/fonts/imbue-latin-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Noto Serif Display Var';src:url(../assets/fonts/noto-serif-display-latin-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-stretch:62.5% 100%;font-display:swap}
@@ -698,3 +701,4 @@ body{font-stretch:var(--display-stretch,100%)}
 .r-ed__cmpbar .r-ed__cmpdone{width:auto;padding:0 18px;font-size:13px;font-weight:600;background:var(--a1);color:#131c2b;border-radius:999px}
 .r-ed__cmpbar .r-ed__cmpdone:hover{background:#f7d3b8}
 .r-ed [hidden]{display:none!important}
+.r-ed__fgroup{grid-column:1/-1;margin:8px 0 0;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--a1)}
