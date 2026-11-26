@@ -876,3 +876,4 @@
 @media (min-width:901px){.rg2-hero .rg-ewer{height:min(72vh,calc(100vh - 230px),940px)}}
 .rg2-head .r-head__nav{font-size:11px;letter-spacing:.2em}
 .pg-regalia2 .rg2-ann,.pg-regalia2 .r-announce{border-bottom:0!important;box-shadow:none!important}
+@media (min-width:901px){.pg-regalia2 .rg2-head .r-burger{display:none!important}}
