@@ -612,13 +612,12 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18v12H3zM3 9l2-5h14l2 5M12 9v12M8 4l4 5 4-5"/></svg><span><b>Gift-ready</b>In Kingdom packaging</span></li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7M6 19a2 2 0 1 0 0-.01M17 19a2 2 0 1 0 0-.01"/></svg><span><b>To your door</b>Order by call, text or WhatsApp</span></li>
     </ul>
-    <nav class="sp-occs" aria-label="Shop by occasion"><span>Shop by occasion</span>${SHOP_OCC.map(([k, t, img]) => `<button type="button" class="sp-occ__tile" data-occ="${k}"><img src="assets/royal/${img}.webp" alt="" loading="lazy" width="28" height="28"><span>${t}</span></button>`).join('')}</nav>
   </div>
 </section>
 <div class="sp-shop">
-<div class="sp-bar" role="toolbar" aria-label="Filter and sort">
-  <div class="sp-chips">${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}</div>
-  <p class="sp-occ-tag" hidden><span></span><button type="button" aria-label="Clear occasion">×</button></p>
+<div class="sp-bar" role="toolbar" aria-label="Search, filter and sort">
+  <label class="sp-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input type="search" placeholder="Search pieces" aria-label="Search pieces"></label>
+  <div class="sp-chips" role="group" aria-label="Filter">${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}<i class="sp-chips__sep" aria-hidden="true"></i>${SHOP_OCC.filter(([k]) => k !== 'shabbos').map(([k, t, img]) => `<button type="button" class="sp-chip sp-chip--occ" data-occ="${k}" aria-pressed="false"><img src="assets/royal/${img}.webp" alt="" width="22" height="22">${t}</button>`).join('')}</div>
   <label class="sp-sort"><span>Sort</span><select aria-label="Sort pieces"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name</option></select></label>
 </div>
 <section class="sp-grid" id="pieces" aria-label="Pieces">${SHOP_ITEMS.map(([id, name, cat, price, line, occ], i) => `
