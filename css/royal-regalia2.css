@@ -917,3 +917,10 @@
 .rg2-mark.is-on::after{transform:scaleX(1);background-position:-100% 0}
 @media (max-width:900px){.rg2-mark{white-space:normal}.rg2-mark::after{height:1px}}
 .rg2-mark::after{height:1px;bottom:-.08em;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.85) 15%,rgba(255,236,224,.95) 50%,rgba(var(--accent-rgb),.85) 85%,transparent) 0 0/200% 100%;box-shadow:0 0 10px rgba(var(--accent-rgb),.45)}
+
+/* header right (desktop): Our Story · Contact, then search and bag drawn together as one pair */
+@media (min-width:901px){
+  .rg2-head .r-head__nav--r{gap:clamp(20px,2.2vw,34px)}
+  .rg2-head .r-head__nav--r>a[aria-label="Search"]{margin-left:clamp(4px,.6vw,10px)}
+  .rg2-head .r-head__nav--r>.r-head__bag{margin-left:calc(-1*clamp(20px,2.2vw,34px) - 8px)}
+}
