@@ -1104,3 +1104,6 @@
 
 /* promise sits a little closer to the story text; the space beneath it (to the seal) is kept */
 .pg-regalia2 .rg2-story .rg2-pledge{margin-top:calc(var(--gap) * .38)!important;margin-bottom:calc(var(--gap) * .17)!important}
+
+/* the seal gets the same breathing room below it as above it (to the Kingdom silver section) */
+.pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(36px,7.2vw,104px)}
