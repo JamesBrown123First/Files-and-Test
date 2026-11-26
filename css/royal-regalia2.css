@@ -1097,3 +1097,7 @@
   .pg-regalia2 .rg2-story .r-story__big,.pg-regalia2 .rg2-story .rg2-story__more{width:calc(100% - 40px);margin-left:auto;margin-right:auto}
   .pg-regalia2 .rg2-story .rg2-pledge{width:calc(100% - 40px)!important}
 }
+/* our story key words v6: plain accent colour (same peach as the rest of the page), no metal; only a soft, steeply
+   angled sheen slides across now and then */
+.rg2-mark .w>i{-webkit-text-stroke:calc(var(--display-stroke,0px) * .6) var(--accent)!important;
+  background-image:linear-gradient(120deg,transparent 44%,rgba(255,255,255,.5) 50%,transparent 56%),linear-gradient(var(--accent),var(--accent))!important}
