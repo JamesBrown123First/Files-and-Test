@@ -631,3 +631,7 @@
 @media (min-width:901px){.rg2-hero .rg-ewer{bottom:7vh;height:min(80vh,1040px)}}
 .pg-regalia2 .r-shop__title{font-size:calc(clamp(44px,6vw,104px) * var(--ds))!important;line-height:.98}
 .pg-regalia2 .r-shop__title em{font-size:calc(1em * var(--ital-scale,1))!important}
+/* collection photo: shorter and calmer — a gentle portrait instead of a tall panel */
+.pg-regalia2 .rg2-feat__media{aspect-ratio:1/1!important;max-height:min(52vh,480px)!important;max-width:480px!important}
+.pg-regalia2 .rg2-feat__media img{object-fit:cover;object-position:50% 55%}
+@media (max-width:900px){.pg-regalia2 .rg2-feat__media{aspect-ratio:5/4!important;max-height:none!important;max-width:480px!important}}
