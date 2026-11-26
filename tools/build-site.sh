@@ -20,6 +20,7 @@ for name,dest in (('regalia2.html','index.html'),('shop.html','shop.html')):
     s=s.replace('<head>',FLAGS,1)
     s=re.sub(r'<a[^>]*href="index\.html"[^>]*>.*?</a>','',s,flags=re.S)   # studio hub link
     s=s.replace('href="regalia2.html','href="index.html')
+    s=re.sub(r'<title>[^<]*</title>', '<title>Kingdom Silver Collection — The Art of Silver Gifting</title>' if dest=='index.html' else '<title>Shop — Kingdom Silver Collection</title>', s, count=1)
     if dest=='shop.html':
         ids=set(re.findall(r'id="([^"]+)"',s))
         s=s.replace('class="r-head__logo" href="#top"','class="r-head__logo" href="index.html"')
