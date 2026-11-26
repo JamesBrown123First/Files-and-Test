@@ -877,3 +877,8 @@
 .rg2-head .r-head__nav{font-size:11px;letter-spacing:.2em}
 .pg-regalia2 .rg2-ann,.pg-regalia2 .r-announce{border-bottom:0!important;box-shadow:none!important}
 @media (min-width:901px){.pg-regalia2 .rg2-head .r-burger{display:none!important}}
+/* announcement bar: its own quiet band — a shade deeper than the page — and a touch more tracking */
+.pg-regalia2 .rg2-ann{background:rgba(4,6,22,.38)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+[data-mode="light"] .pg-regalia2 .rg2-ann{background:rgba(20,27,77,.06)!important}
+.pg-regalia2 .rg2-ann__rot span{letter-spacing:.3em}
+@media (max-width:900px){.pg-regalia2 .rg2-ann__rot span{letter-spacing:.2em}}
