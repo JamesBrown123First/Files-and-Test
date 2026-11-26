@@ -1079,3 +1079,7 @@
   .rg2-pledge__card{grid-template-columns:52px 1fr!important;justify-items:start!important;text-align:left!important;padding:14px 20px!important;border-radius:999px!important}
   .rg2-pledge__card p{white-space:nowrap}
 }
+
+/* hero: the line now sits directly under the headline */
+.rg2-lead .rg2-sub{margin:clamp(14px,1.4vw,22px) 0 0;max-width:none;text-align:left;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:var(--ink-2,rgba(255,255,255,.78));letter-spacing:.01em}
+@media (max-width:900px){.rg2-lead .rg2-sub{text-align:inherit;margin-top:12px;font-size:15px}}

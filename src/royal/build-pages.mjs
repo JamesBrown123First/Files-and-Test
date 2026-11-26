@@ -480,6 +480,8 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace(/\s*<a href="#concierge" class="r-hide-m">Concierge<\/a>/, '')
   .replace('<a href="#story" class="r-hide-m">Our Story</a>', '<a href="#story" class="r-hide-m">Our Story</a>\n    <a href="#concierge" class="r-hide-m">Contact</a>')
   .replace('<div><h3>Shop</h3><a href="shop.html">The Baroque Collection</a>', '<div><h3>Shop</h3>')
+  .replace('\n    <p class="r-lead">Filled with silver. Given with pride.</p>\n    <a class="r-btn" href="#collection"', '\n    <a class="r-btn" href="#collection"')
+  .replace('<em>Silver</em> Gifting.</span></h1>\n  </div>', '<em>Silver</em> Gifting.</span></h1>\n    <p class="r-lead rg2-sub">Filled with silver. Given with pride.</p>\n  </div>')
   .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>')
   .replace(/<div class="r-menu"[\s\S]*?<\/div>\n<\/div>/, `<div class="r-menu rg2-menu" aria-hidden="true">
   <span class="rg2-menu__crest" aria-hidden="true">${logo('k-icon')}</span>
