@@ -799,3 +799,38 @@
   .pg-regalia2 .rg2-loupe__stage{margin-top:var(--stack-3);height:min(46svh,520px)!important;max-height:min(46svh,520px)!important}
 }
 @media (max-width:900px){.pg-regalia2 .rg2-ch__t p{margin-top:calc(var(--stack-2) - 14px)!important}}
+
+/* ===== the vows v3: outlined words that fill with real silver ===== */
+.rg2-vow__pin{height:min(100svh,820px)}
+.rg2-vow__bg{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;overflow:hidden}
+.rg2-vow__bg img{grid-area:1/1;height:min(86%,720px);width:auto;max-width:80vw;object-fit:contain;opacity:0;filter:brightness(.9);
+  -webkit-mask:radial-gradient(closest-side,#000 40%,transparent 100%);mask:radial-gradient(closest-side,#000 40%,transparent 100%);mix-blend-mode:luminosity}
+.rg2-vow__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 50%,rgba(var(--c0-rgb),.55),rgba(var(--c0-rgb),.82))}
+.rg2-vow__lines{position:relative;z-index:1}
+.rg2-vow__l{position:relative;grid-area:1/1;display:grid;place-items:center;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--display-track);font-stretch:var(--display-stretch,100%);
+  font-size:calc(clamp(46px,8.2vw,150px) * var(--ds));line-height:1.05;white-space:nowrap;text-align:center}
+.rg2-vow__o,.rg2-vow__f{grid-area:1/1;padding:.08em .2em .14em}
+.rg2-vow__o{color:transparent;-webkit-text-stroke:1px rgba(244,239,233,.38)}
+.rg2-vow__o em{-webkit-text-stroke:1px rgba(var(--accent-rgb),.55)}
+.rg2-vow__l em{font-family:var(--font-italic);font-weight:var(--ital-weight,300);font-size:calc(1.05em * var(--ital-scale,1));text-transform:none;letter-spacing:0;padding:0 .14em .1em .06em}
+.rg2-vow__f{--fill:100%;clip-path:inset(var(--fill) 0 0 0);
+  background:url(../assets/img/basin-bw-1200.webp) 50% 50%/min(150vw,1700px) auto,linear-gradient(180deg,#f7f7f8,#b9bcc4 45%,#eef0f3 60%,#8e929b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
+.rg2-vow__f em{background:linear-gradient(100deg,#f3c3a7,#ffe9dc 40%,var(--accent) 60%,#e7a27f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rg2-vow__glint{position:absolute;inset:-10% 0;pointer-events:none;background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);mix-blend-mode:overlay;opacity:0}
+[data-mode="light"] .rg2-vow__o{-webkit-text-stroke-color:rgba(20,27,77,.35)}
+[data-mode="light"] .rg2-vow__bg::after{background:radial-gradient(60% 55% at 50% 50%,rgba(var(--c0-rgb),.5),rgba(var(--c0-rgb),.85))}
+@media (max-width:900px){
+  .rg2-vow__l{font-size:calc(clamp(40px,12vw,84px) * var(--ds));white-space:normal}
+  .rg2-vow__o,.rg2-vow__f{max-width:9ch;line-height:1.05}
+  .rg2-vow__bg img{height:min(70%,520px)}
+}
+.rg2-vow__o em{color:transparent!important}
+.rg2-vow__glint{display:none}
+.rg2-vow__f{--gx:-20%;background:linear-gradient(100deg,transparent calc(var(--gx) - 9%),rgba(255,255,255,.95) var(--gx),transparent calc(var(--gx) + 9%)),url(../assets/img/basin-bw-1200.webp) 50% 50%/min(150vw,1700px) auto,linear-gradient(180deg,#f7f7f8,#b9bcc4 45%,#eef0f3 60%,#8e929b);-webkit-background-clip:text;background-clip:text}
+/* phones & tablets: the bottom line sits over the KINGDOM word, as on desktop */
+@media (max-width:900px){
+  .pg-regalia2 .r-foot{padding-bottom:calc((100vw - var(--pad) * 2) * .3 + 8px)!important}
+  .pg-regalia2 .r-foot__base{position:absolute!important;left:var(--pad)!important;right:var(--pad)!important;bottom:calc((100vw - var(--pad) * 2) * .1)!important;margin:0!important;z-index:1;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;font-size:11px}
+}
