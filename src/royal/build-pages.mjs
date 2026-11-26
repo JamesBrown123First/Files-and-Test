@@ -471,7 +471,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
   <path fill="url(#g2r)" d="M100 60 C72 18 24 6 16 36 C9 64 58 76 100 60 Z"/><path fill="url(#g2r)" d="M100 60 C128 18 176 6 184 36 C191 64 142 76 100 60 Z"/>
   <path fill="none" stroke="rgba(163,82,52,.25)" stroke-width="1.2" d="M96 58 C70 30 34 24 28 40 M104 58 C130 30 166 24 172 40"/>
   <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
-const R2_ADS = (P.ADS || []).slice(0, 13); // the three Guess With Kingdom ads lead, then the earlier campaign
+const R2_ADS = (P.ADS || []).slice(0, 13); // the three Guess With Kingdom ads come after ad 9
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
 pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => h
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')

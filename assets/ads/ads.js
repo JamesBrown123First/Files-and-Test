@@ -4,30 +4,6 @@
    { src, lo, spread: true|false, alt, title } */
 window.KINGDOM_ADS = [
  {
-  "src": "assets/ads/ad-12-1600.webp",
-  "lo": "assets/ads/ad-12-800.webp",
-  "spread": false,
-  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 The Price of the Wine Bottle",
-  "title": "Guess With Kingdom \u2014 The Price of the Wine Bottle",
-  "ratio": "1865/2576"
- },
- {
-  "src": "assets/ads/ad-13-1600.webp",
-  "lo": "assets/ads/ad-13-800.webp",
-  "spread": false,
-  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 The Most Gifted Silver Piece",
-  "title": "Guess With Kingdom \u2014 The Most Gifted Silver Piece",
-  "ratio": "1865/2576"
- },
- {
-  "src": "assets/ads/ad-14-1600.webp",
-  "lo": "assets/ads/ad-14-800.webp",
-  "spread": false,
-  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 Selling Best in Lakewood",
-  "title": "Guess With Kingdom \u2014 Selling Best in Lakewood",
-  "ratio": "1865/2576"
- },
- {
   "src": "assets/ads/ad-01-1600.webp",
   "lo": "assets/ads/ad-01-800.webp",
   "spread": true,
@@ -89,6 +65,30 @@ window.KINGDOM_ADS = [
   "spread": false,
   "alt": "Kingdom ad \u2014 Chanukah",
   "title": "Chanukah"
+ },
+ {
+  "src": "assets/ads/ad-12-1600.webp",
+  "lo": "assets/ads/ad-12-800.webp",
+  "spread": false,
+  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 The Price of the Wine Bottle",
+  "title": "Guess With Kingdom \u2014 The Price of the Wine Bottle",
+  "ratio": "1865/2576"
+ },
+ {
+  "src": "assets/ads/ad-13-1600.webp",
+  "lo": "assets/ads/ad-13-800.webp",
+  "spread": false,
+  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 The Most Gifted Silver Piece",
+  "title": "Guess With Kingdom \u2014 The Most Gifted Silver Piece",
+  "ratio": "1865/2576"
+ },
+ {
+  "src": "assets/ads/ad-14-1600.webp",
+  "lo": "assets/ads/ad-14-800.webp",
+  "spread": false,
+  "alt": "Kingdom ad \u2014 Guess With Kingdom \u2014 Selling Best in Lakewood",
+  "title": "Guess With Kingdom \u2014 Selling Best in Lakewood",
+  "ratio": "1865/2576"
  },
  {
   "src": "assets/ads/ad-10-1600.webp",
