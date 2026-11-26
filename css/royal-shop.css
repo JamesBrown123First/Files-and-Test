@@ -104,3 +104,11 @@
 }
 .sp-bar{top:84px;border-radius:22px!important}@media (max-width:900px){.sp-bar{top:72px}}@media (max-width:600px){.sp-bar{border-radius:18px!important;width:calc(100% - 16px)!important}}
 .sp-bar{transition:top .5s var(--ease)}html.head-hidden .sp-bar{top:12px}
+
+/* shop cards v2: white product backgrounds (like a studio product photo) and a shorter card */
+.sp-card__media{aspect-ratio:5/4;background:#fff!important}
+.sp-card__media img{width:78%;height:88%;filter:drop-shadow(0 10px 14px rgba(20,27,77,.18))}
+.sp-card__body{gap:4px;padding:14px 16px 14px}
+.sp-card__line{display:none}
+.sp-card__foot{margin-top:8px;padding-top:10px}
+@media (max-width:600px){.sp-card__media{aspect-ratio:1}.sp-card__body{padding:10px 12px 12px}}
