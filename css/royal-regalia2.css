@@ -738,3 +738,6 @@
 }
 @media (max-width:900px){.pg-regalia2 main>.rg2-loupe{margin-top:-36px!important}}
 @media (min-width:901px){.pg-regalia2 main>.rg2-loupe{margin-top:calc(var(--bandG) - 92px - 4.6vh)!important}}
+/* the vows: the stage is just tall enough for one line — no dead scroll above or below */
+.rg2-vow__pin{height:min(100svh,760px)}
+@media (max-width:900px){.rg2-vow__pin{height:min(100svh,620px)}}

@@ -280,15 +280,15 @@ function vow() {
   const lines = [...sec.querySelectorAll('.rg2-vow__l')], ticks = [...sec.querySelectorAll('.rg2-vow__ticks li')];
   if (reduced()) { lines.forEach((l, i) => gsap.set(l, { opacity: i === 0 ? 1 : 0 })); ticks[0]?.classList.add('is-on'); return; }
   gsap.set(lines.slice(1), { opacity: 0, yPercent: 40, filter: 'blur(10px)' });
-  // the first vow is already there as the section arrives
-  gsap.fromTo(lines[0], { opacity: 0, yPercent: 30, filter: 'blur(8px)' }, { opacity: 1, yPercent: 0, filter: 'blur(0px)', ease: 'none', scrollTrigger: { trigger: sec, start: 'top 70%', end: 'top 15%', scrub: 0.8 } });
-  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + innerHeight * 1.8, pin: sec.querySelector('.rg2-vow__pin'), pinSpacing: true, scrub: 0.8,
+  // the first vow is already there as the section arrives (the wrapper fades up, so the line itself stays free for the timeline)
+  gsap.fromTo(sec.querySelector('.rg2-vow__lines'), { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0, ease: 'none', scrollTrigger: { trigger: sec, start: 'top 75%', end: 'top 20%', scrub: 0.8 } });
+  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + innerHeight * 1.2, pin: sec.querySelector('.rg2-vow__pin'), pinSpacing: true, scrub: 0.8,
     onUpdate: (st) => { const k = Math.min(2, Math.floor(st.progress * 3)); ticks.forEach((t, i) => t.classList.toggle('is-on', i === k)); } } });
   lines.forEach((l, i) => {
-    if (i) tl.to(l, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 1 }, i * 2 - 0.6);
-    if (i < lines.length - 1) tl.to(l, { opacity: 0, yPercent: -40, filter: 'blur(10px)', duration: 1 }, i * 2 + 0.6);
+    if (i) tl.to(l, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 0.6 }, i * 1.6 - 0.6);
+    if (i < lines.length - 1) tl.to(l, { opacity: 0, yPercent: -40, filter: 'blur(10px)', duration: 0.6 }, i * 1.6 + 0.6);
   });
-  tl.to({}, { duration: 0.6 });
+  tl.to({}, { duration: 0.4 });
 }
 
 function products() {
