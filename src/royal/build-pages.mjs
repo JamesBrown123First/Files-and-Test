@@ -599,11 +599,21 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
   .replace(/href="#(occasions|story|collection|campaign)"/g, 'href="regalia2.html#$1"')
   .replace('class="r-head__logo" href="#top"', 'class="r-head__logo" href="regalia2.html"') }, `
 <section class="sp-hero" aria-label="The Kingdom shop">
-  <p class="r-label">The Kingdom shop</p>
-  <h1 class="r-h1 sp-h1">The <em>Collection</em></h1>
-  <p class="r-lead">Silver-filled pieces with the presence of solid silver, gift-boxed and delivered to your door.</p>
-  <ul class="sp-trust" aria-label="With every piece"><li>Silver-filled</li><li>Gift-ready packaging</li><li>Delivered to your door</li></ul>
-  <nav class="sp-occs" aria-label="Shop by occasion"><span>Shop by occasion</span>${SHOP_OCC.map(([k, t, img]) => `<button type="button" class="sp-occ__tile" data-occ="${k}"><img src="assets/royal/${img}.webp" alt="" loading="lazy" width="28" height="28"><span>${t}</span></button>`).join('')}</nav>
+  <nav class="sp-crumbs" aria-label="Breadcrumb"><a href="regalia2.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Shop</span></nav>
+  <div class="sp-panel">
+    <span class="sp-panel__mark" aria-hidden="true">${logo('k-icon')}</span>
+    <div class="sp-panel__text">
+      <p class="r-label">The Kingdom shop</p>
+      <h1 class="r-h1 sp-h1">The <em>Collection</em></h1>
+      <p class="r-lead">Silver-filled pieces with the presence of solid silver, gift-boxed and delivered to your door.</p>
+    </div>
+    <ul class="sp-trust" aria-label="With every piece">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><span><b>Silver-filled</b>The presence of solid silver</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18v12H3zM3 9l2-5h14l2 5M12 9v12M8 4l4 5 4-5"/></svg><span><b>Gift-ready</b>In Kingdom packaging</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7M6 19a2 2 0 1 0 0-.01M17 19a2 2 0 1 0 0-.01"/></svg><span><b>To your door</b>Order by call, text or WhatsApp</span></li>
+    </ul>
+    <nav class="sp-occs" aria-label="Shop by occasion"><span>Shop by occasion</span>${SHOP_OCC.map(([k, t, img]) => `<button type="button" class="sp-occ__tile" data-occ="${k}"><img src="assets/royal/${img}.webp" alt="" loading="lazy" width="28" height="28"><span>${t}</span></button>`).join('')}</nav>
+  </div>
 </section>
 <div class="sp-shop">
 <div class="sp-bar" role="toolbar" aria-label="Filter and sort">

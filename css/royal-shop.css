@@ -126,3 +126,29 @@
 /* original studio photographs (uncut): they fill the frame as shot */
 .sp-card__media.is-photo img{width:100%;height:100%;object-fit:cover;filter:none}
 .sp-card:hover .sp-card__media.is-photo img{transform:scale(1.04)}
+
+/* shop hero v3: a designed banner panel — title left, the three promises right, occasions along the bottom; a faint crest behind */
+.sp-hero{display:block!important;text-align:left!important;padding-top:clamp(112px,9vw,140px)!important;padding-bottom:clamp(18px,2vw,26px)!important}
+.sp-crumbs{display:flex;gap:10px;font-size:12px;letter-spacing:.08em;color:var(--ink-3);margin:0 0 14px 4px}
+.sp-crumbs a{color:var(--ink-2);text-decoration:none}.sp-crumbs a:hover{color:var(--ink)}
+.sp-panel{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,64px) clamp(28px,5vw,80px);align-items:center;
+  padding:clamp(28px,3.6vw,52px) clamp(24px,3.6vw,52px) clamp(22px,2.6vw,34px);border-radius:32px;
+  background:radial-gradient(70% 120% at 0% 0%,rgba(var(--c3-rgb,44,63,158),.55),transparent 60%),linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 40px 80px -50px rgba(0,0,0,.6)}
+.sp-panel__mark{position:absolute;z-index:-1;right:-3%;top:50%;width:clamp(220px,26vw,380px);transform:translateY(-50%);color:var(--ink);opacity:.045}
+.sp-panel__mark svg{width:100%;height:auto;display:block}
+.sp-panel__text{display:grid;gap:12px;justify-items:start}
+.sp-panel .sp-h1{text-align:left;font-size:calc(clamp(42px,5.2vw,80px) * var(--ds,1))!important}
+.sp-panel .r-lead{margin:0!important;text-align:left;max-width:38ch}
+.sp-panel .sp-trust{flex-direction:column!important;align-items:stretch!important;gap:0!important;margin:0!important;font-size:inherit!important;letter-spacing:0!important;text-transform:none!important}
+.sp-panel .sp-trust li{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.sp-panel .sp-trust li:first-child{border-top:0}
+.sp-panel .sp-trust li::before{display:none!important}
+.sp-panel .sp-trust svg{flex:none;width:34px;height:34px;padding:7px;border-radius:50%;fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round;box-shadow:inset 0 0 0 1px var(--line-2)}
+.sp-panel .sp-trust span{display:grid;gap:2px;font-size:13px;color:var(--ink-3)}
+.sp-panel .sp-trust b{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-track,0);font-size:calc(17px * var(--ds,1));color:var(--ink)}
+.sp-panel .sp-occs{grid-column:1/-1;justify-content:flex-start;margin:0;padding-top:clamp(16px,1.8vw,22px);border-top:1px solid var(--line)}
+@media (max-width:900px){.sp-panel{grid-template-columns:1fr}.sp-panel__mark{top:22%;right:-12%}}
+@media (max-width:600px){.sp-panel{border-radius:24px;padding:24px 20px 18px}.sp-panel .sp-occs{width:auto;margin:0 -20px;padding:16px 20px 0}}
+.sp-hero>.sp-panel{width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box}.sp-hero>.sp-crumbs{justify-content:flex-start!important;width:auto!important;max-width:none!important;margin:0 0 14px 4px!important}
+.sp-hero>.sp-crumbs{display:flex!important;width:100%!important;justify-content:flex-start!important;text-align:left!important}
