@@ -578,8 +578,9 @@ const SHOP_ITEMS = [
   ['candelabra', 'Grand Baroque Candelabra', 'shabbos', 3750, 'Nine branches, deep acanthus relief', 'shabbos weddings chanukah'],
   ['decanter', 'Crowned Decanter', 'shabbos', 1440, 'Fluted neck, crowned stopper', 'shabbos weddings bar-mitzvah chanukah'],
   ['mirror-frame', 'Baroque Mirror Frame', 'home', 1400, 'Hand-chased scrolls around a soft mirror', 'weddings new-home'],
-  ['ewer', 'Baroque Ewer', 'shabbos', 0, 'Acanthus relief, crowned lid', 'shabbos weddings bar-mitzvah'],
-  ['basin', 'Baroque Basin', 'shabbos', 0, 'A full ring of chased scrolls', 'shabbos weddings bar-mitzvah'],
+  ['ewer-photo', 'Baroque Ewer', 'shabbos', 0, 'Acanthus relief, crowned lid', 'shabbos weddings bar-mitzvah'],
+  ['basin-photo', 'Baroque Basin', 'shabbos', 0, 'A full ring of chased scrolls', 'shabbos weddings bar-mitzvah'],
+  ['set-photo', 'Baroque Ewer & Basin Set', 'shabbos', 0, 'The ewer with its matching basin', 'shabbos weddings bar-mitzvah'],
   ['wine-holder', 'Wine Bottle Holder', 'table', 0, 'Acanthus leaves around the bottle', 'shabbos bar-mitzvah thank-you'],
   ['besumim', 'Besumim Holder', 'shabbos', 0, 'Crowned lid, embossed body', 'shabbos bar-mitzvah thank-you'],
   ['tea-glass', 'Tea Glass & Saucer', 'table', 0, 'Crowned lid on a scrolled saucer', 'chanukah thank-you bar-mitzvah'],
@@ -612,7 +613,7 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
 </div>
 <section class="sp-grid" id="pieces" aria-label="Pieces">${SHOP_ITEMS.map(([id, name, cat, price, line, occ], i) => `
   <article class="sp-card" data-cat="${cat}" data-price="${price}" data-occ="${occ}" data-i="${i}" data-name="${name}">
-    <div class="sp-card__media"><img src="assets/shop/${id}-450.webp" srcset="assets/shop/${id}-450.webp 450w, assets/shop/${id}-900.webp 900w" sizes="(max-width:600px) 46vw, (max-width:1100px) 30vw, 22vw" alt="${name}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" width="450" height="450"></div>
+    <div class="sp-card__media${id.endsWith('-photo') ? ' is-photo' : ''}"><img src="assets/shop/${id}-450.webp" srcset="assets/shop/${id}-450.webp 450w, assets/shop/${id}-900.webp 900w" sizes="(max-width:600px) 46vw, (max-width:1100px) 30vw, 22vw" alt="${name}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" width="450" height="450"></div>
     <div class="sp-card__body">
       <p class="sp-card__cat">${SHOP_CATS.find((c) => c[0] === cat)[1]}</p>
       <h2 class="sp-card__name">${name}</h2>
