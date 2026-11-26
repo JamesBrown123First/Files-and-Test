@@ -1107,3 +1107,15 @@
 
 /* the seal gets the same breathing room below it as above it (to the Kingdom silver section) */
 .pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(36px,7.2vw,104px)}
+
+/* phone: one even rhythm between sections — about 120px from the last thing in one section to the first in the next */
+@media (max-width:600px){
+  .pg-regalia2 .rg2-coll{margin-top:-102px}
+  .pg-regalia2 .rg2-story{padding-top:60px}
+  .pg-regalia2 .rg2-camp{margin-top:-80px}
+  .pg-regalia2 .r-shop{margin-top:-82px}
+  .pg-regalia2 .r-conc{margin-top:-32px}
+  .pg-regalia2 .r-foot{margin-top:-59px}
+}
+@media (max-width:600px){.pg-regalia2 #story.rg2-story{padding-top:60px!important}}
+@media (max-width:600px){.pg-regalia2 .r-occ{margin-top:43px}}
