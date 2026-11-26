@@ -34,7 +34,8 @@ function shop() {
   }));
   sel?.addEventListener('change', () => { sort = sel.value; render(); });
   const setOcc = (k, label) => {
-    occ = k; tag.hidden = !k; if (k) tag.querySelector('span').textContent = `Gift ideas · ${label}`;
+    occ = k; tag.hidden = !k;
+    document.querySelectorAll('.sp-occ__tile').forEach((t) => t.classList.toggle('is-on', t.dataset.occ === k)); if (k) tag.querySelector('span').textContent = `Gift ideas · ${label}`;
     cat = 'all'; chips.forEach((x) => { x.classList.toggle('is-on', x.dataset.cat === 'all'); x.setAttribute('aria-pressed', x.dataset.cat === 'all'); });
     render();
   };

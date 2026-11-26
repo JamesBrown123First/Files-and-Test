@@ -112,3 +112,14 @@
 .sp-card__line{display:none}
 .sp-card__foot{margin-top:8px;padding-top:10px}
 @media (max-width:600px){.sp-card__media{aspect-ratio:1}.sp-card__body{padding:10px 12px 12px}}
+
+/* shop by occasion: now a small row of pills at the top (no big section further down) */
+.sp-occs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:18px}
+.sp-occs>span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+.sp-occs .sp-occ__tile{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 5px;border-radius:999px;border:1px solid var(--line-2);cursor:pointer;font:500 12.5px/1 var(--font-body);letter-spacing:.03em;color:var(--ink-2);transition:background .3s,color .3s,border-color .3s}
+.sp-occs .sp-occ__tile img{position:static;width:26px;height:26px;border-radius:50%;object-fit:cover;filter:grayscale(1);transform:none}
+.sp-occs .sp-occ__tile span{position:static;font:inherit;text-transform:none;letter-spacing:inherit}
+.sp-occs .sp-occ__tile::after{display:none}
+.sp-occs .sp-occ__tile:hover,.sp-occs .sp-occ__tile.is-on{background:var(--ink);color:var(--c1);border-color:var(--ink)}
+@media (max-width:600px){.sp-occs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;width:calc(100% + var(--pad) * 2);margin-left:calc(var(--pad) * -1);padding:0 var(--pad);scrollbar-width:none}.sp-occs::-webkit-scrollbar{display:none}.sp-occs .sp-occ__tile{flex:none}.sp-occs>span{flex:none}}
+.sp-occs .sp-occ__tile{font-size:12.5px!important}.sp-occs .sp-occ__tile span{font-size:12.5px!important}@media (max-width:600px){.sp-trust{align-items:center}}
