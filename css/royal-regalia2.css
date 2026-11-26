@@ -1119,3 +1119,16 @@
 }
 @media (max-width:600px){.pg-regalia2 #story.rg2-story{padding-top:60px!important}}
 @media (max-width:600px){.pg-regalia2 .r-occ{margin-top:43px}}
+
+/* promise pills: clean, smooth edge. The border is now a real 1px border (no mask), so its curve is anti-aliased;
+   the travelling light is a wide, soft glow along that border rather than a hard-edged ray */
+.rg2-pledge__card::after{display:none!important}
+.rg2-pledge__card{border:1px solid transparent!important;box-shadow:0 24px 60px -36px rgba(0,0,0,.6)!important;
+  background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(rgba(33,36,92,.92),rgba(33,36,92,.92)) padding-box,
+    conic-gradient(from var(--ra),rgba(255,255,255,.10) 0deg,rgba(255,255,255,.10) 250deg,rgba(var(--accent-rgb),.55) 310deg,rgba(255,240,232,.8) 330deg,rgba(var(--accent-rgb),.55) 350deg,rgba(255,255,255,.10) 360deg) border-box!important}
+.rg2-pledge.is-on .rg2-pledge__card{animation:rg2Ray 10s linear calc(1.2s + var(--k) * 3.3s) infinite both}
+.rg2-pledge__card:hover{animation-duration:4s}
+@property --ra{syntax:'<angle>';inherits:false;initial-value:0deg}
+@media (prefers-reduced-motion:reduce){.rg2-pledge__card{animation:none!important}}
