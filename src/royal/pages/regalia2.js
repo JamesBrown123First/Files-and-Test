@@ -66,7 +66,7 @@ function loupe() {
   let active = -1, prog = 0, f = 0, hover = false, mx = 0, my = 0, lx = 0, ly = 0, first = true;
   const select = (i) => { if (i === active) return; active = i; texts.forEach((t, k) => t.classList.toggle('is-on', k === i)); dots.forEach((d, k) => d.classList.toggle('is-on', k === i)); count.textContent = ['I', 'II', 'III', 'IV', 'V'][i]; };
   select(0);
-  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * 2.4, pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
+  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * (innerWidth <= 900 ? 1.5 : 2.4), pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
     onUpdate: (s) => { prog = s.progress; select(clamp(Math.round(s.progress * 4.4 - 0.2), 0, 4)); } });
   dots.forEach((d, i) => d.addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((i + 0.2) / 4.4))));
   stage.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; hover = true; const s = stage.getBoundingClientRect(); mx = e.clientX - s.left; my = e.clientY - s.top; });

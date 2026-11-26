@@ -789,3 +789,13 @@
 .rg2-lb .r-lb__x:hover{color:#fff;background:rgba(255,255,255,.12)}
 .rg2-lb .r-lb__nav{color:rgba(244,239,233,.75);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
 @media (max-width:900px){.rg2-lb .r-lb__nav{width:44px;height:44px}}
+/* phones & tablets, Look closer: one composed block, centred in the screen — no empty band above or below;
+   the text follows the page's heading stack (label 12 · title 18 · line 28 · window) */
+@media (max-width:900px){
+  .pg-regalia2 .rg2-loupe__pin{grid-template-rows:auto auto!important;align-content:center;gap:0!important;padding-top:calc(var(--head-h) + 12px)!important;padding-bottom:24px!important}
+  .pg-regalia2 .rg2-loupe__copy{gap:0!important}
+  .pg-regalia2 .rg2-loupe__copy .r-label{margin:0 0 var(--stack-1)!important}
+  .pg-regalia2 .rg2-ch__t p{margin-top:var(--stack-2)!important}
+  .pg-regalia2 .rg2-loupe__stage{margin-top:var(--stack-3);height:min(46svh,520px)!important;max-height:min(46svh,520px)!important}
+}
+@media (max-width:900px){.pg-regalia2 .rg2-ch__t p{margin-top:calc(var(--stack-2) - 14px)!important}}
