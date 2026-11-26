@@ -778,3 +778,14 @@
   .pg-regalia2 .r-occ__item:not(.is-open)::before{background:linear-gradient(90deg,rgba(var(--c0-rgb),.72),rgba(var(--c0-rgb),.45))}
   .pg-regalia2 .r-occ__v{text-shadow:0 1px 12px rgba(0,0,0,.35)}
 }
+
+/* ===== campaign: six ads on phones; the viewer is a deep branded veil with a quiet close ===== */
+@media (max-width:600px){.pg-regalia2 .rg2-camp figure:nth-of-type(n+7){display:none}}
+.rg2-lb{background:radial-gradient(80% 60% at 100% 100%,rgba(var(--accent-rgb),.22),transparent 65%),radial-gradient(90% 70% at 0% 0%,rgba(38,51,154,.5),transparent 60%),rgba(6,8,26,.94)!important;cursor:zoom-out}
+.rg2-lb img,.rg2-lb .r-lb__nav,.rg2-lb .r-lb__x{cursor:default}
+.rg2-lb .r-lb__fig img{box-shadow:0 50px 120px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.rg2-lb .r-lb__fig figcaption{color:rgba(244,239,233,.6)}
+.rg2-lb .r-lb__x{width:40px;height:40px;top:18px;right:18px;font-size:22px;color:rgba(244,239,233,.7);background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:grid;place-items:center;transition:color .3s,background .3s;z-index:2}
+.rg2-lb .r-lb__x:hover{color:#fff;background:rgba(255,255,255,.12)}
+.rg2-lb .r-lb__nav{color:rgba(244,239,233,.75);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+@media (max-width:900px){.rg2-lb .r-lb__nav{width:44px;height:44px}}

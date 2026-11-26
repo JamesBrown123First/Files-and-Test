@@ -206,13 +206,15 @@ function campaign() {
     const s = 1 - Math.min(0.025, Math.abs(a) * 0.006);
     items.forEach((it) => (it.style.transform = `skewX(${a.toFixed(3)}deg) scale(${s.toFixed(4)})`));
   });
-  const lb = document.querySelector('.rg2-lb'), lim = lb.querySelector('img'), cap = lb.querySelector('figcaption'); let at = 0;
-  const show = (k) => { at = (k + items.length) % items.length; const s = items[at].querySelector('img'); lim.src = s.dataset.hi; lim.alt = s.alt; cap.textContent = items[at].querySelector('figcaption').textContent; lb.classList.toggle('is-spread', items[at].classList.contains('is-spread')); };
-  const open = (k) => { show(k); lb.hidden = false; requestAnimationFrame(() => lb.classList.add('is-on')); getLenis()?.stop(); };
-  const close = () => { lb.classList.remove('is-on'); setTimeout(() => (lb.hidden = true), 400); getLenis()?.start(); };
-  items.forEach((it, k) => it.querySelector('button').addEventListener('click', () => open(k)));
+  // the viewer: a big preview over a deep branded veil; it only moves between the ads that are shown on this screen
+  const lb = document.querySelector('.rg2-lb'), lim = lb.querySelector('img'), cap = lb.querySelector('figcaption'); let at = 0, list = items;
+  const show = (k) => { at = (k + list.length) % list.length; const it = list[at], src = it.querySelector('img'); lim.src = src.dataset.hi; lim.alt = src.alt; cap.textContent = [...it.querySelector('figcaption').childNodes].map((n) => n.textContent.trim()).filter(Boolean).join('  ·  '); lb.classList.toggle('is-spread', it.classList.contains('is-spread')); };
+  const open = (it) => { list = items.filter((x) => x.offsetParent !== null); show(list.indexOf(it)); lb.hidden = false; requestAnimationFrame(() => lb.classList.add('is-on')); getLenis()?.stop(); document.documentElement.style.overflow = 'hidden'; };
+  const close = () => { lb.classList.remove('is-on'); setTimeout(() => (lb.hidden = true), 400); getLenis()?.start(); document.documentElement.style.overflow = ''; };
+  items.forEach((it) => it.querySelector('button').addEventListener('click', () => open(it)));
   lb.querySelector('.r-lb__x').addEventListener('click', close);
-  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  // anywhere outside the picture, the arrows and the close button closes it
+  lb.addEventListener('click', (e) => { if (!e.target.closest('img, .r-lb__nav, .r-lb__x')) close(); });
   lb.querySelectorAll('.r-lb__nav').forEach((b) => b.addEventListener('click', () => show(at + +b.dataset.dir)));
   addEventListener('keydown', (e) => { if (lb.hidden) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowRight') show(at + 1); if (e.key === 'ArrowLeft') show(at - 1); });
 }
