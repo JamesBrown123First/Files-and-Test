@@ -726,3 +726,4 @@
   .pg-regalia2 #occasions .r-sec-head{margin-bottom:var(--media-gap)!important;padding-bottom:0}
   .pg-regalia2 #occasions .r-occ__list{margin-top:0!important}
 }
+@media (max-width:900px){.pg-regalia2 .rg2-feat__cta{margin-top:var(--media-gap)!important}}
