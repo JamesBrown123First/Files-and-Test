@@ -471,7 +471,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
   <path fill="url(#g2r)" d="M100 60 C72 18 24 6 16 36 C9 64 58 76 100 60 Z"/><path fill="url(#g2r)" d="M100 60 C128 18 176 6 184 36 C191 64 142 76 100 60 Z"/>
   <path fill="none" stroke="rgba(163,82,52,.25)" stroke-width="1.2" d="M96 58 C70 30 34 24 28 40 M104 58 C130 30 166 24 172 40"/>
   <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
-const R2_ADS = (P.ADS || []).slice(0, 10);
+const R2_ADS = (P.ADS || []).slice(0, 13); // the three Guess With Kingdom ads lead, then the earlier campaign
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
 pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => h
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
@@ -556,7 +556,7 @@ ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
       <div><p class="r-label">As seen in our ads</p><h2 class="r-h2">The <em>campaign</em></h2></div>
       <p class="rg2-camp__meta"><b>01</b> / ${String(R2_ADS.length).padStart(2, '0')}<span class="rg2-camp__bar"><i></i></span></p>
     </div>
-    <div class="rg2-camp__track">${R2_ADS.map((ad, i) => `<figure class="rg2-ad${ad.spread ? ' is-spread' : ''}"><button type="button" class="rg2-ad__open" aria-label="Open ${ad.title}" data-cursor="View"><img src="${ad.lo}" data-hi="${ad.src}" alt="${ad.alt}" loading="lazy" decoding="async" width="${ad.spread ? 1236 : 618}" height="800" draggable="false"></button><figcaption><b>${String(i + 1).padStart(2, '0')}</b>${ad.title}</figcaption></figure>`).join('')}</div>
+    <div class="rg2-camp__track">${R2_ADS.map((ad, i) => `<figure class="rg2-ad${ad.spread ? ' is-spread' : ''}"><button type="button" class="rg2-ad__open" aria-label="Open ${ad.title}" data-cursor="View"${ad.ratio ? ` style="aspect-ratio:${ad.ratio}"` : ''}><img src="${ad.lo}" data-hi="${ad.src}" alt="${ad.alt}" loading="lazy" decoding="async" width="${ad.spread ? 1236 : 618}" height="800" draggable="false"></button><figcaption><b>${String(i + 1).padStart(2, '0')}</b>${ad.title}</figcaption></figure>`).join('')}</div>
   </div>
 </section>
 <div class="r-lb rg2-lb" role="dialog" aria-modal="true" aria-label="Ad viewer" hidden>
