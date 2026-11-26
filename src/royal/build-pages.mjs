@@ -478,6 +478,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
   .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
+  .replace(/\s*<a href="#concierge" class="r-hide-m">Concierge<\/a>/, '')
   .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>')
   .replace(/<div class="r-menu"[\s\S]*?<\/div>\n<\/div>/, `<div class="r-menu rg2-menu" aria-hidden="true">
   <span class="rg2-menu__crest" aria-hidden="true">${logo('k-icon')}</span>
