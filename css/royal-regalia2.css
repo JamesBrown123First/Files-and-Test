@@ -667,3 +667,39 @@
   .pg-regalia2 .r-head--center .r-head__nav--r{justify-self:end}
 }
 @media (max-width:900px){.is-scrolled .rg2-head{padding:0 10px}}
+
+/* ===== phones & tablets: a divided header — search on the left, crest in the centre, bag + menu on the right ===== */
+@media (max-width:900px){
+  .pg-regalia2 .r-head--center{grid-template-columns:44px 44px minmax(0,1fr) auto minmax(0,1fr) 44px 44px;column-gap:0}
+  .pg-regalia2 .r-head--center::before{display:none}
+  .pg-regalia2 .r-head--center .r-head__logo{grid-column:4;grid-row:1}
+  .pg-regalia2 .r-head--center .r-head__nav--r{display:contents}
+  .pg-regalia2 .r-head--center .r-head__nav--r>a[aria-label="Search"]{grid-column:1;grid-row:1;justify-self:start}
+  .pg-regalia2 .r-head--center .r-head__bag{grid-column:6;grid-row:1;justify-self:end}
+  .pg-regalia2 .r-head--center .r-burger{grid-column:7;grid-row:1;justify-self:end}
+  .pg-regalia2 .r-head__icon,.pg-regalia2 .r-burger{width:44px;height:44px;display:grid;place-items:center}
+}
+
+/* ===== the menu: a quiet royal room — numbered rooms that rise in one by one, occasions as chips, the crest as a watermark ===== */
+.rg2-menu{background:radial-gradient(90% 60% at 100% 100%,rgba(var(--accent-rgb),.22),transparent 60%),radial-gradient(80% 60% at 0% 0%,rgba(38,51,154,.55),transparent 60%),var(--c0);justify-content:flex-start;gap:clamp(28px,5vh,48px);overflow:auto}
+.rg2-menu__crest{position:absolute;right:-12vw;bottom:-8vh;width:min(78vw,520px);color:rgba(255,255,255,.04);pointer-events:none}
+.rg2-menu__crest .k-logo{width:100%;height:auto;display:block}
+.rg2-menu__big{display:grid;gap:0;position:relative}
+.rg2-menu__big a{display:grid;grid-template-columns:40px 1fr;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.rg2-menu__big small{font-size:11px;letter-spacing:.18em;color:var(--accent);font-variant-numeric:tabular-nums}
+.rg2-menu__big span{display:grid;gap:4px}
+.rg2-menu__big b{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--display-track);font-stretch:var(--display-stretch,100%);font-size:calc(clamp(30px,8.4vw,56px) * var(--ds));line-height:1}
+.rg2-menu__big em{font-style:normal;font-size:12.5px;letter-spacing:.04em;color:var(--ink-2)}
+.rg2-menu__occ p{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
+.rg2-menu__occ div{display:flex;flex-wrap:wrap;gap:8px}
+.rg2-menu__occ a{min-height:40px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;font-size:13px;box-shadow:inset 0 0 0 1px var(--line-2);background:rgba(255,255,255,.03)}
+.rg2-menu__occ a:active{background:rgba(var(--accent-rgb),.14);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.6)}
+.rg2-menu__foot{margin-top:auto;font-style:normal;font-family:var(--font-display);font-size:20px;text-transform:var(--display-case)}
+.rg2-menu__foot em{font-family:var(--font-italic);text-transform:none;color:var(--accent);font-size:calc(1.2em * var(--ital-scale,1))}
+/* the rise: each row arrives a beat after the one before */
+.rg2-menu :is(.rg2-menu__big a,.rg2-menu__occ,.rg2-menu__foot){opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .9s var(--ease);transition-delay:0s}
+.menu-open .rg2-menu :is(.rg2-menu__big a,.rg2-menu__occ,.rg2-menu__foot){opacity:1;transform:none;transition-delay:calc(.25s + var(--i) * .07s)}
+.menu-open .rg2-menu__crest{animation:rg2-crest 1.6s var(--ease) both}
+@keyframes rg2-crest{from{opacity:0;transform:scale(.92) rotate(-4deg)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rg2-menu *{transition:none!important;animation:none!important}}
+.rg2-menu__foot a{font-family:var(--font-text);text-transform:none;font-size:13px;letter-spacing:.04em}

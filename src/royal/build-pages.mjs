@@ -478,7 +478,13 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
   .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
-  .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>') }, `
+  .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>')
+  .replace(/<div class="r-menu"[\s\S]*?<\/div>\n<\/div>/, `<div class="r-menu rg2-menu" aria-hidden="true">
+  <span class="rg2-menu__crest" aria-hidden="true">${logo('k-icon')}</span>
+  <nav class="rg2-menu__big" aria-label="Menu">${[['Shop', 'shop.html', 'Every piece, gift-ready'], ['Occasions', '#occasions', 'Silver for every table'], ['Collection', '#collection', 'The Baroque Collection'], ['Our Story', '#story', 'A royal touch'], ['Concierge', '#concierge', 'Help choosing the gift']].map(([t, h, d], i) => `<a href="${h}" style="--i:${i}"><small>0${i + 1}</small><span><b>${t}</b><em>${d}</em></span></a>`).join('')}</nav>
+  <div class="rg2-menu__occ" style="--i:5"><p>Shop by occasion</p><div>${['Shabbos & Yom Tov', 'Weddings', 'Bar Mitzvah', 'New Home', 'Chanukah', 'Thank You'].map((o) => `<a href="#occasions">${o}</a>`).join('')}</div></div>
+  <div class="r-menu__foot rg2-menu__foot" style="--i:6"><p>A Royal <em>Touch.</em></p><a href="#concierge">Gift concierge <svg class="r-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+</div>`) }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
