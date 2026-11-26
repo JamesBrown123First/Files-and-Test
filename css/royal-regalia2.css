@@ -1174,3 +1174,6 @@
 /* first visit: hero pieces stay hidden until their entrance plays, so the ewer can't show, vanish and fade back in */
 .pg-regalia2 :is(.rg-ewer,.rg2-h1>span,.rg2-sub,.rg-specs li):not([style*="opacity"]){opacity:0}
 .pg-regalia2 .rg-word:not([style*="clip-path"]){clip-path:inset(100% 0 0 0)}
+/* seal: a touch less air above and below (about 11%), still equal on both sides */
+.pg-regalia2 .rg2-story .rg2-pledge{margin-bottom:calc(var(--gap) * .17 - clamp(12px,1.7vw,24px))!important}
+.pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(24px,5.5vw,80px)}
