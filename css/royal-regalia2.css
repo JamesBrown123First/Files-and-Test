@@ -635,3 +635,10 @@
 .pg-regalia2 .rg2-feat__media{aspect-ratio:1/1!important;max-height:min(52vh,480px)!important;max-width:480px!important}
 .pg-regalia2 .rg2-feat__media img{object-fit:cover;object-position:50% 55%}
 @media (max-width:900px){.pg-regalia2 .rg2-feat__media{aspect-ratio:5/4!important;max-height:none!important;max-width:480px!important}}
+/* story, second statement: equal weight to the first — same serif, same size, same word-by-word light; three words in peach script */
+.pg-regalia2 .rg2-story .rg2-story__more{max-width:24ch;margin:calc(var(--stack-3) * 1.6) auto 0;font-style:normal;font-weight:inherit;color:inherit;font-size:inherit}
+.pg-regalia2 .rg2-story__more em{font-family:var(--font-italic);font-weight:var(--ital-weight,300);font-size:calc(1.12em * var(--ital-scale,1));color:var(--accent);line-height:.9;text-transform:none}
+.pg-regalia2 .rg2-story__more em .w{padding:.05em .3em .2em .05em;margin:-.05em -.3em -.2em -.05em}
+.pg-regalia2 .rg2-story .rg2-story__more{font-size:calc(clamp(32px,4.4vw,76px) * var(--ds));line-height:1.12;font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-track);text-transform:none}
+@media (max-width:900px){.pg-regalia2 .rg2-story .rg2-story__more{font-size:calc(clamp(26px,5.4vw,46px) * var(--ds))}}
+.pg-regalia2 .rg2-story>.rg2-story__more{margin-top:clamp(56px,6vw,96px)!important}

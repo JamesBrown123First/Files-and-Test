@@ -531,7 +531,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/)[0].replace('r-story__seal', 'r-story__seal rg2-seal'); return `<section class="r-story r-story--split rg2-story" id="story" aria-label="Our story">
   <p class="r-label" data-reveal>Our story</p>
   <p class="r-story__big" data-fill>${COPY.story1}</p>
-  <p class="rg2-story__more" data-reveal>${COPY.story2}</p>
+  <p class="r-story__big rg2-story__more" data-fill>From carefully selected <em>silver-filled</em> pieces to thoughtful <em>packaging,</em> every detail is designed to make giving feel <em>elevated.</em></p>
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
