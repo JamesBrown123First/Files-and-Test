@@ -283,6 +283,17 @@ function vow() {
   const sec = document.querySelector('.rg2-pledge'); if (!sec) return;
   if (reduced()) return sec.classList.add('is-on');
   ScrollTrigger.create({ trigger: sec, start: 'top 80%', once: true, onEnter: () => sec.classList.add('is-on') });
+  // the promise is never wider than the story text above it: match the widest line of the two paragraphs
+  const fit = () => {
+    let w = 0;
+    document.querySelectorAll('.rg2-story__one, .rg2-story__more').forEach((p) => {
+      const r = document.createRange(); r.selectNodeContents(p);
+      const rs = [...r.getClientRects()]; if (!rs.length) return;
+      w = Math.max(w, Math.max(...rs.map((x) => x.right)) - Math.min(...rs.map((x) => x.left)));
+    });
+    if (w) sec.style.setProperty('--storyw', `${Math.round(w)}px`);
+  };
+  fit(); addEventListener('resize', fit); document.fonts?.ready.then(fit);
   sec.querySelectorAll('.rg2-pledge__card').forEach((c) => c.addEventListener('pointermove', (e) => {
     const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
   }));
