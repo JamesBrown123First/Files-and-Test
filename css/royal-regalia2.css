@@ -742,3 +742,7 @@
 .rg2-vow__pin{height:min(100svh,760px)}
 @media (max-width:900px){.rg2-vow__pin{height:min(100svh,620px)}}
 .rg2-vow__ticks{display:none!important}
+/* phones & tablets: the window runs the full text width (same left and right edge as the words above), and is shorter rather than narrower */
+@media (max-width:900px){
+  .pg-regalia2 .rg2-loupe__stage{width:100%!important;justify-self:stretch!important;max-height:min(50svh,560px)!important;height:min(50svh,560px)!important}
+}
