@@ -473,7 +473,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
   <ellipse cx="100" cy="61" rx="13" ry="15" fill="url(#g2s)"/></svg>`;
 const R2_ADS = (P.ADS || []).slice(0, 13); // the three Guess With Kingdom ads come after ad 9
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
-pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => h
+pages.__r2chrome = (h) => h
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
   .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
@@ -488,7 +488,8 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   <nav class="rg2-menu__big" aria-label="Menu">${[['Shop', 'shop.html', 'Every piece, gift-ready'], ['Occasions', '#occasions', 'Silver for every table'], ['Collection', '#collection', 'The Baroque Collection'], ['Our Story', '#story', 'A royal touch'], ['Concierge', '#concierge', 'Help choosing the gift']].map(([t, h, d], i) => `<a href="${h}" style="--i:${i}"><small>0${i + 1}</small><span><b>${t}</b><em>${d}</em></span></a>`).join('')}</nav>
   <div class="rg2-menu__occ" style="--i:5"><p>Shop by occasion</p><div>${['Shabbos & Yom Tov', 'Weddings', 'Bar Mitzvah', 'New Home', 'Chanukah', 'Thank You'].map((o) => `<a href="#occasions">${o}</a>`).join('')}</div></div>
   <div class="r-menu__foot rg2-menu__foot" style="--i:6"><p>A Royal <em>Touch.</em></p><a href="#concierge">Gift concierge <svg class="r-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
-</div>`) }, `
+</div>`);
+pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => pages.__r2chrome(h) }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
@@ -571,14 +572,62 @@ ${P.shopNow('grand').replace('<div class="r-shop__in">', '<div class="rg2-shopma
 ${P.concierge()}`);
 
 /* ============ shop placeholder (e-commerce is added later) ============ */
-pages.shop = page({ id: 'shop', title: 'Kingdom — Shop' }, `
-<section class="sh-wait" aria-label="Shop">
+/* ============ SHOP — the e-commerce page for the public site (Regalia II header and footer, royal blues, no peach) ============ */
+const SHOP_ITEMS = [
+  // [id, name, category key, price or 0 (= ask), short line, occasions]
+  ['candelabra', 'Grand Baroque Candelabra', 'shabbos', 3750, 'Nine branches, deep acanthus relief', 'shabbos weddings chanukah'],
+  ['decanter', 'Crowned Decanter', 'shabbos', 1440, 'Fluted neck, crowned stopper', 'shabbos weddings bar-mitzvah chanukah'],
+  ['mirror-frame', 'Baroque Mirror Frame', 'home', 1400, 'Hand-chased scrolls around a soft mirror', 'weddings new-home'],
+  ['ewer', 'Baroque Ewer', 'shabbos', 0, 'Acanthus relief, crowned lid', 'shabbos weddings bar-mitzvah'],
+  ['basin', 'Baroque Basin', 'shabbos', 0, 'A full ring of chased scrolls', 'shabbos weddings bar-mitzvah'],
+  ['wine-holder', 'Wine Bottle Holder', 'table', 0, 'Acanthus leaves around the bottle', 'shabbos bar-mitzvah thank-you'],
+  ['besumim', 'Besumim Holder', 'shabbos', 0, 'Crowned lid, embossed body', 'shabbos bar-mitzvah thank-you'],
+  ['tea-glass', 'Tea Glass & Saucer', 'table', 0, 'Crowned lid on a scrolled saucer', 'chanukah thank-you bar-mitzvah'],
+  ['napkin-holder', 'Napkin Holder', 'table', 0, 'Fluted sides, scrolled feet', 'shabbos new-home thank-you'],
+  ['vase-grand', 'Grand Baroque Vase', 'home', 0, 'Scalloped rim, chased body', 'weddings new-home'],
+  ['vase-fluted', 'Fluted Vase', 'home', 0, 'Tall fluting, open petal rim', 'new-home weddings'],
+  ['pitcher', 'Hammered Pitcher', 'home', 0, 'Hand-hammered, softly waved lip', 'new-home thank-you'],
+  ['planter', 'Baroque Planter', 'home', 0, 'Scalloped rim on four scrolled feet', 'new-home weddings']
+];
+const SHOP_CATS = [['all', 'All pieces'], ['shabbos', 'Shabbos & Yom Tov'], ['table', 'For the table'], ['home', 'For the home']];
+const SHOP_OCC = [['shabbos', 'Shabbos & Yom Tov', 'o-1'], ['weddings', 'Weddings', 'o-2'], ['bar-mitzvah', 'Bar Mitzvah', 'o-5'], ['new-home', 'New Home', 'o-4'], ['chanukah', 'Chanukah', 'o-3'], ['thank-you', 'Thank You', 'o-6']];
+const money = (n) => '$' + n.toLocaleString('en-US');
+pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', post: (h) => pages.__r2chrome(h)
+  .replace('<body class="pg-shop">', '<body class="pg-shop pg-regalia2 sp" data-refined>')
+  .replace('<link rel="stylesheet" href="css/royal-shop.css">', '<link rel="stylesheet" href="css/royal-regalia2.css">\n<link rel="stylesheet" href="css/royal-shop.css">')
+  .replace(/href="#(occasions|story|collection|campaign)"/g, 'href="regalia2.html#$1"')
+  .replace('class="r-head__logo" href="#top"', 'class="r-head__logo" href="regalia2.html"') }, `
+<section class="sp-hero" aria-label="The Kingdom shop">
   <p class="r-label">The Kingdom shop</p>
-  <h1 class="r-h1">Opening<br><em>soon.</em></h1>
-  <p class="r-lead">The full shop is being prepared. Until then, our gift concierge can reserve any piece for you.</p>
-  <div class="sh-btns"><a class="r-btn" href="#concierge" data-magnetic="0.2"><span>Reserve a piece</span>${a}</a><a class="r-btn r-btn--ghost" href="javascript:history.back()"><span>Go back</span></a></div>
-  <img src="assets/img/ewer-1400.webp" alt="" aria-hidden="true">
+  <h1 class="r-h1 sp-h1">The <em>Collection</em></h1>
+  <p class="r-lead">Silver-filled pieces with the presence of solid silver, gift-boxed and delivered to your door.</p>
+  <ul class="sp-trust" aria-label="With every piece"><li>Silver-filled</li><li>Gift-ready packaging</li><li>Delivered to your door</li></ul>
+</section>
+<div class="sp-bar" role="toolbar" aria-label="Filter and sort">
+  <div class="sp-chips">${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}</div>
+  <p class="sp-occ-tag" hidden><span></span><button type="button" aria-label="Clear occasion">×</button></p>
+  <label class="sp-sort"><span>Sort</span><select aria-label="Sort pieces"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name</option></select></label>
+</div>
+<section class="sp-grid" id="pieces" aria-label="Pieces">${SHOP_ITEMS.map(([id, name, cat, price, line, occ], i) => `
+  <article class="sp-card" data-cat="${cat}" data-price="${price}" data-occ="${occ}" data-i="${i}" data-name="${name}">
+    <div class="sp-card__media"><img src="assets/shop/${id}-450.webp" srcset="assets/shop/${id}-450.webp 450w, assets/shop/${id}-900.webp 900w" sizes="(max-width:600px) 46vw, (max-width:1100px) 30vw, 22vw" alt="${name}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" width="450" height="450"></div>
+    <div class="sp-card__body">
+      <p class="sp-card__cat">${SHOP_CATS.find((c) => c[0] === cat)[1]}</p>
+      <h2 class="sp-card__name">${name}</h2>
+      <p class="sp-card__line">${line}</p>
+      <div class="sp-card__foot">${price ? `<p class="sp-card__price">${money(price)}</p><button type="button" class="sp-card__add" data-add="${name}">${icons.bag}<span>Add to bag</span></button>` : `<p class="sp-card__price sp-card__price--ask">Price on request</p><a class="sp-card__add" href="#concierge"><span>Ask us</span></a>`}</div>
+    </div>
+  </article>`).join('')}
+</section>
+<section class="sp-occ" aria-label="Shop by occasion">
+  <div class="sp-head"><p class="r-label">Gift guide</p><h2 class="r-h2">Shop by <em>occasion</em></h2></div>
+  <div class="sp-occ__grid">${SHOP_OCC.map(([k, t, img]) => `<button type="button" class="sp-occ__tile" data-occ="${k}"><img src="assets/royal/${img}.webp" alt="" loading="lazy"><span>${t}</span><b>See gift ideas ${a}</b></button>`).join('')}</div>
+</section>
+<section class="sp-why" aria-label="Why Kingdom">
+  <div><h3>Silver-filled</h3><p>The presence and finish of solid silver, at a price that makes generous giving possible.</p></div>
+  <div><h3>Gift-ready</h3><p>Every piece arrives in Kingdom packaging, ready to give.</p></div>
+  <div><h3>Delivered to your door</h3><p>Order today by call, text or WhatsApp: 845.783.2041.</p></div>
 </section>
 ${P.concierge()}`);
 
-for (const [id, html] of Object.entries(pages)) { writeFileSync(ROOT + id + '.html', html); console.log('wrote', id + '.html', (html.length / 1024).toFixed(1) + 'KB'); }
+for (const [id, html] of Object.entries(pages)) { if (typeof html !== 'string') continue; writeFileSync(ROOT + id + '.html', html); console.log('wrote', id + '.html', (html.length / 1024).toFixed(1) + 'KB'); }

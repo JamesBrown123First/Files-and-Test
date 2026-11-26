@@ -1,0 +1,9 @@
+pages.shop = page({ id: 'shop', title: 'Kingdom — Shop' }, `
+<section class="sh-wait" aria-label="Shop">
+  <p class="r-label">The Kingdom shop</p>
+  <h1 class="r-h1">Opening<br><em>soon.</em></h1>
+  <p class="r-lead">The full shop is being prepared. Until then, our gift concierge can reserve any piece for you.</p>
+  <div class="sh-btns"><a class="r-btn" href="#concierge" data-magnetic="0.2"><span>Reserve a piece</span>${a}</a><a class="r-btn r-btn--ghost" href="javascript:history.back()"><span>Go back</span></a></div>
+  <img src="assets/img/ewer-1400.webp" alt="" aria-hidden="true">
+</section>
+${P.concierge()}`);
