@@ -282,7 +282,7 @@ function vow() {
   // the promise band: hairlines draw outward from the centre, then the three pledges rise in, one after another
   const sec = document.querySelector('.rg2-pledge'); if (!sec) return;
   if (reduced()) return sec.classList.add('is-on');
-  ScrollTrigger.create({ trigger: sec, start: 'top 85%', once: true, onEnter: () => sec.classList.add('is-on') });
+  ScrollTrigger.create({ trigger: sec, start: 'top 80%', once: true, onEnter: () => sec.classList.add('is-on') });
 }
 
 // our story: a fine silver line draws itself beneath each key phrase as the words light up

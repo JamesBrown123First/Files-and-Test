@@ -983,3 +983,65 @@
   .pg-regalia2 :is(.rg2-loupe__copy,.rg2-loupe__stage,.rg2-feat__media){--col:calc(100% - 40px)}
   .pg-regalia2 .rg2-feat__copy{width:calc(100% - 40px)}
 }
+
+/* seal: the crest optically centred in its ring (the thin spire made it read low) */
+.pg-regalia2 .rg2-seal .k-logo{transform:translateY(-6%)}
+
+/* our story v5: no underline. Key words are set in polished silver (same typeface): a metallic fill, and as they light up a
+   warm peach glint travels across them, like light passing over a silver surface; it returns every few seconds, slowly. */
+.rg2-mark::after{display:none!important}
+.rg2-mark,.rg2-mark.is-on{color:inherit}
+.rg2-mark .w>i,.rg2-mark:not(:has(.w)){font-style:normal;color:transparent;-webkit-text-stroke:0!important;
+  background:linear-gradient(100deg,transparent 42%,rgba(255,214,192,.95) 49%,#fff 50%,rgba(255,214,192,.95) 51%,transparent 58%) 130% 0/300% 100% no-repeat,
+             linear-gradient(180deg,#ffffff 0%,#e9edf4 38%,#a9b1c2 52%,#eef1f6 70%,#c9cfdb 100%);
+  -webkit-background-clip:text;background-clip:text}
+.rg2-mark.is-on .w>i,.rg2-mark.is-on:not(:has(.w)){animation:rg2Glint 7s cubic-bezier(.6,0,.3,1) .2s infinite}
+@keyframes rg2Glint{0%{background-position:130% 0,0 0}26%,100%{background-position:-30% 0,0 0}}
+[data-motion="still"] .rg2-mark .w>i{animation:none}
+@media (prefers-reduced-motion:reduce){.rg2-mark .w>i{animation:none!important}}
+[data-mode="light"] .rg2-mark .w>i{background:linear-gradient(100deg,transparent 42%,rgba(var(--accent-rgb),.9) 50%,transparent 58%) 130% 0/300% 100% no-repeat,linear-gradient(180deg,#5d6679,#2b3346 50%,#6c7488);-webkit-background-clip:text;background-clip:text}
+
+/* the Kingdom promise v4: under Our story, above the seal. No rules above or below: three separate, softly rounded
+   plaques. Each carries a large outlined numeral that fills with peach from the bottom as it rises in, then a glint
+   crosses the plaque. Hover lifts a plaque and warms its edge. */
+.pg-regalia2 .rg2-story .rg2-pledge{padding:0;margin:calc(var(--gap) * .62) auto 0;width:min(100%,1080px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,24px);text-align:center}
+.rg2-pledge__card{position:relative;overflow:hidden;isolation:isolate;display:grid;justify-items:center;align-content:center;gap:clamp(10px,1.2vw,16px);
+  padding:clamp(30px,3.2vw,46px) 20px clamp(28px,3vw,42px);border-radius:clamp(22px,2.2vw,32px);outline:none;cursor:default;
+  background:radial-gradient(90% 70% at 50% 0%,rgba(var(--accent-rgb),.07),transparent 70%),rgba(255,255,255,.028);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 24px 60px -36px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(26px);
+  transition:opacity 1s var(--ease) calc(var(--k) * .16s),transform 1s var(--ease) calc(var(--k) * .16s),box-shadow .6s var(--ease)}
+.rg2-pledge.is-on .rg2-pledge__card{opacity:1;transform:none}
+.rg2-pledge__card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(255,236,226,.12) 50%,transparent 65%) 160% 0/250% 100% no-repeat;transition:background-position 1.6s var(--ease) calc(1s + var(--k) * .16s)}
+.rg2-pledge.is-on .rg2-pledge__card::before{background-position:-60% 0}
+.rg2-pledge__n{position:relative;display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(52px,5.4vw,86px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;
+  color:transparent;-webkit-text-stroke:1px rgba(var(--accent-rgb),.55)}
+.rg2-pledge__n::after{content:attr(data-n);position:absolute;inset:0;-webkit-text-stroke:0;
+  background:linear-gradient(180deg,#ffe9dc,var(--accent) 55%,#d99a7c);-webkit-background-clip:text;background-clip:text;color:transparent;
+  clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1) calc(.45s + var(--k) * .16s)}
+.rg2-pledge.is-on .rg2-pledge__n::after{clip-path:inset(0 0 0 0)}
+.rg2-pledge__card p{margin:0;font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(clamp(17px,1.5vw,22px) * var(--ds,1));line-height:1.25;letter-spacing:.01em;text-transform:none;color:var(--ink);white-space:nowrap}
+.rg2-pledge__card b{font-weight:inherit;color:var(--accent)}
+.rg2-pledge__card:hover,.rg2-pledge__card:focus-visible{transform:translateY(-6px)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.38),0 30px 70px -34px rgba(0,0,0,.7);transition-delay:0s}
+.rg2-pledge__card:hover .rg2-pledge__n::after,.rg2-pledge__card:focus-visible .rg2-pledge__n::after{filter:drop-shadow(0 0 14px rgba(var(--accent-rgb),.45))}
+@media (max-width:900px) and (min-width:601px){.pg-regalia2 .rg2-story .rg2-pledge{width:min(100%,640px)}.rg2-pledge__card{padding:26px 10px}.rg2-pledge__card p{font-size:calc(16px * var(--ds,1));white-space:normal}}
+@media (max-width:600px){
+  .pg-regalia2 .rg2-story .rg2-pledge{grid-template-columns:1fr;width:calc(100% - 40px);gap:10px}
+  .rg2-pledge__card{grid-template-columns:64px 1fr;justify-items:start;align-items:center;text-align:left;gap:16px;padding:18px 22px;border-radius:22px}
+  .rg2-pledge__n{font-size:44px;justify-self:center}
+  .rg2-pledge__card p{font-size:calc(20px * var(--ds,1))}
+}
+[data-mode="light"] .rg2-pledge__card{background:rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(20,27,77,.08),0 24px 60px -36px rgba(20,27,77,.3)}
+.rg2-pledge .rg2-pledge__n{font-family:var(--font-display);font-weight:400;font-size:clamp(52px,5.4vw,86px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(var(--accent-rgb),.55)}
+@media (max-width:600px){.rg2-pledge .rg2-pledge__n{font-size:44px}}
+.rg2-pledge b::after{display:none}
+/* silver words keep the headline's weight: their outline is drawn in silver too */
+.rg2-mark .w>i{-webkit-text-stroke:calc(var(--display-stroke,0px) * .6) rgba(236,240,247,.92)!important;
+  background:linear-gradient(100deg,transparent 40%,rgba(255,200,170,1) 48%,#fff 50%,rgba(255,200,170,1) 52%,transparent 60%) 130% 0/300% 100% no-repeat,
+             linear-gradient(180deg,#ffffff 0%,#f1f4f9 30%,#8e98ad 52%,#e6eaf2 68%,#b4bccb 100%)}
+.rg2-mark .w>i{-webkit-background-clip:text!important;background-clip:text!important}
+/* warmer: the key words are polished rose-silver (peach metal), the glint passing over them is white light */
+.rg2-mark .w>i{-webkit-text-stroke:calc(var(--display-stroke,0px) * .6) rgba(var(--accent-rgb),.55)!important;
+  background-image:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.95) 49%,#fff 50%,rgba(255,255,255,.95) 51%,transparent 60%),
+                   linear-gradient(180deg,#fff1e8 0%,#f6cdb8 34%,#d9967a 54%,#f3c9b3 72%,#e8b096 100%)!important}
+@media (max-width:900px) and (min-width:601px){.rg2-pledge__card p{font-size:17px}}
