@@ -746,3 +746,5 @@
 @media (max-width:900px){
   .pg-regalia2 .rg2-loupe__stage{width:100%!important;justify-self:stretch!important;max-height:min(50svh,560px)!important;height:min(50svh,560px)!important}
 }
+/* phones & tablets: the collection photo is exactly as wide as the Look closer window above it */
+@media (max-width:900px){.pg-regalia2 .rg2-feat__media{width:100%!important;max-width:none!important;align-self:stretch}}
