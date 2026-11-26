@@ -603,6 +603,7 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
   <p class="r-lead">Silver-filled pieces with the presence of solid silver, gift-boxed and delivered to your door.</p>
   <ul class="sp-trust" aria-label="With every piece"><li>Silver-filled</li><li>Gift-ready packaging</li><li>Delivered to your door</li></ul>
 </section>
+<div class="sp-shop">
 <div class="sp-bar" role="toolbar" aria-label="Filter and sort">
   <div class="sp-chips">${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}</div>
   <p class="sp-occ-tag" hidden><span></span><button type="button" aria-label="Clear occasion">×</button></p>
@@ -619,6 +620,7 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
     </div>
   </article>`).join('')}
 </section>
+</div>
 <section class="sp-occ" aria-label="Shop by occasion">
   <div class="sp-head"><p class="r-label">Gift guide</p><h2 class="r-h2">Shop by <em>occasion</em></h2></div>
   <div class="sp-occ__grid">${SHOP_OCC.map(([k, t, img]) => `<button type="button" class="sp-occ__tile" data-occ="${k}"><img src="assets/royal/${img}.webp" alt="" loading="lazy"><span>${t}</span><b>See gift ideas ${a}</b></button>`).join('')}</div>
