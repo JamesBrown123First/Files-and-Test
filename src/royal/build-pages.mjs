@@ -451,9 +451,8 @@ ${P.concierge()}`);
 const R2_DET = [
   ['The Silver', 'Silver-filled, with the presence of solid silver.'],
   ['The Shine', 'A mirror finish that catches every light.'],
-  ['The Detail', 'Fine relief, made to be looked at closely.'],
-  ['The Selection', 'Every piece carefully selected.'],
-  ['The Price', 'The elegance of silver, within reach.']
+  ['The Detail', 'Fine relief, made to be looked at closely.']
+  // 'The Selection' and 'The Price' were cut to shorten the walk; both are said in Our story and the promise band
 ];
 const R2_ITEMS = [
   ['decanter', 'Crowned Decanter', 'Repoussé, crowned stopper'], ['candlesticks', 'Grand Candlesticks', 'A tall pair'],
@@ -480,6 +479,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
   .replace(/\s*<a href="#concierge" class="r-hide-m">Concierge<\/a>/, '')
   .replace('<a href="#story" class="r-hide-m">Our Story</a>', '<a href="#story" class="r-hide-m">Our Story</a>\n    <a href="#concierge" class="r-hide-m">Contact</a>')
+  .replace('<div><h3>Shop</h3><a href="shop.html">The Baroque Collection</a>', '<div><h3>Shop</h3>')
   .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>')
   .replace(/<div class="r-menu"[\s\S]*?<\/div>\n<\/div>/, `<div class="r-menu rg2-menu" aria-hidden="true">
   <span class="rg2-menu__crest" aria-hidden="true">${logo('k-icon')}</span>
@@ -517,7 +517,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
       <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${logo('k-icon')}</span></span>
     </div>
     <div class="rg2-loupe__copy">
-      <p class="r-label">Look closer <span class="rg2-count"><b>I</b> / V</span></p>
+      <p class="r-label">Look closer <span class="rg2-count"><b>I</b> / ${['I','II','III','IV','V'][R2_DET.length - 1]}</span></p>
       <div class="rg2-ch__texts" aria-live="polite">${R2_DET.map(([t, d], i) => { const w = t.split(' '); return `<div class="rg2-ch__t${i === 0 ? ' is-on' : ''}"><h3>${w[0]} <em>${w.slice(1).join(' ')}</em></h3><p>${d}</p></div>`; }).join('')}</div>
     </div>
     <nav class="rg2-dots" aria-label="Details">${R2_DET.map(([t], i) => `<button type="button" aria-label="${t}"${i === 0 ? ' class="is-on"' : ''}><i></i></button>`).join('')}</nav>

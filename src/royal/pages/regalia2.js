@@ -56,7 +56,8 @@ function band() {
 }
 
 // loupe: pinned. Each detail moves the camera to it and dims the rest; the lens always follows your mouse.
-const SPOTS = [[0.47, 0.085], [0.17, 0.235], [0.95, 0.27], [0.5, 0.6], [0.5, 0.91]];
+const SPOTS = [[0.47, 0.085], [0.17, 0.235], [0.5, 0.6]];
+const M = SPOTS.length - 1, SPAN = M + 0.4;
 function loupe() {
   const sec = document.querySelector('.rg2-loupe'), stage = sec.querySelector('.rg2-loupe__stage'), zoom = sec.querySelector('.rg2-loupe__zoom'), img = zoom.querySelector('img');
   const lens = stage.querySelector('.rg-lens'), inner = lens.querySelector('span');
@@ -66,9 +67,9 @@ function loupe() {
   let active = -1, prog = 0, f = 0, hover = false, mx = 0, my = 0, lx = 0, ly = 0, first = true;
   const select = (i) => { if (i === active) return; active = i; texts.forEach((t, k) => t.classList.toggle('is-on', k === i)); dots.forEach((d, k) => d.classList.toggle('is-on', k === i)); count.textContent = ['I', 'II', 'III', 'IV', 'V'][i]; };
   select(0);
-  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * (innerWidth <= 900 ? 1.5 : 2.4), pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
-    onUpdate: (s) => { prog = s.progress; select(clamp(Math.round(s.progress * 4.4 - 0.2), 0, 4)); } });
-  dots.forEach((d, i) => d.addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((i + 0.2) / 4.4))));
+  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * (innerWidth <= 900 ? 1.05 : 1.68), pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
+    onUpdate: (s) => { prog = s.progress; select(clamp(Math.round(s.progress * SPAN - 0.2), 0, M)); } });
+  dots.forEach((d, i) => d.addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((i + 0.2) / SPAN))));
   stage.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; hover = true; const s = stage.getBoundingClientRect(); mx = e.clientX - s.left; my = e.clientY - s.top; });
   stage.addEventListener('pointerleave', () => (hover = false));
   // the image box inside the (unzoomed) stage
@@ -77,9 +78,9 @@ function loupe() {
   gsap.ticker.add(() => {
     const b = base();
     // where we are along the route of details, eased between stops
-    const tgt = clamp(prog * 4.4 - 0.2, 0, 4);
+    const tgt = clamp(prog * SPAN - 0.2, 0, M);
     f = reduced() ? tgt : lerp(f, tgt, 0.12);
-    const i = Math.min(3, Math.floor(f)), k = f - i, e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    const i = Math.min(M - 1, Math.floor(f)), k = f - i, e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
     const tx = lerp(SPOTS[i][0], SPOTS[i + 1][0], e), ty = lerp(SPOTS[i][1], SPOTS[i + 1][1], e);
     const zoomIn = clamp(prog * 8, 0, 1) * clamp((1 - prog) * 10, 0, 1);
     const tS = 1 + 0.7 * zoomIn;
