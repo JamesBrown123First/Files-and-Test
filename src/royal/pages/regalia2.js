@@ -35,7 +35,9 @@ function hero() {
   gsap.matchMedia().add('(min-width: 901px)', () => {
     const st = { trigger: '.rg-hero', start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.rg-word', { scale: 1.12, yPercent: -24, opacity: 0.3, ease: 'none', scrollTrigger: st });
-    gsap.to('.rg-ewer', { yPercent: -8, scale: 0.95, ease: 'none', scrollTrigger: st });
+    // scroll drift runs on the ewer's inner layers, not on .rg-ewer itself: the intro animates .rg-ewer, and two
+    // animations on the same element made it jump (vanish and return) on the first scroll
+    gsap.to('.rg-ewer > *', { yPercent: -8, scale: 0.95, ease: 'none', transformOrigin: '50% 100%', scrollTrigger: st });
     gsap.to('.rg2-lead, .rg-specs', { y: -80, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: '55% top' } });
   });
 }
