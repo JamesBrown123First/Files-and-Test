@@ -125,7 +125,7 @@ export const MOODS = {
 export const HEADLINES = {
   // closest free relatives of Kalieb Luxury (the campaign headline face): tall, high-contrast capitals with hairline
   // joins and heavy diagonals. Where the free face is lighter than Kalieb, a fine stroke adds the missing weight.
-  kaliebreal:{ name: 'Kalieb Luxury',   note: 'The campaign font itself (licensed via Envato Elements)', family: "'Kalieb Luxury', serif", weight: 400, up: true, track: '0em', scale: 0.86, stretch: '100%', like: true },
+  kaliebreal:{ name: 'Kalieb Luxury',   note: 'The campaign font itself (licensed via Envato Elements)', family: "'Kalieb Luxury', 'Italiana', serif", weight: 400, up: true, track: '0em', scale: 0.86, stretch: '100%', like: true },
   kalieb:    { name: 'Couture',         note: 'Closest to Kalieb · Italiana, weighted',       family: "'Italiana', serif", weight: 400, up: true, track: '-0.01em', scale: 0.86, stretch: '100%', stroke: '0.018em', like: true },
   kaliebsemi:{ name: 'Atelier',         note: 'Close to Kalieb · Noto Display semi-condensed', family: "'Noto Serif Display Var', serif", weight: 400, up: true, track: '-0.01em', scale: 0.84, stretch: '87.5%', like: true },
   kaliebcond:{ name: 'Salon',           note: 'Close to Kalieb · Noto Display condensed',      family: "'Noto Serif Display Var', serif", weight: 350, up: true, track: '0em', scale: 0.9, stretch: '75%', like: true },
