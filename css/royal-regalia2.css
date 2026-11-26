@@ -1045,3 +1045,25 @@
   background-image:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.95) 49%,#fff 50%,rgba(255,255,255,.95) 51%,transparent 60%),
                    linear-gradient(180deg,#fff1e8 0%,#f6cdb8 34%,#d9967a 54%,#f3c9b3 72%,#e8b096 100%)!important}
 @media (max-width:900px) and (min-width:601px){.rg2-pledge__card p{font-size:17px}}
+
+/* the Kingdom promise v5: smaller and livelier. Compact plaques (numeral beside its line). A thin ray of peach light
+   travels slowly around each plaque's rounded edge, each one at its own moment; on hover a soft spotlight follows
+   the pointer inside the plaque and the numeral glows. */
+@property --ra{syntax:'<angle>';inherits:false;initial-value:0deg}
+.pg-regalia2 .rg2-story .rg2-pledge{width:min(100%,940px);gap:clamp(12px,1.4vw,18px);margin-top:calc(var(--gap) * .55)}
+.rg2-pledge__card{grid-template-columns:auto auto;justify-content:center;justify-items:start;align-items:center;column-gap:16px;row-gap:0;
+  padding:clamp(18px,1.8vw,24px) clamp(18px,2vw,28px);border-radius:999px;text-align:left;
+  background:radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%),rgba(255,255,255,.03)}
+.rg2-pledge .rg2-pledge__n{font-size:clamp(34px,3vw,46px);line-height:1}
+.rg2-pledge__card p{font-size:calc(clamp(16px,1.3vw,19px) * var(--ds,1))}
+.rg2-pledge__card::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ra),transparent 0deg,transparent 290deg,rgba(var(--accent-rgb),.9) 330deg,#fff 345deg,rgba(var(--accent-rgb),.9) 355deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .8s var(--ease)}
+.rg2-pledge.is-on .rg2-pledge__card::after{opacity:1;animation:rg2Ray 9s linear calc(1.2s + var(--k) * 3s) infinite both}
+@keyframes rg2Ray{from{--ra:0deg}to{--ra:360deg}}
+.rg2-pledge__card:hover,.rg2-pledge__card:focus-visible{--spot:.22;transform:translateY(-4px)!important}
+.rg2-pledge__card:hover::after{animation-duration:3s}
+@media (max-width:900px) and (min-width:601px){.rg2-pledge__card{grid-template-columns:1fr;justify-items:center;text-align:center;border-radius:28px;padding:20px 10px}.rg2-pledge .rg2-pledge__n{font-size:36px}.rg2-pledge__card p{font-size:16px}}
+@media (max-width:600px){.pg-regalia2 .rg2-story .rg2-pledge{width:min(calc(100% - 40px),330px)}.rg2-pledge__card{grid-template-columns:56px 1fr;justify-content:start;padding:14px 22px}.rg2-pledge .rg2-pledge__n{font-size:34px}.rg2-pledge__card p{font-size:calc(18px * var(--ds,1))}}
+@media (prefers-reduced-motion:reduce){.rg2-pledge__card::after{animation:none!important}}

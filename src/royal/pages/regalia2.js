@@ -283,6 +283,9 @@ function vow() {
   const sec = document.querySelector('.rg2-pledge'); if (!sec) return;
   if (reduced()) return sec.classList.add('is-on');
   ScrollTrigger.create({ trigger: sec, start: 'top 80%', once: true, onEnter: () => sec.classList.add('is-on') });
+  sec.querySelectorAll('.rg2-pledge__card').forEach((c) => c.addEventListener('pointermove', (e) => {
+    const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
+  }));
 }
 
 // our story: a fine silver line draws itself beneath each key phrase as the words light up
