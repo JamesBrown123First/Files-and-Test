@@ -478,8 +478,6 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
   .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
-  .replace('    <a href="#collection">Collection</a>\n  </nav>', '    <a href="#collection">Collection</a>\n    <a href="#story">Our Story</a>\n  </nav>')
-  .replace('    <a href="#story" class="r-hide-m">Our Story</a>\n    <a href="#concierge" class="r-hide-m">Concierge</a>', '    <a href="#concierge" class="r-hide-m rg2-head__cta">Gift concierge</a>')
   .replace('<a href="index.html">All design directions</a>', '<a href="https://dartmedia.us" target="_blank" rel="noopener">dartmedia.us</a>') }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
