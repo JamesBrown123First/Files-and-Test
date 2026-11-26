@@ -574,21 +574,46 @@ ${P.concierge()}`);
 /* ============ shop placeholder (e-commerce is added later) ============ */
 /* ============ SHOP — the e-commerce page for the public site (Regalia II header and footer, royal blues, no peach) ============ */
 const SHOP_ITEMS = [
-  // [id, name, category key, price or 0 (= ask), short line, occasions]
-  ['candelabra', 'Grand Baroque Candelabra', 'shabbos', 3750, 'Nine branches, deep acanthus relief', 'shabbos weddings chanukah'],
-  ['decanter', 'Crowned Decanter', 'shabbos', 1440, 'Fluted neck, crowned stopper', 'shabbos weddings bar-mitzvah chanukah'],
-  ['mirror-frame', 'Baroque Mirror Frame', 'home', 1400, 'Hand-chased scrolls around a soft mirror', 'weddings new-home'],
-  ['ewer-photo', 'Baroque Ewer', 'shabbos', 0, 'Acanthus relief, crowned lid', 'shabbos weddings bar-mitzvah'],
-  ['basin-photo', 'Baroque Basin', 'shabbos', 0, 'A full ring of chased scrolls', 'shabbos weddings bar-mitzvah'],
-  ['set-photo', 'Baroque Ewer & Basin Set', 'shabbos', 0, 'The ewer with its matching basin', 'shabbos weddings bar-mitzvah'],
-  ['wine-holder', 'Wine Bottle Holder', 'table', 0, 'Acanthus leaves around the bottle', 'shabbos bar-mitzvah thank-you'],
-  ['besumim', 'Besumim Holder', 'shabbos', 0, 'Crowned lid, embossed body', 'shabbos bar-mitzvah thank-you'],
-  ['tea-glass', 'Tea Glass & Saucer', 'table', 0, 'Crowned lid on a scrolled saucer', 'chanukah thank-you bar-mitzvah'],
-  ['napkin-holder', 'Napkin Holder', 'table', 0, 'Fluted sides, scrolled feet', 'shabbos new-home thank-you'],
-  ['vase-grand', 'Grand Baroque Vase', 'home', 0, 'Scalloped rim, chased body', 'weddings new-home'],
-  ['vase-fluted', 'Fluted Vase', 'home', 0, 'Tall fluting, open petal rim', 'new-home weddings'],
-  ['pitcher', 'Hammered Pitcher', 'home', 0, 'Hand-hammered, softly waved lip', 'new-home thank-you'],
-  ['planter', 'Baroque Planter', 'home', 0, 'Scalloped rim on four scrolled feet', 'new-home weddings']
+  // [image, name, category key, price or 0 (= price on request), short line, occasions] — every image is the client's own product photo (Items.zip), uncut
+  ['items/item-32', 'Five-Branch Candelabra', 'shabbos', 0, '', 'shabbos weddings chanukah'],
+  ['items/item-35', 'Two-Branch Candelabra', 'shabbos', 285, '', 'shabbos new-home thank-you'],
+  ['items/item-24', 'Acanthus Two-Branch Candelabra', 'shabbos', 0, '', 'shabbos weddings new-home'],
+  ['items/item-17', 'Tall Candlesticks, pair', 'shabbos', 0, '', 'shabbos weddings'],
+  ['items/item-18', 'Baroque Candlesticks, pair', 'shabbos', 0, '', 'shabbos weddings'],
+  ['items/item-33', 'Fluted Candlesticks, pair', 'shabbos', 0, '', 'shabbos weddings new-home'],
+  ['items/item-08', 'Petite Candlesticks, pair', 'shabbos', 0, '', 'shabbos thank-you'],
+  ['items/item-25', 'Washing Set, Ewer & Basin', 'shabbos', 0, '', 'shabbos weddings bar-mitzvah'],
+  ['items/item-29', 'Crowned Ewer', 'shabbos', 0, '', 'shabbos bar-mitzvah weddings'],
+  ['items/item-26', 'Petite Ewer', 'shabbos', 0, '', 'shabbos thank-you'],
+  ['items/item-05', 'Crowned Decanter', 'shabbos', 0, '', 'shabbos bar-mitzvah chanukah'],
+  ['items/item-11', 'Wine Barrel on Stand', 'shabbos', 0, '', 'shabbos bar-mitzvah weddings'],
+  ['items/item-03', 'Crown Besumim Holder', 'shabbos', 0, '', 'shabbos bar-mitzvah'],
+  ['items/item-36', 'Challah Knife', 'shabbos', 0, '', 'shabbos new-home thank-you'],
+  ['items/item-21', 'Tea Glass & Saucer', 'table', 0, '', 'chanukah thank-you bar-mitzvah'],
+  ['items/item-00', 'Honey Dish on Tray', 'table', 0, '', 'shabbos new-home thank-you'],
+  ['items/item-01', 'Honey Dish & Tray', 'table', 0, '', 'shabbos new-home thank-you'],
+  ['items/item-37', 'Honey Jar with Spoon', 'table', 0, '', 'shabbos thank-you'],
+  ['items/item-02', 'Crowned Bowl & Saucer', 'table', 0, '', 'shabbos thank-you'],
+  ['items/item-28', 'Covered Tureen', 'table', 0, '', 'weddings new-home'],
+  ['items/item-14', 'Double Dish on Tray', 'table', 0, '', 'shabbos new-home'],
+  ['items/item-20', 'Fruit Boat', 'table', 0, '', 'new-home weddings thank-you'],
+  ['items/item-13', 'Leaf Fruit Bowl', 'table', 0, '', 'new-home thank-you'],
+  ['items/item-38', 'Oval Tray', 'table', 0, '', 'weddings new-home'],
+  ['items/item-30', 'Cutlery Set in Chest', 'table', 0, '', 'weddings new-home'],
+  ['items/item-31', 'Cutlery Place Setting', 'table', 0, '', 'weddings new-home'],
+  ['items/item-12', 'Scrolled Napkin Holder', 'table', 0, '', 'shabbos new-home thank-you'],
+  ['items/item-04', 'Square Napkin Holder', 'table', 0, '', 'shabbos new-home thank-you'],
+  ['items/item-15', 'Tall Napkin Holder', 'table', 0, '', 'shabbos new-home'],
+  ['items/item-23', 'Napkin Holder on Scrolled Feet', 'table', 0, '', 'shabbos new-home'],
+  ['items/item-34', 'Napkin Stand', 'table', 0, '', 'shabbos thank-you'],
+  ['items/item-07', 'Grand Two-Handled Vase', 'home', 0, '', 'weddings new-home'],
+  ['items/item-09', 'Baroque Vase', 'home', 0, '', 'weddings new-home'],
+  ['items/item-10', 'Slender Vase', 'home', 0, '', 'new-home thank-you'],
+  ['items/item-16', 'Hammered Pitcher', 'home', 0, '', 'new-home thank-you'],
+  ['items/item-06', 'Oval Casket', 'home', 0, '', 'weddings new-home'],
+  ['items/item-27', 'Jewellery Box', 'home', 0, '', 'weddings thank-you'],
+  ['items/item-22', 'Tissue Box Cover', 'home', 0, '', 'new-home thank-you'],
+  ['items/item-19', 'Mezuzah Case', 'home', 0, '', 'new-home bar-mitzvah']
 ];
 const SHOP_CATS = [['all', 'All pieces'], ['shabbos', 'Shabbos & Yom Tov'], ['table', 'For the table'], ['home', 'For the home']];
 const SHOP_OCC = [['shabbos', 'Shabbos & Yom Tov', 'o-1'], ['weddings', 'Weddings', 'o-2'], ['bar-mitzvah', 'Bar Mitzvah', 'o-5'], ['new-home', 'New Home', 'o-4'], ['chanukah', 'Chanukah', 'o-3'], ['thank-you', 'Thank You', 'o-6']];
@@ -622,7 +647,7 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
 </div>
 <section class="sp-grid" id="pieces" aria-label="Pieces">${SHOP_ITEMS.map(([id, name, cat, price, line, occ], i) => `
   <article class="sp-card" data-cat="${cat}" data-price="${price}" data-occ="${occ}" data-i="${i}" data-name="${name}">
-    <div class="sp-card__media${id.endsWith('-photo') ? ' is-photo' : ''}"><img src="assets/shop/${id}-450.webp" srcset="assets/shop/${id}-450.webp 450w, assets/shop/${id}-900.webp 900w" sizes="(max-width:600px) 46vw, (max-width:1100px) 30vw, 22vw" alt="${name}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" width="450" height="450"></div>
+    <div class="sp-card__media is-photo"><img src="assets/shop/${id}-450.webp" srcset="assets/shop/${id}-450.webp 450w, assets/shop/${id}-900.webp 900w" sizes="(max-width:600px) 46vw, (max-width:1100px) 30vw, 22vw" alt="${name}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" width="450" height="450"></div>
     <div class="sp-card__body">
       <p class="sp-card__cat">${SHOP_CATS.find((c) => c[0] === cat)[1]}</p>
       <h2 class="sp-card__name">${name}</h2>

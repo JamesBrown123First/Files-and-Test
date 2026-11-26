@@ -38,6 +38,7 @@ function shop() {
       else c.animate([{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }], { duration: 520, delay: k * 30, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
     });
     grid.classList.toggle('is-empty', !list.length);
+    cards.forEach((c) => c.classList.remove('is-wide')); list.forEach((c, k) => { if (k % 5 === 0) c.classList.add('is-wide'); });
   };
   const setActive = (b) => {
     active = b; chips.forEach((x) => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
@@ -46,6 +47,7 @@ function shop() {
   const all = chips.find((c) => c.dataset.cat === 'all');
   chips.forEach((b) => b.addEventListener('click', () => setActive(b === active && b !== all ? all : b)));
   sel?.addEventListener('change', () => { sort = sel.value; render(); });
+  cards.forEach((c, k) => c.classList.toggle('is-wide', k % 5 === 0));
   // the filter row: the mouse wheel scrolls it sideways while the pointer is over it (the page carries on once it reaches an end);
   // it can also be dragged with the mouse
   const row = document.querySelector('.sp-chips');
