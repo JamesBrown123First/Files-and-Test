@@ -123,18 +123,14 @@ export const MOODS = {
 
 // Headline and script fonts, chosen on their own (empty = take them from the pairing)
 export const HEADLINES = {
-  // refined, curvy display serifs in sentence case — the closest free relatives of Kalieb Luxury
-  gloock:    { name: 'Gloock',          note: 'Like Kalieb · sculpted, high contrast', family: "'Gloock', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
-  fraunces:  { name: 'Fraunces',        note: 'Like Kalieb · soft, curvy serifs',      family: "'Fraunces', serif", weight: 300, up: false, track: '-0.025em', scale: 0.98, stretch: '100%', like: true },
-  playfairdisp:{ name: 'Playfair Display', note: 'Like Kalieb · classic luxury',      family: "'Playfair Display', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
-  dmserif:   { name: 'DM Serif',        note: 'Like Kalieb · elegant, sleek curves',   family: "'DM Serif Display', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
-  youngserif:{ name: 'Young Serif',     note: 'Like Kalieb · warm, rounded',           family: "'Young Serif', serif", weight: 400, up: false, track: '-0.02em', scale: 0.86, stretch: '100%', like: true },
-  prata:     { name: 'Prata',           note: 'Like Kalieb · refined Didone',          family: "'Prata', serif", weight: 400, up: false, track: '-0.02em', scale: 0.88, stretch: '100%', like: true },
-  yeseva:    { name: 'Yeseva One',      note: 'Like Kalieb · bold, feminine curves',   family: "'Yeseva One', serif", weight: 400, up: false, track: '-0.01em', scale: 0.86, stretch: '100%', like: true },
-  rufina:    { name: 'Rufina',          note: 'Like Kalieb · calligraphic serif',      family: "'Rufina', serif", weight: 400, up: false, track: '-0.02em', scale: 0.9, stretch: '100%', like: true },
-  lustria:   { name: 'Lustria',         note: 'Like Kalieb · flared, gentle',          family: "'Lustria', serif", weight: 400, up: false, track: '-0.02em', scale: 0.92, stretch: '100%', like: true },
-  caslon:    { name: 'Caslon Display',  note: 'Like Kalieb · fine, bookish luxury',    family: "'Libre Caslon Display', serif", weight: 400, up: false, track: '-0.02em', scale: 1, stretch: '100%', like: true },
-  marcellus: { name: 'Marcellus',       note: 'Like Kalieb · flared Roman',            family: "'Marcellus', serif", weight: 400, up: false, track: '0em', scale: 0.88, stretch: '100%', like: true },
+  // closest free relatives of Kalieb Luxury (the campaign headline face): tall, high-contrast capitals with hairline
+  // joins and heavy diagonals. Where the free face is lighter than Kalieb, a fine stroke adds the missing weight.
+  kalieb:    { name: 'Couture',         note: 'Closest to Kalieb · Italiana, weighted',       family: "'Italiana', serif", weight: 400, up: true, track: '-0.01em', scale: 0.86, stretch: '100%', stroke: '0.018em', like: true },
+  kaliebsemi:{ name: 'Atelier',         note: 'Close to Kalieb · Noto Display semi-condensed', family: "'Noto Serif Display Var', serif", weight: 400, up: true, track: '-0.01em', scale: 0.84, stretch: '87.5%', like: true },
+  kaliebcond:{ name: 'Salon',           note: 'Close to Kalieb · Noto Display condensed',      family: "'Noto Serif Display Var', serif", weight: 350, up: true, track: '0em', scale: 0.9, stretch: '75%', like: true },
+  kaliebdid: { name: 'Maison',          note: 'Close to Kalieb · Antic Didone, weighted',      family: "'Antic Didone', serif", weight: 400, up: true, track: '-0.01em', scale: 0.8, stretch: '100%', stroke: '0.014em', like: true },
+  kaliebfair:{ name: 'Gala',            note: 'Close to Kalieb · Bellefair, weighted',         family: "'Bellefair', serif", weight: 400, up: true, track: '-0.01em', scale: 0.8, stretch: '100%', stroke: '0.012em', like: true },
+  kaliebbod: { name: 'Regent',          note: 'Close to Kalieb · Bodoni Moda capitals',        family: "'Bodoni Moda', serif", weight: 400, up: true, track: '-0.02em', scale: 0.8, stretch: '100%', like: true },
   kingdom:   { name: 'Kingdom Caps',    note: 'Kalnia · like the campaign headlines', family: "'Kalnia', serif", weight: 300, up: true, track: '0.005em', scale: 0.8, stretch: '100%' },
   tower:     { name: 'Tower Caps',      note: 'Condensed Didone, tall and narrow',  family: "'Noto Serif Display Var', serif", weight: 250, up: true, track: '0em', scale: 0.92, stretch: '62.5%' },
   imbue:     { name: 'Imbue',           note: 'Slim condensed couture',             family: "'Imbue', serif", weight: 250, up: true, track: '0.01em', scale: 1, stretch: '100%' },
@@ -181,7 +177,7 @@ export const PRESETS = {
   'royal-bloom':   { name: 'Royal Bloom',        palette: 'royalcopper', bg: 'bloom',  accent: '#f3c09b', type: 'sovereign', mood: 'studio' },
   'royal-mesh':    { name: 'Royal Mesh',         palette: 'inkroyal', bg: 'mesh',      accent: '#f2d4be', type: 'italianno', mood: 'moon' },
   'royal-dawn':    { name: 'Royal Dawn',         palette: 'royal',    bg: 'dawn',      accent: '#f3c09b', type: 'upright',   mood: 'candle' },
-  'royal-489':     { name: 'Royal 2766 · 489',   palette: 'royal489', bg: 'sovereign', accent: '#ecc3b2', type: 'sovereign', mood: 'moon', hfont: 'kingdom', sfont: 'pinyon' },
+  'royal-489':     { name: 'Royal 2766 · 489',   palette: 'royal489', bg: 'sovereign', accent: '#ecc3b2', type: 'sovereign', mood: 'moon', hfont: 'kalieb', sfont: 'pinyon' },
   'royal-489-veil':{ name: 'Royal 489 Veil',     palette: 'royal489', bg: 'veil',     accent: '#ecc3b2', type: 'sovereign', mood: 'moon', hfont: 'tower', sfont: 'ballet' },
   'royal-2766':    { name: 'Royal 2766',         palette: 'royal2766', bg: 'aurora',  accent: '#eca886', type: 'sovereign', mood: 'moon' },
   'royal-2766-veil':{ name: 'Royal 2766 Veil',   palette: 'royal2766', bg: 'veil',    accent: '#eca886', type: 'sovereign', mood: 'moon' },
@@ -311,7 +307,7 @@ function apply() {
     '--font-display': Hf ? Hf.family : T.display, '--font-italic': Sf ? Sf.family : T.italic, '--font-text': T.text,
     '--ital-weight': Sf ? Sf.weight : (T.ital || 300), '--ital-scale': Sf ? Sf.scale : (T.iscale || 1),
     '--display-weight': Hf ? Hf.weight : T.weight, '--display-track': Hf ? Hf.track : T.track, '--display-case': (Hf ? Hf.up : T.up) ? 'uppercase' : 'none', '--ds': Hf ? Hf.scale : T.scale,
-    '--display-stretch': Hf ? Hf.stretch : '100%'
+    '--display-stretch': Hf ? Hf.stretch : '100%', '--display-stroke': (Hf && Hf.stroke) || '0px'
   };
   for (const k in v) root.style.setProperty(k, v[k]);
   root.dataset.mode = P.mode; root.dataset.type = state.type; root.dataset.motion = state.motion;
