@@ -1083,3 +1083,17 @@
 /* hero: the line now sits directly under the headline */
 .rg2-lead .rg2-sub{margin:clamp(14px,1.4vw,22px) 0 0;max-width:none;text-align:left;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:var(--ink-2,rgba(255,255,255,.78));letter-spacing:.01em}
 @media (max-width:900px){.rg2-lead .rg2-sub{text-align:inherit;margin-top:12px;font-size:15px}}
+
+/* Our story, desktop: a wider text column; the promise pills return to their row form (numeral beside the line),
+   scaled down, and still exactly as wide as the text */
+@media (min-width:901px){
+  .pg-regalia2 .rg2-story .r-story__big,.pg-regalia2 .rg2-story .rg2-story__more{max-width:44ch!important}
+  .rg2-pledge__card{grid-template-columns:auto auto!important;justify-content:center!important;justify-items:start!important;text-align:left!important;column-gap:12px!important;padding:14px 18px!important;border-radius:999px!important}
+  .rg2-pledge .rg2-pledge__n{font-size:clamp(26px,2.2vw,34px)!important}
+  .rg2-pledge__card p{white-space:nowrap!important;font-size:calc(clamp(14px,1.05vw,16px) * var(--ds,1))!important}
+}
+/* phone: story text and promise take the same column as the collection image above (20px in from the page margins) */
+@media (max-width:600px){
+  .pg-regalia2 .rg2-story .r-story__big,.pg-regalia2 .rg2-story .rg2-story__more{width:calc(100% - 40px);margin-left:auto;margin-right:auto}
+  .pg-regalia2 .rg2-story .rg2-pledge{width:calc(100% - 40px)!important}
+}
