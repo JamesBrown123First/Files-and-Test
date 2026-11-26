@@ -278,21 +278,10 @@ function ann() {
 
 // the promise: three short vows take the stage one after another as you scroll — each rises out of soft blur, holds, and lifts away
 function vow() {
-  // the promise, on one line: each vow fills with silver in turn as the line comes into view; hover (or focus) a vow and a glint
-  // runs across it while the little crests beside it bow toward it.
-  const sec = document.querySelector('.rg2-vow'); if (!sec) return;
-  const ls = [...sec.querySelectorAll('.rg2-vow__l')], seps = [...sec.querySelectorAll('.rg2-vow__sep')];
-  const fills = ls.map((l) => l.querySelector('.rg2-vow__f'));
-  if (reduced()) { fills.forEach((f) => gsap.set(f, { '--fill': '0%' })); return; }
-  fills.forEach((f) => gsap.set(f, { '--fill': '100%', '--gx': '-30%' }));
-  ScrollTrigger.create({ trigger: sec, start: 'top 82%', once: true, onEnter: () => fills.forEach((f, i) => gsap.to(f, { '--fill': '0%', duration: 1.1, delay: 0.25 + i * 0.35, ease: 'power2.inOut' })) });
-  ls.forEach((l, i) => {
-    const f = fills[i];
-    const on = () => { gsap.fromTo(f, { '--gx': '-30%' }, { '--gx': '130%', duration: 0.9, ease: 'power2.inOut', overwrite: 'auto' }); gsap.to(l, { y: -3, duration: 0.5, ease: 'power3.out' });
-      seps.forEach((s, k) => gsap.to(s, { rotate: k === i - 1 ? 14 : k === i ? -14 : 0, scale: k === i - 1 || k === i ? 1.25 : 1, duration: 0.6, ease: 'back.out(2)' })); };
-    const off = () => { gsap.to(l, { y: 0, duration: 0.6, ease: 'power3.out' }); seps.forEach((s) => gsap.to(s, { rotate: 0, scale: 1, duration: 0.7, ease: 'power3.out' })); };
-    l.addEventListener('pointerenter', on); l.addEventListener('focus', on); l.addEventListener('pointerleave', off); l.addEventListener('blur', off);
-  });
+  // the promise band: hairlines draw outward from the centre, then the three pledges rise in, one after another
+  const sec = document.querySelector('.rg2-pledge'); if (!sec) return;
+  if (reduced()) return sec.classList.add('is-on');
+  ScrollTrigger.create({ trigger: sec, start: 'top 85%', once: true, onEnter: () => sec.classList.add('is-on') });
 }
 
 // our story: a fine silver line draws itself beneath each key phrase as the words light up

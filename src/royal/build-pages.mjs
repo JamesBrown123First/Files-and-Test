@@ -536,12 +536,12 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 </section>
 ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/)[0].replace('r-story__seal', 'r-story__seal rg2-seal'); return `<section class="r-story r-story--split rg2-story" id="story" aria-label="Our story">
   <p class="r-label" data-reveal>Our story</p>
-  <p class="r-story__big rg2-story__one" data-fill>Kingdom was created to redefine <span class="rg2-mark">silver gifting</span>, bringing the beauty, presence, and elegance of silver to a price that makes <span class="rg2-mark">generous giving possible.</span></p>
-  <p class="r-story__big rg2-story__more" data-fill>From carefully selected <span class="rg2-mark">silver-filled pieces</span> to <span class="rg2-mark">thoughtful packaging,</span> every detail is designed to make giving feel <span class="rg2-mark">elevated.</span></p>
+  <p class="r-story__big rg2-story__one" data-fill>Kingdom was created to redefine <span class="rg2-mark">silver gifting</span>, bringing the beauty, presence, and elegance of silver to a price that makes <span class="rg2-mark">generous giving</span> possible.</p>
+  <p class="r-story__big rg2-story__more" data-fill>From carefully selected <span class="rg2-mark">silver-filled</span> pieces to thoughtful <span class="rg2-mark">packaging,</span> every detail is designed to make giving feel <span class="rg2-mark">elevated.</span></p>
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
-<section class="rg2-trio rg2-vow" aria-label="The Kingdom promise"><ul class="rg2-vow__row"><li class="rg2-vow__l" tabindex="0"><span class="rg2-vow__o">Filled with <em>silver.</em></span><span class="rg2-vow__f" aria-hidden="true">Filled with <em>silver.</em></span></li><li class="rg2-vow__sep" aria-hidden="true">${logo('k-icon')}</li><li class="rg2-vow__l" tabindex="0"><span class="rg2-vow__o">Beautifully <em>gifted.</em></span><span class="rg2-vow__f" aria-hidden="true">Beautifully <em>gifted.</em></span></li><li class="rg2-vow__sep" aria-hidden="true">${logo('k-icon')}</li><li class="rg2-vow__l" tabindex="0"><span class="rg2-vow__o">Priced within <em>reach.</em></span><span class="rg2-vow__f" aria-hidden="true">Priced within <em>reach.</em></span></li></ul></section>`; })()}
+<section class="rg2-pledge" aria-label="The Kingdom promise"><ul class="rg2-pledge__row">${[['I','Filled with','silver'],['II','Beautifully','gifted'],['III','Priced within','reach']].map(([n,a,b],k)=>`<li style="--k:${k}" tabindex="0"><small>${n}</small><span>${a} <b>${b}</b></span></li>`).join('')}</ul></section>`; })()}
 <section class="rg2-basin" aria-label="A royal touch">
   <p class="r-label" data-reveal>Kingdom silver</p>
   <h2 class="r-h2" data-split>A royal <em>touch</em></h2>

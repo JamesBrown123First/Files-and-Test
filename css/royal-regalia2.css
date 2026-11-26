@@ -924,3 +924,41 @@
   .rg2-head .r-head__nav--r>a[aria-label="Search"]{margin-left:clamp(4px,.6vw,10px)}
   .rg2-head .r-head__nav--r>.r-head__bag{margin-left:calc(-1*clamp(20px,2.2vw,34px) - 8px)}
 }
+
+/* our story v4: shorter marks; a soft, hand-inked peach brush stroke (tapered ends, slight tilt) sweeps in beneath the word, the word warms to peach, then a glint runs along the stroke */
+.rg2-mark{position:relative;z-index:0;white-space:nowrap;transition:color 1s var(--ease) .35s}
+.rg2-mark::after{left:-.08em;right:-.08em;bottom:.04em;height:.2em;border-radius:1em;box-shadow:none;z-index:-1;
+  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.75) 50%,transparent 70%) 160% 0/250% 100% no-repeat,linear-gradient(90deg,rgba(var(--accent-rgb),.35),rgba(var(--accent-rgb),.6) 45%,rgba(var(--accent-rgb),.4));
+  -webkit-mask:radial-gradient(50% 50% at 50% 50%,#000 70%,transparent 100%) 0 0/100% 100%,linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+  transform:scaleX(0) rotate(-1.2deg);transform-origin:0 50%;transition:transform 1.1s cubic-bezier(.7,0,.2,1),background-position 1.4s var(--ease) 1s}
+.rg2-mark.is-on{color:#ffe7da}
+.rg2-mark.is-on::after{transform:scaleX(1) rotate(-1.2deg);background-position:-60% 0,0 0}
+@media (max-width:900px){.rg2-mark::after{height:.2em}}
+
+/* the Kingdom promise v3: a quiet band — hairlines above and below, three pledges in one typeface, numbered I · II · III */
+.rg2-pledge{padding:clamp(28px,3vw,44px) var(--pad) calc(var(--gap) * .5)}
+.rg2-pledge__row{position:relative;list-style:none;margin:0 auto;padding:0;max-width:1040px;display:grid;grid-template-columns:repeat(3,1fr)}
+.rg2-pledge__row::before,.rg2-pledge__row::after{content:"";position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.45) 30%,rgba(var(--accent-rgb),.45) 70%,transparent);transform:scaleX(0);transition:transform 1.4s cubic-bezier(.7,0,.2,1)}
+.rg2-pledge__row::before{top:0}.rg2-pledge__row::after{bottom:0}
+.rg2-pledge.is-on .rg2-pledge__row::before,.rg2-pledge.is-on .rg2-pledge__row::after{transform:scaleX(1)}
+.rg2-pledge li{position:relative;display:grid;justify-items:center;gap:10px;padding:clamp(22px,2.4vw,34px) 12px;text-align:center;outline:none;cursor:default;
+  opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease) calc(.6s + var(--k) * .18s),transform .9s var(--ease) calc(.6s + var(--k) * .18s)}
+.rg2-pledge.is-on li{opacity:1;transform:none}
+.rg2-pledge li+li::before{content:"";position:absolute;left:0;top:28%;bottom:28%;width:1px;background:linear-gradient(transparent,rgba(var(--accent-rgb),.4),transparent)}
+.rg2-pledge li::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 50%,rgba(var(--accent-rgb),.14),transparent 70%);opacity:0;transition:opacity .6s var(--ease)}
+.rg2-pledge small{font-family:var(--font-body);font-size:10px;font-weight:500;letter-spacing:.32em;padding-left:.32em;color:var(--accent);opacity:.8;transition:transform .6s var(--ease),opacity .6s}
+.rg2-pledge span{position:relative;font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(clamp(18px,1.7vw,25px) * var(--ds,1));line-height:1.2;letter-spacing:.01em;text-transform:none;color:var(--ink);white-space:nowrap}
+.rg2-pledge b{font-weight:inherit;color:var(--accent);position:relative}
+.rg2-pledge b::after{content:"";position:absolute;left:0;right:0;bottom:-.18em;height:1px;background:currentColor;transform:scaleX(0);transform-origin:50% 50%;transition:transform .6s var(--ease)}
+.rg2-pledge li:hover::after,.rg2-pledge li:focus-visible::after{opacity:1}
+.rg2-pledge li:hover small,.rg2-pledge li:focus-visible small{transform:translateY(-3px);opacity:1}
+.rg2-pledge li:hover b::after,.rg2-pledge li:focus-visible b::after{transform:scaleX(1)}
+@media (max-width:600px){
+  .rg2-pledge__row{grid-template-columns:1fr;max-width:340px}
+  .rg2-pledge li{grid-template-columns:auto auto;justify-content:center;align-items:baseline;gap:14px;padding:18px 8px}
+  .rg2-pledge li+li::before{left:30%;right:30%;top:0;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.35),transparent)}
+  .rg2-pledge span{font-size:calc(21px * var(--ds,1))}
+}
+.rg2-pledge small{font-family:var(--font-display);font-size:12px;letter-spacing:.24em;padding-left:.24em}
+@media (max-width:600px){.rg2-pledge li{grid-template-columns:1fr;justify-items:center;gap:6px;padding:16px 8px}}
