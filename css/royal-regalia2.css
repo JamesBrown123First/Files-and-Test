@@ -872,3 +872,5 @@
 .pg-regalia2 .rg2-story .rg2-story__more{max-width:22ch}
 @media (max-width:900px){.rg2-pill.is-open{width:1.8em}.rg2-pill img{width:1.8em}}
 .rg2-pill{height:.92em;vertical-align:-.14em}.rg2-pill.is-open{width:2.6em;margin:0 .08em}.rg2-pill img{width:2.6em}@media (max-width:900px){.rg2-pill.is-open,.rg2-pill img{width:2.2em}}
+@media (min-width:901px){.rg2-hero .rg-ewer{bottom:6vh;height:min(72vh,940px)}}
+@media (min-width:901px){.rg2-hero .rg-ewer{height:min(72vh,calc(100vh - 230px),940px)}}
