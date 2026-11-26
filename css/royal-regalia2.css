@@ -1170,7 +1170,7 @@
 @media (max-width:600px){.pg-regalia2 .r-occ{margin-top:18px}}
 
 /* hero ewer (desktop): bigger, and its top sits just under the logo crest (about 24px gap), not far below it */
-@media (min-width:901px){.rg2-hero .rg-ewer{top:clamp(132px,calc(98px + 2.8vw),160px);bottom:auto;height:min(80vh,calc(100vh - 180px),1040px)}}
+@media (min-width:901px){.rg2-hero .rg-ewer{top:clamp(146px,calc(112px + 2.8vw),174px);bottom:auto;height:min(80vh,calc(100vh - 180px),1040px)}}
 /* first visit: hero pieces stay hidden until their entrance plays, so the ewer can't show, vanish and fade back in */
 .pg-regalia2 :is(.rg-ewer,.rg2-h1>span,.rg2-sub,.rg-specs li):not([style*="opacity"]){opacity:0}
 .pg-regalia2 .rg-word:not([style*="clip-path"]){clip-path:inset(100% 0 0 0)}
