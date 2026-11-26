@@ -973,3 +973,13 @@
 /* Look closer (desktop): the framed window a touch shorter (≈9%), still centred beside its text */
 @media (min-width:901px){.pg-regalia2 .rg2-loupe__stage{height:min(71vh,660px)!important;align-self:center!important}}
 @media (max-width:900px){.pg-regalia2 .rg2-loupe__stage{height:min(42svh,480px)!important;max-height:min(42svh,480px)!important}}
+
+/* tablet + phone: Look closer window narrower; its text above and the collection image below share the exact same column */
+@media (max-width:900px){
+  .pg-regalia2 :is(.rg2-loupe__copy,.rg2-loupe__stage,.rg2-feat__media){--col:min(100%,540px);width:var(--col)!important;max-width:var(--col)!important;margin-left:auto!important;margin-right:auto!important;justify-self:center!important}
+  .pg-regalia2 .rg2-feat__copy{width:min(100%,540px);margin-left:auto;margin-right:auto}
+}
+@media (max-width:600px){
+  .pg-regalia2 :is(.rg2-loupe__copy,.rg2-loupe__stage,.rg2-feat__media){--col:calc(100% - 40px)}
+  .pg-regalia2 .rg2-feat__copy{width:calc(100% - 40px)}
+}
