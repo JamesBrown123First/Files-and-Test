@@ -748,3 +748,33 @@
 }
 /* phones & tablets: the collection photo is exactly as wide as the Look closer window above it */
 @media (max-width:900px){.pg-regalia2 .rg2-feat__media{width:100%!important;max-width:none!important;align-self:stretch}}
+
+/* ===== occasions on tablets & phones: the same expanding accordion as desktop (tap a panel to open it) ===== */
+@media (max-width:900px){
+  .pg-regalia2 .r-occ__list{display:flex;overflow:visible;scroll-snap-type:none;gap:8px;padding:0 var(--pad);height:clamp(420px,62vw,560px)}
+  .pg-regalia2 .r-occ__item,.pg-regalia2 .r-occ__item.is-open{flex:1 1 0;height:auto;scroll-snap-align:none;transition:flex-grow 1s var(--ease)}
+  .pg-regalia2 .r-occ__item.is-open{flex-grow:4.2}
+  .pg-regalia2 .r-occ__item .r-occ__v{display:block}
+  .pg-regalia2 .r-occ__item.is-open .r-occ__v{opacity:0}
+  .pg-regalia2 .r-occ__item .r-occ__body{opacity:0;transform:translateY(16px)}
+  .pg-regalia2 .r-occ__item.is-open .r-occ__body{opacity:1;transform:none;transition-delay:.35s}
+  .pg-regalia2 .r-occ__item img{transform:scale(1.08)}
+  .pg-regalia2 .r-occ__item.is-open img{transform:scale(1)}
+  .pg-regalia2 .r-occ__num{top:14px;left:50%;transform:translateX(-50%)}
+  .pg-regalia2 .r-occ__item.is-open .r-occ__num{left:20px;transform:none}
+  .pg-regalia2 .r-occ__body{left:20px;right:20px;bottom:20px}
+}
+/* phones: the same idea turned on its side — panels stacked, the open one grows tall */
+@media (max-width:600px){
+  .pg-regalia2 .r-occ__list{flex-direction:column;height:min(150vw,620px)}
+  .pg-regalia2 .r-occ__item.is-open{flex-grow:6}
+  .pg-regalia2 .r-occ__item .r-occ__v{writing-mode:horizontal-tb;transform:translateY(-50%);left:20px;bottom:auto;top:50%;font-size:calc(19px * var(--ds))}
+  .pg-regalia2 .r-occ__num{top:50%;left:auto;right:20px;transform:translateY(-50%)}
+  .pg-regalia2 .r-occ__item.is-open .r-occ__num{top:16px;left:20px;right:auto;transform:none}
+  .pg-regalia2 .r-occ__body b{font-size:calc(30px * var(--ds))}
+  .pg-regalia2 .r-occ__body>span{font-size:14px}
+}
+@media (max-width:900px){
+  .pg-regalia2 .r-occ__item:not(.is-open)::before{background:linear-gradient(90deg,rgba(var(--c0-rgb),.72),rgba(var(--c0-rgb),.45))}
+  .pg-regalia2 .r-occ__v{text-shadow:0 1px 12px rgba(0,0,0,.35)}
+}

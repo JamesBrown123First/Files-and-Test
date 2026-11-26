@@ -187,9 +187,12 @@ export function initOccasions() {
     const items = [...list.children];
     const open = (it) => items.forEach((x) => x.classList.toggle('is-open', x === it));
     items.forEach((it) => {
-      it.addEventListener('pointerenter', () => fine && open(it));
+      it.addEventListener('pointerenter', (e) => fine && e.pointerType === 'mouse' && open(it));
+      // a tap on a closed panel opens it; only a tap on the open panel follows the link
+      let wasOpen = false;
+      it.addEventListener('pointerdown', () => { wasOpen = it.classList.contains('is-open'); });
       it.addEventListener('focusin', () => open(it));
-      it.addEventListener('click', (e) => { if (!it.classList.contains('is-open')) { e.preventDefault(); open(it); } });
+      it.addEventListener('click', (e) => { const o = e.detail === 0 ? it.classList.contains('is-open') : wasOpen; if (!o) { e.preventDefault(); open(it); } wasOpen = true; });
     });
   });
 }
