@@ -278,27 +278,14 @@ function ann() {
 
 // the promise: three short vows take the stage one after another as you scroll — each rises out of soft blur, holds, and lifts away
 function vow() {
-  // the promise: three vows take the stage in turn. Each arrives as a fine outline, then fills with real silver from the bottom up
-  // (the engraving of a Kingdom piece, clipped into the letters) while a glint sweeps across; behind it, a piece rises softly.
+  // the promise, compact: three vows stacked as one quiet block. No pin, no extra scroll — as the block passes through the screen
+  // each line fills with real silver in turn, a glint following, so it reads as one short moment.
   const sec = document.querySelector('.rg2-vow'); if (!sec) return;
-  const lines = [...sec.querySelectorAll('.rg2-vow__l')], bgs = [...sec.querySelectorAll('.rg2-vow__bg img')];
-  const fill = (l) => l.querySelector('.rg2-vow__f');
-  if (reduced()) { lines.forEach((l, i) => gsap.set(l, { opacity: i === 0 ? 1 : 0 })); lines.forEach((l) => gsap.set(fill(l), { '--fill': '0%' })); gsap.set(bgs[0], { opacity: 1 }); return; }
-  gsap.set(lines.slice(1), { opacity: 0, yPercent: 30 });
-  gsap.set(bgs, { opacity: 0, yPercent: 8, scale: 1.04 });
-  lines.forEach((l) => gsap.set(fill(l), { '--fill': '100%', '--gx': '-20%' }));
-  gsap.fromTo(sec.querySelector('.rg2-vow__lines'), { opacity: 0, yPercent: 16 }, { opacity: 1, yPercent: 0, ease: 'none', scrollTrigger: { trigger: sec, start: 'top 75%', end: 'top 20%', scrub: 0.8 } });
-  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + innerHeight * 1.5, pin: sec.querySelector('.rg2-vow__pin'), pinSpacing: true, scrub: 0.8 } });
-  const step = 1.8;
-  lines.forEach((l, i) => {
-    const t = i * step;
-    if (i) tl.to(l, { opacity: 1, yPercent: 0, duration: 0.5 }, t - 0.4);
-    tl.to(bgs[i], { opacity: 1, yPercent: 0, scale: 1, duration: 0.7 }, t - 0.4);
-    tl.to(fill(l), { '--fill': '0%', duration: 0.9, ease: 'power1.inOut' }, t);
-    tl.to(fill(l), { '--gx': '120%', duration: 0.7, ease: 'power1.inOut' }, t + 0.5);
-    if (i < lines.length - 1) { tl.to(l, { opacity: 0, yPercent: -30, duration: 0.5 }, t + 1.3); tl.to(bgs[i], { opacity: 0, yPercent: -6, duration: 0.6 }, t + 1.3); }
-  });
-  tl.to({}, { duration: 0.3 });
+  const fills = [...sec.querySelectorAll('.rg2-vow__f')];
+  if (reduced()) { fills.forEach((f) => gsap.set(f, { '--fill': '0%' })); return; }
+  fills.forEach((f) => gsap.set(f, { '--fill': '100%', '--gx': '-20%' }));
+  const tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 78%', end: 'bottom 38%', scrub: 0.8 } });
+  fills.forEach((f, i) => { tl.to(f, { '--fill': '0%', duration: 1, ease: 'power1.inOut' }, i * 0.7); tl.to(f, { '--gx': '120%', duration: 0.8, ease: 'power1.inOut' }, i * 0.7 + 0.6); });
 }
 
 function products() {

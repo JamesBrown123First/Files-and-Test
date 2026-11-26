@@ -849,3 +849,14 @@
 /* a little more air between the banner and Look closer */
 @media (min-width:901px){.pg-regalia2 main>.rg2-loupe{margin-top:calc(var(--bandG) - 92px - 4.6vh + 48px)!important}}
 @media (max-width:900px){.pg-regalia2 main>.rg2-loupe{margin-top:-12px!important}}
+
+/* ===== the vows, compact: one centred block of three lines in the normal flow — no pin, no full screen ===== */
+.rg2-vow{padding:calc(var(--gap) * .45) var(--pad)!important}
+.rg2-vow__pin{height:auto!important;display:block;padding:0}
+.rg2-vow__bg{display:none}
+.rg2-vow__lines{display:grid;justify-items:center;gap:clamp(2px,.6vw,10px);opacity:1!important;transform:none!important}
+.rg2-vow__l{grid-area:auto;opacity:1!important;transform:none!important;font-size:calc(clamp(34px,4.6vw,78px) * var(--ds))!important;white-space:nowrap}
+@media (max-width:900px){.rg2-vow__l{font-size:calc(clamp(28px,8.4vw,52px) * var(--ds))!important}.rg2-vow__o,.rg2-vow__f{max-width:none}}
+@media (max-width:900px){.rg2-vow__l{font-size:calc(clamp(24px,6.6vw,48px) * var(--ds))!important}}
+.rg2-vow__lines{width:100%}.rg2-vow__l{width:100%;justify-items:center}.rg2-vow__o,.rg2-vow__f{justify-self:center;width:max-content;max-width:100%}
+@media (max-width:900px){.rg2-vow__l{max-width:none!important;white-space:nowrap}}
