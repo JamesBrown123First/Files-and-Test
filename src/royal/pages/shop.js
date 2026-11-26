@@ -46,6 +46,22 @@ function shop() {
   const all = chips.find((c) => c.dataset.cat === 'all');
   chips.forEach((b) => b.addEventListener('click', () => setActive(b === active && b !== all ? all : b)));
   sel?.addEventListener('change', () => { sort = sel.value; render(); });
+  // the filter row: the mouse wheel scrolls it sideways while the pointer is over it (the page carries on once it reaches an end);
+  // it can also be dragged with the mouse
+  const row = document.querySelector('.sp-chips');
+  if (row) {
+    row.addEventListener('wheel', (e) => {
+      const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      const max = row.scrollWidth - row.clientWidth;
+      if (max <= 0 || (d < 0 && row.scrollLeft <= 0) || (d > 0 && row.scrollLeft >= max - 1)) return;
+      e.preventDefault(); e.stopPropagation(); row.scrollLeft += d;
+    }, { passive: false });
+    let down = null, moved = false;
+    row.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = { x: e.clientX, l: row.scrollLeft }; moved = false; });
+    addEventListener('pointermove', (e) => { if (!down) return; const dx = e.clientX - down.x; if (Math.abs(dx) > 4) moved = true; row.scrollLeft = down.l - dx; });
+    addEventListener('pointerup', () => { down = null; });
+    row.addEventListener('click', (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+  }
   q?.addEventListener('input', () => { term = q.value.trim().toLowerCase(); render(); });
 }
 

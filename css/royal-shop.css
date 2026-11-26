@@ -175,3 +175,4 @@
   .sp-chips{grid-column:1/-1;grid-row:2;margin:0 calc(var(--pad) * -1)!important;padding-left:var(--pad)!important}
 }
 .sp-search input{width:210px}
+.sp-chips{cursor:grab;overscroll-behavior-x:contain}.sp-chips:active{cursor:grabbing}
