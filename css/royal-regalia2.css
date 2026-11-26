@@ -846,3 +846,6 @@
   .pg-regalia2 .r-foot__cols>div:nth-child(3) h3{flex-basis:100%}
   .pg-regalia2 .r-foot__social h3{flex-basis:100%}
 }
+/* a little more air between the banner and Look closer */
+@media (min-width:901px){.pg-regalia2 main>.rg2-loupe{margin-top:calc(var(--bandG) - 92px - 4.6vh + 48px)!important}}
+@media (max-width:900px){.pg-regalia2 main>.rg2-loupe{margin-top:-12px!important}}
