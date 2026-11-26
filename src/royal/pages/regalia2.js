@@ -295,11 +295,11 @@ function vow() {
   });
 }
 
-// our story: small silver "windows" sit inside the sentences and open as the words light up
+// our story: a fine silver line draws itself beneath each key phrase as the words light up
 function pills() {
-  const ps = [...document.querySelectorAll('.rg2-pill')]; if (!ps.length) return;
-  if (reduced()) return ps.forEach((p) => p.classList.add('is-open'));
-  ps.forEach((p) => ScrollTrigger.create({ trigger: p, start: 'top 72%', onEnter: () => p.classList.add('is-open'), onLeaveBack: () => p.classList.remove('is-open') }));
+  const ms = [...document.querySelectorAll('.rg2-mark')]; if (!ms.length) return;
+  if (reduced()) return ms.forEach((m) => m.classList.add('is-on'));
+  ms.forEach((m) => ScrollTrigger.create({ trigger: m, start: 'top 62%', onEnter: () => m.classList.add('is-on'), onLeaveBack: () => m.classList.remove('is-on') }));
 }
 
 function products() {

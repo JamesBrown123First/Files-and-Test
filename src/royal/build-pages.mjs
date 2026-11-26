@@ -535,8 +535,8 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 </section>
 ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-story__seal"[\s\S]*?<\/div>\n/)[0].replace('r-story__seal', 'r-story__seal rg2-seal'); return `<section class="r-story r-story--split rg2-story" id="story" aria-label="Our story">
   <p class="r-label" data-reveal>Our story</p>
-  <p class="r-story__big rg2-story__one" data-fill>Kingdom was created to redefine <span class="rg2-pill" aria-hidden="true"><img src="assets/items/pitcher-960.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%"></span> silver gifting, bringing the beauty, presence, and elegance of silver <span class="rg2-pill" aria-hidden="true"><img src="assets/items/ewer-basin-960.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 60%"></span> to a price that makes generous giving possible.</p>
-  <p class="r-story__big rg2-story__more" data-fill>From carefully selected <em>silver-filled</em> <span class="rg2-pill" aria-hidden="true"><img src="assets/items/spice-tower-960.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 45%"></span> pieces to thoughtful <em>packaging,</em> <span class="rg2-pill" aria-hidden="true"><img src="assets/ads/ad-06-800.webp" alt="" loading="lazy" decoding="async" style="object-position:30% 55%"></span> every detail is designed to make giving feel <em>elevated.</em></p>
+  <p class="r-story__big rg2-story__one" data-fill>Kingdom was created to redefine <span class="rg2-mark">silver gifting</span>, bringing the beauty, presence, and elegance of silver to a price that makes <span class="rg2-mark">generous giving possible.</span></p>
+  <p class="r-story__big rg2-story__more" data-fill>From carefully selected <span class="rg2-mark">silver-filled pieces</span> to <span class="rg2-mark">thoughtful packaging,</span> every detail is designed to make giving feel <span class="rg2-mark">elevated.</span></p>
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
