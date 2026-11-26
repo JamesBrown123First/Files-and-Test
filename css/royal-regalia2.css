@@ -712,3 +712,17 @@
   .pg-regalia2 .rg2-ch__t p{margin-top:8px}
   .pg-regalia2 .rg2-dots{display:none}
 }
+/* phones & tablets: one clear gap between a heading group and the image that follows it */
+@media (max-width:900px){
+  .pg-regalia2{--media-gap:clamp(40px,7vw,56px)}
+  .pg-regalia2 .rg2-feat__copy .r-h2{margin-bottom:var(--media-gap)!important}
+  .pg-regalia2 .rg2-feat__cta{margin-top:var(--media-gap)!important}
+  .pg-regalia2 #occasions .r-occ__list{margin-top:calc(var(--media-gap) - 40px)}
+  .pg-regalia2 .rg2-camp__track{margin-top:calc(var(--media-gap) - 32px)}
+  .pg-regalia2 .rg2-loupe__pin{gap:28px}
+}
+@media (max-width:900px){
+  .pg-regalia2 .rg2-feat__cta{margin-top:calc(var(--media-gap) - 28px)!important}
+  .pg-regalia2 #occasions .r-sec-head{margin-bottom:var(--media-gap)!important;padding-bottom:0}
+  .pg-regalia2 #occasions .r-occ__list{margin-top:0!important}
+}
