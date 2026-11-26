@@ -834,3 +834,15 @@
   .pg-regalia2 .r-foot__base{position:absolute!important;left:var(--pad)!important;right:var(--pad)!important;bottom:calc((100vw - var(--pad) * 2) * .1)!important;margin:0!important;z-index:1;
     display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;font-size:11px}
 }
+/* footer on tablets: three columns (Shop · Kingdom · Care) across the full width, Follow as its own row beneath */
+@media (max-width:900px){
+  .pg-regalia2 .r-foot__cols{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--s5);row-gap:var(--s6)}
+  .pg-regalia2 .r-foot__social{grid-column:1/-1;grid-template-columns:auto;display:flex!important;flex-wrap:wrap;align-items:center;gap:0 28px;padding-top:var(--s4);border-top:1px solid var(--line)}
+  .pg-regalia2 .r-foot__social h3{margin:0 8px 0 0}
+}
+@media (max-width:600px){
+  .pg-regalia2 .r-foot__cols{grid-template-columns:1fr 1fr}
+  .pg-regalia2 .r-foot__cols>div:nth-child(3){grid-column:1/-1;display:flex!important;flex-wrap:wrap;align-items:center;gap:0 22px;padding-top:var(--s4);border-top:1px solid var(--line)}
+  .pg-regalia2 .r-foot__cols>div:nth-child(3) h3{flex-basis:100%}
+  .pg-regalia2 .r-foot__social h3{flex-basis:100%}
+}
