@@ -66,7 +66,7 @@ function loupe() {
   let active = -1, prog = 0, f = 0, hover = false, mx = 0, my = 0, lx = 0, ly = 0, first = true;
   const select = (i) => { if (i === active) return; active = i; texts.forEach((t, k) => t.classList.toggle('is-on', k === i)); dots.forEach((d, k) => d.classList.toggle('is-on', k === i)); count.textContent = ['I', 'II', 'III', 'IV', 'V'][i]; };
   select(0);
-  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * 3.4, pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
+  const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => '+=' + innerHeight * 2.4, pin: sec.querySelector('.rg2-loupe__pin'), scrub: true, invalidateOnRefresh: true,
     onUpdate: (s) => { prog = s.progress; select(clamp(Math.round(s.progress * 4.4 - 0.2), 0, 4)); } });
   dots.forEach((d, i) => d.addEventListener('click', () => smoothTo(st.start + (st.end - st.start) * ((i + 0.2) / 4.4))));
   stage.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; hover = true; const s = stage.getBoundingClientRect(); mx = e.clientX - s.left; my = e.clientY - s.top; });
@@ -270,6 +270,23 @@ function ann() {
   let i = 0; setInterval(() => { items[i].classList.remove('is-on'); i = (i + 1) % items.length; items[i].classList.add('is-on'); }, 4200);
 }
 
+// the promise: three short vows take the stage one after another as you scroll — each rises out of soft blur, holds, and lifts away
+function vow() {
+  const sec = document.querySelector('.rg2-vow'); if (!sec) return;
+  const lines = [...sec.querySelectorAll('.rg2-vow__l')], ticks = [...sec.querySelectorAll('.rg2-vow__ticks li')];
+  if (reduced()) { lines.forEach((l, i) => gsap.set(l, { opacity: i === 0 ? 1 : 0 })); ticks[0]?.classList.add('is-on'); return; }
+  gsap.set(lines.slice(1), { opacity: 0, yPercent: 40, filter: 'blur(10px)' });
+  // the first vow is already there as the section arrives
+  gsap.fromTo(lines[0], { opacity: 0, yPercent: 30, filter: 'blur(8px)' }, { opacity: 1, yPercent: 0, filter: 'blur(0px)', ease: 'none', scrollTrigger: { trigger: sec, start: 'top 70%', end: 'top 15%', scrub: 0.8 } });
+  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + innerHeight * 1.8, pin: sec.querySelector('.rg2-vow__pin'), pinSpacing: true, scrub: 0.8,
+    onUpdate: (st) => { const k = Math.min(2, Math.floor(st.progress * 3)); ticks.forEach((t, i) => t.classList.toggle('is-on', i === k)); } } });
+  lines.forEach((l, i) => {
+    if (i) tl.to(l, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 1 }, i * 2 - 0.6);
+    if (i < lines.length - 1) tl.to(l, { opacity: 0, yPercent: -40, filter: 'blur(10px)', duration: 1 }, i * 2 + 0.6);
+  });
+  tl.to({}, { duration: 0.6 });
+}
+
 function products() {
   const m = document.querySelector('.rg2-feat__media'); if (!m) return;
   m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
@@ -281,6 +298,6 @@ preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(
   await loader.finish();
   hero();
   await start();
-  loupe(); basin(); gift(); campaign(); products(); tones(); orbit();
+  loupe(); basin(); gift(); campaign(); products(); tones(); orbit(); vow();
   ScrollTrigger.sort(); ScrollTrigger.refresh();
 });

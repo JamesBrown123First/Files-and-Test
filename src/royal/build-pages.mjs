@@ -535,7 +535,11 @@ ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-sto
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
-<section class="rg2-trio" aria-label="The Kingdom promise"><p class="rg2-trio__line" data-reveal>${COPY.close.map((c, i) => `<span>${i === 2 ? `<em>${c.replace(/\.$/, '')}</em>` : c.replace(/\.$/, '')}</span>`).join(`<i aria-hidden="true">${logo('k-icon')}</i>`)}</p></section>`; })()}
+<section class="rg2-trio rg2-vow" aria-label="The Kingdom promise"><div class="rg2-vow__pin">
+  <div class="rg2-vow__lines" aria-hidden="true"><p class="rg2-vow__l">Filled with <em>silver.</em></p><p class="rg2-vow__l">Beautifully <em>gifted.</em></p><p class="rg2-vow__l">Priced within <em>reach.</em></p></div>
+  <p class="r-vh">Filled with silver. Beautifully gifted. Priced within reach.</p>
+  <ol class="rg2-vow__ticks" aria-hidden="true"><li></li><li></li><li></li></ol>
+</div></section>`; })()}
 <section class="rg2-basin" aria-label="A royal touch">
   <p class="r-label" data-reveal>Kingdom silver</p>
   <h2 class="r-h2" data-split>A royal <em>touch</em></h2>

@@ -648,3 +648,16 @@
 .pg-regalia2 .r-cursor.is-label i{opacity:1}
 .pg-regalia2 .r-cursor.is-btn i{transform:scale(.6);opacity:.0}
 .pg-regalia2 .r-cursor.is-btn span{transform:scale(0)!important}
+
+/* ===== the promise as a scroll moment: three vows, one at a time, centre stage ===== */
+.rg2-vow{padding:0!important}
+.rg2-vow__pin{position:relative;height:100vh;height:100svh;display:grid;place-items:center;padding:0 var(--pad)}
+.rg2-vow__lines{display:grid;place-items:center;text-align:center}
+.rg2-vow__l{grid-area:1/1;margin:0;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--display-track);font-stretch:var(--display-stretch,100%);
+  font-size:calc(clamp(44px,7.4vw,128px) * var(--ds));line-height:1;white-space:nowrap;will-change:transform,opacity,filter}
+.rg2-vow__l em{display:inline-block;font-family:var(--font-italic);font-weight:var(--ital-weight,300);font-size:calc(1em * var(--ital-scale,1));text-transform:none;letter-spacing:0;color:var(--accent);padding:0 .1em}
+.rg2-vow__ticks{position:absolute;left:50%;bottom:clamp(40px,8vh,80px);transform:translateX(-50%);display:flex;gap:10px;list-style:none;margin:0;padding:0}
+.rg2-vow__ticks li{width:28px;height:2px;border-radius:2px;background:var(--line-2);transition:background .5s var(--ease),width .5s var(--ease)}
+.rg2-vow__ticks li.is-on{background:var(--accent);width:44px}
+.r-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){.rg2-vow__l{font-size:calc(clamp(34px,10.5vw,72px) * var(--ds));white-space:normal;max-width:12ch}}
