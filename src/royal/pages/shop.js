@@ -16,10 +16,14 @@ function shop() {
   const sel = document.querySelector('.sp-sort select');
   const q = document.querySelector('.sp-search input');
   let active = chips.find((c) => c.dataset.cat === 'all'), sort = 'featured', term = '';
+  // each card's searchable words: its own text plus the names of its occasions and its category
+  const occName = Object.fromEntries(chips.filter((c) => c.dataset.occ).map((c) => [c.dataset.occ, c.textContent.trim()]));
+  occName.shabbos = 'Shabbos & Yom Tov';
+  cards.forEach((c) => (c.dataset.words = (c.textContent + ' ' + c.dataset.occ.split(' ').map((k) => occName[k] || k.replace('-', ' ')).join(' ')).toLowerCase()));
   const match = (c) => {
     const d = active.dataset;
     const ok = d.cat ? (d.cat === 'all' || c.dataset.cat === d.cat) : c.dataset.occ.split(' ').includes(d.occ);
-    return ok && (!term || c.textContent.toLowerCase().includes(term));
+    return ok && (!term || term.split(/\s+/).every((w) => c.dataset.words.includes(w)));
   };
   const render = () => {
     const list = cards.filter(match);
