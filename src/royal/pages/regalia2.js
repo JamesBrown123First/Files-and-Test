@@ -288,6 +288,13 @@ function vow() {
   fills.forEach((f, i) => { tl.to(f, { '--fill': '0%', duration: 1, ease: 'power1.inOut' }, i * 0.7); tl.to(f, { '--gx': '120%', duration: 0.8, ease: 'power1.inOut' }, i * 0.7 + 0.6); });
 }
 
+// our story: small silver "windows" sit inside the sentences and open as the words light up
+function pills() {
+  const ps = [...document.querySelectorAll('.rg2-pill')]; if (!ps.length) return;
+  if (reduced()) return ps.forEach((p) => p.classList.add('is-open'));
+  ps.forEach((p) => ScrollTrigger.create({ trigger: p, start: 'top 72%', onEnter: () => p.classList.add('is-open'), onLeaveBack: () => p.classList.remove('is-open') }));
+}
+
 function products() {
   const m = document.querySelector('.rg2-feat__media'); if (!m) return;
   m.addEventListener('pointermove', (e) => { const r = m.getBoundingClientRect(); m.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); m.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
@@ -299,6 +306,6 @@ preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(
   await loader.finish();
   hero();
   await start();
-  loupe(); basin(); gift(); campaign(); products(); tones(); orbit(); vow();
+  loupe(); basin(); gift(); campaign(); products(); tones(); orbit(); vow(); pills();
   ScrollTrigger.sort(); ScrollTrigger.refresh();
 });
