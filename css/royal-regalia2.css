@@ -741,3 +741,4 @@
 /* the vows: the stage is just tall enough for one line — no dead scroll above or below */
 .rg2-vow__pin{height:min(100svh,760px)}
 @media (max-width:900px){.rg2-vow__pin{height:min(100svh,620px)}}
+.rg2-vow__ticks{display:none!important}
