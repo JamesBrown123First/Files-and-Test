@@ -102,9 +102,13 @@ function loupe() {
     if (leader.getClientRects().length) {
       const P = pin.getBoundingClientRect(), Sg = stage.getBoundingClientRect(), h = texts[Math.max(0, active)].querySelector('h3').getBoundingClientRect();
       // side by side: from the lens across to the name. Stacked (phone/tablet): from the lens down to the top of the name.
-      const stacked = h.top > Sg.bottom - 4;
-      const x1 = Sg.left - P.left + lx + (stacked ? 0 : L * 0.5 * 0.72), y1 = Sg.top - P.top + ly + (stacked ? L * 0.5 * 0.72 : 0);
-      const x2 = stacked ? h.left - P.left + Math.min(h.width * 0.25, 40) : h.left - P.left - 18, y2 = stacked ? h.top - P.top - 12 : h.top - P.top + h.height * 0.35;
+      // side by side: across to the name. Name below the window: down to its top. Name above (phones/tablets): up to the line under its description.
+      const below = h.top > Sg.bottom - 4, above = h.bottom < Sg.top + 4;
+      const tx = texts[Math.max(0, active)], tb = tx.getBoundingClientRect();
+      const r = L * 0.5 * 0.72;
+      let x1 = Sg.left - P.left + lx + r, y1 = Sg.top - P.top + ly, x2 = h.left - P.left - 18, y2 = h.top - P.top + h.height * 0.35;
+      if (below) { x1 = Sg.left - P.left + lx; y1 = Sg.top - P.top + ly + r; x2 = h.left - P.left + Math.min(h.width * 0.25, 40); y2 = h.top - P.top - 12; }
+      if (above) { x1 = Sg.left - P.left + lx; y1 = Sg.top - P.top + ly - r; x2 = tb.left - P.left + Math.min(tb.width * 0.5, 90); y2 = tb.bottom - P.top + 10; }
       ln.setAttribute('x1', x1.toFixed(1)); ln.setAttribute('y1', y1.toFixed(1)); ln.setAttribute('x2', x2.toFixed(1)); ln.setAttribute('y2', y2.toFixed(1));
       dot.setAttribute('cx', x2.toFixed(1)); dot.setAttribute('cy', y2.toFixed(1));
       // stays drawn while you steer the lens yourself; it follows the lens to the current name

@@ -703,3 +703,12 @@
 @keyframes rg2-crest{from{opacity:0;transform:scale(.92) rotate(-4deg)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.rg2-menu *{transition:none!important;animation:none!important}}
 .rg2-menu__foot a{font-family:var(--font-text);text-transform:none;font-size:13px;letter-spacing:.04em}
+/* phones & tablets: Look closer fits one screen — the words first, the window beneath, both always in view */
+@media (max-width:900px){
+  .pg-regalia2 .rg2-loupe__pin{grid-template-rows:auto minmax(0,1fr);gap:var(--stack-2);padding:calc(var(--ann-h) + var(--head-h) + 16px) var(--pad) calc(var(--s5) + 8px);height:100svh}
+  .pg-regalia2 .rg2-loupe__copy{order:-1;grid-row:1}
+  .pg-regalia2 .rg2-loupe__stage{grid-row:2;height:100%!important;max-height:min(60svh,640px);width:min(100%,calc(min(60svh,640px) * .72));justify-self:center;align-self:start}
+  .pg-regalia2 .rg2-ch__t h3{font-size:calc(clamp(32px,8.6vw,52px) * var(--ds))}
+  .pg-regalia2 .rg2-ch__t p{margin-top:8px}
+  .pg-regalia2 .rg2-dots{display:none}
+}
