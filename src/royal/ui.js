@@ -133,6 +133,8 @@ export function initCursor() {
     const t = e.target.closest('[data-cursor], a, button, input, label, [role="button"]');
     c.classList.toggle('is-link', !!t && !t.dataset.cursor);
     c.classList.toggle('is-label', !!t?.dataset.cursor);
+    // refined pages: over a real button the cursor steps aside — no label disc covering the button
+    c.classList.toggle('is-btn', document.body.hasAttribute('data-refined') && !!t && (t.matches('.r-btn, .r-shop__btn, button') || !!t.closest('.r-btn, .r-shop__btn')));
     label.textContent = t?.dataset.cursor || '';
   });
   gsap.ticker.add(() => {
