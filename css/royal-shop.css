@@ -176,3 +176,6 @@
 }
 .sp-search input{width:210px}
 .sp-chips{cursor:grab;overscroll-behavior-x:contain}.sp-chips:active{cursor:grabbing}
+/* product card text: the regular geometric face (Jost) throughout, names tracked +100 (10%) */
+.sp-card__name{font-family:var(--font-body)!important;font-weight:500!important;text-transform:uppercase;letter-spacing:.1em!important;font-size:14px!important;line-height:1.35!important}
+.sp-card__cat,.sp-card__price,.sp-card__line,.sp-card__add{font-family:var(--font-body)!important}
