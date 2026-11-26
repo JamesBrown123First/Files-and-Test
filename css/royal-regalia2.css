@@ -969,3 +969,7 @@
 /* footer: the four columns spread edge to edge, so Follow ends on the right margin just as Shop starts on the left */
 @media (min-width:901px){.pg-regalia2 .r-foot__cols{display:flex!important;justify-content:space-between;gap:var(--gap)}
   .pg-regalia2 .r-foot__cols>div{flex:0 0 auto}}
+
+/* Look closer (desktop): the framed window a touch shorter (≈9%), still centred beside its text */
+@media (min-width:901px){.pg-regalia2 .rg2-loupe__stage{height:min(71vh,660px)!important;align-self:center!important}}
+@media (max-width:900px){.pg-regalia2 .rg2-loupe__stage{height:min(42svh,480px)!important;max-height:min(42svh,480px)!important}}
