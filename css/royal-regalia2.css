@@ -1164,7 +1164,7 @@
     linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.03) 55%,rgba(var(--accent-rgb),.10)) border-box!important}
 @media (min-width:901px){.rg2-pledge__card p{font-size:16px!important}.rg2-pledge .rg2-pledge__n{font-size:30px!important}}
 
-/* basin: lifted back up so about a third of the plate shows (it had sunk to ~12%) */
-.pg-regalia2 .rg2-basin{--show:.5}
-@media (max-width:900px){.pg-regalia2 .rg2-basin{--show:.52}}
+/* basin: halfway between the original rest position (.32) and the over-lifted one (.5) */
+.pg-regalia2 .rg2-basin{--show:.41}
+@media (max-width:900px){.pg-regalia2 .rg2-basin{--show:.43}}
 @media (max-width:600px){.pg-regalia2 .r-occ{margin-top:18px}}
