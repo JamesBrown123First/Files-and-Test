@@ -538,7 +538,7 @@ ${(() => { const h = P.story('split'); const seal = h.match(/  <div class="r-sto
   <p class="r-label" data-reveal>Our story</p>
   <p class="r-story__big rg2-story__one" data-fill>Kingdom was created to redefine <span class="rg2-mark">silver gifting,</span> bringing the beauty, presence, and elegance of silver to a price that makes <span class="rg2-mark">generous giving</span> possible.</p>
   <p class="r-story__big rg2-story__more" data-fill>From carefully selected <span class="rg2-mark">silver-filled</span> pieces to thoughtful <span class="rg2-mark">packaging,</span> every detail is designed to make giving feel <span class="rg2-mark">elevated.</span></p>
-  <div class="rg2-pledge" role="list" aria-label="The Kingdom promise">${[['I','Filled with','silver'],['II','Beautifully','gifted'],['III','Priced within','reach']].map(([n,a,b],k)=>`<div class="rg2-pledge__card" role="listitem" tabindex="0" style="--k:${k}"><span class="rg2-pledge__n" data-n="${n}" aria-hidden="true">${n}</span><p>${a} <b>${b}</b></p></div>`).join('')}</div>
+  <div class="rg2-pledge" role="list" aria-label="The Kingdom promise">${[['I','Filled with','silver'],['II','Beautifully','gifted'],['III','Priced within','reach']].map(([n,a,b],k)=>`<div class="rg2-pledge__card" role="listitem" tabindex="0" style="--k:${k}"><span class="rg2-pledge__n" data-n="${n}" aria-hidden="true">${n}</span><p>${a} <b>${b}</b>.</p></div>`).join('')}</div>
   <div class="rg2-story__row">
 ${seal}  </div>
 </section>
