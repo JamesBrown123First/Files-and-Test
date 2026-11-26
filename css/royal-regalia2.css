@@ -661,3 +661,9 @@
 .rg2-vow__ticks li.is-on{background:var(--accent);width:44px}
 .r-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:900px){.rg2-vow__l{font-size:calc(clamp(34px,10.5vw,72px) * var(--ds));white-space:normal;max-width:12ch}}
+/* phones & tablets: the crest sits on the true centre of the screen (equal columns either side) */
+@media (max-width:900px){
+  .pg-regalia2 .r-head--center{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+  .pg-regalia2 .r-head--center .r-head__nav--r{justify-self:end}
+}
+@media (max-width:900px){.is-scrolled .rg2-head{padding:0 10px}}
