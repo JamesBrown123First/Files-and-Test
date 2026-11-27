@@ -1205,3 +1205,12 @@
 .rg2-pledge.is-on .rg2-pledge__card::after{opacity:1;animation:rg2Ray 9s linear calc(1.2s + var(--k) * 3s) infinite both!important}
 .rg2-pledge__card:hover::after{animation-duration:3s!important}
 @keyframes rg2Ray{from{--ra:0deg}to{--ra:360deg}}
+
+/* responsive fixes (desktop widths 901–1200px): nothing may run past the screen */
+@media (min-width:901px){
+  /* footer: four columns spread edge to edge, but the gap between them shrinks with the screen */
+  .pg-regalia2 .r-foot__cols{gap:clamp(20px,3vw,var(--gap))!important;flex-wrap:nowrap}
+  .pg-regalia2 .r-foot__cols>div{flex:0 1 auto!important;min-width:0}
+  /* promise: the row is never narrower than the three pills need */
+  .pg-regalia2 .rg2-story .rg2-pledge{width:min(100%,max(var(--storyw,600px),660px))!important}
+}
