@@ -1155,3 +1155,43 @@
   .pg-regalia2 .rg2-hero .rg2-lead{margin-left:calc(var(--hw2,(min(100vw,1440px) - var(--pad) * 2)) * .0119 + (100vw - min(100vw,1440px)) / 2)!important}
   .pg-regalia2 .rg2-hero .rg-specs{margin-right:calc((min(100vw,1440px) - var(--pad) * 2) * .0082 + (100vw - min(100vw,1440px)) / 2)!important}
 }
+
+/* promise pills: version D restored exactly (frosted glass pills, larger text) */
+/* promise pills v6: quieter and more refined. Frosted glass (translucent, not a solid patch), a smooth Apple-like
+   edge that is lighter on top and fades toward the bottom. The light now sweeps around each edge just once as the
+   pills arrive, one after another, and again on hover, so it isn't constantly moving. */
+.rg2-pledge__card{
+  background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025)) padding-box,
+    conic-gradient(from var(--ra),rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 290deg,rgba(var(--accent-rgb),.7) 330deg,rgba(255,240,232,.9) 342deg,rgba(var(--accent-rgb),.7) 352deg,rgba(255,255,255,0) 360deg) border-box,
+    linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 60%,rgba(var(--accent-rgb),.12)) border-box!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);
+  box-shadow:0 18px 40px -28px rgba(0,0,0,.55)!important}
+.rg2-pledge.is-on .rg2-pledge__card{animation:rg2Ray 2.4s cubic-bezier(.6,0,.3,1) calc(1.1s + var(--k) * .35s) 1 both}
+.rg2-pledge__card:hover,.rg2-pledge__card:focus-visible{animation:rg2Ray 1.6s cubic-bezier(.6,0,.3,1) 0s 1 both!important}
+@keyframes rg2Ray{from{--ra:-20deg}to{--ra:340deg}}
+/* v6b: no rotating ray (it showed through the glass); the edge is a still, smooth top-lit line, and a soft sheen
+   glides across each pill once as it arrives and again on hover */
+.rg2-pledge__card{animation:none!important;
+  background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025)) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.06) 55%,rgba(var(--accent-rgb),.18)) border-box!important;
+  -webkit-background-clip:padding-box,padding-box,border-box;background-clip:padding-box,padding-box,border-box}
+.rg2-pledge__card::before{background:linear-gradient(110deg,transparent 30%,rgba(255,236,226,.16) 50%,transparent 70%) 170% 0/260% 100% no-repeat!important;transition:background-position 1.8s var(--ease) calc(1s + var(--k) * .3s)!important}
+.rg2-pledge.is-on .rg2-pledge__card::before{background-position:-70% 0!important}
+.rg2-pledge__card:hover::before{transition-delay:0s!important;background-position:170% 0!important;transition-duration:1.2s!important}
+.rg2-pledge__card{background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.015),rgba(255,255,255,0)) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.03) 55%,rgba(var(--accent-rgb),.10)) border-box!important}
+@media (min-width:901px){.rg2-pledge__card p{font-size:16px!important}.rg2-pledge .rg2-pledge__n{font-size:30px!important}}
+
+/* + the light travelling around each pill's edge, drawn as a smooth SVG outline (no jagged mask) */
+.rg2-pledge__ray{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2}
+.rg2-pledge__ray rect{fill:none;stroke:url(#rg2RayGrad);stroke-width:1.2;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0;transition:opacity .8s var(--ease)}
+.rg2-pledge.is-on .rg2-pledge__ray rect{opacity:1;animation:rg2RayDash 9s linear calc(1.2s + var(--k) * 3s) infinite both}
+.rg2-pledge__card:hover .rg2-pledge__ray rect{animation-duration:3s}
+@keyframes rg2RayDash{to{stroke-dashoffset:-1000}}
+@media (prefers-reduced-motion:reduce){.rg2-pledge__ray rect{animation:none!important}}

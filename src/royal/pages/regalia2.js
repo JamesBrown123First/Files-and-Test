@@ -296,6 +296,18 @@ function vow() {
     if (w) sec.style.setProperty('--storyw', `${Math.round(w)}px`);
   };
   fit(); addEventListener('resize', fit); document.fonts?.ready.then(fit);
+  // light travelling around each pill: an SVG outline whose short bright dash runs along the rounded edge
+  if (!document.getElementById('rg2RayGrad')) document.body.insertAdjacentHTML('beforeend', '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rg2RayGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="400" y2="0"><stop offset="0" stop-color="#f3c09b"/><stop offset=".5" stop-color="#fff4ec"/><stop offset="1" stop-color="#f3c09b"/></linearGradient></defs></svg>');
+  const rays = () => sec.querySelectorAll('.rg2-pledge__card').forEach((c) => {
+    let svg = c.querySelector('.rg2-pledge__ray');
+    if (!svg) { c.insertAdjacentHTML('beforeend', '<svg class="rg2-pledge__ray" aria-hidden="true"><rect pathLength="1000"/></svg>'); svg = c.querySelector('.rg2-pledge__ray'); }
+    const w = c.offsetWidth, h = c.offsetHeight, r = svg.querySelector('rect');
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    r.setAttribute('x', .6); r.setAttribute('y', .6); r.setAttribute('width', w - 1.2); r.setAttribute('height', h - 1.2);
+    r.setAttribute('rx', Math.min(parseFloat(getComputedStyle(c).borderTopLeftRadius) || h / 2, h / 2) - .6);
+    r.setAttribute('stroke-dasharray', '90 910');
+  });
+  rays(); addEventListener('resize', rays); document.fonts?.ready.then(rays);
   sec.querySelectorAll('.rg2-pledge__card').forEach((c) => c.addEventListener('pointermove', (e) => {
     const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
   }));
