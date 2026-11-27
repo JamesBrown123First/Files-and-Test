@@ -325,7 +325,13 @@ function products() {
   if (!reduced()) ScrollTrigger.create({ trigger: m, start: 'top bottom', end: 'bottom top', onUpdate: (s) => m.style.setProperty('--z', (1.14 - s.progress * 0.14).toFixed(4)) });
 }
 
-preloadImages(['assets/img/ewer-bw-2400.webp'], (p) => loader.progress(p)).then(async () => {
+// lower sections get their large background pictures only when the visitor is about a screen away
+const near = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-near'); near.unobserve(e.target); } }), { rootMargin: '120% 0px' });
+document.querySelectorAll('.rg2-loupe, .rg2-basin').forEach((el) => near.observe(el));
+
+// wait only for the hero image the browser actually chose (not the largest file)
+const heroImg = document.querySelector('.rg-ewer__img');
+preloadImages([heroImg?.currentSrc || heroImg?.src || 'assets/img/ewer-bw-1600.webp'], (p) => loader.progress(p)).then(async () => {
   sheen(); band(); ann();
   await loader.finish();
   hero();

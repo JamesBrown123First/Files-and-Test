@@ -244,6 +244,8 @@ export function initBackground() {
     requestAnimationFrame(frame);
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (!visible) return;
+    // 30 frames a second is plenty for a slow-moving backdrop and halves the graphics work
+    if ((frame.skip = !frame.skip)) return;
     const s = getState();
     const speed = s.motion === 'still' ? 0 : s.motion === 'calm' ? 0.45 : 1;
     t += dt * speed;

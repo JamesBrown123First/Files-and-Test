@@ -32,7 +32,7 @@ export function initLoader() {
   let shown = 0, target = 0, done = false, raf;
   const num = el?.querySelector('.r-loader__num'), bar = el?.querySelector('.r-loader__bar i');
   const tick = () => {
-    shown += (target - shown) * 0.08;
+    shown += (target - shown) * 0.2;
     if (num) num.textContent = String(Math.round(shown * 100)).padStart(3, '0');
     if (bar) bar.style.transform = `scaleX(${shown})`;
     if (!done || shown < 0.995) raf = requestAnimationFrame(tick);
@@ -48,7 +48,7 @@ export function initLoader() {
           if (shown < 0.97) return requestAnimationFrame(end);
           cancelAnimationFrame(raf);
           document.documentElement.classList.add('is-loaded');
-          gsap.to(el, { yPercent: -100, duration: reduced() ? 0.01 : 1.1, ease: 'expo.inOut', delay: 0.15, onComplete: () => { el.remove(); res(); } });
+          gsap.to(el, { yPercent: -100, duration: reduced() ? 0.01 : 0.75, ease: 'expo.inOut', delay: 0.05, onComplete: () => { el.remove(); res(); } });
         };
         end();
       });

@@ -708,3 +708,6 @@ body{font-stretch:var(--display-stretch,100%)}
 /* headline faces lighter than Kalieb get a fine stroke for the missing weight (0 for all others) */
 h1,h2,h3,.r-h1,.r-h2,.r-h3,.r-display,.rg2-pledge span,.rg2-menu__big b,.r-mega__links b{-webkit-text-stroke:var(--display-stroke,0px) currentColor}
 .r-story__big,.rg2-hero__side b,.r-hero__aside b{-webkit-text-stroke:calc(var(--display-stroke,0px) * .6) currentColor}
+
+/* performance: the film grain is a still overlay the size of the screen (it used to be 4x the screen and moving every frame) */
+body::after{inset:0!important;animation:none!important;will-change:auto!important}

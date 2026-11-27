@@ -474,6 +474,7 @@ const R2_BOW = `<svg class="g2-bow" viewBox="0 0 200 124" aria-hidden="true"><de
 const R2_ADS = (P.ADS || []).slice(0, 13); // the three Guess With Kingdom ads come after ad 9
 const R2_BAND = ['Filled with silver', 'Given with pride', 'Gift-ready packaging', 'A royal touch', 'Priced within reach'];
 pages.__r2chrome = (h) => h
+  .replace('</title>', '</title>\n<link rel="preload" as="font" type="font/woff2" href="assets/fonts/kalieb-luxury-regular.woff2" crossorigin>')
   .replace('<body class="pg-regalia2">', '<body class="pg-regalia2" data-refined>')
   .replace(/<div class="r-announce">[\s\S]*?<\/div>/, '<div class="r-announce rg2-ann" aria-live="polite"><p class="rg2-ann__rot"><span class="is-on">Order Today. <em>Delivered to Your Door.</em></span><span>Extraordinary Pieces. <em>Unbeatable Prices.</em></span></p></div>')
   .replace('<header class="r-head r-head--center">', '<header class="r-head r-head--center rg2-head">')
@@ -489,12 +490,12 @@ pages.__r2chrome = (h) => h
   <div class="rg2-menu__occ" style="--i:5"><p>Shop by occasion</p><div>${['Shabbos & Yom Tov', 'Weddings', 'Bar Mitzvah', 'New Home', 'Chanukah', 'Thank You'].map((o) => `<a href="#occasions">${o}</a>`).join('')}</div></div>
   <div class="r-menu__foot rg2-menu__foot" style="--i:6"><p>A Royal <em>Touch.</em></p><a href="#concierge">Gift concierge <svg class="r-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
 </div>`);
-pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => pages.__r2chrome(h) }, `
+pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Art of Silver Gifting', post: (h) => pages.__r2chrome(h).replace('</title>', '</title>\n<link rel="preload" as="image" href="assets/img/ewer-bw-1600.webp" imagesrcset="assets/img/ewer-bw-1000.webp 464w, assets/img/ewer-bw-1600.webp 742w, assets/img/ewer-bw-2400.webp 1113w" imagesizes="(min-width:901px) 24vw, 56vw" fetchpriority="high">') }, `
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
   <figure class="rg-ewer">
-    <img class="rg-ewer__img" src="assets/img/ewer-bw-2400.webp" alt="A silver-filled Kingdom piece with deep acanthus relief" width="1113" height="2400">
+    <img class="rg-ewer__img" src="assets/img/ewer-bw-1600.webp" srcset="assets/img/ewer-bw-1000.webp 464w, assets/img/ewer-bw-1600.webp 742w, assets/img/ewer-bw-2400.webp 1113w" sizes="(min-width:901px) 24vw, 56vw" alt="A silver-filled Kingdom piece with deep acanthus relief" width="1113" height="2400" fetchpriority="high" decoding="async">
     <span class="rg-ewer__sheen" aria-hidden="true"></span>
     <span class="rg-ewer__floor" aria-hidden="true"></span>
   </figure>
@@ -515,7 +516,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 <section class="rg2-loupe" aria-label="Look closer">
   <div class="rg2-loupe__pin">
     <div class="rg2-loupe__stage" data-cursor="Inspect">
-      <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="Kingdom silver, seen up close" loading="lazy" decoding="async" width="1113" height="2400"></div>
+      <div class="rg2-loupe__zoom"><img src="assets/img/ewer-bw-2400.webp" alt="Kingdom silver, seen up close" loading="lazy" decoding="async" fetchpriority="low" width="1113" height="2400"></div>
       <span class="rg-lens" aria-hidden="true"><span></span></span>
       <span class="rg2-frame" aria-hidden="true"><i class="rg2-frame__edge"></i><i class="rg2-frame__inner"></i><span class="rg2-frame__crown">${logo('k-icon')}</span></span>
     </div>
@@ -529,7 +530,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 </section>
 <section class="rg2-coll" id="collection" aria-label="The Baroque Collection">
   <div class="rg2-feat">
-    <a class="rg2-feat__media" href="shop.html" data-cursor="Explore"><img src="assets/img/pair-bw.webp" alt="Pieces from the Baroque Collection" width="1748" height="1800" loading="lazy"><span class="rg2-feat__shine" aria-hidden="true"></span></a>
+    <a class="rg2-feat__media" href="shop.html" data-cursor="Explore"><img src="assets/img/pair-bw-1100.webp" srcset="assets/img/pair-bw-1100.webp 1100w, assets/img/pair-bw.webp 1748w" sizes="(min-width:901px) 38vw, 90vw" alt="Pieces from the Baroque Collection" width="1748" height="1800" loading="lazy" decoding="async"><span class="rg2-feat__shine" aria-hidden="true"></span></a>
     <div class="rg2-feat__copy">
       <p class="r-label" data-reveal>The collection</p>
       <h2 class="r-h2" data-split>The Baroque<br><em>Collection</em></h2>
@@ -550,7 +551,7 @@ ${seal}  </div>
   <p class="r-label" data-reveal>Kingdom silver</p>
   <h2 class="r-h2" data-split>A royal <em>touch</em></h2>
   <p class="r-lead" data-reveal>The beauty, presence and elegance of silver, at a price that makes generous giving possible.</p>
-  <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="A silver-filled basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200.webp" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>
+  <div class="rg2-basin__wrap"><div class="rg2-basin__disc" data-cursor="Turn" role="img" aria-label="A silver-filled basin. Drag to turn it." tabindex="0"><img src="assets/img/basin-bw-1200q.webp" loading="lazy" decoding="async" alt="" width="1200" height="1200" loading="lazy" draggable="false"><span class="rg2-basin__light" aria-hidden="true"></span></div></div>
 </section>
 ${P.occasions('accordion', 'Silver for<br><em>every table</em>')}
 <section class="rg2-camp" id="campaign" aria-label="Campaign gallery">
@@ -642,7 +643,7 @@ pages.shop = page({ id: 'shop', title: 'Shop — Kingdom Silver Collection', pos
 <div class="sp-shop">
 <div class="sp-bar" role="toolbar" aria-label="Search, filter and sort">
   <label class="sp-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input type="search" placeholder="Search pieces or by occasion" aria-label="Search pieces or by occasion"></label>
-  <div class="sp-chips" role="group" aria-label="Filter" data-lenis-prevent-wheel>${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}<i class="sp-chips__sep" aria-hidden="true"></i>${SHOP_OCC.filter(([k]) => k !== 'shabbos').map(([k, t, img]) => `<button type="button" class="sp-chip sp-chip--occ" data-occ="${k}" aria-pressed="false"><img src="assets/royal/${img}.webp" alt="" width="22" height="22">${t}</button>`).join('')}</div>
+  <div class="sp-chips" role="group" aria-label="Filter" data-lenis-prevent-wheel>${SHOP_CATS.map(([k, t], i) => `<button type="button" class="sp-chip${i ? '' : ' is-on'}" data-cat="${k}" aria-pressed="${i ? 'false' : 'true'}">${t}<small>${k === 'all' ? SHOP_ITEMS.length : SHOP_ITEMS.filter((x) => x[2] === k).length}</small></button>`).join('')}<i class="sp-chips__sep" aria-hidden="true"></i>${SHOP_OCC.filter(([k]) => k !== 'shabbos').map(([k, t, img]) => `<button type="button" class="sp-chip sp-chip--occ" data-occ="${k}" aria-pressed="false"><img src="assets/royal/${img}-thumb.webp" alt="" width="22" height="22">${t}</button>`).join('')}</div>
   <label class="sp-sort"><span>Sort</span><select aria-label="Sort pieces"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name</option></select></label>
 </div>
 <section class="sp-grid" id="pieces" aria-label="Pieces">${SHOP_ITEMS.map(([id, name, cat, price, line, occ], i) => `

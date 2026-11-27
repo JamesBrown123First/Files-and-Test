@@ -27,4 +27,24 @@ for name,dest in (('regalia2.html','index.html'),('shop.html','shop.html')):
         s=re.sub(r'href="#([a-z][a-z0-9-]*)"',lambda m: m.group(0) if m.group(1) in ids or m.group(1).startswith('k-') else f'href="index.html#{m.group(1)}"',s)
     open(f'{out}/{dest}','w').write(s)
 PY
+
+# performance: the public pages only use three typefaces, so every other @font-face (design-studio choices) is dropped,
+# along with its font files
+python3 - "$OUT" <<'PY'
+import re,sys,os,glob
+out=sys.argv[1]; KEEP=('Kalieb Luxury','Jost','Pinyon Script')
+used=set()
+for css in glob.glob(f'{out}/css/*.css'):
+    s=open(css).read()
+    def keep(m):
+        fam=re.search(r"font-family:\s*['\"]?([^;'\"]+)",m.group(0)).group(1).strip()
+        if fam in KEEP:
+            used.update(re.findall(r'fonts/([A-Za-z0-9_.-]+\.woff2)',m.group(0))); return m.group(0)
+        return ''
+    s=re.sub(r'@font-face\s*\{[^}]*\}',keep,s)
+    open(css,'w').write(s)
+for f in glob.glob(f'{out}/assets/fonts/*'):
+    if os.path.basename(f) not in used: os.remove(f)
+print('fonts kept:',sorted(used))
+PY
 rm -f $LIST; echo "built into $OUT: $(find $OUT -type f -not -path '*/.git/*' | wc -l) files"
