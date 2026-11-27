@@ -1199,3 +1199,11 @@
     radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
     linear-gradient(180deg,#3d3f85,#33357a) padding-box,
     conic-gradient(from var(--ra),rgba(255,255,255,.14) 0deg,rgba(255,255,255,.14) 270deg,rgba(var(--accent-rgb),.65) 318deg,rgba(255,242,234,.95) 334deg,rgba(var(--accent-rgb),.65) 350deg,rgba(255,255,255,.14) 360deg) border-box!important}
+
+/* hero (desktop): the KINGDOM wordmark's letters span exactly from the header's left edge to its right edge;
+   the headline (left) and the three specs (right) stay slightly inside it, at the same proportion as before */
+@media (min-width:901px){
+  .pg-regalia2 .rg2-hero .rg-word{--hw:calc(min(100vw,1440px) - var(--pad) * 2);--wk:calc(var(--hw) / .99483);width:var(--wk)!important;max-width:none!important;margin-left:calc(var(--wk) * .00185)}
+  .pg-regalia2 .rg2-hero .rg2-lead{margin-left:calc(var(--hw2,(min(100vw,1440px) - var(--pad) * 2)) * .0119 + (100vw - min(100vw,1440px)) / 2)!important}
+  .pg-regalia2 .rg2-hero .rg-specs{margin-right:calc((min(100vw,1440px) - var(--pad) * 2) * .0082 + (100vw - min(100vw,1440px)) / 2)!important}
+}
