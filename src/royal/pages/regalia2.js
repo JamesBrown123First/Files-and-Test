@@ -307,7 +307,6 @@ function vow() {
     r.setAttribute('rx', Math.min(parseFloat(getComputedStyle(c).borderTopLeftRadius) || h / 2, h / 2) - .6);
     r.setAttribute('stroke-dasharray', '90 910');
   });
-  rays(); addEventListener('resize', rays); document.fonts?.ready.then(rays);
   sec.querySelectorAll('.rg2-pledge__card').forEach((c) => c.addEventListener('pointermove', (e) => {
     const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
   }));

@@ -1195,3 +1195,13 @@
 .rg2-pledge__card:hover .rg2-pledge__ray rect{animation-duration:3s}
 @keyframes rg2RayDash{to{stroke-dashoffset:-1000}}
 @media (prefers-reduced-motion:reduce){.rg2-pledge__ray rect{animation:none!important}}
+
+/* promise pills: the original travelling edge light (exactly as in the first pill version), on version D's look */
+.rg2-pledge__ray{display:none!important}
+.rg2-pledge__card::after{display:block!important;content:""!important;position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ra),transparent 0deg,transparent 290deg,rgba(var(--accent-rgb),.9) 330deg,#fff 345deg,rgba(var(--accent-rgb),.9) 355deg,transparent 360deg)!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important;
+  opacity:0;transition:opacity .8s var(--ease)}
+.rg2-pledge.is-on .rg2-pledge__card::after{opacity:1;animation:rg2Ray 9s linear calc(1.2s + var(--k) * 3s) infinite both!important}
+.rg2-pledge__card:hover::after{animation-duration:3s!important}
+@keyframes rg2Ray{from{--ra:0deg}to{--ra:360deg}}
