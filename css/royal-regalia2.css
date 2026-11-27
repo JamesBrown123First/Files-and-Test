@@ -1133,37 +1133,6 @@
 @property --ra{syntax:'<angle>';inherits:false;initial-value:0deg}
 @media (prefers-reduced-motion:reduce){.rg2-pledge__card{animation:none!important}}
 
-/* promise pills v6: quieter and more refined. Frosted glass (translucent, not a solid patch), a smooth Apple-like
-   edge that is lighter on top and fades toward the bottom. The light now sweeps around each edge just once as the
-   pills arrive, one after another, and again on hover, so it isn't constantly moving. */
-.rg2-pledge__card{
-  background:
-    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025)) padding-box,
-    conic-gradient(from var(--ra),rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 290deg,rgba(var(--accent-rgb),.7) 330deg,rgba(255,240,232,.9) 342deg,rgba(var(--accent-rgb),.7) 352deg,rgba(255,255,255,0) 360deg) border-box,
-    linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 60%,rgba(var(--accent-rgb),.12)) border-box!important;
-  -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);
-  box-shadow:0 18px 40px -28px rgba(0,0,0,.55)!important}
-.rg2-pledge.is-on .rg2-pledge__card{animation:rg2Ray 2.4s cubic-bezier(.6,0,.3,1) calc(1.1s + var(--k) * .35s) 1 both}
-.rg2-pledge__card:hover,.rg2-pledge__card:focus-visible{animation:rg2Ray 1.6s cubic-bezier(.6,0,.3,1) 0s 1 both!important}
-@keyframes rg2Ray{from{--ra:-20deg}to{--ra:340deg}}
-/* v6b: no rotating ray (it showed through the glass); the edge is a still, smooth top-lit line, and a soft sheen
-   glides across each pill once as it arrives and again on hover */
-.rg2-pledge__card{animation:none!important;
-  background:
-    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025)) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.06) 55%,rgba(var(--accent-rgb),.18)) border-box!important;
-  -webkit-background-clip:padding-box,padding-box,border-box;background-clip:padding-box,padding-box,border-box}
-.rg2-pledge__card::before{background:linear-gradient(110deg,transparent 30%,rgba(255,236,226,.16) 50%,transparent 70%) 170% 0/260% 100% no-repeat!important;transition:background-position 1.8s var(--ease) calc(1s + var(--k) * .3s)!important}
-.rg2-pledge.is-on .rg2-pledge__card::before{background-position:-70% 0!important}
-.rg2-pledge__card:hover::before{transition-delay:0s!important;background-position:170% 0!important;transition-duration:1.2s!important}
-.rg2-pledge__card{background:
-    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.015),rgba(255,255,255,0)) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.03) 55%,rgba(var(--accent-rgb),.10)) border-box!important}
-@media (min-width:901px){.rg2-pledge__card p{font-size:16px!important}.rg2-pledge .rg2-pledge__n{font-size:30px!important}}
-
 /* basin: halfway between the original rest position (.32) and the over-lifted one (.5) */
 .pg-regalia2 .rg2-basin{--show:.41}
 @media (max-width:900px){.pg-regalia2 .rg2-basin{--show:.43}}
@@ -1178,27 +1147,6 @@
 .pg-regalia2 .rg2-story .rg2-pledge{margin-bottom:calc(var(--gap) * .17 - clamp(12px,1.7vw,24px))!important}
 .pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(24px,5.5vw,80px)}
 .pg-regalia2 .r-cursor{display:none!important}.pg-regalia2,.pg-regalia2 *{cursor:auto}.pg-regalia2 a,.pg-regalia2 button,.pg-regalia2 [role=button],.pg-regalia2 label,.pg-regalia2 select{cursor:pointer}.pg-regalia2 .sp-chips{cursor:grab}
-
-/* promise pills v7: never squashed (the row is at least ~640px wide where the screen allows, with real side padding),
-   and the travelling light along the edge is back, drawn on a real 1px border so the curve stays smooth */
-.pg-regalia2 .rg2-story .rg2-pledge{width:min(100%,max(var(--storyw,600px),640px))!important}
-@media (min-width:901px){.rg2-pledge__card{padding:16px 26px!important;column-gap:14px!important}}
-.rg2-pledge__card{
-  background:
-    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
-    linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)) padding-box,
-    conic-gradient(from var(--ra),rgba(255,255,255,.12) 0deg,rgba(255,255,255,.12) 270deg,rgba(var(--accent-rgb),.6) 318deg,rgba(255,242,234,.9) 334deg,rgba(var(--accent-rgb),.6) 350deg,rgba(255,255,255,.12) 360deg) border-box!important}
-.rg2-pledge.is-on .rg2-pledge__card{animation:rg2Ray 9s linear calc(1.2s + var(--k) * 3s) infinite both!important}
-.rg2-pledge__card:hover{animation-duration:3s!important}
-@keyframes rg2Ray{from{--ra:0deg}to{--ra:360deg}}
-@media (prefers-reduced-motion:reduce){.rg2-pledge__card{animation:none!important}}
-@media (max-width:600px){.pg-regalia2 .rg2-story .rg2-pledge{width:calc(100% - 40px)!important}}
-/* the pill face is solid so the travelling light only shows on the 1px edge */
-.rg2-pledge__card{
-  background:
-    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
-    linear-gradient(180deg,#3d3f85,#33357a) padding-box,
-    conic-gradient(from var(--ra),rgba(255,255,255,.14) 0deg,rgba(255,255,255,.14) 270deg,rgba(var(--accent-rgb),.65) 318deg,rgba(255,242,234,.95) 334deg,rgba(var(--accent-rgb),.65) 350deg,rgba(255,255,255,.14) 360deg) border-box!important}
 
 /* hero (desktop): the KINGDOM wordmark's letters span exactly from the header's left edge to its right edge;
    the headline (left) and the three specs (right) stay slightly inside it, at the same proportion as before */
