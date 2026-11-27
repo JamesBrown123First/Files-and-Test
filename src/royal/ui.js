@@ -122,6 +122,8 @@ export function initReveals(root = document) {
 
 export function initCursor() {
   if (!fine) return;
+  // the public site (landing page and shop) uses the normal pointer: no following dot or labels
+  if (document.body.classList.contains('pg-regalia2')) return;
   const c = document.createElement('div');
   c.className = 'r-cursor'; c.innerHTML = '<i></i><span></span>';
   document.body.appendChild(c);

@@ -1177,3 +1177,4 @@
 /* seal: a touch less air above and below (about 11%), still equal on both sides */
 .pg-regalia2 .rg2-story .rg2-pledge{margin-bottom:calc(var(--gap) * .17 - clamp(12px,1.7vw,24px))!important}
 .pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(24px,5.5vw,80px)}
+.pg-regalia2 .r-cursor{display:none!important}.pg-regalia2,.pg-regalia2 *{cursor:auto}.pg-regalia2 a,.pg-regalia2 button,.pg-regalia2 [role=button],.pg-regalia2 label,.pg-regalia2 select{cursor:pointer}.pg-regalia2 .sp-chips{cursor:grab}

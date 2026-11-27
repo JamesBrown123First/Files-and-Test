@@ -493,7 +493,7 @@ pages.regalia2 = page({ id: 'regalia2', title: 'Kingdom — Regalia II · The Ar
 <div class="rg2-tone" aria-hidden="true"><i class="t-deep"></i><i class="t-royal"></i><i class="t-warm"></i></div>
 <section class="rg-hero rg2-hero" aria-label="The Art of Silver Gifting">
   <div class="rg-word" aria-hidden="true">${logo('k-name')}</div>
-  <figure class="rg-ewer" data-cursor="Light">
+  <figure class="rg-ewer">
     <img class="rg-ewer__img" src="assets/img/ewer-bw-2400.webp" alt="A silver-filled Kingdom piece with deep acanthus relief" width="1113" height="2400">
     <span class="rg-ewer__sheen" aria-hidden="true"></span>
     <span class="rg-ewer__floor" aria-hidden="true"></span>
