@@ -1178,3 +1178,24 @@
 .pg-regalia2 .rg2-story .rg2-pledge{margin-bottom:calc(var(--gap) * .17 - clamp(12px,1.7vw,24px))!important}
 .pg-regalia2 .rg2-story .rg2-story__row{margin-bottom:clamp(24px,5.5vw,80px)}
 .pg-regalia2 .r-cursor{display:none!important}.pg-regalia2,.pg-regalia2 *{cursor:auto}.pg-regalia2 a,.pg-regalia2 button,.pg-regalia2 [role=button],.pg-regalia2 label,.pg-regalia2 select{cursor:pointer}.pg-regalia2 .sp-chips{cursor:grab}
+
+/* promise pills v7: never squashed (the row is at least ~640px wide where the screen allows, with real side padding),
+   and the travelling light along the edge is back, drawn on a real 1px border so the curve stays smooth */
+.pg-regalia2 .rg2-story .rg2-pledge{width:min(100%,max(var(--storyw,600px),640px))!important}
+@media (min-width:901px){.rg2-pledge__card{padding:16px 26px!important;column-gap:14px!important}}
+.rg2-pledge__card{
+  background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)) padding-box,
+    conic-gradient(from var(--ra),rgba(255,255,255,.12) 0deg,rgba(255,255,255,.12) 270deg,rgba(var(--accent-rgb),.6) 318deg,rgba(255,242,234,.9) 334deg,rgba(var(--accent-rgb),.6) 350deg,rgba(255,255,255,.12) 360deg) border-box!important}
+.rg2-pledge.is-on .rg2-pledge__card{animation:rg2Ray 9s linear calc(1.2s + var(--k) * 3s) infinite both!important}
+.rg2-pledge__card:hover{animation-duration:3s!important}
+@keyframes rg2Ray{from{--ra:0deg}to{--ra:360deg}}
+@media (prefers-reduced-motion:reduce){.rg2-pledge__card{animation:none!important}}
+@media (max-width:600px){.pg-regalia2 .rg2-story .rg2-pledge{width:calc(100% - 40px)!important}}
+/* the pill face is solid so the travelling light only shows on the 1px edge */
+.rg2-pledge__card{
+  background:
+    radial-gradient(140px 140px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),var(--spot,0)),transparent 70%) padding-box,
+    linear-gradient(180deg,#3d3f85,#33357a) padding-box,
+    conic-gradient(from var(--ra),rgba(255,255,255,.14) 0deg,rgba(255,255,255,.14) 270deg,rgba(var(--accent-rgb),.65) 318deg,rgba(255,242,234,.95) 334deg,rgba(var(--accent-rgb),.65) 350deg,rgba(255,255,255,.14) 360deg) border-box!important}
